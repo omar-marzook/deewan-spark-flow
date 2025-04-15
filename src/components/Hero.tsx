@@ -12,8 +12,8 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
-            <h1 className="mb-6">
-              <span className="gradient-text">Intelligent</span> Communication<br />
+            <h1 className="mb-6 text-deewan-dark">
+              <span className="font-bold">Intelligent</span> Communication<br />
               Solutions
             </h1>
             <p className="text-xl mb-8 text-deewan-dark max-w-lg">
@@ -31,19 +31,47 @@ const Hero = () => {
           </div>
           
           <div className="animate-fade-in delay-300">
-            <div className="glass-card p-6 md:p-8 relative">
-              <div className="absolute -top-10 -right-10 w-20 h-20 bg-deewan-secondary/20 rounded-full mix-blend-multiply filter blur-xl"></div>
-              <h3 className="text-2xl font-bold mb-4 text-deewan-dark">9+ Billion</h3>
-              <p className="text-deewan-dark mb-4">Annual transactions processed through our reliable communication platform</p>
-              
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                <div className="glass-card p-4 text-center">
-                  <h4 className="text-xl font-bold text-deewan-primary">300+</h4>
-                  <p className="text-sm text-deewan-dark">Satisfied Customers</p>
+            <div className="relative overflow-hidden rounded-lg shadow-lg h-96">
+              {/* Space-themed visual */}
+              <div className="absolute inset-0 bg-black">
+                {/* Stars background */}
+                <div className="absolute inset-0" style={{
+                  background: `radial-gradient(circle at center, #2b6cb0 0%, #2c2d2d 100%)`,
+                  opacity: 0.7
+                }}></div>
+                
+                {/* Floating particles/stars */}
+                <div className="absolute inset-0">
+                  {Array.from({ length: 50 }).map((_, i) => (
+                    <div 
+                      key={i}
+                      className="absolute rounded-full bg-white"
+                      style={{
+                        width: `${Math.random() * 3 + 1}px`,
+                        height: `${Math.random() * 3 + 1}px`,
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        opacity: Math.random() * 0.8 + 0.2,
+                        animation: `pulse-slow ${Math.random() * 4 + 2}s infinite`
+                      }}
+                    ></div>
+                  ))}
                 </div>
-                <div className="glass-card p-4 text-center">
-                  <h4 className="text-xl font-bold text-deewan-secondary">6+</h4>
-                  <p className="text-sm text-deewan-dark">Industries Served</p>
+                
+                {/* Orbiting circle */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40">
+                  <div className="absolute w-full h-full rounded-full border border-deewan-primary opacity-20 animate-[spin_20s_linear_infinite]"></div>
+                  <div className="absolute w-3/4 h-3/4 top-1/8 left-1/8 rounded-full border border-deewan-primary opacity-20 animate-[spin_15s_linear_infinite_reverse]"></div>
+                  <div className="absolute w-1/2 h-1/2 top-1/4 left-1/4 rounded-full border border-deewan-lightgray opacity-20 animate-[spin_10s_linear_infinite]"></div>
+                </div>
+                
+                {/* Central element */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-deewan-primary rounded-full opacity-80"></div>
+                
+                {/* Overlay text */}
+                <div className="absolute bottom-8 left-8 right-8 text-white">
+                  <h3 className="text-2xl font-bold mb-2">Intelligent Communication</h3>
+                  <p className="text-sm text-deewan-lightgray">Connecting your business to the digital universe</p>
                 </div>
               </div>
             </div>
