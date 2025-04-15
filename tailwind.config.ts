@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,13 +63,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				deewan: {
-					'primary': '#0C4A9A',    // Dark blue
-					'secondary': '#13B4E9',  // Light blue
-					'accent': '#F6C43A',     // Yellow
-					'dark': '#1A1A1A',       // Almost black
-					'light': '#F8FAFC',      // Light background
-					'gray': '#53565A',       // Gray
-					'lightgray': '#D4D4D4'   // Light gray
+					'primary': '#35a26b',    // Updated primary color
+					'secondary': '#2b6cb0',  // Updated secondary color
+					'accent': '#F6C43A',     // Keeping existing accent color
+					'dark': '#1A1A1A',       
+					'light': '#F8FAFC',      
+					'gray': '#53565A',       
+					'lightgray': '#D4D4D4'   
 				}
 			},
 			borderRadius: {

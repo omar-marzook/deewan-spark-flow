@@ -24,6 +24,20 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center">
+            <svg 
+              width="40" 
+              height="40" 
+              viewBox="0 0 100 100" 
+              className="mr-3"
+            >
+              <circle cx="50" cy="50" r="45" fill="#35a26b" />
+              <path 
+                d="M35 50 L65 50 Q75 50, 75 40 Q75 30, 65 30 L35 30 L35 70 L65 70 Q75 70, 75 60 Q75 50, 65 50" 
+                fill="white" 
+                stroke="white" 
+                strokeWidth="5"
+              />
+            </svg>
             <span className="text-2xl font-display font-bold text-deewan-primary">Deewan</span>
           </a>
 
