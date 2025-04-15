@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
@@ -140,7 +141,7 @@
   }
   
   .btn-secondary {
-    @apply px-6 py-3 bg-white text-deewan-secondary font-medium rounded-md border border-deewan-secondary/20
+    @apply px-6 py-3 bg-white text-black font-medium rounded-md border border-deewan-secondary/20
     shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1;
   }
   

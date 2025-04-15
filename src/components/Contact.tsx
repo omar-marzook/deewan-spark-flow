@@ -3,18 +3,22 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="contact" className="py-20 relative">
+      {/* Background elements for glass effect */}
+      <div className="absolute top-40 -right-20 w-72 h-72 bg-deewan-primary rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
+      <div className="absolute bottom-40 -left-20 w-72 h-72 bg-deewan-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="mb-4">Get in <span className="gradient-text">Touch</span></h2>
+          <h2 className="mb-4">Get in <span className="text-deewan-primary">Touch</span></h2>
           <p className="text-xl text-gray-700">
             Ready to enhance your communication capabilities? Contact our team today.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="glass-card p-8">
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+          <div className="backdrop-blur-md bg-white/60 border border-white/30 shadow-xl rounded-xl p-8">
+            <h3 className="text-2xl font-bold mb-6 text-deewan-dark">Contact Information</h3>
             
             <div className="space-y-6">
               <div className="flex items-start">
@@ -22,8 +26,8 @@ const Contact = () => {
                   <MapPin className="h-6 w-6 text-deewan-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Office Location</h4>
-                  <p className="text-gray-700">Riyadh, Saudi Arabia</p>
+                  <h4 className="font-semibold mb-1 text-deewan-dark">Office Location</h4>
+                  <p className="text-deewan-dark/80">Riyadh, Saudi Arabia</p>
                 </div>
               </div>
               
@@ -32,7 +36,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-deewan-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Email Us</h4>
+                  <h4 className="font-semibold mb-1 text-deewan-dark">Email Us</h4>
                   <a href="mailto:info@deewan.com" className="text-deewan-primary hover:underline">info@deewan.com</a>
                 </div>
               </div>
@@ -42,14 +46,14 @@ const Contact = () => {
                   <Phone className="h-6 w-6 text-deewan-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Call Us</h4>
+                  <h4 className="font-semibold mb-1 text-deewan-dark">Call Us</h4>
                   <a href="tel:+966123456789" className="text-deewan-primary hover:underline">+966 12 345 6789</a>
                 </div>
               </div>
             </div>
             
             <div className="mt-8 pt-8 border-t border-gray-200">
-              <h4 className="font-semibold mb-4">Follow Us</h4>
+              <h4 className="font-semibold mb-4 text-deewan-dark">Follow Us</h4>
               <div className="flex space-x-4">
                 <a href="#" className="bg-white p-2 rounded-full shadow-sm hover:shadow-md transition-all">
                   <svg className="h-5 w-5 text-deewan-primary" fill="currentColor" viewBox="0 0 24 24">
@@ -71,46 +75,46 @@ const Contact = () => {
             </div>
           </div>
           
-          <div className="glass-card p-8">
-            <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
+          <div className="backdrop-blur-md bg-white/60 border border-white/30 shadow-xl rounded-xl p-8">
+            <h3 className="text-2xl font-bold mb-6 text-deewan-dark">Send Us a Message</h3>
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-deewan-dark mb-1">Full Name</label>
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deewan-primary focus:border-deewan-primary"
+                    className="w-full px-4 py-2 bg-white/70 border border-white/50 rounded-lg shadow-inner focus:ring-2 focus:ring-deewan-primary focus:border-deewan-primary"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-deewan-dark mb-1">Email Address</label>
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deewan-primary focus:border-deewan-primary"
+                    className="w-full px-4 py-2 bg-white/70 border border-white/50 rounded-lg shadow-inner focus:ring-2 focus:ring-deewan-primary focus:border-deewan-primary"
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
               
               <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                <label htmlFor="company" className="block text-sm font-medium text-deewan-dark mb-1">Company</label>
                 <input
                   type="text"
                   id="company"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deewan-primary focus:border-deewan-primary"
+                  className="w-full px-4 py-2 bg-white/70 border border-white/50 rounded-lg shadow-inner focus:ring-2 focus:ring-deewan-primary focus:border-deewan-primary"
                   placeholder="Your company"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-deewan-dark mb-1">Message</label>
                 <textarea
                   id="message"
                   rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deewan-primary focus:border-deewan-primary"
+                  className="w-full px-4 py-2 bg-white/70 border border-white/50 rounded-lg shadow-inner focus:ring-2 focus:ring-deewan-primary focus:border-deewan-primary"
                   placeholder="How can we help you?"
                 ></textarea>
               </div>

@@ -10,12 +10,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-deewan-dark text-white pt-16 pb-8">
-      <div className="container mx-auto px-4 md:px-6">
+    <footer className="relative pt-16 pb-8 overflow-hidden">
+      {/* Background with glass effect */}
+      <div className="absolute inset-0 bg-deewan-dark/95 backdrop-blur-sm z-0"></div>
+      <div className="absolute -top-20 -left-20 w-80 h-80 bg-deewan-primary rounded-full opacity-10 z-0"></div>
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-deewan-secondary rounded-full opacity-10 z-0"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="mb-6">
-              <img src="/logo.svg" alt="Deewan Logo" className="h-12" />
+              <img src="/logo.svg" alt="Deewan Logo" className="h-12 brightness-0 invert" />
             </div>
             <p className="text-deewan-lightgray mb-6">
               Intelligent, customizable communication solutions that prioritize security and scalability.
@@ -41,7 +46,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6">Products</h4>
+            <h4 className="text-lg font-semibold mb-6 text-white">Products</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-deewan-lightgray hover:text-white transition-colors">Deewan Campaigns</a></li>
               <li><a href="#" className="text-deewan-lightgray hover:text-white transition-colors">Omnichannel Chat</a></li>
@@ -52,7 +57,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6">Resources</h4>
+            <h4 className="text-lg font-semibold mb-6 text-white">Resources</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-deewan-lightgray hover:text-white transition-colors">Documentation</a></li>
               <li><a href="#" className="text-deewan-lightgray hover:text-white transition-colors">API Reference</a></li>
@@ -63,7 +68,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6">Company</h4>
+            <h4 className="text-lg font-semibold mb-6 text-white">Company</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-deewan-lightgray hover:text-white transition-colors">About Us</a></li>
               <li><a href="#" className="text-deewan-lightgray hover:text-white transition-colors">Careers</a></li>
@@ -74,7 +79,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-center justify-between">
+        <div className="border-t border-gray-700/50 pt-8 flex flex-col md:flex-row items-center justify-between">
           <p className="text-deewan-lightgray text-sm mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} Deewan. All rights reserved.
           </p>
@@ -88,7 +93,7 @@ const Footer = () => {
       
       <button 
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 bg-deewan-primary hover:bg-deewan-secondary text-white p-3 rounded-full shadow-lg transition-all hover:-translate-y-1"
+        className="fixed bottom-6 right-6 bg-deewan-primary/80 backdrop-blur-sm hover:bg-deewan-primary text-white p-3 rounded-full shadow-lg transition-all hover:-translate-y-1"
         aria-label="Scroll to top"
       >
         <ArrowUp size={20} />
