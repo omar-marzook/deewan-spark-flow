@@ -24,35 +24,21 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <svg 
-              width="40" 
-              height="40" 
-              viewBox="0 0 100 100" 
-              className="mr-3"
-            >
-              <circle cx="50" cy="50" r="45" fill="#35a26b" />
-              <path 
-                d="M35 50 L65 50 Q75 50, 75 40 Q75 30, 65 30 L35 30 L35 70 L65 70 Q75 70, 75 60 Q75 50, 65 50" 
-                fill="white" 
-                stroke="white" 
-                strokeWidth="5"
-              />
-            </svg>
-            <span className="text-2xl font-display font-bold text-deewan-primary">Deewan</span>
+            <img src="/logo.svg" alt="Deewan Logo" className="h-10 mr-2" />
           </a>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8 items-center">
-            <a href="#products" className="font-medium text-deewan-gray hover:text-deewan-primary transition-colors">Solutions</a>
-            <a href="#apis" className="font-medium text-deewan-gray hover:text-deewan-primary transition-colors">APIs</a>
-            <a href="#industries" className="font-medium text-deewan-gray hover:text-deewan-primary transition-colors">Industries</a>
-            <a href="#stats" className="font-medium text-deewan-gray hover:text-deewan-primary transition-colors">About Us</a>
+            <a href="#products" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Solutions</a>
+            <a href="#apis" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">APIs</a>
+            <a href="#industries" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</a>
+            <a href="#stats" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">About Us</a>
             <a href="#contact" className="btn-primary">Contact Us</a>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-deewan-gray focus:outline-none"
+            className="md:hidden text-deewan-dark focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -62,10 +48,10 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <nav className="md:hidden glass mt-4 p-4 rounded-lg flex flex-col space-y-4 animate-fade-in">
-            <a href="#products" className="font-medium text-deewan-gray hover:text-deewan-primary transition-colors">Solutions</a>
-            <a href="#apis" className="font-medium text-deewan-gray hover:text-deewan-primary transition-colors">APIs</a>
-            <a href="#industries" className="font-medium text-deewan-gray hover:text-deewan-primary transition-colors">Industries</a>
-            <a href="#stats" className="font-medium text-deewan-gray hover:text-deewan-primary transition-colors">About Us</a>
+            <a href="#products" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Solutions</a>
+            <a href="#apis" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">APIs</a>
+            <a href="#industries" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</a>
+            <a href="#stats" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">About Us</a>
             <a href="#contact" className="btn-primary text-center">Contact Us</a>
           </nav>
         )}

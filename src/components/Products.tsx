@@ -40,7 +40,7 @@ const Products = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="mb-4">Our <span className="gradient-text">Intelligent</span> Products</h2>
-          <p className="text-xl text-deewan-gray">
+          <p className="text-xl text-deewan-dark">
             Comprehensive communication solutions designed to enhance your business operations
           </p>
         </div>
@@ -50,8 +50,8 @@ const Products = () => {
             <div key={product.id} className="group">
               <div className={`glass-card p-6 h-full flex flex-col transition-all duration-300 group-hover:-translate-y-2 bg-gradient-to-br ${product.color}`}>
                 <div className="mb-6">{product.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{product.title}</h3>
-                <p className="text-deewan-gray flex-grow">{product.description}</p>
+                <h3 className="text-xl font-bold mb-3 text-deewan-dark">{product.title}</h3>
+                <p className="text-deewan-dark flex-grow">{product.description}</p>
                 <a href="#" className="mt-4 inline-flex items-center text-deewan-primary font-medium">
                   Learn more
                   <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
