@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,13 +64,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				deewan: {
-					'primary': '#3B82F6',
-					'primary-dark': '#2563EB',
-					'secondary': '#9333EA',
-					'secondary-dark': '#7E22CE',
-					'accent': '#F59E0B',
-					'dark': '#1E293B',
-					'light': '#F8FAFC'
+					'primary': '#0C4A9A',    // Dark blue
+					'secondary': '#13B4E9',  // Light blue
+					'accent': '#F6C43A',     // Yellow
+					'dark': '#1A1A1A',       // Almost black
+					'light': '#F8FAFC',      // Light background
+					'gray': '#53565A',       // Gray
+					'lightgray': '#D4D4D4'   // Light gray
 				}
 			},
 			borderRadius: {
@@ -78,7 +79,7 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				'sans': ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 				'display': ['Poppins', 'sans-serif'],
 			},
 			keyframes: {

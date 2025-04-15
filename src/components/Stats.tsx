@@ -13,7 +13,7 @@ const Stats = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 text-center">
             <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
               <BarChart className="h-8 w-8 text-white" />
             </div>
@@ -21,7 +21,7 @@ const Stats = () => {
             <p className="text-white/80">Annual Transactions</p>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 text-center">
             <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
               <Users className="h-8 w-8 text-white" />
             </div>
@@ -29,7 +29,7 @@ const Stats = () => {
             <p className="text-white/80">Satisfied Customers</p>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 text-center">
             <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
               <Briefcase className="h-8 w-8 text-white" />
             </div>
@@ -37,7 +37,7 @@ const Stats = () => {
             <p className="text-white/80">Industries Served</p>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 text-center">
             <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="h-8 w-8 text-white" />
             </div>
@@ -47,7 +47,7 @@ const Stats = () => {
         </div>
 
         <div className="mt-16 max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 relative overflow-hidden">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg p-8 relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full filter blur-2xl"></div>
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full filter blur-2xl"></div>
             

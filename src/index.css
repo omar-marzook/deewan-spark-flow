@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -34,7 +35,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -92,7 +93,7 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-blue-50 to-purple-50 text-foreground font-sans;
+    @apply bg-white text-foreground font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -126,7 +127,7 @@
   }
   
   .glass-card {
-    @apply glass rounded-2xl;
+    @apply glass rounded-lg;
   }
   
   .gradient-text {
@@ -134,13 +135,18 @@
   }
   
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-deewan-primary to-deewan-secondary text-white font-medium rounded-xl 
+    @apply px-6 py-3 bg-deewan-primary text-white font-medium rounded-md 
     shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
   }
   
   .btn-secondary {
-    @apply px-6 py-3 bg-white text-deewan-primary font-medium rounded-xl border border-deewan-primary/20
+    @apply px-6 py-3 bg-white text-deewan-primary font-medium rounded-md border border-deewan-primary/20
     shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  .btn-accent {
+    @apply px-6 py-3 bg-deewan-accent text-deewan-dark font-medium rounded-md
+    shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
   }
 }
 

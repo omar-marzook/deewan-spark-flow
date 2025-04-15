@@ -8,35 +8,35 @@ const APIs = () => {
       title: "Voice API",
       description: "Integrate voice calling capabilities into your applications for verification, alerts, and notifications.",
       icon: <Phone className="h-6 w-6" />,
-      color: "border-blue-400"
+      color: "border-deewan-primary"
     },
     {
       id: 2,
       title: "SMS API",
       description: "Send transactional and promotional SMS messages to your customers globally with high deliverability.",
       icon: <MessageCircle className="h-6 w-6" />,
-      color: "border-green-400"
+      color: "border-deewan-secondary"
     },
     {
       id: 3,
       title: "WhatsApp Business API",
       description: "Connect with customers via their preferred messaging platform with rich media support.",
       icon: <MessageSquare className="h-6 w-6" />,
-      color: "border-emerald-400"
+      color: "border-deewan-primary"
     },
     {
       id: 4,
       title: "Email API",
       description: "Send transactional and marketing emails with high deliverability and comprehensive analytics.",
       icon: <Mail className="h-6 w-6" />,
-      color: "border-indigo-400"
+      color: "border-deewan-secondary"
     },
     {
       id: 5,
       title: "Push Notification API",
       description: "Send targeted push notifications to mobile app users to boost engagement and retention.",
       icon: <BellRing className="h-6 w-6" />,
-      color: "border-purple-400"
+      color: "border-deewan-accent"
     }
   ];
 
@@ -45,7 +45,7 @@ const APIs = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="mb-4">Communication <span className="gradient-text">APIs</span></h2>
-          <p className="text-xl text-gray-700">
+          <p className="text-xl text-deewan-gray">
             Powerful, flexible APIs to integrate communication capabilities into your applications
           </p>
         </div>
@@ -66,7 +66,7 @@ const APIs = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg mb-2">{api.title}</h3>
-                    <p className="text-gray-700 text-sm">{api.description}</p>
+                    <p className="text-deewan-gray text-sm">{api.description}</p>
                   </div>
                 </div>
               </div>
