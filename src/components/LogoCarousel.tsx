@@ -1,5 +1,4 @@
 
-import { useState, useEffect, useRef } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -28,7 +27,7 @@ const LogoCarousel = () => {
           </p>
         </div>
 
-        <div className="relative mx-auto max-w-full overflow-hidden">
+        <div className="w-full overflow-hidden">
           <Carousel
             opts={{
               align: "start",
@@ -39,7 +38,7 @@ const LogoCarousel = () => {
           >
             <CarouselContent>
               {logos.map((logo) => (
-                <CarouselItem key={logo.id} className="basis-1/2 md:basis-1/4 lg:basis-1/5">
+                <CarouselItem key={logo.id} className="basis-1/2 md:basis-1/3 lg:basis-1/5 pl-4">
                   <div className="p-2">
                     <div className="bg-white h-24 rounded-md border border-deewan-primary/10 flex items-center justify-center hover:shadow-sm transition-all duration-300">
                       <span className="text-xl font-bold text-deewan-dark/70">{logo.name}</span>

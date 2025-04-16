@@ -26,6 +26,7 @@ const Index = () => {
       <Industries />
       <Stats />
       <AlternativeStats />
+      <LogoCarousel />
       <Departments />
       <Testimonials />
       <AlternativeTestimonials /> {/* Added new testimonials component */}
