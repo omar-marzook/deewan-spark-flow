@@ -10,6 +10,7 @@ import AlternativeStats from "../components/AlternativeStats";
 import LogoCarousel from "../components/LogoCarousel";
 import Departments from "../components/Departments";
 import Testimonials from "../components/Testimonials";
+import BlogSection from "../components/BlogSection"; // Add import for BlogSection
 import Contact from "../components/Contact";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
@@ -28,6 +29,7 @@ const Index = () => {
       <LogoCarousel />
       <Departments />
       <Testimonials />
+      <BlogSection /> {/* Add BlogSection component */}
       <Contact />
       <ContactSection />
       <Footer />
