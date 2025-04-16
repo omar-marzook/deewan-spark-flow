@@ -12,21 +12,21 @@ const blogPosts = [
     title: "The Future of Communication APIs",
     description: "Explore how modern communication APIs are revolutionizing business interactions across Saudi Arabia and beyond.",
     imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60",
-    readMoreUrl: "#",
+    readMoreUrl: "/blog/future-of-communication-apis",
   },
   {
     id: 2,
     title: "Enhancing Customer Experience with AI",
     description: "Learn how businesses are leveraging AI-powered messaging to create more personalized customer experiences.",
     imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=60",
-    readMoreUrl: "#",
+    readMoreUrl: "/blog/enhancing-customer-experience-with-ai",
   },
   {
     id: 3,
     title: "Security Best Practices for Messaging",
     description: "Discover the essential security protocols that ensure your business communications remain protected.",
     imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop&q=60",
-    readMoreUrl: "#",
+    readMoreUrl: "/blog/security-best-practices-for-messaging",
   },
 ];
 
@@ -44,13 +44,13 @@ const BlogSection = () => {
           </p>
         </div>
 
-        {/* Blog posts grid */}
-        <div className="glass-card p-8 rounded-xl mb-10">
+        {/* Blog posts grid - glassmorphism container */}
+        <div className="bg-white/30 backdrop-blur-lg border border-white/40 shadow-lg rounded-xl p-8 mb-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
               <Card 
                 key={post.id} 
-                className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100 h-full flex flex-col bg-white/50 backdrop-blur-sm"
+                className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-white/60 h-full flex flex-col bg-white/50 backdrop-blur-sm rounded-lg"
               >
                 {/* Post thumbnail */}
                 <div className="h-48 overflow-hidden">
@@ -87,7 +87,7 @@ const BlogSection = () => {
         <div className="text-center">
           <Button 
             asChild
-            className="bg-deewan-primary hover:bg-deewan-primary/90 text-white"
+            className="bg-deewan-primary hover:bg-deewan-primary/90 text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
           >
             <Link to="/blog">
               View All Blog Posts
