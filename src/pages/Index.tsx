@@ -11,6 +11,7 @@ import Departments from "../components/Departments";
 import DepartmentsWeServe from "../components/DepartmentsWeServe";
 import Testimonials from "../components/Testimonials";
 import AlternativeTestimonials from "../components/AlternativeTestimonials";
+import CreativeTestimonials from "../components/CreativeTestimonials";
 import BlogSection from "../components/BlogSection";
 import Contact from "../components/Contact";
 import ContactSection from "../components/ContactSection";
@@ -32,6 +33,7 @@ const Index = () => {
       <DepartmentsWeServe />
       <Testimonials />
       <AlternativeTestimonials /> {/* Added new testimonials component */}
+      <CreativeTestimonials /> {/* Added creative testimonials component */}
       <BlogSection />
       <Contact />
       <ContactSection />
