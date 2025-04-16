@@ -10,6 +10,7 @@ import AlternativeStats from "../components/AlternativeStats";
 import LogoCarousel from "../components/LogoCarousel";
 import Departments from "../components/Departments";
 import Testimonials from "../components/Testimonials";
+import Contact from "../components/Contact";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 
@@ -27,6 +28,7 @@ const Index = () => {
       <LogoCarousel />
       <Departments />
       <Testimonials />
+      <Contact />
       <ContactSection />
       <Footer />
     </div>
