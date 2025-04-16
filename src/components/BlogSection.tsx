@@ -12,9 +12,7 @@ const blogPosts = [
     description: "Find out how to impress an employer and increase your chances of successful employment.",
     date: "June 12, 2024",
     imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60",
-    readMoreUrl: "/blog/prepare-for-interview",
-    author: "Helen Harisson",
-    authorTitle: "Editor at Work Way"
+    readMoreUrl: "/blog/prepare-for-interview"
   },
   {
     id: 2,
@@ -22,9 +20,7 @@ const blogPosts = [
     description: "Develop skills in demand in the labor market and increase your career opportunities.",
     date: "June 2, 2024",
     imageUrl: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop&q=60",
-    readMoreUrl: "/blog/key-skills-employers",
-    author: "Kate Jonson",
-    authorTitle: "Editor at Work Way"
+    readMoreUrl: "/blog/key-skills-employers"
   },
   {
     id: 3,
@@ -32,9 +28,7 @@ const blogPosts = [
     description: "Helpful tips and templates for creating a resume that will set you apart from your competition.",
     date: "May 15, 2024",
     imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=60",
-    readMoreUrl: "/blog/create-resume",
-    author: "Kate Jonson",
-    authorTitle: "Editor at Work Way"
+    readMoreUrl: "/blog/create-resume"
   },
 ];
 
@@ -42,17 +36,14 @@ const BlogSection = () => {
   return (
     <section className="py-16 px-4 md:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
-        {/* Section header with "All articles" link */}
-        <div className="flex justify-between items-center mb-10">
-          <h2 className="text-xl font-bold text-deewan-dark uppercase">
-            BLOG
+        {/* Section header - centered with description */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-deewan-primary">Blog</span>
           </h2>
-          <Link 
-            to="/blog" 
-            className="text-deewan-primary flex items-center gap-1 hover:underline"
-          >
-            All articles <ArrowRight className="h-4 w-4" />
-          </Link>
+          <p className="text-lg text-deewan-gray max-w-3xl mx-auto">
+            Stay updated with the latest insights, trends, and best practices
+          </p>
         </div>
 
         {/* Blog posts grid */}
@@ -88,22 +79,19 @@ const BlogSection = () => {
                   {post.description}
                 </p>
                 
-                {/* Author */}
+                {/* Read more link */}
                 <div className="mt-auto">
-                  <p className="text-sm font-medium text-deewan-dark">
-                    {post.author}
-                  </p>
-                  <p className="text-xs text-deewan-gray">
-                    {post.authorTitle}
-                  </p>
+                  <span className="text-sm font-medium text-deewan-primary flex items-center">
+                    Read more <ArrowRight className="ml-1 h-4 w-4" />
+                  </span>
                 </div>
               </div>
             </Link>
           ))}
         </div>
 
-        {/* View all button - matching mobile only */}
-        <div className="md:hidden text-center">
+        {/* View all button - centered */}
+        <div className="text-center">
           <Button 
             asChild
             className="bg-deewan-primary hover:bg-deewan-primary/90 text-white"
