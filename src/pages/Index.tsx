@@ -3,14 +3,14 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Products from "../components/Products";
 import AlternativeProducts from "../components/AlternativeProducts";
-import APIs from "../components/APIs";
 import Industries from "../components/Industries";
 import Stats from "../components/Stats";
 import AlternativeStats from "../components/AlternativeStats";
 import LogoCarousel from "../components/LogoCarousel";
 import Departments from "../components/Departments";
 import Testimonials from "../components/Testimonials";
-import BlogSection from "../components/BlogSection"; // Add import for BlogSection
+import AlternativeTestimonials from "../components/AlternativeTestimonials";
+import BlogSection from "../components/BlogSection";
 import Contact from "../components/Contact";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
@@ -22,14 +22,14 @@ const Index = () => {
       <Hero />
       <Products />
       <AlternativeProducts />
-      <APIs />
+      {/* APIs section removed as requested */}
       <Industries />
       <Stats />
       <AlternativeStats />
-      <LogoCarousel />
       <Departments />
       <Testimonials />
-      <BlogSection /> {/* Add BlogSection component */}
+      <AlternativeTestimonials /> {/* Added new testimonials component */}
+      <BlogSection />
       <Contact />
       <ContactSection />
       <Footer />
