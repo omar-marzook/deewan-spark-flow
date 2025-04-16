@@ -8,6 +8,7 @@ import Stats from "../components/Stats";
 import AlternativeStats from "../components/AlternativeStats";
 import LogoCarousel from "../components/LogoCarousel";
 import Departments from "../components/Departments";
+import DepartmentsWeServe from "../components/DepartmentsWeServe";
 import Testimonials from "../components/Testimonials";
 import AlternativeTestimonials from "../components/AlternativeTestimonials";
 import BlogSection from "../components/BlogSection";
@@ -28,6 +29,7 @@ const Index = () => {
       <AlternativeStats />
       <LogoCarousel />
       <Departments />
+      <DepartmentsWeServe />
       <Testimonials />
       <AlternativeTestimonials /> {/* Added new testimonials component */}
       <BlogSection />
