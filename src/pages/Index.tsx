@@ -2,6 +2,8 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Products from "../components/Products";
+import ProductsCreativeLayout from "../components/ProductsCreativeLayout";
+import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
 import AlternativeProducts from "../components/AlternativeProducts";
 import Industries from "../components/Industries";
 import LogoCarousel from "../components/LogoCarousel";
@@ -18,6 +20,9 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Products />
+      {/* Uncomment one of the following to use the new product designs */}
+      {/* <ProductsCreativeLayout /> */}
+      {/* <ProductsTabbedLayout /> */}
       <AlternativeProducts />
       {/* APIs section removed as requested */}
       <Industries />

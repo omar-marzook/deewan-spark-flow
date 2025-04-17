@@ -1,5 +1,7 @@
+
 import React from "react";
-import { Megaphone, Users, DollarSign, Settings, Scale, Code } from "lucide-react";
+import { Megaphone, Users, DollarSign } from "lucide-react";
+
 const departmentsData = [{
   id: 1,
   name: "Marketing",
@@ -18,25 +20,8 @@ const departmentsData = [{
   description: "We provide secure channels for finance teams to send confidential information, payment confirmations, and time-sensitive alerts.",
   icon: <DollarSign className="h-10 w-10 text-deewan-accent" />,
   color: "bg-deewan-accent/10"
-}, {
-  id: 4,
-  name: "Operations",
-  description: "Our platform helps operations teams coordinate logistics, manage workflows, and maintain smooth communication across departments.",
-  icon: <Settings className="h-10 w-10 text-deewan-primary" />,
-  color: "bg-deewan-primary/10"
-}, {
-  id: 5,
-  name: "Legal",
-  description: "We offer compliant communication channels for legal teams to securely share sensitive information and maintain confidentiality.",
-  icon: <Scale className="h-10 w-10 text-deewan-secondary" />,
-  color: "bg-deewan-secondary/10"
-}, {
-  id: 6,
-  name: "IT & Development",
-  description: "Our API integrations and technical tools help IT teams create custom communication workflows and automate routine processes.",
-  icon: <Code className="h-10 w-10 text-deewan-accent" />,
-  color: "bg-deewan-accent/10"
 }];
+
 const DepartmentsWeServe = () => {
   return <section className="py-24 bg-gradient-to-br from-white to-gray-50">
       <div className="container mx-auto px-4 md:px-6">
@@ -49,7 +34,7 @@ const DepartmentsWeServe = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {departmentsData.map(dept => <div key={dept.id} className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col h-full">
               <div className={`${dept.color} p-6 flex justify-center`}>
                 <div className="bg-white rounded-full p-4 shadow-sm">
@@ -73,4 +58,5 @@ const DepartmentsWeServe = () => {
       </div>
     </section>;
 };
+
 export default DepartmentsWeServe;
