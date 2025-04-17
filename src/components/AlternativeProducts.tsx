@@ -1,5 +1,7 @@
+
 import { MessageSquare, Bell, Shield, Zap, Server, Database, FileText, Globe, Code, Phone } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 const AlternativeProducts = () => {
   const applications = [{
     id: 1,
@@ -53,6 +55,12 @@ const AlternativeProducts = () => {
     description: "Validate phone numbers and reduce undeliverable messages.",
     icon: <Server className="w-10 h-10 text-deewan-secondary" />
   }];
-  return;
+  
+  return (
+    <div>
+      {/* Component content would go here */}
+    </div>
+  );
 };
+
 export default AlternativeProducts;

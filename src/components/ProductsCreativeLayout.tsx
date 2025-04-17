@@ -1,5 +1,7 @@
+
 import { Bell, MessageSquare, Zap, Shield, Database, Phone, Server, FileText, Globe, Code } from 'lucide-react';
 import { useState } from 'react';
+
 const ProductsCreativeLayout = () => {
   // Define product data
   const applications = [{
@@ -78,9 +80,15 @@ const ProductsCreativeLayout = () => {
   // State for card hover effect
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-  // Render card component
-  const renderCard = (product: any) => <div key={product.id} onMouseEnter={() => setHoveredCard(product.id)} onMouseLeave={() => setHoveredCard(null)} className="relative group overflow-hidden glass-card bg-gradient-to-br from-deewan-primary/10 to-deewan-primary/5">
-      <div className={`glass-card h-full flex flex-col p-6 transition-all duration-500 
+  // Render card component with enhanced glassmorphism
+  const renderCard = (product: any) => (
+    <div 
+      key={product.id} 
+      onMouseEnter={() => setHoveredCard(product.id)} 
+      onMouseLeave={() => setHoveredCard(null)} 
+      className="relative group overflow-hidden backdrop-blur-lg bg-white/10 border border-white/30 rounded-xl shadow-lg"
+    >
+      <div className={`h-full flex flex-col p-6 transition-all duration-500 
                      ${hoveredCard === product.id ? 'transform scale-[1.02]' : ''}`}>
         {/* Background gradient */}
         <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-90 
@@ -89,7 +97,7 @@ const ProductsCreativeLayout = () => {
         {/* Icon with circle background */}
         <div className="relative mb-6 z-10">
           <div className={`h-16 w-16 rounded-full flex items-center justify-center
-                         bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition-all duration-500`}>
+                         backdrop-blur-md bg-white/10 border border-white/20 group-hover:bg-white/20 transition-all duration-500`}>
             {product.icon}
           </div>
         </div>
@@ -112,7 +120,42 @@ const ProductsCreativeLayout = () => {
           </a>
         </div>
       </div>
-    </div>;
-  return;
+    </div>
+  );
+
+  return (
+    <section className="py-24 relative overflow-hidden">
+      {/* Glassmorphic background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-gray-50/30 to-white/40 backdrop-blur-sm -z-10"></div>
+      <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/10 rounded-full filter blur-3xl -z-5"></div>
+      <div className="absolute bottom-40 right-10 w-96 h-96 bg-deewan-secondary/10 rounded-full filter blur-3xl -z-5"></div>
+      
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="mb-4">Our <span className="text-deewan-primary">Products</span></h2>
+          <p className="text-xl text-deewan-dark">
+            Comprehensive communication solutions designed for modern businesses
+          </p>
+        </div>
+        
+        {/* Applications section */}
+        <div className="mb-20">
+          <h3 className="text-2xl font-bold mb-6 text-center md:text-left">Applications</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {applications.map(app => renderCard(app))}
+          </div>
+        </div>
+        
+        {/* APIs section */}
+        <div>
+          <h3 className="text-2xl font-bold mb-6 text-center md:text-left">Communication APIs</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {apis.map(api => renderCard(api))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default ProductsCreativeLayout;

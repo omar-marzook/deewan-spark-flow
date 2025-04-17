@@ -103,10 +103,11 @@ const ProductsTabbedLayout = () => {
 
   return (
     <section id="product-section-tabs" className="py-24 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-white -z-10"></div>
-      <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/5 rounded-full filter blur-3xl"></div>
-      <div className="absolute bottom-40 right-10 w-96 h-96 bg-deewan-secondary/5 rounded-full filter blur-3xl"></div>
+      {/* Enhanced glassmorphic background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-gray-50/30 to-white/40 backdrop-blur-sm -z-10"></div>
+      <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/20 rounded-full filter blur-3xl -z-5"></div>
+      <div className="absolute bottom-40 right-10 w-96 h-96 bg-deewan-secondary/20 rounded-full filter blur-3xl -z-5"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full h-96 bg-deewan-primary/5 rounded-full filter blur-3xl -z-5"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -116,26 +117,26 @@ const ProductsTabbedLayout = () => {
           </p>
         </div>
         
-        {/* Custom styled tabs */}
+        {/* Enhanced glassmorphic tabs */}
         <Tabs defaultValue="applications" className="w-full max-w-6xl mx-auto">
           <div className="flex justify-center mb-12">
-            <TabsList className="p-1 h-14 bg-white border border-gray-200 rounded-xl shadow-sm">
+            <TabsList className="p-1 h-14 backdrop-blur-md bg-white/30 border border-white/40 rounded-xl shadow-lg">
               <TabsTrigger 
                 value="applications" 
-                className="px-8 h-12 data-[state=active]:bg-deewan-primary data-[state=active]:text-white rounded-lg transition-all duration-300"
+                className="px-8 h-12 data-[state=active]:bg-deewan-primary data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-300"
               >
                 Applications
               </TabsTrigger>
               <TabsTrigger 
                 value="apis" 
-                className="px-8 h-12 data-[state=active]:bg-deewan-secondary data-[state=active]:text-white rounded-lg transition-all duration-300"
+                className="px-8 h-12 data-[state=active]:bg-deewan-secondary data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-300"
               >
                 Communication APIs
               </TabsTrigger>
             </TabsList>
           </div>
           
-          {/* Applications content */}
+          {/* Applications content with glassmorphic cards */}
           <TabsContent value="applications" className="mt-8 focus-visible:outline-none">
             <motion.div 
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -145,9 +146,9 @@ const ProductsTabbedLayout = () => {
             >
               {applications.map(app => (
                 <motion.div key={app.id} variants={item} className="group">
-                  <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col">
+                  <div className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col">
                     <div className="flex justify-center mb-6">
-                      <div className={`${app.color} p-5 rounded-xl group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`${app.color} p-5 rounded-xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm bg-white/30 border border-white/20`}>
                         {app.icon}
                       </div>
                     </div>
@@ -159,7 +160,7 @@ const ProductsTabbedLayout = () => {
                     </p>
                     
                     <div className="mt-auto text-center">
-                      <a href="#" className="inline-flex items-center justify-center rounded-lg bg-deewan-primary/10 text-deewan-primary px-5 py-2 font-medium hover:bg-deewan-primary hover:text-white transition-colors duration-300">
+                      <a href="#" className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-primary/20 text-deewan-primary px-5 py-2 font-medium hover:bg-deewan-primary hover:text-white transition-colors duration-300 border border-deewan-primary/20">
                         View Product
                         <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" 
                              fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -173,7 +174,7 @@ const ProductsTabbedLayout = () => {
             </motion.div>
           </TabsContent>
           
-          {/* APIs content */}
+          {/* APIs content with glassmorphic cards */}
           <TabsContent value="apis" className="mt-8 focus-visible:outline-none">
             <motion.div 
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -183,9 +184,9 @@ const ProductsTabbedLayout = () => {
             >
               {apis.map(api => (
                 <motion.div key={api.id} variants={item} className="group">
-                  <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col">
+                  <div className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col">
                     <div className="flex justify-center mb-6">
-                      <div className={`${api.color} p-5 rounded-xl group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`${api.color} p-5 rounded-xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm bg-white/30 border border-white/20`}>
                         {api.icon}
                       </div>
                     </div>
@@ -197,7 +198,7 @@ const ProductsTabbedLayout = () => {
                     </p>
                     
                     <div className="mt-auto text-center">
-                      <a href="#" className="inline-flex items-center justify-center rounded-lg bg-deewan-secondary/10 text-deewan-secondary px-5 py-2 font-medium hover:bg-deewan-secondary hover:text-white transition-colors duration-300">
+                      <a href="#" className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-secondary/20 text-deewan-secondary px-5 py-2 font-medium hover:bg-deewan-secondary hover:text-white transition-colors duration-300 border border-deewan-secondary/20">
                         View API
                         <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" 
                              fill="none" viewBox="0 0 24 24" stroke="currentColor">
