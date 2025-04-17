@@ -1,14 +1,12 @@
 
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Products from "../components/Products";
-import ProductsCreativeLayout from "../components/ProductsCreativeLayout";
 import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
 import AlternativeProducts from "../components/AlternativeProducts";
 import Industries from "../components/Industries";
 import LogoCarousel from "../components/LogoCarousel";
-import Departments from "../components/Departments";
 import DepartmentsWeServe from "../components/DepartmentsWeServe";
+import DepartmentsOption from "../components/DepartmentsOption";
 import CreativeTestimonials from "../components/CreativeTestimonials";
 import BlogSection from "../components/BlogSection";
 import ContactSection from "../components/ContactSection";
@@ -22,9 +20,6 @@ const Index = () => {
       {/* Original Products section commented out to use new designs */}
       {/* <Products /> */}
       
-      {/* Product Section Option 1: Creative Layout */}
-      <ProductsCreativeLayout />
-      
       {/* Product Section Option 2: Tabbed Layout */}
       <ProductsTabbedLayout />
       
@@ -34,8 +29,8 @@ const Index = () => {
       {/* Stats section removed as requested */}
       {/* AlternativeStats section removed as requested */}
       <LogoCarousel />
-      <Departments />
       <DepartmentsWeServe />
+      <DepartmentsOption />
       {/* Testimonials section removed as requested */}
       {/* AlternativeTestimonials section removed as requested */}
       <CreativeTestimonials />
