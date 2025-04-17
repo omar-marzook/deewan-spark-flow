@@ -8,7 +8,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <>
       {/* Newsletter subscription - Separated from footer */}
-      <div className="py-12 bg-gradient-to-r from-gray-50 to-white bg-deewan-light">
+      <div className="py-12">
         <div className="container mx-auto px-4 md:px-6 w-full md:w-3/4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-white/50 p-8 rounded-2xl shadow-lg">
             <div className="flex flex-col">
