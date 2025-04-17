@@ -1,5 +1,7 @@
+
 import { Bell, MessageSquare, Zap, Shield, Database, Phone, Server, FileText, Globe, Code } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
 const ProductsCreativeLayout = () => {
   // Define product data
   const applications = [{
@@ -38,6 +40,7 @@ const ProductsCreativeLayout = () => {
     color: "from-deewan-primary to-deewan-primary/80",
     learnMoreLink: "#"
   }];
+  
   const apis = [{
     id: 6,
     title: "SMS API",
@@ -77,9 +80,99 @@ const ProductsCreativeLayout = () => {
 
   // State for card hover effect
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  
+  // Canvas animation reference and setup
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Set canvas dimensions and handle resize
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    };
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Create animated floating particles
+    const particles: Array<{
+      x: number;
+      y: number;
+      radius: number;
+      color: string;
+      speedX: number;
+      speedY: number;
+      opacity: number;
+    }> = [];
+    
+    const colors = [
+      'rgba(53, 162, 107, 0.3)',  // Primary green
+      'rgba(43, 108, 176, 0.3)',  // Secondary blue
+      'rgba(246, 196, 58, 0.2)'   // Accent
+    ];
+    
+    // Create particles
+    for (let i = 0; i < 25; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 20 + 15,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.4 + 0.1
+      });
+    }
+    
+    // Animation function
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw animated blurry blobs
+      particles.forEach(particle => {
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color.replace(')', `, ${particle.opacity})`);
+        ctx.filter = 'blur(15px)';
+        ctx.fill();
+        ctx.closePath();
+        
+        // Move particles
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        
+        // Bounce off edges
+        if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+        if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+      });
+      
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
 
   // Render card component with enhanced glassmorphism
-  const renderCard = (product: any) => <div key={product.id} onMouseEnter={() => setHoveredCard(product.id)} onMouseLeave={() => setHoveredCard(null)} className="relative group overflow-hidden backdrop-blur-lg bg-white/10 border border-white/30 rounded-xl shadow-lg">
+  const renderCard = (product: any) => (
+    <div 
+      key={product.id} 
+      onMouseEnter={() => setHoveredCard(product.id)} 
+      onMouseLeave={() => setHoveredCard(null)} 
+      className="relative group overflow-hidden backdrop-blur-lg bg-white/10 border border-white/30 rounded-xl shadow-lg"
+    >
       <div className={`h-full flex flex-col p-6 transition-all duration-500 
                      ${hoveredCard === product.id ? 'transform scale-[1.02]' : ''}`}>
         {/* Background gradient */}
@@ -112,7 +205,54 @@ const ProductsCreativeLayout = () => {
           </a>
         </div>
       </div>
-    </div>;
-  return;
+    </div>
+  );
+
+  return (
+    <section id="product-section" className="relative py-24 overflow-hidden">
+      {/* Canvas background for animated blobs */}
+      <canvas 
+        ref={canvasRef} 
+        className="absolute inset-0 w-full h-full -z-10" 
+      />
+      
+      {/* Fixed gradient overlays for depth */}
+      <div className="absolute top-0 left-0 w-1/3 h-2/3 bg-deewan-primary/10 rounded-full filter blur-[100px] -z-5"></div>
+      <div className="absolute bottom-0 right-0 w-1/3 h-2/3 bg-deewan-secondary/10 rounded-full filter blur-[100px] -z-5"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-deewan-accent/5 rounded-full filter blur-[120px] -z-5"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="mb-4 text-deewan-dark">Our <span className="text-deewan-primary">Solutions</span> Ecosystem</h2>
+          <p className="text-xl text-deewan-dark">
+            Comprehensive communication tools designed for modern businesses
+          </p>
+        </div>
+        
+        {/* Applications section */}
+        <div className="mb-20">
+          <h3 className="text-2xl font-semibold mb-8 text-deewan-dark inline-flex items-center">
+            <Bell className="w-6 h-6 mr-2 text-deewan-primary" />
+            Applications
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {applications.map(app => renderCard(app))}
+          </div>
+        </div>
+        
+        {/* APIs section */}
+        <div>
+          <h3 className="text-2xl font-semibold mb-8 text-deewan-dark inline-flex items-center">
+            <Code className="w-6 h-6 mr-2 text-deewan-secondary" />
+            Communication APIs
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {apis.map(api => renderCard(api))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default ProductsCreativeLayout;
