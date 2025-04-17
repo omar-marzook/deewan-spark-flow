@@ -113,47 +113,6 @@ const ProductsCreativeLayout = () => {
         </div>
       </div>
     </div>;
-  return <section id="product-section-creative" className="py-24 relative overflow-hidden bg-deewan-light">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-deewan-primary/5 rounded-full filter blur-3xl animate-pulse-slow"></div>
-      <div className="absolute bottom-20 left-10 w-72 h-72 bg-deewan-secondary/5 rounded-full filter blur-3xl animate-pulse-slow" style={{
-      animationDelay: '1.5s'
-    }}></div>
-      
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="mb-4">Our <span className="gradient-text">Intelligent</span> Products</h2>
-          <p className="text-xl text-deewan-dark">
-            Comprehensive communication solutions designed for modern businesses
-          </p>
-        </div>
-        
-        {/* Applications section */}
-        <div className="mb-20">
-          <div className="flex items-center justify-center mb-10">
-            <div className="h-0.5 flex-grow max-w-xs bg-gradient-to-r from-transparent via-deewan-primary/30 to-transparent"></div>
-            <h3 className="text-2xl font-bold px-6 text-deewan-primary">Applications</h3>
-            <div className="h-0.5 flex-grow max-w-xs bg-gradient-to-r from-transparent via-deewan-primary/30 to-transparent"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {applications.map(app => renderCard(app))}
-          </div>
-        </div>
-        
-        {/* APIs section */}
-        <div>
-          <div className="flex items-center justify-center mb-10">
-            <div className="h-0.5 flex-grow max-w-xs bg-gradient-to-r from-transparent via-deewan-secondary/30 to-transparent"></div>
-            <h3 className="text-2xl font-bold px-6 text-deewan-secondary">Communication APIs</h3>
-            <div className="h-0.5 flex-grow max-w-xs bg-gradient-to-r from-transparent via-deewan-secondary/30 to-transparent"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {apis.map(api => renderCard(api))}
-          </div>
-        </div>
-      </div>
-    </section>;
+  return;
 };
 export default ProductsCreativeLayout;
