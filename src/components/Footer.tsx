@@ -1,107 +1,173 @@
 
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, ArrowRight } from "lucide-react";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 const Footer = () => {
   // Current year for copyright
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#f8f9fc] py-16 relative">
-      <div className="container mx-auto px-4 md:px-6">
+    <footer className="relative py-16 overflow-hidden">
+      {/* Glassmorphism background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-deewan-primary/5 backdrop-blur-md z-0"></div>
+      
+      {/* Animated background shapes (optional) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-10">
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-deewan-primary/20 animate-pulse-slow"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-deewan-secondary/20 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-40 right-1/4 w-40 h-40 rounded-full bg-deewan-accent/20 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Newsletter subscription */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-14 gap-6">
-          <div className="flex items-center">
-            <img src="/logo.svg" alt="Deewan Logo" className="h-8" />
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8 bg-white/50 p-8 rounded-2xl shadow-lg">
+          <div className="flex flex-col">
+            <h3 className="text-deewan-dark font-semibold text-xl mb-2">Stay up to date</h3>
+            <p className="text-gray-600 text-sm">Subscribe to our newsletter for updates</p>
           </div>
           
-          <div className="flex flex-col md:flex-row gap-2 md:items-center w-full md:w-auto">
-            <div className="relative flex-grow max-w-md">
-              <input
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto max-w-md">
+            <div className="relative flex-grow">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <Mail size={18} className="text-gray-400" />
+              </div>
+              <Input 
                 type="email"
-                placeholder="Enter your email and subscribe to fresh updates"
-                className="w-full py-2.5 px-4 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-deewan-primary/20"
+                placeholder="Enter your email"
+                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-200 focus:ring-deewan-primary/20"
               />
             </div>
-            <button className="bg-deewan-primary text-white py-2.5 px-6 rounded-lg font-medium hover:bg-deewan-primary/90 transition-colors">
+            <Button className="bg-deewan-primary hover:bg-deewan-primary/90 text-white flex items-center justify-center gap-2">
               Subscribe
-            </button>
+              <ArrowRight size={16} />
+            </Button>
           </div>
         </div>
         
         {/* Main footer links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-14">
-          {/* For applicant column */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {/* Products column */}
           <div>
-            <h3 className="text-deewan-dark font-semibold text-lg mb-4">For Clients</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Search for services</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Upload your requirements</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Create a request</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Our client portal</a></li>
+            <h3 className="text-deewan-dark font-semibold text-lg mb-6">Products</h3>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Deewan Campaigns</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Omnichannel Chat</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Deewan Bots</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Deewan MFA</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Communication APIs</a></li>
             </ul>
           </div>
           
-          {/* For employer column */}
+          {/* Resources column */}
           <div>
-            <h3 className="text-deewan-dark font-semibold text-lg mb-4">For Partners</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Create a partnership</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Resource center</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Our services</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Partner portal</a></li>
+            <h3 className="text-deewan-dark font-semibold text-lg mb-6">Resources</h3>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Documentation</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">API Reference</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Blog</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Case Studies</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Support</a></li>
             </ul>
           </div>
           
           {/* Company column */}
           <div>
-            <h3 className="text-deewan-dark font-semibold text-lg mb-4">Deewan</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">About the company</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Contacts</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">Site Map</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors text-sm">FAQ</a></li>
+            <h3 className="text-deewan-dark font-semibold text-lg mb-6">Company</h3>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">About Us</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Careers</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Partners</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Press</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-deewan-primary transition-colors">Contact</a></li>
             </ul>
-          </div>
-          
-          {/* Download column */}
-          <div>
-            <h3 className="text-deewan-dark font-semibold text-lg mb-4">Download the application</h3>
-            <div className="flex flex-col space-y-3">
-              <a href="#" className="inline-block">
-                <img src="https://download.logo.wine/logo/App_Store_(iOS)/App_Store_(iOS)-Badge-Logo.wine.png" alt="App Store" className="h-10" />
-              </a>
-              <a href="#" className="inline-block">
-                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play" className="h-10" />
-              </a>
-            </div>
-            
-            {/* Social Media Links */}
-            <div className="mt-6 flex space-x-3">
-              <a href="#" aria-label="Youtube" className="inline-flex items-center justify-center rounded-full p-2 bg-gray-100 hover:bg-gray-200 transition-colors">
-                <Youtube size={18} className="text-gray-600" />
-              </a>
-              <a href="#" aria-label="Facebook" className="inline-flex items-center justify-center rounded-full p-2 bg-gray-100 hover:bg-gray-200 transition-colors">
-                <Facebook size={18} className="text-gray-600" />
-              </a>
-              <a href="#" aria-label="Twitter" className="inline-flex items-center justify-center rounded-full p-2 bg-gray-100 hover:bg-gray-200 transition-colors">
-                <Twitter size={18} className="text-gray-600" />
-              </a>
-              <a href="#" aria-label="Instagram" className="inline-flex items-center justify-center rounded-full p-2 bg-gray-100 hover:bg-gray-200 transition-colors">
-                <Instagram size={18} className="text-gray-600" />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="inline-flex items-center justify-center rounded-full p-2 bg-gray-100 hover:bg-gray-200 transition-colors">
-                <Linkedin size={18} className="text-gray-600" />
-              </a>
-            </div>
           </div>
         </div>
         
-        {/* Footer bottom with copyright */}
-        <div className="border-t border-gray-200 pt-6">
-          <p className="text-gray-500 text-sm">
-            Deewan &copy; {currentYear}. All rights reserved.
-          </p>
+        {/* Logo + Social Media Links */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+          <div className="flex items-center">
+            <img src="/logo.svg" alt="Deewan Logo" className="h-8" />
+          </div>
+          
+          {/* Social Media Links */}
+          <div className="flex space-x-3">
+            <a 
+              href="#" 
+              aria-label="Youtube" 
+              className={cn(
+                "inline-flex items-center justify-center rounded-full p-2.5",
+                "bg-deewan-primary/10 text-deewan-primary", 
+                "hover:bg-deewan-primary/20 transition-colors"
+              )}
+            >
+              <Youtube size={18} />
+            </a>
+            <a 
+              href="#" 
+              aria-label="Facebook" 
+              className={cn(
+                "inline-flex items-center justify-center rounded-full p-2.5",
+                "bg-deewan-primary/10 text-deewan-primary", 
+                "hover:bg-deewan-primary/20 transition-colors"
+              )}
+            >
+              <Facebook size={18} />
+            </a>
+            <a 
+              href="#" 
+              aria-label="Twitter" 
+              className={cn(
+                "inline-flex items-center justify-center rounded-full p-2.5",
+                "bg-deewan-primary/10 text-deewan-primary", 
+                "hover:bg-deewan-primary/20 transition-colors"
+              )}
+            >
+              <Twitter size={18} />
+            </a>
+            <a 
+              href="#" 
+              aria-label="Instagram" 
+              className={cn(
+                "inline-flex items-center justify-center rounded-full p-2.5",
+                "bg-deewan-primary/10 text-deewan-primary", 
+                "hover:bg-deewan-primary/20 transition-colors"
+              )}
+            >
+              <Instagram size={18} />
+            </a>
+            <a 
+              href="#" 
+              aria-label="LinkedIn" 
+              className={cn(
+                "inline-flex items-center justify-center rounded-full p-2.5",
+                "bg-deewan-primary/10 text-deewan-primary", 
+                "hover:bg-deewan-primary/20 transition-colors"
+              )}
+            >
+              <Linkedin size={18} />
+            </a>
+          </div>
+        </div>
+        
+        {/* Footer bottom with copyright and links */}
+        <div className="border-t border-gray-200/50 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-500 text-sm mb-4 md:mb-0">
+              &copy; {currentYear} Deewan. All rights reserved.
+            </p>
+            
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-500 hover:text-deewan-primary text-sm transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-500 hover:text-deewan-primary text-sm transition-colors">
+                Terms and Conditions
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
