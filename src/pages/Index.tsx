@@ -4,17 +4,11 @@ import Hero from "../components/Hero";
 import Products from "../components/Products";
 import AlternativeProducts from "../components/AlternativeProducts";
 import Industries from "../components/Industries";
-import Stats from "../components/Stats";
-import AlternativeStats from "../components/AlternativeStats";
 import LogoCarousel from "../components/LogoCarousel";
 import Departments from "../components/Departments";
 import DepartmentsWeServe from "../components/DepartmentsWeServe";
-import Testimonials from "../components/Testimonials";
-import AlternativeTestimonials from "../components/AlternativeTestimonials";
 import CreativeTestimonials from "../components/CreativeTestimonials";
 import BlogSection from "../components/BlogSection";
-import Contact from "../components/Contact";
-import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 
 const Index = () => {
@@ -26,17 +20,16 @@ const Index = () => {
       <AlternativeProducts />
       {/* APIs section removed as requested */}
       <Industries />
-      <Stats />
-      <AlternativeStats />
+      {/* Stats section removed as requested */}
+      {/* AlternativeStats section removed as requested */}
       <LogoCarousel />
       <Departments />
       <DepartmentsWeServe />
-      <Testimonials />
-      <AlternativeTestimonials /> {/* Added new testimonials component */}
-      <CreativeTestimonials /> {/* Added creative testimonials component */}
+      {/* Testimonials section removed as requested */}
+      {/* AlternativeTestimonials section removed as requested */}
+      <CreativeTestimonials />
       <BlogSection />
-      <Contact />
-      <ContactSection />
+      {/* Contact section removed as requested */}
       <Footer />
     </div>
   );

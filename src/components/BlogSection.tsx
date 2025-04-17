@@ -34,12 +34,12 @@ const blogPosts = [
 
 const BlogSection = () => {
   return (
-    <section className="py-16 px-4 md:px-6 bg-white">
+    <section className="py-24 px-4 md:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         {/* Section header - centered with description */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-deewan-primary">Blog</span>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+            Blog
           </h2>
           <p className="text-lg text-deewan-gray max-w-3xl mx-auto">
             Stay updated with the latest insights, trends, and best practices
@@ -47,12 +47,12 @@ const BlogSection = () => {
         </div>
 
         {/* Blog posts grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {blogPosts.map((post) => (
             <Link 
               key={post.id} 
               to={post.readMoreUrl} 
-              className="group flex flex-col rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white"
+              className="group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white"
             >
               {/* Post thumbnail */}
               <div className="aspect-video overflow-hidden">
@@ -63,7 +63,7 @@ const BlogSection = () => {
                 />
               </div>
               
-              <div className="p-5 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col flex-grow">
                 {/* Date */}
                 <p className="text-sm text-deewan-gray mb-2">
                   {post.date}

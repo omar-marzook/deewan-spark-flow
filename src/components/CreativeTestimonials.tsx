@@ -11,7 +11,7 @@ const testimonials = [
     name: "Ahmed Al-Saud",
     role: "CTO, Tech Innovations",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=60",
-    companyLogo: "https://placekitten.com/100/40",
+    companyLogo: "/placeholder.svg",
     rating: 5
   },
   {
@@ -20,7 +20,7 @@ const testimonials = [
     name: "Fatima Rahman",
     role: "Head of Customer Experience, Global Retail Group",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=60",
-    companyLogo: "https://placekitten.com/101/40",
+    companyLogo: "/placeholder.svg",
     rating: 5
   },
   {
@@ -29,7 +29,7 @@ const testimonials = [
     name: "Mohammed Al-Qahtani",
     role: "Marketing Director, Finance Solutions Inc.",
     image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=60",
-    companyLogo: "https://placekitten.com/102/40",
+    companyLogo: "/placeholder.svg",
     rating: 4
   },
   {
@@ -38,7 +38,7 @@ const testimonials = [
     name: "Dr. Khalid Rahman",
     role: "Medical Director, International Health Group",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60",
-    companyLogo: "https://placekitten.com/103/40",
+    companyLogo: "/placeholder.svg",
     rating: 5
   }
 ];
@@ -111,7 +111,7 @@ const CreativeTestimonials = () => {
           {visibleTestimonials.map((testimonial) => (
             <div 
               key={testimonial.id} 
-              className="bg-gray-50/70 rounded-lg p-6 shadow-sm"
+              className="bg-gray-50/70 rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
             >
               <div className="flex justify-between items-start mb-6">
                 <div className="flex">{renderStars(testimonial.rating)}</div>
