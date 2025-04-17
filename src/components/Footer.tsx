@@ -10,7 +10,7 @@ const Footer = () => {
       {/* Newsletter subscription - Separated from footer */}
       <div className="py-12">
         <div className="container mx-auto px-4 md:px-6 w-full md:w-3/4">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-white/50 p-8 rounded-2xl shadow-lg">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-white/50 p-8 rounded-2xl shadow-lg max-w-5xl">
             <div className="flex flex-col">
               <h3 className="text-deewan-dark font-semibold text-xl mb-2">Stay up to date</h3>
               <p className="text-gray-600 text-sm">Subscribe to our newsletter for updates</p>
