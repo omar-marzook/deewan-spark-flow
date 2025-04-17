@@ -1,14 +1,11 @@
-
 import React from "react";
 import { Mail, ArrowRight } from "lucide-react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-
 const Newsletter = () => {
-  return (
-    <div className="py-12">
+  return <div className="py-12">
       <div className="container mx-auto px-4 md:px-6 w-full md:w-3/4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-gradient-to-br from-white/70 to-white/30 backdrop-blur-md p-8 rounded-2xl shadow-lg shadow-deewan-primary/5 border border-white/40 max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-deewan-primary/10 backdrop-blur-md p-8 rounded-2xl shadow-lg shadow-deewan-primary/5 max-w-5xl mx-auto">
           <div className="flex flex-col">
             <h3 className="text-deewan-dark font-semibold text-xl mb-2">Stay up to date</h3>
             <p className="text-gray-600 text-sm">Subscribe to our newsletter for updates</p>
@@ -28,8 +25,6 @@ const Newsletter = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Newsletter;
