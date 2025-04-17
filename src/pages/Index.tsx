@@ -19,10 +19,15 @@ const Index = () => {
     <div className="overflow-x-hidden">
       <Navbar />
       <Hero />
-      <Products />
-      {/* Uncomment one of the following to use the new product designs */}
-      {/* <ProductsCreativeLayout /> */}
-      {/* <ProductsTabbedLayout /> */}
+      {/* Original Products section commented out to use new designs */}
+      {/* <Products /> */}
+      
+      {/* Product Section Option 1: Creative Layout */}
+      <ProductsCreativeLayout />
+      
+      {/* Product Section Option 2: Tabbed Layout */}
+      <ProductsTabbedLayout />
+      
       <AlternativeProducts />
       {/* APIs section removed as requested */}
       <Industries />
