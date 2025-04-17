@@ -9,6 +9,7 @@ import Departments from "../components/Departments";
 import DepartmentsWeServe from "../components/DepartmentsWeServe";
 import CreativeTestimonials from "../components/CreativeTestimonials";
 import BlogSection from "../components/BlogSection";
+import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 
 const Index = () => {
@@ -29,7 +30,7 @@ const Index = () => {
       {/* AlternativeTestimonials section removed as requested */}
       <CreativeTestimonials />
       <BlogSection />
-      {/* Contact section removed as requested */}
+      <ContactSection />
       <Footer />
     </div>
   );
