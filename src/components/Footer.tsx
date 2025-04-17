@@ -1,18 +1,14 @@
-
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, ArrowRight } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-
 const Footer = () => {
   // Current year for copyright
   const currentYear = new Date().getFullYear();
-
-  return (
-    <>
+  return <>
       {/* Newsletter subscription - Separated from footer */}
-      <div className="py-12 bg-gradient-to-r from-gray-50 to-white">
+      <div className="py-12 bg-gradient-to-r from-gray-50 to-white bg-deewan-lightgray">
         <div className="container mx-auto px-4 md:px-6 w-full md:w-3/4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 bg-white/50 p-8 rounded-2xl shadow-lg">
             <div className="flex flex-col">
@@ -25,11 +21,7 @@ const Footer = () => {
                 <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                   <Mail size={18} className="text-gray-400" />
                 </div>
-                <Input 
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-200 focus:ring-deewan-primary/20"
-                />
+                <Input type="email" placeholder="Enter your email" className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-200 focus:ring-deewan-primary/20" />
               </div>
               <Button className="bg-deewan-primary hover:bg-deewan-primary/90 text-white flex items-center justify-center gap-2">
                 Subscribe
@@ -48,8 +40,12 @@ const Footer = () => {
         {/* Animated background shapes (optional) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-10">
           <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-deewan-primary/20 animate-pulse-slow"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-deewan-secondary/20 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-40 right-1/4 w-40 h-40 rounded-full bg-deewan-accent/20 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-deewan-secondary/20 animate-pulse-slow" style={{
+          animationDelay: '1s'
+        }}></div>
+          <div className="absolute top-40 right-1/4 w-40 h-40 rounded-full bg-deewan-accent/20 animate-pulse-slow" style={{
+          animationDelay: '2s'
+        }}></div>
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -67,59 +63,19 @@ const Footer = () => {
               
               {/* Social Media Links - Using design from contact section */}
               <div className="flex space-x-3">
-                <a 
-                  href="#" 
-                  aria-label="Youtube" 
-                  className={cn(
-                    "inline-flex items-center justify-center rounded-full p-2.5",
-                    "bg-deewan-primary/10 text-deewan-primary", 
-                    "hover:bg-deewan-primary/20 transition-colors"
-                  )}
-                >
+                <a href="#" aria-label="Youtube" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
                   <Youtube size={18} />
                 </a>
-                <a 
-                  href="#" 
-                  aria-label="Facebook" 
-                  className={cn(
-                    "inline-flex items-center justify-center rounded-full p-2.5",
-                    "bg-deewan-primary/10 text-deewan-primary", 
-                    "hover:bg-deewan-primary/20 transition-colors"
-                  )}
-                >
+                <a href="#" aria-label="Facebook" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
                   <Facebook size={18} />
                 </a>
-                <a 
-                  href="#" 
-                  aria-label="Twitter" 
-                  className={cn(
-                    "inline-flex items-center justify-center rounded-full p-2.5",
-                    "bg-deewan-primary/10 text-deewan-primary", 
-                    "hover:bg-deewan-primary/20 transition-colors"
-                  )}
-                >
+                <a href="#" aria-label="Twitter" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
                   <Twitter size={18} />
                 </a>
-                <a 
-                  href="#" 
-                  aria-label="Instagram" 
-                  className={cn(
-                    "inline-flex items-center justify-center rounded-full p-2.5",
-                    "bg-deewan-primary/10 text-deewan-primary", 
-                    "hover:bg-deewan-primary/20 transition-colors"
-                  )}
-                >
+                <a href="#" aria-label="Instagram" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
                   <Instagram size={18} />
                 </a>
-                <a 
-                  href="#" 
-                  aria-label="LinkedIn" 
-                  className={cn(
-                    "inline-flex items-center justify-center rounded-full p-2.5",
-                    "bg-deewan-primary/10 text-deewan-primary", 
-                    "hover:bg-deewan-primary/20 transition-colors"
-                  )}
-                >
+                <a href="#" aria-label="LinkedIn" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
                   <Linkedin size={18} />
                 </a>
               </div>
@@ -181,8 +137,6 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </>
-  );
+    </>;
 };
-
 export default Footer;
