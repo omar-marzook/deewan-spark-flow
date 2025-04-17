@@ -1,30 +1,39 @@
+
 import React, { useRef, useEffect } from "react";
 import { Megaphone, Users, DollarSign } from "lucide-react";
-const departmentsData = [{
-  id: 1,
-  name: "Marketing",
-  description: "We empower marketing teams with real-time communication tools that streamline campaign coordination and boost customer engagement.",
-  icon: <Megaphone className="h-10 w-10 text-white" />,
-  color: "from-deewan-primary to-deewan-primary/80"
-}, {
-  id: 2,
-  name: "Human Resources",
-  description: "Our solutions help HR departments deliver timely updates, onboard employees efficiently, and maintain clear internal communications.",
-  icon: <Users className="h-10 w-10 text-white" />,
-  color: "from-deewan-secondary to-deewan-secondary/80"
-}, {
-  id: 3,
-  name: "Finance",
-  description: "We provide secure channels for finance teams to send confidential information, payment confirmations, and time-sensitive alerts.",
-  icon: <DollarSign className="h-10 w-10 text-white" />,
-  color: "from-deewan-accent to-deewan-accent/80"
-}];
+
+const departmentsData = [
+  {
+    id: 1,
+    name: "Marketing",
+    description: "We empower marketing teams with real-time communication tools that streamline campaign coordination and boost customer engagement.",
+    icon: <Megaphone className="h-10 w-10 text-white" />,
+    color: "from-deewan-primary to-deewan-primary/80"
+  },
+  {
+    id: 2,
+    name: "Human Resources",
+    description: "Our solutions help HR departments deliver timely updates, onboard employees efficiently, and maintain clear internal communications.",
+    icon: <Users className="h-10 w-10 text-white" />,
+    color: "from-deewan-secondary to-deewan-secondary/80"
+  },
+  {
+    id: 3,
+    name: "Finance",
+    description: "We provide secure channels for finance teams to send confidential information, payment confirmations, and time-sensitive alerts.",
+    icon: <DollarSign className="h-10 w-10 text-white" />,
+    color: "from-deewan-accent to-deewan-accent/80"
+  }
+];
+
 const DepartmentsOption = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
+  
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -32,9 +41,11 @@ const DepartmentsOption = () => {
     const resizeCanvas = () => {
       const parent = canvas.parentElement;
       if (!parent) return;
+      
       canvas.width = parent.offsetWidth;
       canvas.height = parent.offsetHeight;
     };
+    
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
@@ -48,11 +59,11 @@ const DepartmentsOption = () => {
       speedY: number;
       opacity: number;
     }> = [];
-    const colors = ['rgba(53, 162, 107, 0.3)',
-    // Primary (green)
-    'rgba(43, 108, 176, 0.3)',
-    // Secondary (blue)
-    'rgba(246, 196, 58, 0.2)' // Accent (yellow)
+    
+    const colors = [
+      'rgba(53, 162, 107, 0.3)', // Primary (green)
+      'rgba(43, 108, 176, 0.3)', // Secondary (blue)
+      'rgba(246, 196, 58, 0.2)'  // Accent (yellow)
     ];
 
     // Create particles
@@ -89,13 +100,69 @@ const DepartmentsOption = () => {
         if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
       });
+      
       requestAnimationFrame(animate);
     };
+    
     animate();
+    
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
   }, []);
-  return;
+
+  return (
+    <section className="relative py-20 overflow-hidden">
+      {/* Canvas background for animated blobs */}
+      <canvas 
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full -z-10"
+      />
+      
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-deewan-dark mb-4">Departments We Serve</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Our communication solutions are tailored to meet the specific needs of various departments 
+            within your organization.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {departmentsData.map((dept) => (
+            <div 
+              key={dept.id}
+              className="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-6 transition-all duration-300 
+                        hover:shadow-xl hover:scale-105 border border-white/50
+                        relative overflow-hidden"
+              onMouseEnter={() => setHoveredCard(dept.id)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
+              {/* Gradient background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${dept.color} opacity-0 
+                              transition-opacity duration-300 -z-10
+                              ${hoveredCard === dept.id ? 'opacity-100' : ''}`} />
+              
+              {/* Card Content */}
+              <div className={`relative z-10 transition-colors duration-300 
+                              ${hoveredCard === dept.id ? 'text-white' : ''}`}>
+                <div className={`inline-flex items-center justify-center p-3 rounded-full mb-4
+                                bg-gradient-to-br ${dept.color}`}>
+                  {dept.icon}
+                </div>
+                
+                <h3 className="text-xl font-semibold mb-3">{dept.name}</h3>
+                
+                <p className={`${hoveredCard === dept.id ? 'text-white/90' : 'text-gray-600'}`}>
+                  {dept.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default DepartmentsOption;
