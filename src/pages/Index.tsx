@@ -1,3 +1,4 @@
+
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
@@ -11,6 +12,7 @@ import CreativeTestimonials from "../components/CreativeTestimonials";
 import BlogSection from "../components/BlogSection";
 import ContactSection from "../components/ContactSection";
 import AlternativeStats from "../components/AlternativeStats";
+import Footer from "../components/Footer";
 
 const Index = () => {
   return (

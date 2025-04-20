@@ -1,27 +1,35 @@
+
 import React, { useRef, useEffect } from "react";
 import { Megaphone, Users, DollarSign } from "lucide-react";
-const departmentsData = [{
-  id: 1,
-  name: "Marketing",
-  description: "We empower marketing teams with real-time communication tools that streamline campaign coordination and boost customer engagement.",
-  icon: <Megaphone className="h-10 w-10 text-white" />,
-  color: "from-deewan-primary to-deewan-primary/80"
-}, {
-  id: 2,
-  name: "Human Resources",
-  description: "Our solutions help HR departments deliver timely updates, onboard employees efficiently, and maintain clear internal communications.",
-  icon: <Users className="h-10 w-10 text-white" />,
-  color: "from-deewan-secondary to-deewan-secondary/80"
-}, {
-  id: 3,
-  name: "Finance",
-  description: "We provide secure channels for finance teams to send confidential information, payment confirmations, and time-sensitive alerts.",
-  icon: <DollarSign className="h-10 w-10 text-white" />,
-  color: "from-deewan-accent to-deewan-accent/80"
-}];
+
+const departmentsData = [
+  {
+    id: 1,
+    name: "Marketing",
+    description: "We empower marketing teams with real-time communication tools that streamline campaign coordination and boost customer engagement.",
+    icon: <Megaphone className="h-10 w-10 text-white" />,
+    color: "from-deewan-primary to-deewan-primary/80"
+  }, 
+  {
+    id: 2,
+    name: "Human Resources",
+    description: "Our solutions help HR departments deliver timely updates, onboard employees efficiently, and maintain clear internal communications.",
+    icon: <Users className="h-10 w-10 text-white" />,
+    color: "from-deewan-secondary to-deewan-secondary/80"
+  }, 
+  {
+    id: 3,
+    name: "Finance",
+    description: "We provide secure channels for finance teams to send confidential information, payment confirmations, and time-sensitive alerts.",
+    icon: <DollarSign className="h-10 w-10 text-white" />,
+    color: "from-deewan-accent to-deewan-accent/80"
+  }
+];
+
 const DepartmentsOption = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
+  
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -48,11 +56,10 @@ const DepartmentsOption = () => {
       speedY: number;
       opacity: number;
     }> = [];
-    const colors = ['rgba(53, 162, 107, 0.3)',
-    // Primary (green)
-    'rgba(43, 108, 176, 0.3)',
-    // Secondary (blue)
-    'rgba(246, 196, 58, 0.2)' // Accent (yellow)
+    const colors = [
+      'rgba(53, 162, 107, 0.3)', // Primary (green)
+      'rgba(43, 108, 176, 0.3)', // Secondary (blue)
+      'rgba(246, 196, 58, 0.2)'  // Accent (yellow)
     ];
 
     // Create particles
@@ -96,6 +103,39 @@ const DepartmentsOption = () => {
       window.removeEventListener('resize', resizeCanvas);
     };
   }, []);
-  return;
+
+  // Return JSX for the component
+  return (
+    <section className="relative py-24 px-4 overflow-hidden">
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+      
+      <div className="container mx-auto relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="mb-4">Solutions for <span className="text-deewan-primary">Every Department</span></h2>
+          <p className="text-xl text-deewan-dark/80">
+            Our specialized communication tools adapt to the unique needs of every department
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {departmentsData.map((dept) => (
+            <div 
+              key={dept.id}
+              className={`relative overflow-hidden rounded-xl p-8 shadow-lg transition-all duration-300 bg-gradient-to-br ${dept.color} hover:shadow-xl`}
+              onMouseEnter={() => setHoveredCard(dept.id)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
+              <div className="mb-6 p-4 bg-white/20 rounded-full inline-block backdrop-blur-sm">
+                {dept.icon}
+              </div>
+              <h3 className="text-2xl font-semibold text-white mb-4">{dept.name}</h3>
+              <p className="text-white/90">{dept.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default DepartmentsOption;
