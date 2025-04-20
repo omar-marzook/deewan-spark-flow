@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { 
@@ -109,9 +108,10 @@ const ProductsTabbedLayout = () => {
           0, 0, currentRadius
         );
         
-        // Color with inner and outer edges
-        gradient.addColorStop(0, blob.color.replace(')', `, ${blob.opacity})`));
-        gradient.addColorStop(1, blob.color.replace(')', ', 0)'));
+        // Color with inner and outer edges - FIX: Correctly format the rgba string
+        const baseColor = blob.color.substring(0, blob.color.lastIndexOf(')'));
+        gradient.addColorStop(0, `${baseColor}, ${blob.opacity})`);
+        gradient.addColorStop(1, `${baseColor}, 0)`);
         
         // Draw elliptical blob
         ctx.beginPath();
