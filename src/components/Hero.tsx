@@ -1,108 +1,10 @@
 import { ArrowRight } from 'lucide-react';
-import { useRef, useEffect } from 'react';
-
 const Hero = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      canvas.width = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
-    };
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Create floating circles
-    const circles = Array.from({ length: 5 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 100 + 50,
-      color: `rgba(${Math.random() * 100 + 100}, ${Math.random() * 100 + 100}, ${Math.random() * 255}, 0.2)`,
-      velocityX: (Math.random() - 0.5) * 0.5,
-      velocityY: (Math.random() - 0.5) * 0.5,
-      targetX: canvas.width / 2,
-      targetY: canvas.height / 2
-    }));
-    
-    let mouseX = canvas.width / 2;
-    let mouseY = canvas.height / 2;
-    
-    // Handle mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-    };
-    
-    canvas.addEventListener('mousemove', handleMouseMove);
-    
-    // Animation function
-    const animate = () => {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      circles.forEach(circle => {
-        // Update target position based on mouse
-        circle.targetX += (mouseX - circle.targetX) * 0.02;
-        circle.targetY += (mouseY - circle.targetY) * 0.02;
-        
-        // Move circles
-        circle.x += (circle.targetX - circle.x) * 0.01 + circle.velocityX;
-        circle.y += (circle.targetY - circle.y) * 0.01 + circle.velocityY;
-        
-        // Wrap around edges
-        if (circle.x < -circle.radius) circle.x = canvas.width + circle.radius;
-        if (circle.x > canvas.width + circle.radius) circle.x = -circle.radius;
-        if (circle.y < -circle.radius) circle.y = canvas.height + circle.radius;
-        if (circle.y > canvas.height + circle.radius) circle.y = -circle.radius;
-        
-        // Draw circle with gradient
-        const gradient = ctx.createRadialGradient(
-          circle.x, circle.y, 0,
-          circle.x, circle.y, circle.radius
-        );
-        gradient.addColorStop(0, circle.color);
-        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-        
-        ctx.beginPath();
-        ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.filter = 'blur(20px)';
-        ctx.fill();
-        ctx.filter = 'none';
-      });
-      
-      requestAnimationFrame(animate);
-    };
-    
-    animate();
-    
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      canvas.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  return (
-    <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
-      {/* Canvas-based animated flowing background */}
-      <canvas 
-        ref={canvasRef}
-        className="absolute inset-0 z-0 w-full h-full opacity-80 pointer-events-none"
-      />
-      
-      {/* Gradient overlay for additional depth */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent z-0 pointer-events-none"></div>
+  return <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
+      {/* Background Gradient Elements */}
+      <div className="absolute top-40 -left-20 w-72 h-72 bg-deewan-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
+      <div className="absolute top-40 -right-20 w-72 h-72 bg-deewan-primary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow delay-700"></div>
+      <div className="absolute bottom-40 left-1/3 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow delay-1000 bg-[DEE2E6] bg-[#e6f4f1]"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -169,8 +71,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;

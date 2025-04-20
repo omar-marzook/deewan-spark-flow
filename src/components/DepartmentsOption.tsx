@@ -1,7 +1,5 @@
-
 import React, { useRef, useEffect } from "react";
 import { Megaphone, Users, DollarSign } from "lucide-react";
-
 const departmentsData = [{
   id: 1,
   name: "Marketing",
@@ -21,11 +19,9 @@ const departmentsData = [{
   icon: <DollarSign className="h-10 w-10 text-white" />,
   color: "from-deewan-accent to-deewan-accent/80"
 }];
-
 const DepartmentsOption = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -52,10 +48,11 @@ const DepartmentsOption = () => {
       speedY: number;
       opacity: number;
     }> = [];
-    const colors = [
-      'rgba(53, 162, 107, 0.3)',   // Primary (green)
-      'rgba(43, 108, 176, 0.3)',   // Secondary (blue)
-      'rgba(246, 196, 58, 0.2)'    // Accent (yellow)
+    const colors = ['rgba(53, 162, 107, 0.3)',
+    // Primary (green)
+    'rgba(43, 108, 176, 0.3)',
+    // Secondary (blue)
+    'rgba(246, 196, 58, 0.2)' // Accent (yellow)
     ];
 
     // Create particles
@@ -95,46 +92,12 @@ const DepartmentsOption = () => {
       requestAnimationFrame(animate);
     };
     animate();
-
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
   }, []);
 
-  return (
-    <section className="py-16 relative">
-      <canvas 
-        ref={canvasRef} 
-        className="absolute inset-0 z-0 opacity-50 pointer-events-none"
-      />
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-deewan-dark">Departments We Serve</h2>
-          <p className="text-lg text-deewan-gray mt-4">
-            Tailored communication solutions for diverse organizational needs
-          </p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {departmentsData.map((dept) => (
-            <div 
-              key={dept.id} 
-              className={`bg-gradient-to-br ${dept.color} p-6 rounded-lg shadow-lg 
-                transition-all duration-300 hover:scale-105 hover:shadow-xl`}
-              onMouseEnter={() => setHoveredCard(dept.id)}
-              onMouseLeave={() => setHoveredCard(null)}
-            >
-              <div className={`w-16 h-16 mb-4 rounded-full flex items-center justify-center 
-                ${hoveredCard === dept.id ? 'animate-pulse' : ''}`}>
-                {dept.icon}
-              </div>
-              <h3 className="text-white text-xl font-semibold mb-3">{dept.name}</h3>
-              <p className="text-white/80 text-sm">{dept.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  // Return JSX for the component
+  return;
 };
-
 export default DepartmentsOption;
