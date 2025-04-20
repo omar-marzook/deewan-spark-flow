@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { 
@@ -103,11 +102,17 @@ const ProductsTabbedLayout = () => {
 
   return (
     <section id="product-section-tabs" className="py-24 relative overflow-hidden">
-      {/* Enhanced glassmorphic background elements */}
+      {/* Enhanced animated glassmorphic background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-gray-50/30 to-white/40 backdrop-blur-sm -z-10"></div>
-      <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/20 rounded-full filter blur-3xl -z-5"></div>
-      <div className="absolute bottom-40 right-10 w-96 h-96 bg-deewan-secondary/20 rounded-full filter blur-3xl -z-5"></div>
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full h-96 bg-deewan-primary/5 rounded-full filter blur-3xl -z-5"></div>
+      <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/20 rounded-full 
+        filter blur-3xl -z-5 animate-[float_30s_ease-in-out_infinite]"
+      ></div>
+      <div className="absolute bottom-40 right-10 w-96 h-96 bg-deewan-secondary/20 rounded-full 
+        filter blur-3xl -z-5 animate-[float-delay_35s_ease-in-out_infinite]"
+      ></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full h-96 bg-deewan-primary/5 rounded-full 
+        filter blur-3xl -z-5 animate-[float-reverse_40s_ease-in-out_infinite]"
+      ></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
