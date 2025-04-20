@@ -1,4 +1,3 @@
-
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
@@ -11,7 +10,7 @@ import DepartmentsOption from "../components/DepartmentsOption";
 import CreativeTestimonials from "../components/CreativeTestimonials";
 import BlogSection from "../components/BlogSection";
 import ContactSection from "../components/ContactSection";
-import Footer from "../components/Footer";
+import AlternativeStats from "../components/AlternativeStats";
 
 const Index = () => {
   return (
@@ -21,7 +20,7 @@ const Index = () => {
       <ProductsTabbedLayout />
       <AlternativeProducts />
       <Industries />
-      <Stats />
+      <AlternativeStats />
       <LogoCarousel />
       <DepartmentsWeServe />
       <DepartmentsOption />
