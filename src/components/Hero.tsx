@@ -1,4 +1,3 @@
-
 import { ArrowRight } from 'lucide-react';
 import { useRef, useEffect } from 'react';
 
@@ -23,100 +22,64 @@ const Hero = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Create animated flowing blobs
-    const blobs: Array<{
-      x: number;
-      y: number;
-      radius: number;
-      baseRadius: number;
-      color: string;
-      speed: number;
-      angle: number;
-      phase: number;
-      phaseSpeed: number;
-      opacity: number;
-    }> = [];
+    // Create floating circles
+    const circles = Array.from({ length: 5 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 100 + 50,
+      color: `rgba(${Math.random() * 100 + 100}, ${Math.random() * 100 + 100}, ${Math.random() * 255}, 0.2)`,
+      velocityX: (Math.random() - 0.5) * 0.5,
+      velocityY: (Math.random() - 0.5) * 0.5,
+      targetX: canvas.width / 2,
+      targetY: canvas.height / 2
+    }));
     
-    // Brand colors with transparency
-    const colors = [
-      'rgba(53, 162, 107, 0.25)',  // Primary green
-      'rgba(43, 108, 176, 0.25)',  // Secondary blue
-      'rgba(246, 196, 58, 0.15)',  // Accent yellow
-    ];
+    let mouseX = canvas.width / 2;
+    let mouseY = canvas.height / 2;
     
-    // Create larger, flowing blobs
-    for (let i = 0; i < 6; i++) {
-      blobs.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 180 + 120,
-        baseRadius: Math.random() * 180 + 120,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        speed: (Math.random() - 0.5) * 0.3,
-        angle: Math.random() * Math.PI * 2,
-        phase: Math.random() * Math.PI * 2,
-        phaseSpeed: 0.0005 + Math.random() * 0.001,
-        opacity: 0.2 + Math.random() * 0.3
-      });
-    }
+    // Handle mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    };
     
-    // Animation function for flowing, morphing effect
+    canvas.addEventListener('mousemove', handleMouseMove);
+    
+    // Animation function
     const animate = () => {
-      // Clear with slight fade for trailing effect
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Draw and animate flowing blobs
-      blobs.forEach(blob => {
-        // Morph radius over time for organic movement
-        const radiusVariation = Math.sin(blob.phase) * (blob.baseRadius * 0.2);
-        const currentRadius = blob.baseRadius + radiusVariation;
+      circles.forEach(circle => {
+        // Update target position based on mouse
+        circle.targetX += (mouseX - circle.targetX) * 0.02;
+        circle.targetY += (mouseY - circle.targetY) * 0.02;
         
-        // Move blobs in flowing pattern
-        blob.x += Math.cos(blob.angle) * blob.speed;
-        blob.y += Math.sin(blob.angle) * blob.speed;
+        // Move circles
+        circle.x += (circle.targetX - circle.x) * 0.01 + circle.velocityX;
+        circle.y += (circle.targetY - circle.y) * 0.01 + circle.velocityY;
         
-        // Slowly rotate direction
-        blob.angle += Math.sin(blob.phase) * 0.01;
+        // Wrap around edges
+        if (circle.x < -circle.radius) circle.x = canvas.width + circle.radius;
+        if (circle.x > canvas.width + circle.radius) circle.x = -circle.radius;
+        if (circle.y < -circle.radius) circle.y = canvas.height + circle.radius;
+        if (circle.y > canvas.height + circle.radius) circle.y = -circle.radius;
         
-        // Update phase for radius pulsing
-        blob.phase += blob.phaseSpeed;
-        
-        // Draw gradient blob
+        // Draw circle with gradient
         const gradient = ctx.createRadialGradient(
-          blob.x, blob.y, 0,
-          blob.x, blob.y, currentRadius
+          circle.x, circle.y, 0,
+          circle.x, circle.y, circle.radius
         );
+        gradient.addColorStop(0, circle.color);
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
         
-        // Fix: Create proper RGBA colors with combined opacity
-        // Extract the RGB part from the blob color
-        const rgbMatch = blob.color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-        if (rgbMatch) {
-          const r = rgbMatch[1];
-          const g = rgbMatch[2];
-          const b = rgbMatch[3];
-          
-          // Calculate center and outer opacities
-          const centerOpacity = Math.min(0.9, parseFloat(blob.color.split(',')[3] || '0.25') * blob.opacity);
-          const outerOpacity = 0;
-          
-          // Create proper RGBA strings
-          gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${centerOpacity})`);
-          gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${outerOpacity})`);
-          
-          ctx.beginPath();
-          ctx.arc(blob.x, blob.y, currentRadius, 0, Math.PI * 2);
-          ctx.fillStyle = gradient;
-          ctx.filter = 'blur(40px)';
-          ctx.fill();
-          ctx.filter = 'none';
-        }
-        
-        // Wrap around edges with smooth transition
-        if (blob.x < -currentRadius) blob.x = canvas.width + currentRadius;
-        if (blob.x > canvas.width + currentRadius) blob.x = -currentRadius;
-        if (blob.y < -currentRadius) blob.y = canvas.height + currentRadius;
-        if (blob.y > canvas.height + currentRadius) blob.y = -currentRadius;
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.filter = 'blur(20px)';
+        ctx.fill();
+        ctx.filter = 'none';
       });
       
       requestAnimationFrame(animate);
@@ -126,6 +89,7 @@ const Hero = () => {
     
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      canvas.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
