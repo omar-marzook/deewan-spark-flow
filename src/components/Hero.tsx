@@ -1,13 +1,10 @@
-
 import { ArrowRight } from 'lucide-react';
-
 const Hero = () => {
-  return (
-    <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
+  return <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
       {/* Background Gradient Elements */}
       <div className="absolute top-40 -left-20 w-72 h-72 bg-deewan-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
       <div className="absolute top-40 -right-20 w-72 h-72 bg-deewan-primary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow delay-700"></div>
-      <div className="absolute bottom-40 left-1/3 w-72 h-72 bg-deewan-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow delay-1000"></div>
+      <div className="absolute bottom-40 left-1/3 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow delay-1000 bg-[DEE2E6] bg-[#e6f4f1]"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -36,26 +33,22 @@ const Hero = () => {
               <div className="absolute inset-0 bg-black">
                 {/* Stars background */}
                 <div className="absolute inset-0" style={{
-                  background: `radial-gradient(circle at center, #2b6cb0 0%, #2c2d2d 100%)`,
-                  opacity: 0.7
-                }}></div>
+                background: `radial-gradient(circle at center, #2b6cb0 0%, #2c2d2d 100%)`,
+                opacity: 0.7
+              }}></div>
                 
                 {/* Floating particles/stars */}
                 <div className="absolute inset-0">
-                  {Array.from({ length: 50 }).map((_, i) => (
-                    <div 
-                      key={i}
-                      className="absolute rounded-full bg-white"
-                      style={{
-                        width: `${Math.random() * 3 + 1}px`,
-                        height: `${Math.random() * 3 + 1}px`,
-                        top: `${Math.random() * 100}%`,
-                        left: `${Math.random() * 100}%`,
-                        opacity: Math.random() * 0.8 + 0.2,
-                        animation: `pulse-slow ${Math.random() * 4 + 2}s infinite`
-                      }}
-                    ></div>
-                  ))}
+                  {Array.from({
+                  length: 50
+                }).map((_, i) => <div key={i} className="absolute rounded-full bg-white" style={{
+                  width: `${Math.random() * 3 + 1}px`,
+                  height: `${Math.random() * 3 + 1}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  opacity: Math.random() * 0.8 + 0.2,
+                  animation: `pulse-slow ${Math.random() * 4 + 2}s infinite`
+                }}></div>)}
                 </div>
                 
                 {/* Orbiting circle */}
@@ -78,8 +71,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
