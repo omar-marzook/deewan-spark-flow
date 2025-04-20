@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { 
@@ -108,19 +109,31 @@ const ProductsTabbedLayout = () => {
           0, 0, currentRadius
         );
         
-        // Color with inner and outer edges - FIX: Correctly format the rgba string
-        const baseColor = blob.color.substring(0, blob.color.lastIndexOf(')'));
-        gradient.addColorStop(0, `${baseColor}, ${blob.opacity})`);
-        gradient.addColorStop(1, `${baseColor}, 0)`);
-        
-        // Draw elliptical blob
-        ctx.beginPath();
-        ctx.scale(1, 0.7 + Math.sin(blob.phase) * 0.3); // Vary the ellipse shape
-        ctx.arc(0, 0, currentRadius, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.filter = 'blur(35px)';
-        ctx.fill();
-        ctx.filter = 'none';
+        // Fix: Create proper RGBA colors with combined opacity
+        // Extract the RGB part from the blob color
+        const rgbMatch = blob.color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (rgbMatch) {
+          const r = rgbMatch[1];
+          const g = rgbMatch[2];
+          const b = rgbMatch[3];
+          
+          // Calculate center and outer opacities
+          const centerOpacity = Math.min(0.9, parseFloat(blob.color.split(',')[3] || '0.2') * blob.opacity);
+          const outerOpacity = 0;
+          
+          // Create proper RGBA strings
+          gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${centerOpacity})`);
+          gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${outerOpacity})`);
+          
+          // Draw elliptical blob
+          ctx.beginPath();
+          ctx.scale(1, 0.7 + Math.sin(blob.phase) * 0.3); // Vary the ellipse shape
+          ctx.arc(0, 0, currentRadius, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.filter = 'blur(35px)';
+          ctx.fill();
+          ctx.filter = 'none';
+        }
         
         // Restore context
         ctx.restore();

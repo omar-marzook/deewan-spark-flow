@@ -88,17 +88,29 @@ const Hero = () => {
           blob.x, blob.y, currentRadius
         );
         
-        // Color with inner and outer edges - FIX: Correctly format the rgba string
-        const baseColor = blob.color.substring(0, blob.color.lastIndexOf(')'));
-        gradient.addColorStop(0, `${baseColor}, ${blob.opacity})`);
-        gradient.addColorStop(1, `${baseColor}, 0)`);
-        
-        ctx.beginPath();
-        ctx.arc(blob.x, blob.y, currentRadius, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.filter = 'blur(40px)';
-        ctx.fill();
-        ctx.filter = 'none';
+        // Fix: Create proper RGBA colors with combined opacity
+        // Extract the RGB part from the blob color
+        const rgbMatch = blob.color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (rgbMatch) {
+          const r = rgbMatch[1];
+          const g = rgbMatch[2];
+          const b = rgbMatch[3];
+          
+          // Calculate center and outer opacities
+          const centerOpacity = Math.min(0.9, parseFloat(blob.color.split(',')[3] || '0.25') * blob.opacity);
+          const outerOpacity = 0;
+          
+          // Create proper RGBA strings
+          gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${centerOpacity})`);
+          gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${outerOpacity})`);
+          
+          ctx.beginPath();
+          ctx.arc(blob.x, blob.y, currentRadius, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.filter = 'blur(40px)';
+          ctx.fill();
+          ctx.filter = 'none';
+        }
         
         // Wrap around edges with smooth transition
         if (blob.x < -currentRadius) blob.x = canvas.width + currentRadius;
