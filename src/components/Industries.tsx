@@ -57,7 +57,7 @@ const Industries = () => {
               <h3 className="text-xl font-bold mb-3">{industry.name}</h3>
               <p className="text-deewan-gray mb-4">{industry.description}</p>
               <div className="mt-auto">
-                <h4 className="text-lg font-medium text-deewan-primary mb-2">Key Applications:</h4>
+                <h4 className="font-medium text-deewan-primary mb-2 text-base">Key Applications:</h4>
                 <ul className="space-y-2">
                   {industry.applications.map((app, index) => <li key={index} className="flex items-center text-sm text-deewan-gray">
                       <svg className="w-4 h-4 mr-2 text-deewan-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
