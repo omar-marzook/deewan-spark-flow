@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
 import AlternativeProducts from "../components/AlternativeProducts";
 import Industries from "../components/Industries";
+import Stats from "../components/Stats";
 import LogoCarousel from "../components/LogoCarousel";
 import DepartmentsWeServe from "../components/DepartmentsWeServe";
 import DepartmentsOption from "../components/DepartmentsOption";
@@ -17,22 +18,13 @@ const Index = () => {
     <div className="overflow-x-hidden">
       <Navbar />
       <Hero />
-      {/* Original Products section commented out to use new designs */}
-      {/* <Products /> */}
-      
-      {/* Product Section Option 2: Tabbed Layout */}
       <ProductsTabbedLayout />
-      
       <AlternativeProducts />
-      {/* APIs section removed as requested */}
       <Industries />
-      {/* Stats section removed as requested */}
-      {/* AlternativeStats section removed as requested */}
+      <Stats />
       <LogoCarousel />
       <DepartmentsWeServe />
       <DepartmentsOption />
-      {/* Testimonials section removed as requested */}
-      {/* AlternativeTestimonials section removed as requested */}
       <CreativeTestimonials />
       <BlogSection />
       <ContactSection />
