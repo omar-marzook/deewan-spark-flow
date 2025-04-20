@@ -1,22 +1,131 @@
+
 import { ArrowRight } from 'lucide-react';
+import { useRef, useEffect } from 'react';
+
 const Hero = () => {
-  return <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
-      {/* Animated Background Gradient Elements */}
-      <div className="absolute top-40 -left-20 w-72 h-72 bg-deewan-secondary rounded-full 
-        mix-blend-multiply filter blur-3xl opacity-30 
-        animate-[float_20s_ease-in-out_infinite] hover:opacity-40 transition-opacity"
-      ></div>
-      <div className="absolute top-40 -right-20 w-72 h-72 bg-deewan-primary rounded-full 
-        mix-blend-multiply filter blur-3xl opacity-30 
-        animate-[float-delay_25s_ease-in-out_infinite] hover:opacity-40 transition-opacity"
-      ></div>
-      <div className="absolute bottom-40 left-1/3 w-72 h-72 rounded-full 
-        mix-blend-multiply filter blur-3xl opacity-20 
-        animate-[float-reverse_22s_ease-in-out_infinite] hover:opacity-30 transition-opacity 
-        bg-[#e6f4f1]"
-      ></div>
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Set canvas dimensions
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    };
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Create animated flowing blobs
+    const blobs: Array<{
+      x: number;
+      y: number;
+      radius: number;
+      baseRadius: number;
+      color: string;
+      speed: number;
+      angle: number;
+      phase: number;
+      phaseSpeed: number;
+      opacity: number;
+    }> = [];
+    
+    // Brand colors with transparency
+    const colors = [
+      'rgba(53, 162, 107, 0.25)',  // Primary green
+      'rgba(43, 108, 176, 0.25)',  // Secondary blue
+      'rgba(246, 196, 58, 0.15)',  // Accent yellow
+    ];
+    
+    // Create larger, flowing blobs
+    for (let i = 0; i < 6; i++) {
+      blobs.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 180 + 120,
+        baseRadius: Math.random() * 180 + 120,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speed: (Math.random() - 0.5) * 0.3,
+        angle: Math.random() * Math.PI * 2,
+        phase: Math.random() * Math.PI * 2,
+        phaseSpeed: 0.0005 + Math.random() * 0.001,
+        opacity: 0.2 + Math.random() * 0.3
+      });
+    }
+    
+    // Animation function for flowing, morphing effect
+    const animate = () => {
+      // Clear with slight fade for trailing effect
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      {/* Keep existing content */}
+      // Draw and animate flowing blobs
+      blobs.forEach(blob => {
+        // Morph radius over time for organic movement
+        const radiusVariation = Math.sin(blob.phase) * (blob.baseRadius * 0.2);
+        const currentRadius = blob.baseRadius + radiusVariation;
+        
+        // Move blobs in flowing pattern
+        blob.x += Math.cos(blob.angle) * blob.speed;
+        blob.y += Math.sin(blob.angle) * blob.speed;
+        
+        // Slowly rotate direction
+        blob.angle += Math.sin(blob.phase) * 0.01;
+        
+        // Update phase for radius pulsing
+        blob.phase += blob.phaseSpeed;
+        
+        // Draw gradient blob
+        const gradient = ctx.createRadialGradient(
+          blob.x, blob.y, 0,
+          blob.x, blob.y, currentRadius
+        );
+        
+        // Color with inner and outer edges
+        gradient.addColorStop(0, blob.color.replace(')', `, ${blob.opacity})`));
+        gradient.addColorStop(1, blob.color.replace(')', ', 0)'));
+        
+        ctx.beginPath();
+        ctx.arc(blob.x, blob.y, currentRadius, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.filter = 'blur(40px)';
+        ctx.fill();
+        ctx.filter = 'none';
+        
+        // Wrap around edges with smooth transition
+        if (blob.x < -currentRadius) blob.x = canvas.width + currentRadius;
+        if (blob.x > canvas.width + currentRadius) blob.x = -currentRadius;
+        if (blob.y < -currentRadius) blob.y = canvas.height + currentRadius;
+        if (blob.y > canvas.height + currentRadius) blob.y = -currentRadius;
+      });
+      
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
+
+  return (
+    <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
+      {/* Canvas-based animated flowing background */}
+      <canvas 
+        ref={canvasRef}
+        className="absolute inset-0 z-0 w-full h-full opacity-80 pointer-events-none"
+      />
+      
+      {/* Gradient overlay for additional depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent z-0 pointer-events-none"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -83,7 +192,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 
 export default Hero;

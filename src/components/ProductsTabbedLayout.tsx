@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useState, useRef, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { 
   Bell, MessageSquare, Zap, Shield, Database,
@@ -7,6 +8,140 @@ import {
 import { motion } from 'framer-motion';
 
 const ProductsTabbedLayout = () => {
+  // Canvas reference for the flowing background animation
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  
+  // Animation setup
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Set canvas dimensions
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    };
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Create flowing, morphing blobs
+    const blobs: Array<{
+      x: number;
+      y: number;
+      radius: number;
+      baseRadius: number;
+      color: string;
+      speed: number;
+      angle: number;
+      phase: number;
+      phaseSpeed: number;
+      opacity: number;
+      rotationSpeed: number;
+      rotation: number;
+    }> = [];
+    
+    // Brand colors with transparency for the blobs
+    const colors = [
+      'rgba(53, 162, 107, 0.2)',  // Primary green
+      'rgba(43, 108, 176, 0.2)',  // Secondary blue
+      'rgba(246, 196, 58, 0.12)',  // Accent yellow
+    ];
+    
+    // Create larger, flowing blobs
+    for (let i = 0; i < 5; i++) {
+      blobs.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 200 + 150,
+        baseRadius: Math.random() * 200 + 150,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speed: (Math.random() - 0.5) * 0.4,
+        angle: Math.random() * Math.PI * 2,
+        phase: Math.random() * Math.PI * 2,
+        phaseSpeed: 0.0004 + Math.random() * 0.0008,
+        opacity: 0.15 + Math.random() * 0.25,
+        rotationSpeed: (Math.random() - 0.5) * 0.001,
+        rotation: Math.random() * Math.PI
+      });
+    }
+    
+    // Animation function for flowing, morphing effect
+    const animate = () => {
+      // Clear with slight fade for trailing effect
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw and animate flowing blobs
+      blobs.forEach(blob => {
+        // Morph radius over time for organic movement
+        const radiusVariation = Math.sin(blob.phase) * (blob.baseRadius * 0.2);
+        const currentRadius = blob.baseRadius + radiusVariation;
+        
+        // Move blobs in flowing pattern
+        blob.x += Math.cos(blob.angle) * blob.speed;
+        blob.y += Math.sin(blob.angle) * blob.speed;
+        
+        // Slowly rotate direction
+        blob.angle += Math.sin(blob.phase) * 0.015;
+        
+        // Update phase for radius pulsing
+        blob.phase += blob.phaseSpeed;
+        
+        // Update rotation for blob
+        blob.rotation += blob.rotationSpeed;
+        
+        // Save context state
+        ctx.save();
+        
+        // Translate to blob center
+        ctx.translate(blob.x, blob.y);
+        ctx.rotate(blob.rotation);
+        
+        // Draw gradient blob with subtle elliptical shape
+        const gradient = ctx.createRadialGradient(
+          0, 0, 0,
+          0, 0, currentRadius
+        );
+        
+        // Color with inner and outer edges
+        gradient.addColorStop(0, blob.color.replace(')', `, ${blob.opacity})`));
+        gradient.addColorStop(1, blob.color.replace(')', ', 0)'));
+        
+        // Draw elliptical blob
+        ctx.beginPath();
+        ctx.scale(1, 0.7 + Math.sin(blob.phase) * 0.3); // Vary the ellipse shape
+        ctx.arc(0, 0, currentRadius, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.filter = 'blur(35px)';
+        ctx.fill();
+        ctx.filter = 'none';
+        
+        // Restore context
+        ctx.restore();
+        
+        // Wrap around edges with smooth transition
+        if (blob.x < -currentRadius * 2) blob.x = canvas.width + currentRadius;
+        if (blob.x > canvas.width + currentRadius * 2) blob.x = -currentRadius;
+        if (blob.y < -currentRadius * 2) blob.y = canvas.height + currentRadius;
+        if (blob.y > canvas.height + currentRadius * 2) blob.y = -currentRadius;
+      });
+      
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
+
   // Product data
   const applications = [
     {
@@ -102,17 +237,14 @@ const ProductsTabbedLayout = () => {
 
   return (
     <section id="product-section-tabs" className="py-24 relative overflow-hidden">
-      {/* Enhanced animated glassmorphic background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-gray-50/30 to-white/40 backdrop-blur-sm -z-10"></div>
-      <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/20 rounded-full 
-        filter blur-3xl -z-5 animate-[float_30s_ease-in-out_infinite]"
-      ></div>
-      <div className="absolute bottom-40 right-10 w-96 h-96 bg-deewan-secondary/20 rounded-full 
-        filter blur-3xl -z-5 animate-[float-delay_35s_ease-in-out_infinite]"
-      ></div>
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full h-96 bg-deewan-primary/5 rounded-full 
-        filter blur-3xl -z-5 animate-[float-reverse_40s_ease-in-out_infinite]"
-      ></div>
+      {/* Canvas-based flowing animation background */}
+      <canvas 
+        ref={canvasRef}
+        className="absolute inset-0 z-0 w-full h-full opacity-90 pointer-events-none"
+      />
+      
+      {/* Gradient overlay for additional depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-white/30 backdrop-blur-sm -z-5 pointer-events-none"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
