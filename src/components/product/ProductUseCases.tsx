@@ -14,60 +14,81 @@ interface ProductUseCasesProps {
 const ProductUseCases: React.FC<ProductUseCasesProps> = ({ useCases }) => {
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Background effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-white/80 to-gray-50/50 backdrop-blur-sm"></div>
-      
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-deewan-secondary/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-0 w-80 h-80 bg-deewan-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-deewan-accent/5 rounded-full blur-3xl"></div>
+      {/* Background with grid pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5">
+        <div className="absolute inset-0" 
+             style={{
+               backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.1) 1px, transparent 1px)',
+               backgroundSize: '40px 40px',
+               opacity: 0.5
+             }}>
+        </div>
       </div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block bg-deewan-secondary/10 backdrop-blur-sm px-5 py-2 rounded-full text-deewan-secondary font-medium text-sm mb-4">
-            Use Cases
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-2 rounded-full shadow-sm mb-6">
+            <span className="w-2 h-2 bg-deewan-secondary rounded-full mr-2"></span>
+            <span className="text-sm font-medium text-deewan-dark/80">Use Cases</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-deewan-dark mb-6 font-display">
-            Solutions Tailored For Your Industry
+          
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display">
+            Industry Solutions
           </h2>
-          <p className="text-lg text-deewan-gray">
-            See how our platform adapts to different business needs
+          
+          <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
+            Discover how our platform adapts to different business needs
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {useCases.map((useCase, index) => (
-            <div key={index} className="group relative">
-              {/* Glassy card */}
-              <div className="bg-white/40 backdrop-blur-md border border-white/30 rounded-xl shadow-lg p-8 transition-all duration-300 group-hover:shadow-xl group-hover:bg-white/60 h-full flex flex-col">
-                {/* Decorative circle */}
-                <div className="absolute top-3 right-3 w-20 h-20 bg-gradient-to-br from-deewan-secondary/10 to-transparent rounded-full blur-xl"></div>
-                
-                {/* Icon */}
-                <div className="mb-6 p-3 bg-white/80 rounded-xl w-16 h-16 flex items-center justify-center shadow-sm relative z-10">
-                  <div className="text-deewan-secondary">
-                    {useCase.icon}
+            <div
+              key={index}
+              className="group relative perspective-1000"
+            >
+              {/* Card with 3D hover effect */}
+              <div className="relative h-full transform-style-3d transition-transform duration-500 group-hover:rotate-y-10">
+                <div className="p-8 rounded-2xl bg-white/30 backdrop-blur-lg border border-white/20 shadow-lg h-full transform-style-3d">
+                  {/* Icon */}
+                  <div className="mb-6 relative">
+                    <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-deewan-secondary/20 to-transparent rounded-xl backdrop-blur-sm">
+                      <div className="text-deewan-secondary">
+                        {useCase.icon}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold mb-4 text-deewan-dark group-hover:text-deewan-secondary transition-colors">
+                    {useCase.title}
+                  </h3>
+
+                  <p className="text-deewan-dark/70 leading-relaxed">
+                    {useCase.desc}
+                  </p>
+
+                  {/* Hover indicator */}
+                  <div className="absolute bottom-8 right-8 w-8 h-8 rounded-full bg-deewan-secondary/10 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                    <svg
+                      className="w-4 h-4 text-deewan-secondary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </div>
                 </div>
-                
-                {/* Content */}
-                <h3 className="text-xl font-bold mb-3 text-deewan-dark group-hover:text-deewan-secondary transition-colors font-display">
-                  {useCase.title}
-                </h3>
-                
-                <p className="text-deewan-gray text-base leading-relaxed flex-grow">
-                  {useCase.desc}
-                </p>
-                
-                {/* Subtle arrow indicator */}
-                <div className="w-7 h-7 rounded-full bg-deewan-secondary/10 flex items-center justify-center mt-6 transition-all duration-300 group-hover:bg-deewan-secondary/20">
-                  <svg className="w-4 h-4 text-deewan-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
               </div>
+
+              {/* Decorative elements */}
+              <div className="absolute -inset-px bg-gradient-to-r from-deewan-primary/20 to-deewan-secondary/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
           ))}
         </div>

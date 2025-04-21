@@ -1,7 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface ProductHeroProps {
   name: string;
@@ -17,81 +16,92 @@ const ProductHero: React.FC<ProductHeroProps> = ({
   onContactClick 
 }) => {
   return (
-    <section className="w-full min-h-[90vh] relative overflow-hidden flex items-center">
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-[30rem] h-[30rem] rounded-full bg-gradient-to-br from-deewan-primary/20 to-deewan-primary/5 blur-3xl animate-[pulse_15s_ease-in-out_infinite]"></div>
-        <div className="absolute bottom-1/4 -right-20 w-[35rem] h-[35rem] rounded-full bg-gradient-to-tr from-deewan-secondary/20 to-deewan-secondary/5 blur-3xl animate-[pulse_20s_ease-in-out_infinite_1s]"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[25rem] h-[25rem] rounded-full bg-gradient-to-br from-deewan-accent/10 to-deewan-accent/2 blur-3xl animate-[pulse_18s_ease-in-out_infinite_2s]"></div>
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute w-[500px] h-[500px] -top-48 -right-48 bg-deewan-primary/10 rounded-full blur-3xl animate-[pulse_15s_ease-in-out_infinite]"></div>
+        <div className="absolute w-[400px] h-[400px] top-1/2 -left-48 bg-deewan-secondary/10 rounded-full blur-3xl animate-[pulse_20s_ease-in-out_infinite]"></div>
       </div>
-      
-      {/* Content */}
-      <div className="container mx-auto px-4 md:px-6 relative z-10 pt-28 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="flex flex-col max-w-3xl animate-fade-in">
-            <div className="bg-white/30 backdrop-blur-md px-6 py-4 rounded-xl inline-flex items-center border border-white/20 shadow-sm mb-8 self-start">
-              <img src="/logo.svg" alt="Deewan Logo" className="h-8 mr-3" />
-              <span className="font-semibold text-deewan-dark/90">Deewan Products</span>
+
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0" 
+           style={{
+             backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,.1) 1px, transparent 1px)',
+             backgroundSize: '50px 50px',
+             opacity: 0.3
+           }}>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10 pt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Content */}
+          <div className="max-w-2xl">
+            {/* Floating badge */}
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-2 rounded-full text-sm font-medium text-deewan-dark/80 mb-8 animate-fade-in shadow-lg">
+              <span className="w-2 h-2 bg-deewan-primary rounded-full mr-2 animate-pulse"></span>
+              Deewan Products
             </div>
-            
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-deewan-dark font-display">
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display">
               {name}
             </h1>
-            
-            <p className="text-xl md:text-2xl mb-10 text-deewan-dark/80 leading-relaxed font-sans">
+
+            <p className="text-xl md:text-2xl text-deewan-dark/80 mb-8 leading-relaxed max-w-xl">
               {tagline}
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-5">
-              <Button 
-                size="lg" 
+
+            <div className="flex flex-wrap gap-4">
+              <Button
                 onClick={onContactClick}
-                className="bg-deewan-primary hover:bg-deewan-primary/90 text-white font-semibold rounded-xl shadow-lg shadow-deewan-primary/20 px-8 py-6 text-lg h-auto"
+                size="lg"
+                className="bg-deewan-primary hover:bg-deewan-primary/90 text-white px-8 py-6 text-lg h-auto rounded-xl shadow-lg shadow-deewan-primary/20 font-medium transition-all duration-300 hover:-translate-y-1"
+              >
+                Get Started
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={onContactClick}
+                className="bg-white/50 backdrop-blur-sm border-2 border-deewan-primary/20 text-deewan-dark hover:bg-white/70 px-8 py-6 text-lg h-auto rounded-xl font-medium transition-all duration-300 hover:-translate-y-1"
               >
                 Contact Sales
               </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg"
-                onClick={onContactClick}
-                className="bg-white/50 backdrop-blur-sm border border-white/50 hover:bg-white/70 text-deewan-dark font-medium rounded-xl px-8 py-6 text-lg h-auto"
-              >
-                Explore Features
-                <ArrowDown className="ml-2 h-5 w-5" />
-              </Button>
             </div>
           </div>
-          
-          <div className="hidden lg:flex justify-center items-center">
-            <div className="relative w-full max-w-2xl">
-              {/* Glassy card with product image/illustration */}
-              <div className="bg-white/20 backdrop-blur-xl rounded-2xl border border-white/30 shadow-2xl p-8 relative overflow-hidden">
-                {/* Small decorative elements */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-deewan-primary/10 rounded-full blur-2xl"></div>
-                <div className="absolute bottom-10 left-10 w-24 h-24 bg-deewan-secondary/10 rounded-full blur-xl"></div>
-                
-                <div className="relative z-10 flex items-center justify-center p-8">
-                  {heroImage ? (
-                    <img 
-                      src={heroImage} 
-                      alt={name} 
-                      className="max-h-80 object-contain drop-shadow-xl" 
-                    />
-                  ) : (
+
+          {/* 3D Visual Element */}
+          <div className="relative h-[600px] hidden lg:block">
+            {/* Main floating card */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl rotate-12 animate-[float_6s_ease-in-out_infinite]">
+              {/* Decorative elements */}
+              <div className="absolute -top-12 -right-12 w-24 h-24 bg-deewan-primary/20 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-deewan-secondary/20 rounded-full blur-2xl"></div>
+              
+              {/* Content */}
+              <div className="absolute inset-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 p-6 overflow-hidden">
+                {heroImage ? (
+                  <img 
+                    src={heroImage} 
+                    alt={name} 
+                    className="w-full h-full object-cover rounded-lg" 
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
                     <img 
                       src="/logo.svg" 
-                      alt={name} 
-                      className="h-64 w-64 object-contain drop-shadow-xl" 
+                      alt="Deewan" 
+                      className="w-32 h-32 opacity-50" 
                     />
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
-              
-              {/* Floating decorative elements */}
-              <div className="absolute -top-6 -right-6 bg-deewan-accent/80 w-12 h-12 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-4 left-10 bg-deewan-primary/50 w-16 h-16 rounded-full blur-xl"></div>
             </div>
+
+            {/* Floating elements */}
+            <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-deewan-primary/20 to-transparent rounded-xl border border-white/20 backdrop-blur-sm rotate-45 animate-[float_8s_ease-in-out_infinite_1s]"></div>
+            <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-tr from-deewan-secondary/20 to-transparent rounded-xl border border-white/20 backdrop-blur-sm -rotate-12 animate-[float_7s_ease-in-out_infinite_0.5s]"></div>
           </div>
         </div>
       </div>
