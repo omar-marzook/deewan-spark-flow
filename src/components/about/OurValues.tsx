@@ -119,7 +119,6 @@ const OurValues = () => {
               key={index}
               variants={itemVariants}
               whileHover="hover"
-              custom={index}
               variants={cardHoverVariants}
               className="bg-white/60 backdrop-blur-sm rounded-xl p-8 border border-white/30 shadow-sm relative overflow-hidden group"
             >
