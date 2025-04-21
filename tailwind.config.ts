@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,13 +63,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				deewan: {
-					'primary': '#35a26b',    // Primary green
-					'secondary': '#2b6cb0',  // Secondary blue
-					'dark': '#2c2d2d',       // Dark gray/almost black
-					'lightgray': '#DEE2E6',  // Light gray
-					'light': '#f8f9fa',      // Very light background
-					'accent': '#F6C43A',     // Keeping existing accent color
-					'gray': '#53565A'        // Medium gray
+					'primary': '#21A17C',    // Updated primary green as per guideline
+					'secondary': '#3565B2',  // Updated blue, stronger than old
+					'dark': '#222A32',       // Updated dark, modern
+					'lightgray': '#DEE2E6',
+					'light': '#F8F9FA',
+					'accent': '#F6C43A',     // Vibrant yellow (unchanged)
+					'gray': '#63656D'        // Adjusted medium gray
 				}
 			},
 			borderRadius: {
@@ -79,8 +78,8 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				'sans': ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				'display': ['Poppins', 'sans-serif'],
+				sans: ['Gilroy', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				display: ['Gilroy', 'Poppins', 'sans-serif'],
 			},
 			keyframes: {
 				'accordion-down': {
