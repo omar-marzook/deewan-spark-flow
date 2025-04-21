@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import ProductPage from "./pages/ProductPage";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/product" element={<ProductPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

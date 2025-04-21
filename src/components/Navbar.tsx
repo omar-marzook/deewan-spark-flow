@@ -23,6 +23,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8 items-center">
+            <a href="/product" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Product</a>
             <a href="#products" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Products</a>
             <a href="#apis" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Solutions</a>
             <a href="#industries" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</a>
@@ -38,6 +39,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && <nav className="md:hidden glass mt-4 p-4 rounded-lg flex flex-col space-y-4 animate-fade-in">
+            <a href="/product" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Product</a>
             <a href="#products" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Solutions</a>
             <a href="#apis" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">APIs</a>
             <a href="#industries" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</a>
