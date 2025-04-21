@@ -111,7 +111,11 @@ export default function ProductPage() {
 
   return (
     <div className="overflow-x-hidden font-sans bg-white text-deewan-dark">
-      <ProductHero onContactClick={scrollToContact} />
+      <ProductHero 
+        name="Messaging Solutions" 
+        tagline="Connect with your customers instantly across multiple channels with our unified messaging solution."
+        onContactClick={scrollToContact} 
+      />
       <ProductFeatures features={features} />
       <ProductUseCases useCases={useCases} />
       <ProductSubscriptionPlans subscriptionPlans={subscriptionPlans} onContactClick={scrollToContact} />
