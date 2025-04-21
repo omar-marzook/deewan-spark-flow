@@ -118,8 +118,11 @@ const OurValues = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover="hover"
-              variants={cardHoverVariants}
+              whileHover={{
+                y: -10,
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+                transition: { duration: 0.3 }
+              }}
               className="bg-white/60 backdrop-blur-sm rounded-xl p-8 border border-white/30 shadow-sm relative overflow-hidden group"
             >
               {/* Decorative background blur */}
@@ -148,4 +151,3 @@ const OurValues = () => {
 };
 
 export default OurValues;
-
