@@ -1,11 +1,14 @@
 
+import React, { useEffect, useState } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import useEmblaCarousel from "embla-carousel-react";
+import { useInterval } from "@/hooks/use-interval";
 
-const LogoCarousel = () => {
+const LogoCarousel: React.FC = () => {
   const logos = [
     { id: 1, name: "Company A" },
     { id: 2, name: "Company B" },
@@ -17,11 +20,23 @@ const LogoCarousel = () => {
     { id: 8, name: "Company H" },
   ];
 
+  const [api, setApi] = useState<ReturnType<typeof useEmblaCarousel>[1]>();
+
+  // Auto-scroll the carousel every 3 seconds
+  useInterval(() => {
+    if (api && api.canScrollNext()) {
+      api.scrollNext();
+    } else if (api) {
+      // Reset to the beginning when reaching the end
+      api.scrollTo(0);
+    }
+  }, 3000);
+
   return (
     <section id="partners" className="py-20 bg-gradient-to-b from-white to-deewan-lightgray/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="mb-4">Trusted by <span className="text-deewan-primary">Leading</span> Organizations</h2>
+          <h2 className="text-3xl font-extrabold mb-4 text-deewan-dark font-display">Trusted by <span className="text-deewan-primary">Leading</span> Organizations</h2>
           <p className="text-xl text-deewan-dark/80">
             Our solutions are powering communication for businesses across Saudi Arabia and beyond
           </p>
@@ -34,6 +49,7 @@ const LogoCarousel = () => {
               loop: true,
               dragFree: true,
             }}
+            setApi={setApi}
             className="w-full cursor-grab active:cursor-grabbing"
           >
             <CarouselContent>
