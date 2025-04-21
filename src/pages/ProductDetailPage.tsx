@@ -2,7 +2,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import ProductTemplate from "@/components/ProductTemplate";
-import { Info, Check, Users, Bookmark, Phone, Mail, Star } from "lucide-react";
+import { Info, Check, Users, Bookmark, Phone, Mail, Star, Zap, Package, CircleCheck } from "lucide-react";
 import NotFound from "./NotFound";
 
 // This would typically come from an API or CMS
@@ -11,113 +11,113 @@ const productsData = {
   "messaging-api": {
     slug: "messaging-api",
     name: "Messaging API",
-    tagline: "Powerful messaging solution for businesses to connect with customers across multiple channels.",
+    tagline: "Connect with your customers instantly across multiple channels with our unified messaging solution.",
     description: "Our Messaging API provides a unified interface for sending and receiving messages across SMS, WhatsApp, and more.",
     features: [
       {
-        icon: <Check className="w-7 h-7 text-deewan-primary" />,
+        icon: <Check className="w-6 h-6" />,
         title: "Multi-Channel Support",
-        description: "Send messages via SMS, WhatsApp, and other channels with a single API."
+        description: "Send messages via SMS, WhatsApp, and other channels with a single API integration. Reach your customers on their preferred platform."
       },
       {
-        icon: <Star className="w-7 h-7 text-deewan-primary" />,
+        icon: <Star className="w-6 h-6" />,
         title: "Delivery Reports",
-        description: "Track the status of your messages in real-time with detailed delivery reports."
+        description: "Track the status of your messages in real-time with detailed delivery reports. Know exactly when your messages are delivered."
       },
       {
-        icon: <Users className="w-7 h-7 text-deewan-primary" />,
+        icon: <Users className="w-6 h-6" />,
         title: "Scalable Architecture",
-        description: "Our infrastructure scales with your needs, from startups to enterprises."
+        description: "Our infrastructure scales seamlessly with your needs, from startups to enterprises. Handle millions of messages without performance issues."
       },
       {
-        icon: <Phone className="w-7 h-7 text-deewan-primary" />,
+        icon: <Phone className="w-6 h-6" />,
         title: "Global Coverage",
-        description: "Reach customers anywhere in the world with our extensive carrier network."
+        description: "Reach customers anywhere in the world with our extensive carrier network covering over 200 countries and territories."
       },
       {
-        icon: <Bookmark className="w-7 h-7 text-deewan-primary" />,
+        icon: <Bookmark className="w-6 h-6" />,
         title: "Template Management",
-        description: "Create and manage message templates for consistent communication."
+        description: "Create and manage message templates for consistent communication. Pre-approve templates for faster delivery on regulated channels."
       },
       {
-        icon: <Mail className="w-7 h-7 text-deewan-primary" />,
+        icon: <Zap className="w-6 h-6" />,
         title: "Rich Media Support",
-        description: "Send images, videos, documents, and more through supported channels."
+        description: "Send images, videos, documents, and more through supported channels. Create engaging experiences that capture attention."
       }
     ],
     useCases: [
       {
         title: "E-commerce",
-        desc: "Send order confirmations, shipping updates, and promotional messages to customers.",
-        icon: <Users className="h-9 w-9 text-deewan-secondary" />
+        desc: "Send order confirmations, shipping updates, and promotional messages to customers to improve satisfaction and drive sales.",
+        icon: <Package className="h-6 w-6" />
       },
       {
         title: "Finance",
-        desc: "Deliver secure transaction alerts, authentication codes, and account updates.",
-        icon: <Bookmark className="h-9 w-9 text-deewan-secondary" />
+        desc: "Deliver secure transaction alerts, authentication codes, and account updates to keep your customers informed and protected.",
+        icon: <CircleCheck className="h-6 w-6" />
       },
       {
         title: "Healthcare",
-        desc: "Send appointment reminders, prescription notifications, and health tips.",
-        icon: <Info className="h-9 w-9 text-deewan-secondary" />
+        desc: "Send appointment reminders, prescription notifications, and health tips to improve patient care and reduce no-shows.",
+        icon: <Info className="h-6 w-6" />
       }
     ]
   },
   "voice-api": {
     slug: "voice-api",
     name: "Voice API",
-    tagline: "Integrate voice calling capabilities into your applications for enhanced customer engagement.",
+    tagline: "Add powerful voice capabilities to your applications for enhanced customer engagement.",
     description: "Our Voice API enables businesses to add voice calling features to their applications, improving customer engagement and support.",
     features: [
       {
-        icon: <Check className="w-7 h-7 text-deewan-primary" />,
+        icon: <Check className="w-6 h-6" />,
         title: "Programmable Calls",
-        description: "Create dynamic call flows and interactive voice responses with code."
+        description: "Create dynamic call flows and interactive voice responses with code. Build custom calling experiences for your specific needs."
       },
       {
-        icon: <Star className="w-7 h-7 text-deewan-primary" />,
+        icon: <Star className="w-6 h-6" />,
         title: "Call Recording",
-        description: "Record calls for training, compliance, and quality assurance purposes."
+        description: "Record calls for training, compliance, and quality assurance purposes. Store and access recordings securely in the cloud."
       },
       {
-        icon: <Users className="w-7 h-7 text-deewan-primary" />,
+        icon: <Users className="w-6 h-6" />,
         title: "Text-to-Speech",
-        description: "Convert text to natural-sounding speech in multiple languages."
+        description: "Convert text to natural-sounding speech in multiple languages and accents. Create dynamic voice experiences without recordings."
       },
       {
-        icon: <Phone className="w-7 h-7 text-deewan-primary" />,
+        icon: <Phone className="w-6 h-6" />,
         title: "Call Analytics",
-        description: "Gain insights into call patterns, duration, and user engagement."
+        description: "Gain insights into call patterns, duration, and user engagement. Optimize your communication strategy with data-driven decisions."
       },
       {
-        icon: <Bookmark className="w-7 h-7 text-deewan-primary" />,
+        icon: <Bookmark className="w-6 h-6" />,
         title: "Voice Recognition",
-        description: "Enable voice commands and authentication in your applications."
+        description: "Enable voice commands and authentication in your applications. Create hands-free experiences for your users."
       },
       {
-        icon: <Mail className="w-7 h-7 text-deewan-primary" />,
+        icon: <Mail className="w-6 h-6" />,
         title: "Conference Calling",
-        description: "Connect multiple participants in high-quality conference calls."
+        description: "Connect multiple participants in high-quality conference calls. Scale from small team discussions to large virtual events."
       }
     ],
     useCases: [
       {
         title: "Customer Support",
-        desc: "Provide responsive and accessible customer support through voice channels.",
-        icon: <Users className="h-9 w-9 text-deewan-secondary" />
+        desc: "Provide responsive and accessible customer support through voice channels, improving resolution times and customer satisfaction.",
+        icon: <Users className="h-6 w-6" />
       },
       {
         title: "Telehealth",
-        desc: "Enable secure and reliable voice consultations between patients and healthcare providers.",
-        icon: <Bookmark className="h-9 w-9 text-deewan-secondary" />
+        desc: "Enable secure and reliable voice consultations between patients and healthcare providers for improved healthcare access.",
+        icon: <CircleCheck className="h-6 w-6" />
       },
       {
         title: "Education",
-        desc: "Facilitate distance learning and tutoring through voice communications.",
-        icon: <Info className="h-9 w-9 text-deewan-secondary" />
+        desc: "Facilitate distance learning and tutoring through voice communications, making education more accessible and engaging.",
+        icon: <Info className="h-6 w-6" />
       }
     ]
-  }
+  },
   // Additional products would be added here
 };
 
