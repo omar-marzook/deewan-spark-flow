@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import AboutUs from "./pages/AboutUs";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,8 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            {/* About Us page */}
+            <Route path="/about" element={<AboutUs />} />
             {/* Redirect /product to /products/messaging-api */}
             <Route path="/product" element={<Navigate to="/products/messaging-api" replace />} />
             {/* Dynamic product pages */}

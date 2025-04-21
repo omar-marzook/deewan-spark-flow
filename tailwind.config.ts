@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -116,32 +117,56 @@ export default {
 						opacity: '0.8'
 					}
 				},
-        float: {
-          '0%, 100%': {
-            transform: 'translateY(0)',
-          },
-          '50%': {
-            transform: 'translateY(-20px)',
-          },
-        },
-        'rotate-y': {
-          '0%': {
-            transform: 'rotateY(0deg)',
-          },
-          '100%': {
-            transform: 'rotateY(360deg)',
-          },
-        },
-      },
-      animation: {
+                float: {
+                  '0%, 100%': {
+                    transform: 'translateY(0)',
+                  },
+                  '50%': {
+                    transform: 'translateY(-20px)',
+                  },
+                },
+                'rotate-y': {
+                  '0%': {
+                    transform: 'rotateY(0deg)',
+                  },
+                  '100%': {
+                    transform: 'rotateY(360deg)',
+                  },
+                },
+                'float-subtle': {
+                  '0%, 100%': {
+                    transform: 'translateY(0) rotate(0)',
+                  },
+                  '50%': {
+                    transform: 'translateY(-8px) rotate(2deg)',
+                  },
+                },
+                'morph-blob': {
+                  '0%, 100%': {
+                    borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+                  },
+                  '25%': {
+                    borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%',
+                  },
+                  '50%': {
+                    borderRadius: '40% 60% 60% 40% / 70% 30% 50% 60%',
+                  },
+                  '75%': {
+                    borderRadius: '60% 40% 50% 50% / 30% 60% 40% 80%',
+                  },
+                },
+			},
+			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
-        float: 'float 6s ease-in-out infinite',
-        'rotate-y': 'rotate-y 20s linear infinite',
-      },
-    },
-  },
+                float: 'float 6s ease-in-out infinite',
+                'rotate-y': 'rotate-y 20s linear infinite',
+                'float-subtle': 'float-subtle 4s ease-in-out infinite',
+                'morph-blob': 'morph-blob 15s ease-in-out infinite',
+			},
+		},
+	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
