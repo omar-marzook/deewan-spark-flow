@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -6,7 +7,7 @@ import ProductFeatures from "./product/ProductFeatures";
 import ProductUseCases from "./product/ProductUseCases";
 import LogoCarousel from "./LogoCarousel";
 import BlogSection from "./BlogSection";
-import ContactSection from "./ContactSection";
+import Contact from "./Contact";
 import ProductCTA from "./product/ProductCTA";
 
 // Define the types for our dynamic product data
@@ -84,7 +85,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       
       {/* Contact Section */}
       <div ref={contactRef}>
-        <ContactSection />
+        <Contact />
       </div>
       
       {/* Footer */}

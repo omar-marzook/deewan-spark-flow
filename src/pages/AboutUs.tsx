@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -41,7 +42,9 @@ const AboutUs = () => {
         </div>
         
         {/* Contact Section */}
-        <ContactSection />
+        <div id="contact">
+          <ContactSection />
+        </div>
       </main>
       
       <Footer />
