@@ -44,7 +44,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               </BreadcrumbList>
             </Breadcrumb>
 
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display lg:text-4xl">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display lg:text-5xl">
               {name}
             </h1>
 
