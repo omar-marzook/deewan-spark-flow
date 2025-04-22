@@ -9,6 +9,8 @@ import OurTeam from "@/components/about/OurTeam";
 import VisionSection from "@/components/about/VisionSection";
 import ContactSection from "@/components/ContactSection";
 import LogoCarousel from "@/components/LogoCarousel";
+import AlternativeStats from "@/components/AlternativeStats";
+import CreativeTestimonials from "@/components/CreativeTestimonials";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -23,7 +25,9 @@ const AboutUs = () => {
         <HeroSection />
         <VisionSection />
         <OurStory />
+        <AlternativeStats />
         <OurValues />
+        <CreativeTestimonials />
         <OurTeam />
         <div className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/80 to-white"></div>

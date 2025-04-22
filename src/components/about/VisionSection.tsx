@@ -6,8 +6,10 @@ const VisionSection = () => {
     <section className="py-24 relative overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 pointer-events-none">
+        {/* Floating orbs with glassmorphism */}
         <div className="absolute top-0 -left-32 w-96 h-96 bg-deewan-primary/20 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-0 -right-32 w-96 h-96 bg-deewan-secondary/20 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow delay-500"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-deewan-accent/10 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow delay-1000"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
