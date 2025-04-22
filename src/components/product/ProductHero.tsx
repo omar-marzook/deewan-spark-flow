@@ -53,7 +53,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button onClick={onContactClick} size="lg" className="btn-primary flex items-center justify-center gap-2">
+              <Button onClick={onContactClick} size="lg" className="btn-primary flex items-center justify-center gap-2 bg-deewan-primary">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
