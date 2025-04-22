@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Info, Check, Users, Bookmark, Phone, Mail, Star } from "lucide-react";
+import Navbar from "@/components/Navbar";
 import ProductHero from "@/components/product/ProductHero";
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
@@ -7,6 +8,11 @@ import ProductUseCases from "@/components/product/ProductUseCases";
 import ProductSubscriptionPlans from "@/components/product/ProductSubscriptionPlans";
 import ProductCTA from "@/components/product/ProductCTA";
 import IndustrySolutionsRedesign from "@/components/product/IndustrySolutionsRedesign";
+import HowItWorksSteps from "@/components/product/HowItWorksSteps";
+import HowItWorksVideo from "@/components/product/HowItWorksVideo";
+import BlogSection from "@/components/BlogSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 const features = [
   {
@@ -101,7 +107,6 @@ export default function ProductPage() {
   const navigate = useNavigate();
 
   const scrollToContact = () => {
-    // Look for #contact anchor and scroll, fallback to homepage route if not found
     const contactElem = document.getElementById("contact");
     if (contactElem) {
       contactElem.scrollIntoView({ behavior: "smooth" });
@@ -112,6 +117,7 @@ export default function ProductPage() {
 
   return (
     <div className="overflow-x-hidden font-sans bg-white text-deewan-dark">
+      <Navbar />
       <ProductHero 
         name="Messaging Solutions" 
         tagline="Connect with your customers instantly across multiple channels with our unified messaging solution."
@@ -121,8 +127,14 @@ export default function ProductPage() {
       <CoreFeaturesStaggered />
       <ProductUseCases useCases={useCases} />
       <IndustrySolutionsRedesign />
+      <HowItWorksSteps />
+      <HowItWorksVideo />
       <ProductSubscriptionPlans subscriptionPlans={subscriptionPlans} onContactClick={scrollToContact} />
-      <ProductCTA onContactClick={scrollToContact} />
+      <BlogSection />
+      <div id="contact">
+        <ContactSection />
+      </div>
+      <Footer />
     </div>
   );
 }
