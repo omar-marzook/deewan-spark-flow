@@ -1,13 +1,12 @@
-
 import { useNavigate } from "react-router-dom";
 import { Info, Check, Users, Bookmark, Phone, Mail, Star } from "lucide-react";
 import ProductHero from "@/components/product/ProductHero";
-import ProductFeatures from "@/components/product/ProductFeatures";
+import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import ProductUseCases from "@/components/product/ProductUseCases";
 import ProductSubscriptionPlans from "@/components/product/ProductSubscriptionPlans";
 import ProductCTA from "@/components/product/ProductCTA";
-import IndustrySolutionsAlt from "@/components/product/IndustrySolutionsAlt";
+import IndustrySolutionsRedesign from "@/components/product/IndustrySolutionsRedesign";
 
 const features = [
   {
@@ -118,10 +117,10 @@ export default function ProductPage() {
         tagline="Connect with your customers instantly across multiple channels with our unified messaging solution."
         onContactClick={scrollToContact} 
       />
-      <ProductFeatures features={features} />
+      <PowerfulCapabilitiesRedesign />
       <CoreFeaturesStaggered />
       <ProductUseCases useCases={useCases} />
-      <IndustrySolutionsAlt />
+      <IndustrySolutionsRedesign />
       <ProductSubscriptionPlans subscriptionPlans={subscriptionPlans} onContactClick={scrollToContact} />
       <ProductCTA onContactClick={scrollToContact} />
     </div>

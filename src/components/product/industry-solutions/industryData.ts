@@ -1,8 +1,16 @@
 
 import { Building, Hospital, Landmark, University, Globe } from "lucide-react";
-import React from "react";
+import type { LucideIcon } from "lucide-react";
 
-export const industries = [
+interface Industry {
+  id: string;
+  name: string;
+  description: string;
+  icon: LucideIcon;
+  image: string;
+}
+
+export const industries: Industry[] = [
   {
     id: "healthcare",
     name: "Healthcare",
