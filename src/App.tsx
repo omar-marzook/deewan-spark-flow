@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +32,7 @@ const App = () => {
             <Route path="/" element={<Index />} />
             {/* About Us page */}
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
             {/* Redirect /product to /products/messaging-api */}
             <Route path="/product" element={<Navigate to="/products/messaging-api" replace />} />
             {/* Dynamic product pages */}
