@@ -58,7 +58,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               
-              <Button variant="outline" size="lg" onClick={onContactClick} className="bg-white/50 backdrop-blur-sm border-2 border-deewan-primary/20 text-deewan-dark hover:bg-white/70 px-8 py-6 text-lg h-auto rounded-xl font-medium transition-all duration-300 hover:-translate-y-1">
+              <Button variant="outline" size="lg" onClick={onContactClick} className="btn-secondary flex items-center justify-center bg-white">
                 Contact Sales
               </Button>
             </div>
