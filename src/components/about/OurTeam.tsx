@@ -7,19 +7,19 @@ import DepartmentSection from './DepartmentSection';
 const OurTeam = () => {
   const teamMembers = [
     {
-      image: "https://images.unsplash.com/photo-1501286353178-1ec881214838?auto=format&fit=crop&q=80&w=800",
+      image: "https://avatar.iran.liara.run/public",
       name: "Ahmed Al-Saud",
       position: "Chief Executive Officer",
       description: "Leading Deewan's vision and strategy with over 15 years of experience in technology and communication."
     },
     {
-      image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?auto=format&fit=crop&q=80&w=800",
+      image: "https://avatar.iran.liara.run/public",
       name: "Sarah Al-Rashid",
       position: "Head of Product",
       description: "Driving product innovation and development with a focus on user experience and market needs."
     },
     {
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&q=80&w=800",
+      image: "https://avatar.iran.liara.run/public",
       name: "Mohammed Al-Qahtani",
       position: "Technical Director",
       description: "Overseeing technical infrastructure and ensuring robust, scalable solutions."
