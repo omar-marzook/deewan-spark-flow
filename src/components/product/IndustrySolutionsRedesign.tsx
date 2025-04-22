@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { industries } from './industry-solutions/industryData';
@@ -127,6 +126,9 @@ const IndustrySolutionsRedesign = () => {
                   const isActive = industry.id === activeIndustry;
                   if (!isActive) return null;
                   
+                  // Get the icon component from the current industry object
+                  const IndustryIcon = industry.icon;
+                  
                   return (
                     <motion.div
                       key={industry.id}
@@ -150,7 +152,7 @@ const IndustrySolutionsRedesign = () => {
                       <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
                         <div>
                           <div className="inline-flex items-center bg-white/10 backdrop-blur-md px-5 py-2 rounded-full mb-4">
-                            <IndIcon className="h-4 w-4 mr-2 text-deewan-secondary" />
+                            <IndustryIcon className="h-4 w-4 mr-2 text-deewan-secondary" />
                             <span className="text-sm text-white/90">Industry Solution</span>
                           </div>
                           
