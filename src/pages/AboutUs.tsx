@@ -3,10 +3,11 @@ import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/about/HeroSection";
+import TransformingDigital from "@/components/about/TransformingDigital";
+import GlassyTransformingDigital from "@/components/about/GlassyTransformingDigital";
 import OurStory from "@/components/about/OurStory";
 import OurValues from "@/components/about/OurValues";
 import OurTeam from "@/components/about/OurTeam";
-import VisionSection from "@/components/about/VisionSection";
 import ContactSection from "@/components/ContactSection";
 import LogoCarousel from "@/components/LogoCarousel";
 import AlternativeStats from "@/components/AlternativeStats";
@@ -23,7 +24,8 @@ const AboutUs = () => {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
-        <VisionSection />
+        <TransformingDigital />
+        <GlassyTransformingDigital />
         <OurStory />
         <AlternativeStats />
         <OurValues />
