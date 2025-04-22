@@ -1,16 +1,12 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
 interface ProductCTAProps {
   onContactClick: () => void;
 }
-
 const ProductCTA: React.FC<ProductCTAProps> = ({
   onContactClick
 }) => {
-  return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5">
+  return <section className="relative py-24 overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-[400px] h-[400px] -top-48 -right-48 bg-deewan-primary/10 rounded-full blur-3xl animate-[pulse_15s_ease-in-out_infinite]"></div>
@@ -28,28 +24,17 @@ const ProductCTA: React.FC<ProductCTAProps> = ({
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <Button 
-              onClick={onContactClick} 
-              size="lg" 
-              className="bg-deewan-primary hover:bg-deewan-primary/90 text-white px-8 py-6 text-lg h-auto rounded-xl shadow-lg shadow-deewan-primary/20 font-medium transition-all duration-300 hover:-translate-y-1"
-            >
+            <Button onClick={onContactClick} size="lg" className="btn-primary flex items-center justify-center gap-2 bg-deewan-primary">
               Get Started Today
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             
-            <Button 
-              variant="outline" 
-              size="lg" 
-              onClick={onContactClick} 
-              className="bg-white/50 backdrop-blur-sm border-2 border-deewan-primary/20 text-deewan-dark hover:bg-white/70 px-8 py-6 text-lg h-auto rounded-xl font-medium transition-all duration-300 hover:-translate-y-1"
-            >
+            <Button variant="outline" size="lg" onClick={onContactClick} className="btn-secondary flex items-center justify-center bg-white">
               Schedule a Demo
             </Button>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ProductCTA;
