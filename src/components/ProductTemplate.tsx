@@ -1,9 +1,10 @@
+
 import React, { useRef } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductHero from "./product/ProductHero";
 import ProductFeatures from "./product/ProductFeatures";
-import ProductUseCases from "./ProductUseCases";
+import ProductUseCases from "./product/ProductUseCases";
 import LogoCarousel from "./LogoCarousel";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
