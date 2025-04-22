@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -30,8 +31,8 @@ const Navbar = () => {
                 Products
               </Link>
               <div className="absolute left-0 mt-2 w-64 bg-white/90 backdrop-blur-md rounded-xl shadow-lg py-3 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-white/30">
-                <Link to="/products/messaging-api" className="block px-4 py-2 text-sm text-deewan-dark hover:bg-deewan-primary/10 rounded-lg">
-                  Messaging API
+                <Link to="/product" className="block px-4 py-2 text-sm text-deewan-dark hover:bg-deewan-primary/10 rounded-lg">
+                  Messaging Solutions
                 </Link>
                 <Link to="/products/voice-api" className="block px-4 py-2 text-sm text-deewan-dark hover:bg-deewan-primary/10 rounded-lg">
                   Voice API
@@ -54,7 +55,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && <nav className="md:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in">
             <div className="font-medium text-deewan-dark">Products</div>
-            <Link to="/products/messaging-api" className="pl-4 text-deewan-dark hover:text-deewan-primary transition-colors">- Messaging API</Link>
+            <Link to="/product" className="pl-4 text-deewan-dark hover:text-deewan-primary transition-colors">- Messaging Solutions</Link>
             <Link to="/products/voice-api" className="pl-4 text-deewan-dark hover:text-deewan-primary transition-colors">- Voice API</Link>
             <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">APIs</Link>
             <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</Link>

@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,6 +8,7 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import ProductPage from "./pages/ProductPage"; // Add import for ProductPage
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 
@@ -33,8 +35,10 @@ const App = () => {
             {/* About Us page */}
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
+            {/* Add a direct route to ProductPage */}
+            <Route path="/product" element={<ProductPage />} />
             {/* Redirect /product to /products/messaging-api */}
-            <Route path="/product" element={<Navigate to="/products/messaging-api" replace />} />
+            <Route path="/products" element={<Navigate to="/products/messaging-api" replace />} />
             {/* Dynamic product pages */}
             <Route path="/products/:slug" element={<ProductDetailPage />} />
             <Route path="*" element={<NotFound />} />
