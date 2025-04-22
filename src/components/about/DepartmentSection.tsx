@@ -57,7 +57,7 @@ const DepartmentSection = () => {
       margin: "-100px"
     }} transition={{
       duration: 0.5
-    }} className="text-3xl md:text-4xl font-bold mb-6 text-deewan-dark">
+    }} className="text-3xl md:text-4xl font-bold mb-16 text-deewan-dark text-center">
         What We Do
       </motion.h3>
       
