@@ -1,6 +1,7 @@
 
 import { MapPin, Mail, Phone } from "lucide-react";
 import SocialLinks from "../footer/SocialLinks";
+import { motion } from "framer-motion";
 
 const ContactInfo = () => {
   return (
