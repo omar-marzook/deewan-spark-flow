@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img alt="Deewan Logo" className="h-10 mr-2" src="/lovable-uploads/c80ff29e-8abe-499f-9535-050008919d86.png" />
+            <img alt="Deewan Logo" src="/lovable-uploads/c80ff29e-8abe-499f-9535-050008919d86.png" className="h-7 mr-2" />
             
           </Link>
 
