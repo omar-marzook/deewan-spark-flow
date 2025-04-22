@@ -1,22 +1,12 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 interface ProductHeroProps {
   name: string;
   tagline: string;
   heroImage?: string;
   onContactClick: () => void;
 }
-
 const ProductHero: React.FC<ProductHeroProps> = ({
   name,
   tagline,
@@ -63,7 +53,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button onClick={onContactClick} size="lg" className="bg-deewan-primary hover:bg-deewan-primary/90 text-white px-8 py-6 text-lg h-auto rounded-xl shadow-lg shadow-deewan-primary/20 font-medium transition-all duration-300 hover:-translate-y-1">
+              <Button onClick={onContactClick} size="lg" className="btn-primary flex items-center justify-center gap-2">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -98,5 +88,4 @@ const ProductHero: React.FC<ProductHeroProps> = ({
       </div>
     </section>;
 };
-
 export default ProductHero;
