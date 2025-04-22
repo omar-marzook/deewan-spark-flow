@@ -6,7 +6,7 @@ const TransformingDigital = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Gradient background with blur effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-deewan-primary/10 via-deewan-secondary/10 to-deewan-accent/10 pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-deewan-primary/1 via-deewan-secondary/10 to-deewan-accent/10 pointer-events-none">
         <div className="absolute top-0 -left-32 w-96 h-96 bg-deewan-primary/20 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-0 -right-32 w-96 h-96 bg-deewan-secondary/20 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow delay-500"></div>
       </div>
