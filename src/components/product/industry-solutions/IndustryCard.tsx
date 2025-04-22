@@ -1,18 +1,21 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { LucideIcon } from 'lucide-react';
 
 interface IndustryCardProps {
   industry: {
     id: string;
     name: string;
     description: string;
-    icon: React.ReactNode;
+    icon: LucideIcon;
   };
   isActive: boolean;
 }
 
 const IndustryCard = ({ industry, isActive }: IndustryCardProps) => {
+  const Icon = industry.icon;
+  
   return (
     <motion.div
       data-industry-id={industry.id}
@@ -31,7 +34,7 @@ const IndustryCard = ({ industry, isActive }: IndustryCardProps) => {
             ? "bg-gradient-to-br from-purple-500 to-indigo-600 text-white" 
             : "bg-purple-100 text-purple-500"
         }`}>
-          {industry.icon}
+          <Icon className="h-8 w-8" />
         </div>
         <h3 className="text-xl font-semibold text-slate-800">{industry.name}</h3>
       </div>
