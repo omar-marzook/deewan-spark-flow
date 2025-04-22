@@ -1,22 +1,18 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
 interface ProductHeroProps {
   name: string;
   tagline: string;
   heroImage?: string;
   onContactClick: () => void;
 }
-
-const ProductHero: React.FC<ProductHeroProps> = ({ 
-  name, 
-  tagline, 
-  heroImage, 
-  onContactClick 
+const ProductHero: React.FC<ProductHeroProps> = ({
+  name,
+  tagline,
+  heroImage,
+  onContactClick
 }) => {
-  return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5">
+  return <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-[500px] h-[500px] -top-48 -right-48 bg-deewan-primary/10 rounded-full blur-3xl animate-[pulse_15s_ease-in-out_infinite]"></div>
@@ -24,12 +20,11 @@ const ProductHero: React.FC<ProductHeroProps> = ({
       </div>
 
       {/* Grid pattern overlay */}
-      <div className="absolute inset-0" 
-           style={{
-             backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-             backgroundSize: '50px 50px',
-             opacity: 0.3
-           }}>
+      <div className="absolute inset-0" style={{
+      backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,.1) 1px, transparent 1px)',
+      backgroundSize: '50px 50px',
+      opacity: 0.3
+    }}>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 pt-32">
@@ -42,7 +37,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               Deewan Products
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display lg:text-4xl">
               {name}
             </h1>
 
@@ -51,21 +46,12 @@ const ProductHero: React.FC<ProductHeroProps> = ({
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button
-                onClick={onContactClick}
-                size="lg"
-                className="bg-deewan-primary hover:bg-deewan-primary/90 text-white px-8 py-6 text-lg h-auto rounded-xl shadow-lg shadow-deewan-primary/20 font-medium transition-all duration-300 hover:-translate-y-1"
-              >
+              <Button onClick={onContactClick} size="lg" className="bg-deewan-primary hover:bg-deewan-primary/90 text-white px-8 py-6 text-lg h-auto rounded-xl shadow-lg shadow-deewan-primary/20 font-medium transition-all duration-300 hover:-translate-y-1">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={onContactClick}
-                className="bg-white/50 backdrop-blur-sm border-2 border-deewan-primary/20 text-deewan-dark hover:bg-white/70 px-8 py-6 text-lg h-auto rounded-xl font-medium transition-all duration-300 hover:-translate-y-1"
-              >
+              <Button variant="outline" size="lg" onClick={onContactClick} className="bg-white/50 backdrop-blur-sm border-2 border-deewan-primary/20 text-deewan-dark hover:bg-white/70 px-8 py-6 text-lg h-auto rounded-xl font-medium transition-all duration-300 hover:-translate-y-1">
                 Contact Sales
               </Button>
             </div>
@@ -81,21 +67,9 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               
               {/* Content */}
               <div className="absolute inset-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 p-6 overflow-hidden">
-                {heroImage ? (
-                  <img 
-                    src={heroImage} 
-                    alt={name} 
-                    className="w-full h-full object-cover rounded-lg" 
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <img 
-                      src="/logo.svg" 
-                      alt="Deewan" 
-                      className="w-32 h-32 opacity-50" 
-                    />
-                  </div>
-                )}
+                {heroImage ? <img src={heroImage} alt={name} className="w-full h-full object-cover rounded-lg" /> : <div className="w-full h-full flex items-center justify-center">
+                    <img src="/logo.svg" alt="Deewan" className="w-32 h-32 opacity-50" />
+                  </div>}
               </div>
             </div>
 
@@ -105,8 +79,6 @@ const ProductHero: React.FC<ProductHeroProps> = ({
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ProductHero;
