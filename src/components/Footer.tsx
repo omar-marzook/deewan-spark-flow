@@ -1,17 +1,14 @@
-
 import React from "react";
 import Newsletter from "./footer/Newsletter";
 import FooterLinks from "./footer/FooterLinks";
 import FooterCopyright from "./footer/FooterCopyright";
-
 const Footer = () => {
-  return (
-    <>
+  return <>
       {/* Newsletter subscription - Separated from footer */}
       <Newsletter />
       
       {/* Main footer with glassmorphism gradient background */}
-      <footer className="relative py-16 overflow-hidden">
+      <footer className="relative pt-16 overflow-hidden">
         {/* Glassmorphism gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50/80 via-gray-100/80 to-gray-50/80 backdrop-blur-sm z-0"></div>
         
@@ -35,8 +32,6 @@ const Footer = () => {
           <FooterCopyright />
         </div>
       </footer>
-    </>
-  );
+    </>;
 };
-
 export default Footer;
