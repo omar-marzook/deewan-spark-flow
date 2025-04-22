@@ -1,11 +1,22 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
 interface ProductHeroProps {
   name: string;
   tagline: string;
   heroImage?: string;
   onContactClick: () => void;
 }
+
 const ProductHero: React.FC<ProductHeroProps> = ({
   name,
   tagline,
@@ -31,11 +42,17 @@ const ProductHero: React.FC<ProductHeroProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="max-w-2xl">
-            {/* Floating badge */}
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-2 rounded-full text-sm font-medium text-deewan-dark/80 mb-8 animate-fade-in shadow-lg">
-              <span className="w-2 h-2 bg-deewan-primary rounded-full mr-2 animate-pulse"></span>
-              Deewan Products
-            </div>
+            <Breadcrumb className="mb-8">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Products</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
 
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display lg:text-4xl">
               {name}
@@ -81,4 +98,5 @@ const ProductHero: React.FC<ProductHeroProps> = ({
       </div>
     </section>;
 };
+
 export default ProductHero;
