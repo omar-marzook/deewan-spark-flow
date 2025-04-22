@@ -1,8 +1,8 @@
-
 import { useNavigate } from "react-router-dom";
 import { Info, Check, Users, Bookmark, Phone, Mail, Star } from "lucide-react";
 import ProductHero from "@/components/product/ProductHero";
 import ProductFeatures from "@/components/product/ProductFeatures";
+import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import ProductUseCases from "@/components/product/ProductUseCases";
 import ProductSubscriptionPlans from "@/components/product/ProductSubscriptionPlans";
 import ProductCTA from "@/components/product/ProductCTA";
@@ -117,6 +117,7 @@ export default function ProductPage() {
         onContactClick={scrollToContact} 
       />
       <ProductFeatures features={features} />
+      <CoreFeaturesStaggered />
       <ProductUseCases useCases={useCases} />
       <ProductSubscriptionPlans subscriptionPlans={subscriptionPlans} onContactClick={scrollToContact} />
       <ProductCTA onContactClick={scrollToContact} />
