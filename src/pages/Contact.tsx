@@ -1,11 +1,12 @@
 
 import React from "react";
 import { Helmet } from "react-helmet";
+import { LazyMotion, domAnimation } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactReassurance from "@/components/contact/ContactReassurance";
-import { LazyMotion, domAnimation } from "framer-motion";
+import ContactInfo from "@/components/contact/ContactInfo";
 
 const Contact = () => {
   return (
@@ -20,6 +21,7 @@ const Contact = () => {
       <main>
         <ContactHero />
         <ContactReassurance />
+        <ContactInfo />
       </main>
       
       <Footer />
