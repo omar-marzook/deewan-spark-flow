@@ -1,28 +1,19 @@
-
 import { ReactNode } from "react";
-
 interface UseCase {
   title: string;
   desc: string;
   icon: ReactNode;
 }
-
 interface ProductUseCasesProps {
   useCases: UseCase[];
 }
-
-const ProductUseCases: React.FC<ProductUseCasesProps> = ({ useCases }) => {
-  return (
-    <section className="relative py-24 overflow-hidden">
+const ProductUseCases: React.FC<ProductUseCasesProps> = ({
+  useCases
+}) => {
+  return <section className="relative py-24 overflow-hidden">
       {/* Background with grid pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5">
-        <div className="absolute inset-0" 
-             style={{
-               backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.1) 1px, transparent 1px)',
-               backgroundSize: '40px 40px',
-               opacity: 0.5
-             }}>
-        </div>
+        
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -42,11 +33,7 @@ const ProductUseCases: React.FC<ProductUseCasesProps> = ({ useCases }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {useCases.map((useCase, index) => (
-            <div
-              key={index}
-              className="group relative perspective-1000"
-            >
+          {useCases.map((useCase, index) => <div key={index} className="group relative perspective-1000">
               {/* Card with 3D hover effect */}
               <div className="relative h-full transform-style-3d transition-transform duration-500 group-hover:rotate-y-10">
                 <div className="p-8 rounded-2xl bg-white/30 backdrop-blur-lg border border-white/20 shadow-lg h-full transform-style-3d">
@@ -70,18 +57,8 @@ const ProductUseCases: React.FC<ProductUseCasesProps> = ({ useCases }) => {
 
                   {/* Hover indicator */}
                   <div className="absolute bottom-8 right-8 w-8 h-8 rounded-full bg-deewan-secondary/10 flex items-center justify-center transform group-hover:scale-110 transition-transform">
-                    <svg
-                      className="w-4 h-4 text-deewan-secondary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
+                    <svg className="w-4 h-4 text-deewan-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
                 </div>
@@ -89,12 +66,9 @@ const ProductUseCases: React.FC<ProductUseCasesProps> = ({ useCases }) => {
 
               {/* Decorative elements */}
               <div className="absolute -inset-px bg-gradient-to-r from-deewan-primary/20 to-deewan-secondary/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-          ))}
+            </div>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ProductUseCases;
