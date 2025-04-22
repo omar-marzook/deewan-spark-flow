@@ -1,12 +1,9 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -18,14 +15,12 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
-  return (
-    <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${isScrolled ? 'py-2 bg-white/80 backdrop-blur-md shadow-sm' : 'py-4 bg-transparent'}`}>
+  return <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${isScrolled ? 'py-2 bg-white/80 backdrop-blur-md shadow-sm' : 'py-4 bg-transparent'}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src="/logo.svg" alt="Deewan Logo" className="h-10 mr-2" />
-            <span className="font-bold text-xl text-deewan-dark">Deewan</span>
+            <img alt="Deewan Logo" className="h-10 mr-2" src="/lovable-uploads/c80ff29e-8abe-499f-9535-050008919d86.png" />
+            
           </Link>
 
           {/* Desktop Menu */}
@@ -57,8 +52,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <nav className="md:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in">
+        {isMenuOpen && <nav className="md:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in">
             <div className="font-medium text-deewan-dark">Products</div>
             <Link to="/products/messaging-api" className="pl-4 text-deewan-dark hover:text-deewan-primary transition-colors">- Messaging API</Link>
             <Link to="/products/voice-api" className="pl-4 text-deewan-dark hover:text-deewan-primary transition-colors">- Voice API</Link>
@@ -66,11 +60,8 @@ const Navbar = () => {
             <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</Link>
             <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">About Us</Link>
             <Link to="#contact" className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-lg shadow-md text-center hover:bg-deewan-primary/90 transition-all duration-300">Contact Us</Link>
-          </nav>
-        )}
+          </nav>}
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Navbar;

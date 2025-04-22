@@ -75,7 +75,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               {/* Content */}
               <div className="absolute inset-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 p-6 overflow-hidden">
                 {heroImage ? <img src={heroImage} alt={name} className="w-full h-full object-cover rounded-lg" /> : <div className="w-full h-full flex items-center justify-center">
-                    <img src="/logo.svg" alt="Deewan" className="w-32 h-32 opacity-50" />
+                    <img alt="Deewan" src="/lovable-uploads/e2e44fa6-d598-4fc3-850a-80175de0c5ba.png" className="w-32 h-auto opacity-50" />
                   </div>}
               </div>
             </div>
