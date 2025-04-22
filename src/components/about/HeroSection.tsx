@@ -1,11 +1,8 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-
 const HeroSection = () => {
-  return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+  return <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background gradient elements */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 -left-32 w-96 h-96 bg-deewan-primary/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -14,38 +11,42 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
-          >
-            <div className="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-2 rounded-full shadow-sm mb-6">
-              <span className="text-sm font-medium text-deewan-dark/80">Est. 2018</span>
-            </div>
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8
+        }} className="text-center lg:text-left">
+            
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Transforming Communication in 
-              <span className="text-gradient bg-gradient-to-r from-deewan-primary via-deewan-secondary to-deewan-accent"> Saudi Arabia</span>
+              
             </h1>
             
             <p className="text-xl mb-8 text-deewan-dark/80 max-w-xl">
               Building intelligent communication tools that bridge gaps and empower organizations to connect meaningfully.
             </p>
             
-            <a href="#our-story" 
-               className="btn-primary flex items-center justify-center w-fit mx-auto lg:mx-0 gap-2">
+            <a href="#our-story" className="btn-primary flex items-center justify-center w-fit mx-auto lg:mx-0 gap-2">
               Discover Our Story
               <ArrowRight className="w-5 h-5" />
             </a>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative hidden lg:block"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          scale: 0.95
+        }} animate={{
+          opacity: 1,
+          scale: 1
+        }} transition={{
+          duration: 0.8,
+          delay: 0.2
+        }} className="relative hidden lg:block">
             <div className="relative w-full aspect-square">
               {/* Floating elements */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -69,8 +70,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
