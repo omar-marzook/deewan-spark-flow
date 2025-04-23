@@ -19,7 +19,7 @@ const ProductColumn = ({
           <Link to={`/products/${product.slug}`} className="flex items-start p-3 rounded-lg hover:bg-white/10 transition-colors">
             <product.icon className="w-5 h-5 mt-1 text-deewan-primary flex-shrink-0" />
             <div className="ml-3">
-              <h4 className="font-display font-medium text-deewan-dark group-hover:text-deewan-primary transition-colors text-sm">
+              <h4 className="font-display text-deewan-dark group-hover:text-deewan-primary transition-colors text-lg font-medium">
                 {product.name}
               </h4>
               <p className="text-sm text-deewan-dark/70 font-normal">
