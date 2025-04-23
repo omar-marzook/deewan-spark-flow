@@ -10,6 +10,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import PostAuthor from "@/components/blog/PostAuthor";
 import { 
   Breadcrumb,
   BreadcrumbList,
@@ -321,8 +322,8 @@ const BlogPostPage = () => {
       <Navbar />
       <ReadingProgressBar />
       
-      {/* Breadcrumb */}
-      <div className="bg-white/80 backdrop-blur-sm sticky top-1 z-40 py-3 border-b border-gray-100 shadow-sm">
+      {/* Breadcrumb - Fixed position with appropriate top margin */}
+      <div className="bg-white/80 backdrop-blur-sm sticky top-16 z-40 py-3 border-b border-gray-100 shadow-sm mt-1">
         <div className="container mx-auto max-w-6xl px-4">
           <Breadcrumb>
             <BreadcrumbList>
@@ -346,8 +347,8 @@ const BlogPostPage = () => {
         </div>
       </div>
       
-      {/* Article header */}
-      <header className="container mx-auto max-w-6xl px-4 pt-12 pb-6">
+      {/* Article header - Added more top padding */}
+      <header className="container mx-auto max-w-6xl px-4 pt-24 pb-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -414,93 +415,39 @@ const BlogPostPage = () => {
       
       {/* Main content area */}
       <div className="container mx-auto max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-12 mb-20">
-        {/* Article content */}
+        {/* Article content - Improved typography and spacing */}
         <motion.article 
           id="article-content"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-xl prose-p:text-deewan-dark/90 prose-a:text-deewan-primary prose-a:no-underline hover:prose-a:underline prose-blockquote:border-deewan-primary prose-img:rounded-xl prose-img:shadow-lg"
+          className="prose prose-lg max-w-none prose-h2:text-2xl prose-h2:font-bold prose-h2:text-deewan-dark prose-h2:mt-10 prose-h2:mb-4 
+                     prose-h3:text-xl prose-h3:font-semibold prose-h3:text-deewan-dark/90 prose-h3:mt-8 prose-h3:mb-3
+                     prose-p:text-deewan-dark/90 prose-p:leading-relaxed prose-p:mb-5
+                     prose-ul:my-5 prose-li:my-2 prose-li:text-deewan-dark/80
+                     prose-a:text-deewan-primary prose-a:no-underline hover:prose-a:underline 
+                     prose-blockquote:border-deewan-primary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
+                     prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8"
         >
           {post.content}
         </motion.article>
         
-        {/* Sidebar */}
+        {/* Sidebar - Now with author card instead of share section */}
         <aside className="hidden lg:block">
           <TableOfContents headings={headings} />
           
-          {/* Share buttons */}
-          <div className="sticky top-[calc(32px+300px)] mt-8 glass rounded-xl p-5">
-            <h4 className="font-bold text-lg text-deewan-dark/90 mb-3 flex items-center">
-              <Share2 className="w-4 h-4 mr-2 text-deewan-primary" />
-              Share Article
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              <Button variant="outline" size="icon" className="w-10 h-10 rounded-full text-deewan-primary hover:text-white hover:bg-deewan-primary">
-                <Twitter className="w-4 h-4" />
-                <span className="sr-only">Share on Twitter</span>
-              </Button>
-              <Button variant="outline" size="icon" className="w-10 h-10 rounded-full text-blue-600 hover:text-white hover:bg-blue-600">
-                <Facebook className="w-4 h-4" />
-                <span className="sr-only">Share on Facebook</span>
-              </Button>
-              <Button variant="outline" size="icon" className="w-10 h-10 rounded-full text-blue-700 hover:text-white hover:bg-blue-700">
-                <Linkedin className="w-4 h-4" />
-                <span className="sr-only">Share on LinkedIn</span>
-              </Button>
-              <Button variant="outline" size="icon" className="w-10 h-10 rounded-full text-deewan-dark hover:text-white hover:bg-deewan-dark">
-                <Mail className="w-4 h-4" />
-                <span className="sr-only">Share by Email</span>
-              </Button>
-            </div>
+          {/* Author card - replacing share section */}
+          <div className="sticky top-[calc(32px+300px)] mt-8">
+            <PostAuthor author={post.author} />
           </div>
         </aside>
       </div>
       
-      {/* Author bio */}
-      <div className="container mx-auto max-w-3xl px-4 mb-20">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="glass border border-deewan-primary/10 rounded-2xl p-6 md:p-8"
-        >
-          <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-deewan-primary/20 flex-shrink-0">
-              <img 
-                src={post.author.avatar} 
-                alt={post.author.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-deewan-dark mb-1">{post.author.name}</h3>
-              <p className="text-deewan-primary mb-3">{post.author.role}</p>
-              <p className="text-deewan-dark/80 mb-4">{post.author.bio}</p>
-              <div className="flex gap-3">
-                {post.author.twitter && (
-                  <a href={post.author.twitter} target="_blank" rel="noopener noreferrer" 
-                    className="p-2 rounded-full bg-deewan-primary/10 text-deewan-primary hover:bg-deewan-primary/20 transition-colors">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                )}
-                {post.author.linkedin && (
-                  <a href={post.author.linkedin} target="_blank" rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-      
-      {/* Mobile share buttons */}
-      <div className="md:hidden container mx-auto max-w-3xl px-4 mb-12">
+      {/* Mobile share buttons - Share section remains here */}
+      <div className="container mx-auto max-w-3xl px-4 mb-12">
         <div className="glass rounded-xl p-5 border border-gray-100">
-          <h4 className="font-bold text-center text-deewan-dark/90 mb-3">
+          <h4 className="font-bold text-center text-deewan-dark/90 mb-3 flex items-center justify-center">
+            <Share2 className="w-4 h-4 mr-2 text-deewan-primary" />
             Share This Article
           </h4>
           <div className="flex justify-center gap-3">
