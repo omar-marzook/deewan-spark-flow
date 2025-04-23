@@ -8,7 +8,7 @@ const ProductColumn = ({
   title: string;
   items: Product[];
 }) => <div className="flex-1 min-w-[280px]">
-    <h3 className="font-display mb-4 text-deewan-dark text-base font-medium">{title}</h3>
+    <h3 className="font-display mb-4 text-deewan-dark text-base font-normal">{title}</h3>
     <div className="space-y-2">
       {items.map(product => <motion.div key={product.slug} className="group" whileHover={{
       scale: 1.02
