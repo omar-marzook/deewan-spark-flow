@@ -1,159 +1,48 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Calendar, Clock, User, ChevronRight, 
-  Share2, Bookmark, Twitter, Linkedin, 
-  Facebook, Mail, ArrowLeft
-} from "lucide-react";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import PostAuthor from "@/components/blog/PostAuthor";
-import { 
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  BreadcrumbPage,
-} from "@/components/ui/breadcrumb";
+import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
+import BlogPostHeader from "@/components/blog/BlogPostHeader";
+import BlogCoverImage from "@/components/blog/BlogCoverImage";
+import BlogMainContent from "@/components/blog/BlogMainContent";
+import BlogShareSection from "@/components/blog/BlogShareSection";
+import BlogRelatedArticles from "@/components/blog/BlogRelatedArticles";
+import TableOfContentsInline from "@/components/blog/TableOfContentsInline";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import { ArrowLeft } from "lucide-react";
 
-// Sticky progress bar that shows reading progress
-const ReadingProgressBar = () => {
-  const [progress, setProgress] = useState(0);
-  
-  useEffect(() => {
-    const updateProgress = () => {
-      const article = document.getElementById('article-content');
-      if (!article) return;
-      
-      const totalHeight = article.clientHeight;
-      const windowHeight = window.innerHeight;
-      const scrolled = window.scrollY - article.offsetTop + 200;
-      const percentage = Math.min(Math.max(scrolled / (totalHeight - windowHeight) * 100, 0), 100);
-      
-      setProgress(percentage);
-    };
-    
-    window.addEventListener('scroll', updateProgress);
-    updateProgress();
-    
-    return () => window.removeEventListener('scroll', updateProgress);
-  }, []);
-  
-  return (
-    <div className="fixed top-0 left-0 w-full h-1 z-50">
-      <div 
-        className="h-full bg-gradient-to-r from-deewan-primary to-deewan-secondary transition-all duration-300 ease-out"
-        style={{ width: `${progress}%` }}
-      />
-    </div>
-  );
-};
-
-// Table of contents component
-const TableOfContents = ({ headings }) => {
-  const [activeId, setActiveId] = useState("");
-  
-  useEffect(() => {
-    const observerCallback = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveId(entry.target.id);
-        }
-      });
-    };
-    
-    const observerOptions = {
-      rootMargin: "-100px 0px -60% 0px",
-      threshold: 0
-    };
-    
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
-    headings.forEach(heading => {
-      const element = document.getElementById(heading.id);
-      if (element) observer.observe(element);
-    });
-    
-    return () => observer.disconnect();
-  }, [headings]);
-  
-  if (!headings.length) return null;
-  
-  return (
-    <div className="sticky top-32 max-h-[calc(100vh-200px)] overflow-auto pr-2">
-      <div className="rounded-xl glass p-5 border-l-4 border-deewan-primary">
-        <h4 className="font-bold text-lg text-deewan-dark/90 mb-3 flex items-center">
-          <Bookmark className="w-4 h-4 mr-2 text-deewan-primary" />
-          Contents
-        </h4>
-        <nav>
-          <ul className="space-y-2 text-sm">
-            {headings.map((heading) => (
-              <li key={heading.id} className={`${heading.level === 3 ? 'ml-3' : ''}`}>
-                <a
-                  href={`#${heading.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById(heading.id)?.scrollIntoView({
-                      behavior: 'smooth',
-                      block: 'start',
-                    });
-                  }}
-                  className={`
-                    block py-1 px-2 rounded hover:bg-deewan-primary/10 transition-colors
-                    ${activeId === heading.id ? 
-                      'text-deewan-primary font-medium bg-deewan-primary/5' : 
-                      'text-deewan-dark/70'
-                    }
-                  `}
-                >
-                  {heading.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </div>
-  );
-};
-
-// Function to extract headings from content
+// Keep the heading extraction hook the same as before
 const useHeadings = (content) => {
   const headings = [];
-  
+
   React.Children.forEach(content, (child, index) => {
     if (!child || !child.type) return;
-    
+
     const { type, props } = child;
     if (type === 'h2' || type === 'h3') {
       const level = type === 'h2' ? 2 : 3;
       const id = `heading-${index}`;
       const text = props.children;
-      
+
       headings.push({ id, text, level });
     }
   });
-  
+
   return headings;
 };
 
-// Main component for the blog post
 const BlogPostPage = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
   const [relatedPosts, setRelatedPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  // Fetch blog post data
+
   useEffect(() => {
-    // Simulating API fetch with setTimeout
     const timeout = setTimeout(() => {
-      // Example post data
       setPost({
         title: "Transforming Business Communications with AI-Powered Messaging",
         subtitle: "How modern enterprises are leveraging intelligent messaging platforms to enhance customer experiences",
@@ -181,9 +70,9 @@ const BlogPostPage = () => {
             Traditional SMS messaging has given way to rich, interactive experiences across multiple platforms. Companies that adapt to these new channels are seeing significantly higher engagement rates and customer satisfaction scores.
           </p>,
           <figure key="fig1" className="my-8">
-            <img 
-              src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=900&auto=format" 
-              alt="Modern messaging interfaces on multiple devices" 
+            <img
+              src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=900&auto=format"
+              alt="Modern messaging interfaces on multiple devices"
               className="rounded-xl shadow-lg w-full h-auto object-cover"
             />
             <figcaption className="text-sm text-center mt-2 text-deewan-dark/60">
@@ -234,8 +123,7 @@ const BlogPostPage = () => {
           </p>
         ]
       });
-      
-      // Example related posts
+
       setRelatedPosts([
         {
           id: 1,
@@ -268,15 +156,15 @@ const BlogPostPage = () => {
           readTime: "7 min"
         }
       ]);
-      
+
       setLoading(false);
     }, 1000);
-    
+
     return () => clearTimeout(timeout);
   }, [slug]);
-  
+
   const headings = useHeadings(post?.content || []);
-  
+
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
@@ -297,7 +185,7 @@ const BlogPostPage = () => {
       </div>
     );
   }
-  
+
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
@@ -316,206 +204,21 @@ const BlogPostPage = () => {
       </div>
     );
   }
-  
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
       <Navbar />
       <ReadingProgressBar />
-      
-      {/* Breadcrumb - Fixed position with appropriate top margin */}
-      <div className="bg-white/80 backdrop-blur-sm sticky top-16 z-40 py-3 border-b border-gray-100 shadow-sm mt-1">
-        <div className="container mx-auto max-w-6xl px-4">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <ChevronRight className="h-4 w-4" />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <ChevronRight className="h-4 w-4" />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>{post.title}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-      </div>
-      
-      {/* Article header - Added more top padding */}
-      <header className="container mx-auto max-w-6xl px-4 pt-24 pb-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {post.category && (
-            <span className="inline-block px-3 py-1 mb-4 text-xs font-medium uppercase tracking-wider bg-deewan-primary/10 text-deewan-primary rounded-full">
-              {post.category}
-            </span>
-          )}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deewan-dark leading-tight mb-4">
-            {post.title}
-          </h1>
-          {post.subtitle && (
-            <p className="text-xl text-deewan-dark/70 mb-6 max-w-3xl">
-              {post.subtitle}
-            </p>
-          )}
-          
-          {/* Author and meta info */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-deewan-dark/60">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-deewan-primary/20">
-                <img 
-                  src={post.author.avatar} 
-                  alt={post.author.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <p className="font-medium text-deewan-dark">{post.author.name}</p>
-                <p className="text-xs">{post.author.role}</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
-              <span>{post.publishDate}</span>
-            </div>
-            
-            <div className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              <span>{post.readTime} read</span>
-            </div>
-          </div>
-        </motion.div>
-      </header>
-      
-      {/* Cover image */}
-      <div className="container mx-auto max-w-5xl px-4 mb-12">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="relative aspect-[21/9] overflow-hidden rounded-2xl shadow-xl"
-        >
-          <img 
-            src={post.coverImage} 
-            alt={post.title}
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-      </div>
-      
-      {/* Main content area */}
-      <div className="container mx-auto max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-12 mb-20">
-        {/* Article content - Improved typography and spacing */}
-        <motion.article 
-          id="article-content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="prose prose-lg max-w-none prose-h2:text-2xl prose-h2:font-bold prose-h2:text-deewan-dark prose-h2:mt-10 prose-h2:mb-4 
-                     prose-h3:text-xl prose-h3:font-semibold prose-h3:text-deewan-dark/90 prose-h3:mt-8 prose-h3:mb-3
-                     prose-p:text-deewan-dark/90 prose-p:leading-relaxed prose-p:mb-5
-                     prose-ul:my-5 prose-li:my-2 prose-li:text-deewan-dark/80
-                     prose-a:text-deewan-primary prose-a:no-underline hover:prose-a:underline 
-                     prose-blockquote:border-deewan-primary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
-                     prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8"
-        >
-          {post.content}
-        </motion.article>
-        
-        {/* Sidebar - Now with author card instead of share section */}
-        <aside className="hidden lg:block">
-          <TableOfContents headings={headings} />
-          
-          {/* Author card - replacing share section */}
-          <div className="sticky top-[calc(32px+300px)] mt-8">
-            <PostAuthor author={post.author} />
-          </div>
-        </aside>
-      </div>
-      
-      {/* Mobile share buttons - Share section remains here */}
-      <div className="container mx-auto max-w-3xl px-4 mb-12">
-        <div className="glass rounded-xl p-5 border border-gray-100">
-          <h4 className="font-bold text-center text-deewan-dark/90 mb-3 flex items-center justify-center">
-            <Share2 className="w-4 h-4 mr-2 text-deewan-primary" />
-            Share This Article
-          </h4>
-          <div className="flex justify-center gap-3">
-            <Button variant="outline" size="icon" className="w-10 h-10 rounded-full text-deewan-primary hover:text-white hover:bg-deewan-primary">
-              <Twitter className="w-4 h-4" />
-            </Button>
-            <Button variant="outline" size="icon" className="w-10 h-10 rounded-full text-blue-600 hover:text-white hover:bg-blue-600">
-              <Facebook className="w-4 h-4" />
-            </Button>
-            <Button variant="outline" size="icon" className="w-10 h-10 rounded-full text-blue-700 hover:text-white hover:bg-blue-700">
-              <Linkedin className="w-4 h-4" />
-            </Button>
-            <Button variant="outline" size="icon" className="w-10 h-10 rounded-full text-deewan-dark hover:text-white hover:bg-deewan-dark">
-              <Mail className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </div>
-      
-      {/* Related articles */}
-      <div className="container mx-auto max-w-6xl px-4 mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold text-deewan-dark mb-8 text-center">Related Articles</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {relatedPosts.map((relatedPost) => (
-            <motion.div 
-              key={relatedPost.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-            >
-              <Link to={`/blog/${relatedPost.slug}`} className="block group">
-                <article className="glass overflow-hidden rounded-xl transition-transform duration-300 group-hover:-translate-y-1 border border-gray-100">
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={relatedPost.coverImage} 
-                      alt={relatedPost.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-5">
-                    {relatedPost.category && (
-                      <span className="text-xs font-medium text-deewan-primary">{relatedPost.category}</span>
-                    )}
-                    <h3 className="font-bold text-lg text-deewan-dark mt-1 mb-2 group-hover:text-deewan-primary transition-colors">
-                      {relatedPost.title}
-                    </h3>
-                    <p className="text-sm text-deewan-dark/70 mb-3 line-clamp-2">
-                      {relatedPost.excerpt}
-                    </p>
-                    <div className="flex justify-between items-center text-xs text-deewan-dark/60">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {relatedPost.publishDate}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {relatedPost.readTime}
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-      
+      <BlogBreadcrumbs post={post} />
+      <BlogPostHeader post={post} />
+      <BlogCoverImage post={post} />
+      <BlogMainContent 
+        post={post}
+        headings={headings}
+        TableOfContents={TableOfContentsInline}
+      />
+      <BlogShareSection />
+      <BlogRelatedArticles relatedPosts={relatedPosts} />
       <Footer />
     </div>
   );
