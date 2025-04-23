@@ -50,11 +50,9 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && <nav className="xl:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in">
             <MobileProductsAccordion />
-            <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">APIs</Link>
-            <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</Link>
             <Link to="/about" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">About Us</Link>
             <Link to="/blog" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Blog</Link>
-            <Link to="#contact" className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-lg shadow-md text-center hover:bg-deewan-primary/90 transition-all duration-300">Contact Us</Link>
+            <Link to="/contact" className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-lg shadow-md text-center hover:bg-deewan-primary/90 transition-all duration-300">Contact Us</Link>
           </nav>}
       </div>
     </header>;
