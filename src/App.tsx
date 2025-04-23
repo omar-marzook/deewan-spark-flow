@@ -36,8 +36,10 @@ const App = () => {
             {/* About Us page */}
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
-            {/* Blog page */}
+            {/* Blog listing page */}
             <Route path="/blog" element={<BlogPage />} />
+            {/* Blog post page */}
+            <Route path="/blog/:slug" element={<import('@/pages/BlogPostPage').then(m => m.default)} />
             {/* Add a direct route to ProductPage */}
             <Route path="/product" element={<ProductPage />} />
             {/* Redirect /product to /products/messaging-api */}
