@@ -23,7 +23,7 @@ const ProductUseCases: React.FC<ProductUseCasesProps> = ({
             <span className="text-sm font-medium text-deewan-dark/80">Use Cases</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">
             Industry Solutions
           </h2>
           
