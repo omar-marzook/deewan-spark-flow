@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Twitter, Linkedin, Mail, Facebook, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -122,6 +121,7 @@ const PostContent = ({ content, children }: { content: any[]; children?: React.R
       </motion.article>
     );
   }
+  
   // Existing rendering as fallback
   return (
     <motion.article
@@ -129,7 +129,7 @@ const PostContent = ({ content, children }: { content: any[]; children?: React.R
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-p:text-deewan-dark prose-blockquote:rounded-xl prose-blockquote:bg-deewan-secondary/10 prose-blockquote:p-6 prose-blockquote:font-medium prose-blockquote:text-deewan-secondary/90 prose-img:rounded-lg prose-img:my-6"
+      className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mb-4 prose-h3:text-xl prose-h3:mb-3 prose-p:text-deewan-dark prose-p:mb-5 prose-blockquote:rounded-xl prose-blockquote:bg-deewan-secondary/10 prose-blockquote:p-6 prose-blockquote:font-medium prose-blockquote:text-deewan-secondary/90 prose-img:rounded-lg prose-img:my-6"
       style={{
         fontFamily:
           "'Gilroy', 'Poppins', ui-sans-serif, system-ui, sans-serif"
@@ -145,7 +145,7 @@ const PostContent = ({ content, children }: { content: any[]; children?: React.R
             case "quote":
               return (
                 <blockquote key={idx} className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-secondary/10 border-l-4 border-deewan-primary">
-                  “{item.text}”
+                  "{item.text}"
                   <footer className="mt-2 text-deewan-primary font-medium">
                     {item.author}
                   </footer>

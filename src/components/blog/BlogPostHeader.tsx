@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Calendar, Clock } from "lucide-react";
 
 const BlogPostHeader = ({ post }) => (
-  <header className="container mx-auto max-w-6xl px-4 pt-24 pb-6">
+  <header className="container mx-auto max-w-6xl px-4 pt-8 pb-6">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}

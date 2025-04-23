@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/breadcrumb";
 
 const BlogBreadcrumbs = ({ post }) => (
-  <div className="bg-white/80 backdrop-blur-sm sticky top-16 z-40 py-3 border-b border-gray-100 shadow-sm mt-1">
+  <div className="bg-white shadow-sm border-b border-gray-100 pt-20 pb-3">
     <div className="container mx-auto max-w-6xl px-4">
       <Breadcrumb>
         <BreadcrumbList>

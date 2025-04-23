@@ -1,6 +1,5 @@
 
 import React from "react";
-import PostAuthor from "./PostAuthor";
 
 // This expects these props: post, headings, TableOfContents
 const BlogMainContent = ({ post, headings, TableOfContents }) => (
@@ -19,9 +18,6 @@ const BlogMainContent = ({ post, headings, TableOfContents }) => (
     </article>
     <aside className="hidden lg:block">
       <TableOfContents headings={headings} />
-      <div className="sticky top-[calc(32px+300px)] mt-8">
-        <PostAuthor author={post.author} />
-      </div>
     </aside>
   </div>
 );
