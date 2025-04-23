@@ -1,12 +1,14 @@
-
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PostHero from "@/components/blog/PostHero";
-import PostContent from "@/components/blog/PostContent";
+import PostContent, { useHeadingData } from "@/components/blog/PostContent";
 import PostAuthor from "@/components/blog/PostAuthor";
 import RelatedPosts from "@/components/blog/RelatedPosts";
+import TableOfContentsSticky from "@/components/blog/TableOfContentsSticky";
+import ReadingProgress from "@/components/blog/ReadingProgress";
+import { ChevronRight } from "lucide-react";
 
 const BlogPostPage = () => {
   // For now, use hardcoded dummy content & images. Will be dynamic later.
@@ -44,7 +46,7 @@ const BlogPostPage = () => {
       {
         type: "image",
         src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80&auto=format&fit=crop",
-        caption: "Seamless omnichannel delivery through one API"
+        caption: "Seamless omnichannel omnichannel delivery through one API"
       },
       {
         type: "quote",
@@ -82,39 +84,64 @@ const BlogPostPage = () => {
     }
   ];
 
+  // Generate ToC and hydrated article from content
+  const { hydratedContent, headings } = useHeadingData(post.content);
+
   return (
     <div className="min-h-screen flex flex-col bg-white/90">
       <Navbar />
+
       <main className="flex-grow">
         {/* Glassy Hero / Meta */}
         <PostHero post={post} />
 
-        {/* Hero Main Image */}
-        <div className="container mx-auto relative z-10 -mt-10 mb-12 px-4 md:px-0">
-          <div className="overflow-hidden rounded-3xl shadow-xl glass">
-            <img
-              src={post.coverImage}
-              alt={post.title}
-              className="w-full h-80 md:h-[460px] object-cover"
-              loading="eager"
-            />
-          </div>
+        {/* Breadcrumbs */}
+        <div className="container mx-auto max-w-3xl px-4 md:px-0 -mt-10 z-30 relative">
+          <nav className="text-sm font-medium flex items-center gap-1 mb-5 text-deewan-dark/60" aria-label="Breadcrumb">
+            <Link to="/" className="hover:underline hover:text-deewan-primary transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <Link to="/blog" className="hover:underline hover:text-deewan-primary transition-colors">Blog</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-deewan-dark/80 truncate">{post.title}</span>
+          </nav>
         </div>
 
-        {/* Blog body content area */}
-        <section className="container mx-auto max-w-3xl mb-12 px-4 md:px-0">
-          <PostContent content={post.content} />
-        </section>
+        <div className="container mx-auto max-w-7xl px-4 md:px-0 grid grid-cols-1 xl:grid-cols-[1fr_3fr_0.7fr] gap-8 xl:gap-12">
+          {/* ToC Sidebar (left, show only on xl+) */}
+          <div className="hidden xl:block pt-12">
+            <TableOfContentsSticky headings={headings} />
+          </div>
 
-        {/* Author info */}
-        <section className="container mx-auto max-w-2xl mb-16 px-4 md:px-0">
-          <PostAuthor author={post.author} />
-        </section>
+          {/* Main Content */}
+          <section id="blog-content" className="col-span-1 xl:col-span-1 2xl:pr-12 mb-8">
+            {/* Hero Main Image */}
+            <div className="relative z-10 -mt-10 mb-10 rounded-3xl shadow-xl glass overflow-hidden">
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                className="w-full h-80 md:h-[420px] object-cover"
+                loading="eager"
+              />
+            </div>
+            {/* Blog body content area */}
+            <div className="max-w-3xl mx-auto mb-12 relative">
+              <PostContent content={post.content} children={hydratedContent} />
+            </div>
+            {/* Author info */}
+            <section className="max-w-2xl mx-auto mb-16">
+              <PostAuthor author={post.author} />
+            </section>
+            {/* Related posts */}
+            <section className="max-w-6xl mx-auto mb-28">
+              <RelatedPosts posts={relatedPosts} />
+            </section>
+          </section>
 
-        {/* Related posts */}
-        <section className="container mx-auto max-w-6xl px-4 md:px-0 mb-28">
-          <RelatedPosts posts={relatedPosts} />
-        </section>
+          {/* Reading progress (right, show only on xl+) */}
+          <div className="hidden xl:flex flex-col pt-28 items-center">
+            <ReadingProgress targetSelector="#blog-content" />
+          </div>
+        </div>
       </main>
       <Footer />
     </div>
