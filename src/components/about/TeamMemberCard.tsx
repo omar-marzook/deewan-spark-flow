@@ -2,7 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface TeamMemberCardProps {
+// Define the props properly to match how the component is being used in OurTeam.tsx
+export interface TeamMemberCardProps {
   image: string;
   name: string;
   position: string;

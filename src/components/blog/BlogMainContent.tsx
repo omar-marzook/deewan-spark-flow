@@ -46,8 +46,8 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({ post, headings, Table
           const headingIndex = headings.findIndex(h => h.text === childProps.children);
           // Clone the element with the new id prop
           return React.cloneElement(child, { 
-            ...child.props,
-            id: `heading-${headingIndex}`
+            id: `heading-${headingIndex}`,
+            ...child.props
           });
         }
         return child;

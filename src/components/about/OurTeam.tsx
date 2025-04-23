@@ -63,7 +63,14 @@ const OurTeam = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {teamMembers.map((member, index) => (
-            <TeamMemberCard key={index} member={member} index={index} />
+            <TeamMemberCard 
+              key={index} 
+              image={member.image}
+              name={member.name}
+              position={member.position}
+              description={member.description}
+              delay={index * 0.1} 
+            />
           ))}
         </div>
 
@@ -80,11 +87,7 @@ const OurTeam = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {departments.map((department, index) => (
-            <DepartmentSection key={index} department={department} index={index} />
-          ))}
-        </div>
+        <DepartmentSection departments={departments} />
       </div>
     </section>
   );

@@ -3,14 +3,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, MessageSquareText, HeartHandshake, LineChart } from 'lucide-react';
 
-interface Department {
+// Update the interface to accept departments as an array
+export interface Department {
   title: string;
   icon: React.ReactNode;
   roles: string[];
-  description?: string; // Add optional description property
+  description?: string;
 }
 
-interface DepartmentSectionProps {
+export interface DepartmentSectionProps {
   departments: Department[];
 }
 
