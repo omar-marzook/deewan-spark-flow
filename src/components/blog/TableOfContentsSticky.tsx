@@ -18,22 +18,24 @@ const TableOfContentsSticky: React.FC<TableOfContentsStickyProps> = ({
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 150;
-      
-      // Find the section that is currently in view
+
+      let found = false;
       for (let i = headings.length - 1; i >= 0; i--) {
         const heading = headings[i];
         const element = document.getElementById(heading.id);
-        
+
         if (element && element.offsetTop <= scrollPosition) {
           setActiveId(heading.id);
+          found = true;
           break;
         }
       }
+      if (!found) setActiveId(null);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initialize on component mount
-    
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, [headings]);
 
@@ -69,7 +71,7 @@ const TableOfContentsSticky: React.FC<TableOfContentsStickyProps> = ({
           Table of Contents
         </span>
       </motion.div>
-      
+
       <ScrollArea className="max-h-[calc(100vh-260px)]">
         <ul className="space-y-1 pr-4">
           {headings.map((heading) => (
