@@ -7,6 +7,7 @@ interface Department {
   title: string;
   icon: React.ReactNode;
   roles: string[];
+  description?: string; // Add optional description property
 }
 
 interface DepartmentSectionProps {
@@ -73,7 +74,9 @@ const DepartmentSection = ({ departments }: DepartmentSectionProps) => {
               
               <div>
                 <h4 className="text-xl font-bold mb-3 text-deewan-dark">{department.title}</h4>
-                <p className="text-deewan-dark/70">{department.description || department.roles.join(', ')}</p>
+                <p className="text-deewan-dark/70">
+                  {department.description || department.roles.join(', ')}
+                </p>
               </div>
             </div>
           </motion.div>
