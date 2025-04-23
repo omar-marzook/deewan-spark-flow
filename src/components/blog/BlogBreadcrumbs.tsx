@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/breadcrumb";
 
 const BlogBreadcrumbs = ({ post }) => (
-  <div className="container mx-auto max-w-6xl px-4 pt-6 pb-0">
+  <div className="container mx-auto max-w-6xl px-4">
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
