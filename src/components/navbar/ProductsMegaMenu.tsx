@@ -8,7 +8,7 @@ const ProductColumn = ({
   title: string;
   items: Product[];
 }) => <div className="flex-1 min-w-[280px]">
-    <h3 className="font-display font-bold text-lg mb-4 text-deewan-dark">{title}</h3>
+    <h3 className="font-display font-bold mb-4 text-deewan-dark text-base">{title}</h3>
     <div className="space-y-2">
       {items.map(product => <motion.div key={product.slug} className="group" whileHover={{
       scale: 1.02
@@ -19,7 +19,7 @@ const ProductColumn = ({
           <Link to={`/products/${product.slug}`} className="flex items-start p-2 rounded-lg hover:bg-white/10 transition-colors">
             <product.icon className="w-5 h-5 mt-1 text-deewan-primary flex-shrink-0" />
             <div className="ml-3">
-              <h4 className="font-display text-deewan-dark group-hover:text-deewan-primary transition-colors text-lg font-medium">
+              <h4 className="font-display text-deewan-dark group-hover:text-deewan-primary transition-colors font-medium text-lg">
                 {product.name}
               </h4>
               <p className="text-sm text-deewan-dark/70 font-normal">
