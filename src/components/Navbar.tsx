@@ -34,11 +34,9 @@ const Navbar = () => {
               </button>
               {isMegaMenuOpen && <ProductsMegaMenu />}
             </div>
-            <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">APIs</Link>
-            <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</Link>
             <Link to="/about" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">About Us</Link>
             <Link to="/blog" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Blog</Link>
-            <Link to="#contact" className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-lg shadow-md hover:bg-deewan-primary/90 transition-all duration-300">Contact Us</Link>
+            <Link to="/contact" className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-lg shadow-md hover:bg-deewan-primary/90 transition-all duration-300">Contact Us</Link>
           </nav>
 
           {/* Mobile Menu Button */}
