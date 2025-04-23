@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductsMegaMenu from './navbar/ProductsMegaMenu';
-import { products } from './navbar/products-data';
+import MobileProductsAccordion from './navbar/MobileProductsAccordion';
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,22 +49,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && <nav className="xl:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in">
-            <div className="font-medium text-deewan-dark">Products</div>
-            {/* Mobile Products Menu */}
-            <div className="pl-4 space-y-2">
-              <div className="mb-3">
-                <div className="font-medium text-sm text-deewan-dark/70">Applications</div>
-                {products.applications.map(product => <Link key={product.slug} to={`/products/${product.slug}`} className="block py-2 text-deewan-dark hover:text-deewan-primary transition-colors">
-                    {product.name}
-                  </Link>)}
-              </div>
-              <div>
-                <div className="font-medium text-sm text-deewan-dark/70">Communication APIs</div>
-                {products.communicationAPIs.map(product => <Link key={product.slug} to={`/products/${product.slug}`} className="block py-2 text-deewan-dark hover:text-deewan-primary transition-colors">
-                    {product.name}
-                  </Link>)}
-              </div>
-            </div>
+            <MobileProductsAccordion />
             <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">APIs</Link>
             <Link to="#" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">Industries</Link>
             <Link to="/about" className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors">About Us</Link>
@@ -73,4 +59,5 @@ const Navbar = () => {
       </div>
     </header>;
 };
+
 export default Navbar;
