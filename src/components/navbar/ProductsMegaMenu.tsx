@@ -22,7 +22,7 @@ const ProductColumn = ({
               <h4 className="font-display text-deewan-dark group-hover:text-deewan-primary transition-colors font-medium text-lg">
                 {product.name}
               </h4>
-              <p className="text-sm text-deewan-dark/70 font-normal">
+              <p className="text-deewan-dark/70 font-normal text-xs">
                 {product.description}
               </p>
             </div>
