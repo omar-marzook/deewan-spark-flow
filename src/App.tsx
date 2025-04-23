@@ -8,10 +8,11 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import ProductPage from "./pages/ProductPage"; // Add import for ProductPage
+import ProductPage from "./pages/ProductPage";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
-import BlogPage from "./pages/BlogPage"; // Add import for BlogPage
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 
 const queryClient = new QueryClient();
 
@@ -39,7 +40,7 @@ const App = () => {
             {/* Blog listing page */}
             <Route path="/blog" element={<BlogPage />} />
             {/* Blog post page */}
-            <Route path="/blog/:slug" element={<import('@/pages/BlogPostPage').then(m => m.default)} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             {/* Add a direct route to ProductPage */}
             <Route path="/product" element={<ProductPage />} />
             {/* Redirect /product to /products/messaging-api */}
