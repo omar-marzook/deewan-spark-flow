@@ -12,10 +12,10 @@ import ReadingProgress from "@/components/blog/ReadingProgress";
 import { ChevronRight } from "lucide-react";
 
 const BlogPostPage = () => {
-  // For now, use hardcoded dummy content & images. Will be dynamic later.
+  // Use dynamic route param for future integration.
   const { slug } = useParams();
 
-  // Placeholder post data (simulate dynamic data)
+  // Placeholder post data for demonstration.
   const post = {
     title: "How Intelligent Messaging Drives Modern Business Growth",
     category: "Insights",
@@ -61,7 +61,7 @@ const BlogPostPage = () => {
     ]
   };
 
-  // Placeholder related posts
+  // Example related posts (stub data)
   const relatedPosts = [
     {
       id: 1,
@@ -85,19 +85,16 @@ const BlogPostPage = () => {
     }
   ];
 
-  // Generate ToC and hydrated article from content
+  // Generate hydrated content and ToC headings.
   const { hydratedContent, headings } = useHeadingData(post.content);
 
   return (
     <div className="min-h-screen flex flex-col bg-white/90">
       <Navbar />
-
-      {/* Breadcrumb moved absolutely to the top, styled for clarity */}
+      {/* Breadcrumb (distinct & clear, glassy, always visible at top) */}
       <div className="w-full bg-transparent z-40 pt-4 pb-2">
         <nav
-          className="container mx-auto max-w-4xl px-4 md:px-0 text-xs sm:text-sm font-medium flex items-center gap-1 text-deewan-dark/60 bg-white/70
-          glass rounded-xl shadow border border-white/30
-          py-2 sm:py-3 px-4 mb-6 sm:mb-0"
+          className="container mx-auto max-w-4xl px-4 md:px-0 text-xs sm:text-sm font-medium flex items-center gap-1 text-deewan-dark/60 bg-white/70 glass rounded-xl shadow border border-white/30 py-2 sm:py-3 px-4 mb-6 sm:mb-0"
           aria-label="Breadcrumb"
           style={{
             fontFamily: "'Gilroy', 'Poppins', sans-serif",
@@ -113,18 +110,18 @@ const BlogPostPage = () => {
       </div>
 
       <main className="flex-grow">
-        {/* Glassy Hero / Meta */}
+        {/* Hero section */}
         <PostHero post={post} />
 
         <div className="container mx-auto max-w-7xl px-4 md:px-0 grid grid-cols-1 xl:grid-cols-[1fr_3fr_0.7fr] gap-8 xl:gap-12">
-          {/* ToC Sidebar (left, show only on xl+) */}
+          {/* Table of Contents Sidebar (sticky, glassy, only on xl+) */}
           <div className="hidden xl:block pt-12">
             <TableOfContentsSticky headings={headings} />
           </div>
 
-          {/* Main Content */}
+          {/* Blog Content Main Area */}
           <section id="blog-content" className="col-span-1 xl:col-span-1 2xl:pr-12 mb-8">
-            {/* Hero Main Image */}
+            {/* Hero Main Article Image (rounded, glass look) */}
             <div className="relative z-10 -mt-10 mb-10 rounded-3xl shadow-xl glass overflow-hidden">
               <img
                 src={post.coverImage}
@@ -133,21 +130,21 @@ const BlogPostPage = () => {
                 loading="eager"
               />
             </div>
-            {/* Blog body content area */}
+            {/* Article Content with proper vertical spacing and hierarchy */}
             <div className="max-w-3xl mx-auto mb-12 relative">
               <PostContent content={post.content} children={hydratedContent} />
             </div>
-            {/* Author info */}
+            {/* Author Card */}
             <section className="max-w-2xl mx-auto mb-16">
               <PostAuthor author={post.author} />
             </section>
-            {/* Related posts */}
+            {/* Related Posts */}
             <section className="max-w-6xl mx-auto mb-28">
               <RelatedPosts posts={relatedPosts} />
             </section>
           </section>
 
-          {/* Reading progress (right, show only on xl+) */}
+          {/* Reading Progress Bar (sticky, right, only on xl+) */}
           <div className="hidden xl:flex flex-col pt-28 items-center">
             <ReadingProgress targetSelector="#blog-content" />
           </div>
@@ -159,3 +156,4 @@ const BlogPostPage = () => {
 };
 
 export default BlogPostPage;
+
