@@ -27,8 +27,8 @@ const ProductColumn = ({ title, items, onSelect }: ProductColumnProps) => (
               onSelect(`/products/${product.slug}`);
             }}
           >
-            <product.icon className="group w-5 h-5 mt-1 text-deewan-primary flex-shrink-0" />
-            <div className="ml-3">
+            <product.icon className="w-5 h-5 mt-1 text-deewan-primary flex-shrink-0" />
+            <div className="group ml-3">
               <h4 className="font-display text-deewan-dark group-hover:text-deewan-primary transition-colors font-medium text-lg">
                 {product.name}
               </h4>
