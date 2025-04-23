@@ -7,15 +7,16 @@ interface TeamMemberCardProps {
   name: string;
   position: string;
   description: string;
+  delay?: number; // Added optional delay prop
 }
 
-const TeamMemberCard = ({ image, name, position, description }: TeamMemberCardProps) => {
+const TeamMemberCard = ({ image, name, position, description, delay = 0 }: TeamMemberCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, delay: delay }}
       className="glass p-6 rounded-xl hover:shadow-lg transition-all duration-300 group"
     >
       <div className="relative mb-6 overflow-hidden rounded-xl aspect-square">
