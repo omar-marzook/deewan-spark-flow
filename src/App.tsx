@@ -11,6 +11,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductPage from "./pages/ProductPage"; // Add import for ProductPage
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
+import BlogPage from "./pages/BlogPage"; // Add import for BlogPage
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,8 @@ const App = () => {
             {/* About Us page */}
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
+            {/* Blog page */}
+            <Route path="/blog" element={<BlogPage />} />
             {/* Add a direct route to ProductPage */}
             <Route path="/product" element={<ProductPage />} />
             {/* Redirect /product to /products/messaging-api */}
