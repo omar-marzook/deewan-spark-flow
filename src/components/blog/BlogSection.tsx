@@ -1,9 +1,8 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import BlogCard from "./blog/BlogCard";
+import BlogCard from "./BlogCard";
 
 // Sample blog post data (placeholder content)
 const blogPosts = [

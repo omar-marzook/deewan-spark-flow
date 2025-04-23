@@ -1,8 +1,26 @@
 
 import React from "react";
 
-// This expects these props: post, headings, TableOfContents
-const BlogMainContent = ({ post, headings, TableOfContents }) => (
+interface BlogMainContentProps {
+  post: {
+    content: React.ReactElement[];
+    [key: string]: any;
+  };
+  headings: {
+    id: string;
+    text: string;
+    level: number;
+  }[];
+  TableOfContents: React.ComponentType<{
+    headings: {
+      id: string;
+      text: string;
+      level: number;
+    }[];
+  }>;
+}
+
+const BlogMainContent: React.FC<BlogMainContentProps> = ({ post, headings, TableOfContents }) => (
   <div className="container mx-auto max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-12 mb-20">
     <article
       id="article-content"
@@ -23,7 +41,7 @@ const BlogMainContent = ({ post, headings, TableOfContents }) => (
           (child.type === 'h2' || child.type === 'h3')
         ) {
           // Ensure IDs are deterministic and match TOC
-          const id = `heading-${headings.findIndex(h => h.text === child.props.children)}`;
+          const id = `heading-${headings.findIndex(h => h.text === (child.props as any).children)}`;
           return React.cloneElement(child, { id: id });
         }
         return child;
