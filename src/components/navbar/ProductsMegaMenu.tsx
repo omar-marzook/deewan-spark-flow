@@ -45,7 +45,7 @@ const ProductsMegaMenu = () => {
       }} transition={{
         duration: 0.2
       }} className="container mx-auto p-6">
-          <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex flex-col md:flex-row gap-4">
             <ProductColumn title="Applications" items={products.applications} />
             <div className="hidden md:block w-px bg-white/10" />
             <ProductColumn title="Communication APIs" items={products.communicationAPIs} />
