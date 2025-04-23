@@ -16,7 +16,7 @@ const ProductColumn = ({ title, items }: { title: string; items: Product[] }) =>
         >
           <Link
             to={`/products/${product.slug}`}
-            className="flex items-start p-3 rounded-lg hover:bg-white/10 transition-colors"
+            className="w-fit flex items-start p-3 rounded-lg hover:bg-white/10 transition-colors"
           >
             <product.icon className="w-5 h-5 mt-1 text-deewan-primary flex-shrink-0" />
             <div className="ml-3">
