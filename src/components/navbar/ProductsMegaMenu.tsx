@@ -31,7 +31,7 @@ const ProductColumn = ({
     </div>
   </div>;
 const ProductsMegaMenu = () => {
-  return <div className="absolute left-0 w-full top-full pt-2">
+  return <div className="absolute left-0 w-full top-full pt-4">
       <div className="glass mx-4 rounded-xl overflow-hidden border border-white/20 w-fit">
         <motion.div initial={{
         opacity: 0,
