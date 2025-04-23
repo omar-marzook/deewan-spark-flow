@@ -1,8 +1,8 @@
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { List } from "lucide-react";
 
-// Helper to create slugs/IDs from headings
 function slugify(text: string) {
   return text
     .toLowerCase()
@@ -21,7 +21,6 @@ const TableOfContentsSticky: React.FC<TableOfContentsStickyProps> = ({
 }) => {
   const [activeId, setActiveId] = useState<string | null>(null);
 
-  // Scroll spy logic
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -43,7 +42,6 @@ const TableOfContentsSticky: React.FC<TableOfContentsStickyProps> = ({
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
-      // Small offset for sticky headers
       window.scrollBy({ top: -80, behavior: "smooth" });
     }
   };
@@ -52,18 +50,26 @@ const TableOfContentsSticky: React.FC<TableOfContentsStickyProps> = ({
 
   return (
     <nav
-      className="sticky top-28 z-30 w-72 max-h-[70vh] overflow-auto glass border border-white/30 rounded-2xl shadow-xl p-6 hidden xl:block"
+      className="sticky top-28 z-30 w-72 max-h-[70vh] overflow-auto rounded-2xl shadow-xl p-6 xl:block hidden glass"
       aria-label="Table of contents"
-      style={{ fontFamily: "'Gilroy', 'Poppins', sans-serif" }}
+      style={{
+        fontFamily: "'Gilroy', 'Poppins', sans-serif",
+        backdropFilter: "blur(18px)",
+        background: "rgba(255,255,255,0.56)",
+        border: "1.5px solid rgba(255,255,255,0.28)"
+      }}
     >
-      <motion.h4
-        className="font-bold text-lg text-deewan-dark mb-4"
+      <motion.div
+        className="flex items-center gap-3 mb-4"
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        Table of Contents
-      </motion.h4>
+        <List className="text-deewan-primary w-5 h-5" />
+        <span className="font-bold text-lg text-deewan-dark">
+          Table of Contents
+        </span>
+      </motion.div>
       <ul className="space-y-1">
         {headings.map((h) => (
           <li key={h.id} className="w-full">

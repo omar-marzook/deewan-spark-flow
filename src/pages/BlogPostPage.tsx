@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -91,20 +92,29 @@ const BlogPostPage = () => {
     <div className="min-h-screen flex flex-col bg-white/90">
       <Navbar />
 
+      {/* Breadcrumb moved absolutely to the top, styled for clarity */}
+      <div className="w-full bg-transparent z-40 pt-4 pb-2">
+        <nav
+          className="container mx-auto max-w-4xl px-4 md:px-0 text-xs sm:text-sm font-medium flex items-center gap-1 text-deewan-dark/60 bg-white/70
+          glass rounded-xl shadow border border-white/30
+          py-2 sm:py-3 px-4 mb-6 sm:mb-0"
+          aria-label="Breadcrumb"
+          style={{
+            fontFamily: "'Gilroy', 'Poppins', sans-serif",
+            position: "relative"
+          }}
+        >
+          <Link to="/" className="hover:underline hover:text-deewan-primary transition-colors">Home</Link>
+          <ChevronRight className="w-4 h-4 opacity-50" />
+          <Link to="/blog" className="hover:underline hover:text-deewan-primary transition-colors">Blog</Link>
+          <ChevronRight className="w-4 h-4 opacity-50" />
+          <span className="text-deewan-dark/80 truncate">{post.title}</span>
+        </nav>
+      </div>
+
       <main className="flex-grow">
         {/* Glassy Hero / Meta */}
         <PostHero post={post} />
-
-        {/* Breadcrumbs */}
-        <div className="container mx-auto max-w-3xl px-4 md:px-0 -mt-10 z-30 relative">
-          <nav className="text-sm font-medium flex items-center gap-1 mb-5 text-deewan-dark/60" aria-label="Breadcrumb">
-            <Link to="/" className="hover:underline hover:text-deewan-primary transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4" />
-            <Link to="/blog" className="hover:underline hover:text-deewan-primary transition-colors">Blog</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-deewan-dark/80 truncate">{post.title}</span>
-          </nav>
-        </div>
 
         <div className="container mx-auto max-w-7xl px-4 md:px-0 grid grid-cols-1 xl:grid-cols-[1fr_3fr_0.7fr] gap-8 xl:gap-12">
           {/* ToC Sidebar (left, show only on xl+) */}
@@ -119,7 +129,7 @@ const BlogPostPage = () => {
               <img
                 src={post.coverImage}
                 alt={post.title}
-                className="w-full h-80 md:h-[420px] object-cover"
+                className="w-full h-80 md:h-[420px] object-cover rounded-3xl"
                 loading="eager"
               />
             </div>
