@@ -10,8 +10,7 @@ interface BlogCardProps {
     id: number;
     slug: string;
     title: string;
-    excerpt?: string;
-    description?: string; // support both
+    excerpt: string;
     date?: string;
     publishDate?: string; // support both
     readTime: string;
@@ -25,8 +24,6 @@ interface BlogCardProps {
 const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
   const imageSrc = post.imageUrl || post.coverImage || '';
   const date = post.date || post.publishDate || '';
-  const excerpt = post.excerpt || post.description || '';
-  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -47,6 +44,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
         "overflow-hidden bg-gray-100",
         featured ? "md:w-1/2 h-full" : "aspect-video"
       )}>
+        {/* No hover/zoom effect for the image */}
         <img
           src={imageSrc}
           alt={post.title}
@@ -66,9 +64,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
           "font-bold text-deewan-dark mb-2 hover:text-deewan-primary transition-colors break-words",
           featured ? "text-2xl md:text-3xl" : "text-xl"
         )}>
-          <Link to={`/blog/${post.slug}`}>
-            {post.title}
-          </Link>
+          {post.title}
         </h3>
         <div className="flex items-center text-deewan-gray text-sm mb-3">
           <span>{date}</span>
@@ -79,7 +75,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
           </span>
         </div>
         <p className="text-deewan-gray mb-4 line-clamp-3">
-          {excerpt}
+          {post.excerpt}
         </p>
         <div className="mt-auto">
           <Link

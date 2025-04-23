@@ -1,7 +1,6 @@
 
 import React from "react";
 import { ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -12,27 +11,23 @@ import {
 } from "@/components/ui/breadcrumb";
 
 const BlogBreadcrumbs = ({ post }) => (
-  <div className="container mx-auto max-w-6xl px-4 pt-4 pb-2">
-    <Breadcrumb className="text-sm">
-      <BreadcrumbList className="text-deewan-gray/70">
+  <div className="container mx-auto max-w-6xl px-4 pt-6 pb-0">
+    <Breadcrumb>
+      <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link to="/" className="hover:text-deewan-primary transition-colors">Home</Link>
-          </BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <ChevronRight className="h-3.5 w-3.5" />
+          <ChevronRight className="h-4 w-4" />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link to="/blog" className="hover:text-deewan-primary transition-colors">Blog</Link>
-          </BreadcrumbLink>
+          <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <ChevronRight className="h-3.5 w-3.5" />
+          <ChevronRight className="h-4 w-4" />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbPage className="text-deewan-dark/80 font-medium">{post.title}</BreadcrumbPage>
+          <BreadcrumbPage>{post.title}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

@@ -11,7 +11,7 @@ import BlogCoverImage from "@/components/blog/BlogCoverImage";
 import BlogMainContent from "@/components/blog/BlogMainContent";
 import BlogShareSection from "@/components/blog/BlogShareSection";
 import BlogRelatedArticles from "@/components/blog/BlogRelatedArticles";
-import TableOfContentsSticky from "@/components/blog/TableOfContentsSticky";
+import TableOfContentsInline from "@/components/blog/TableOfContentsInline";
 import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
 import { ArrowLeft } from "lucide-react";
 
@@ -209,18 +209,16 @@ const BlogPostPage = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
       <Navbar />
       <ReadingProgressBar />
-      <main>
-        <BlogBreadcrumbs post={post} />
-        <BlogPostHeader post={post} />
-        <BlogCoverImage post={post} />
-        <BlogMainContent 
-          post={post}
-          headings={headings}
-          TableOfContents={TableOfContentsSticky}
-        />
-        <BlogShareSection title={post.title} />
-        <BlogRelatedArticles relatedPosts={relatedPosts} />
-      </main>
+      <BlogBreadcrumbs post={post} />
+      <BlogPostHeader post={post} />
+      <BlogCoverImage post={post} />
+      <BlogMainContent 
+        post={post}
+        headings={headings}
+        TableOfContents={TableOfContentsInline}
+      />
+      <BlogShareSection />
+      <BlogRelatedArticles relatedPosts={relatedPosts} />
       <Footer />
     </div>
   );
