@@ -30,7 +30,7 @@ const ProductColumn = ({ title, items, onSelect }: ProductColumnProps) => (
           >
             <product.icon className="w-5 h-5 mt-1 text-deewan-primary flex-shrink-0" />
             <div className="ml-3">
-              <h4 className="font-display text-deewan-dark group-hover:text-deewan-primary transition-colors font-medium text-lg">
+              <h4 className="font-display text-deewan-dark hover:text-deewan-primary transition-colors font-medium text-lg">
                 {product.name}
               </h4>
               <p className="text-deewan-dark/70 font-normal text-xs">
