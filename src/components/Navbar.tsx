@@ -1,7 +1,9 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductsMegaMenu from './navbar/ProductsMegaMenu';
+import { products } from './navbar/products-data';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

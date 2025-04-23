@@ -1,5 +1,5 @@
 
-import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayersThree } from 'lucide-react';
+import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid } from 'lucide-react';
 
 export type Product = {
   name: string;
@@ -31,7 +31,7 @@ export const products: ProductCategories = {
       name: "Analytics Dashboard",
       description: "Real-time insights and reporting",
       slug: "analytics",
-      icon: LayersThree
+      icon: LayoutGrid
     },
     {
       name: "Integration Hub",

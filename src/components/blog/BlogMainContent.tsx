@@ -43,9 +43,12 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({ post, headings, Table
           // Type cast the props to access the children
           const childProps = child.props as { children: string };
           // Ensure IDs are deterministic and match TOC
-          const id = `heading-${headings.findIndex(h => h.text === childProps.children)}`;
+          const headingIndex = headings.findIndex(h => h.text === childProps.children);
           // Clone the element with the new id prop
-          return React.cloneElement(child, { id });
+          return React.cloneElement(child, { 
+            ...child.props,
+            id: `heading-${headingIndex}`
+          });
         }
         return child;
       })}
