@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && <nav className="md:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in">
+        {isMenuOpen && <nav className="xl:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in">
             <div className="font-medium text-deewan-dark">Products</div>
             {/* Mobile Products Menu */}
             <div className="pl-4 space-y-2">
