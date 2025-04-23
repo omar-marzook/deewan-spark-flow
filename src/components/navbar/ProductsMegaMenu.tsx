@@ -22,7 +22,7 @@ const ProductColumn = ({ title, items, onSelect }: ProductColumnProps) => (
         >
           <Link
             to={`/products/${product.slug}`}
-            className="flex items-start p-2 rounded-lg text-deewan-primary hover:text-deewan-primary hover:bg-white/10 transition-colors"
+            className="flex items-start p-2 rounded-lg text-deewan-dark hover:text-deewan-primary hover:bg-white/10 transition-colors"
             onClick={(e) => {
               e.preventDefault();
               onSelect(`/products/${product.slug}`);
