@@ -16,7 +16,7 @@ const ProductColumn = ({ title, items }: { title: string; items: Product[] }) =>
         >
           <Link
             to={`/products/${product.slug}`}
-            className="w-fit flex items-start p-3 rounded-lg hover:bg-white/10 transition-colors"
+            className="flex items-start p-3 rounded-lg hover:bg-white/10 transition-colors"
           >
             <product.icon className="w-5 h-5 mt-1 text-deewan-primary flex-shrink-0" />
             <div className="ml-3">
@@ -37,7 +37,7 @@ const ProductColumn = ({ title, items }: { title: string; items: Product[] }) =>
 const ProductsMegaMenu = () => {
   return (
     <div className="absolute left-0 w-full top-full pt-2">
-      <div className="glass mx-4 rounded-xl overflow-hidden border border-white/20">
+      <div className="glass mx-4 rounded-xl overflow-hidden border border-white/20 w-fit">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
