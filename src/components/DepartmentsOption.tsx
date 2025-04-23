@@ -1,7 +1,5 @@
-
 import React, { useRef, useEffect } from "react";
 import { Megaphone, Users, DollarSign } from "lucide-react";
-
 const departmentsData = [{
   id: 1,
   name: "Marketing",
@@ -21,11 +19,9 @@ const departmentsData = [{
   icon: <DollarSign className="h-10 w-10 text-white" />,
   color: "from-deewan-accent to-deewan-accent/80"
 }];
-
 const DepartmentsOption = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -52,12 +48,13 @@ const DepartmentsOption = () => {
       speedY: number;
       opacity: number;
     }> = [];
-    
+
     // Fix the colors format - ensure there are only 4 parameters in rgba()
-    const colors = [
-      'rgba(53, 162, 107, 0.3)',  // Primary (green)
-      'rgba(43, 108, 176, 0.3)',  // Secondary (blue)
-      'rgba(246, 196, 58, 0.2)'   // Accent (yellow)
+    const colors = ['rgba(53, 162, 107, 0.3)',
+    // Primary (green)
+    'rgba(43, 108, 176, 0.3)',
+    // Secondary (blue)
+    'rgba(246, 196, 58, 0.2)' // Accent (yellow)
     ];
 
     // Create particles
@@ -103,49 +100,6 @@ const DepartmentsOption = () => {
   }, []);
 
   // Now let's implement the JSX for the component
-  return (
-    <section className="py-20 relative overflow-hidden">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full -z-10" />
-      
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="mb-4">Empowering <span className="text-deewan-primary">Departments</span></h2>
-          <p className="text-xl text-deewan-dark">
-            Specialized communication solutions for different business departments
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {departmentsData.map((dept) => (
-            <div 
-              key={dept.id} 
-              className="relative overflow-hidden rounded-xl shadow-lg"
-              onMouseEnter={() => setHoveredCard(dept.id)}
-              onMouseLeave={() => setHoveredCard(null)}
-            >
-              <div className={`p-6 h-full bg-gradient-to-br ${dept.color} transition-all duration-300 ${
-                hoveredCard === dept.id ? 'scale-105' : ''
-              }`}>
-                <div className="bg-white/10 p-4 rounded-full inline-block mb-6">
-                  {dept.icon}
-                </div>
-                
-                <h3 className="text-2xl font-bold mb-3 text-white">{dept.name}</h3>
-                <p className="text-white/90 mb-4">{dept.description}</p>
-                
-                <a href="#" className="inline-flex items-center text-white font-medium">
-                  Learn more
-                  <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return;
 };
-
 export default DepartmentsOption;

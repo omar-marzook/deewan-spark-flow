@@ -1,20 +1,20 @@
-
 import { MapPin, Mail, Phone } from "lucide-react";
 import SocialLinks from "../footer/SocialLinks";
 import { motion } from "framer-motion";
-
 const ContactInfo = () => {
-  return (
-    <section className="py-16 relative overflow-hidden">
+  return <section className="py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" />
       
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.5
+      }} className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           {/* Left Column - Address and Contact */}
           <div className="backdrop-blur-xl bg-white/30 p-8 rounded-2xl border border-white/20 shadow-lg">
             <div className="space-y-6">
@@ -61,8 +61,6 @@ const ContactInfo = () => {
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactInfo;
