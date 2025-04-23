@@ -15,17 +15,11 @@ const RelatedPosts = ({ posts }: { posts: any[] }) => (
       Related Posts
     </motion.h2>
     <div className="grid md:grid-cols-2 gap-8">
-      {posts.map((p, i) => (
-        <motion.div
-          key={p.id}
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 * i }}
-          className="flex flex-col h-full"
-        >
-          <BlogCard post={p} />
-        </motion.div>
+      {posts.map((post, i) => (
+        <BlogCard
+          key={post.id}
+          post={post}
+        />
       ))}
     </div>
   </section>

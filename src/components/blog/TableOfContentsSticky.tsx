@@ -16,27 +16,57 @@ const TableOfContentsSticky: React.FC<TableOfContentsStickyProps> = ({
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    if (headings.length === 0) return;
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      // Find the first visible heading
+      const visibleHeadings = entries.filter(entry => entry.isIntersecting);
+      
+      if (visibleHeadings.length === 0) return;
+      
+      // Get the first visible heading that passes the threshold
+      const firstVisibleHeading = visibleHeadings.reduce((prev, current) => {
+        return (current.intersectionRatio > prev.intersectionRatio) ? current : prev;
+      }, visibleHeadings[0]);
+      
+      if (firstVisibleHeading.target.id) {
+        setActiveId(firstVisibleHeading.target.id);
+      }
+    };
+
+    // Create intersection observer
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: "-100px 0px -66%",
+      threshold: [0.1, 0.5, 0.9]
+    });
+
+    // Target all heading elements
+    headings.forEach(heading => {
+      const element = document.getElementById(heading.id);
+      if (element) observer.observe(element);
+    });
+
+    // Initial check for visible headings when page loads
+    const checkInitialVisibility = () => {
       const scrollPosition = window.scrollY + 150;
-
-      let found = false;
-      for (let i = headings.length - 1; i >= 0; i--) {
-        const heading = headings[i];
-        const element = document.getElementById(heading.id);
-
+      for (let i = 0; i < headings.length; i++) {
+        const element = document.getElementById(headings[i].id);
         if (element && element.offsetTop <= scrollPosition) {
-          setActiveId(heading.id);
-          found = true;
+          setActiveId(headings[i].id);
           break;
         }
       }
-      if (!found) setActiveId(null);
     };
+    
+    checkInitialVisibility();
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Cleanup function
+    return () => {
+      headings.forEach(heading => {
+        const element = document.getElementById(heading.id);
+        if (element) observer.unobserve(element);
+      });
+    };
   }, [headings]);
 
   const handleClick = (id: string) => {
@@ -46,6 +76,7 @@ const TableOfContentsSticky: React.FC<TableOfContentsStickyProps> = ({
         top: element.offsetTop - 120,
         behavior: "smooth"
       });
+      setActiveId(id);
     }
   };
 
@@ -78,8 +109,10 @@ const TableOfContentsSticky: React.FC<TableOfContentsStickyProps> = ({
             <li key={heading.id} className="w-full">
               <button
                 onClick={() => handleClick(heading.id)}
-                className={`block w-full text-left px-2 py-1.5 rounded text-deewan-gray hover:bg-deewan-primary/10 hover:text-deewan-primary transition-colors font-medium
-                  ${activeId === heading.id ? "bg-deewan-primary/10 text-deewan-primary" : ""}
+                className={`relative block w-full text-left px-2 py-1.5 rounded text-deewan-gray hover:bg-deewan-primary/10 hover:text-deewan-primary transition-colors font-medium
+                  ${activeId === heading.id ? 
+                    "bg-deewan-primary/10 text-deewan-primary pl-3 before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-[70%] before:w-[3px] before:bg-deewan-primary before:rounded-full" : 
+                    ""}
                   ${heading.level === 3 ? "ml-4 text-sm" : ""}
                 `}
               >

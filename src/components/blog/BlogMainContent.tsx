@@ -34,7 +34,6 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({ post, headings, Table
         prose-blockquote:border-deewan-primary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
         prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8"
     >
-      {/* Rendered content expects that all h2/h3 headings have an id in form heading-{index} */}
       {React.Children.map(post.content, (child, idx) => {
         if (
           React.isValidElement(child) &&
@@ -45,7 +44,7 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({ post, headings, Table
           // Ensure IDs are deterministic and match TOC
           const id = `heading-${headings.findIndex(h => h.text === childProps.children)}`;
           // Clone the element with the new id prop
-          return React.cloneElement(child, { id });
+          return React.cloneElement(child as React.ReactElement<any>, { id });
         }
         return child;
       })}
