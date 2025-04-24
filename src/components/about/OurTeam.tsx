@@ -24,25 +24,21 @@ const OurTeam = () => {
   }];
 
   const departments = [{
-    title: "Executive",
+    title: "Engineered to Deliver",
     icon: <Building className="text-deewan-primary" size={24} />,
-    roles: ["Chief Executive Officer", "Chief Financial Officer", "Chief Operating Officer"]
+    description: "Our engineers craft rock-solid, secure, and scalable communication infrastructure that powers real-world impact—so you can build with confidence."
   }, {
-    title: "Product Development",
+    title: "Designed for Humans",
     icon: <Code className="text-deewan-primary" size={24} />,
-    roles: ["Software Engineers", "UX/UI Designers", "Product Managers"]
+    description: "We create intuitive, frictionless communication experiences that feel second nature—fueling productivity and delight from first click to final message."
   }, {
-    title: "Customer Success",
+    title: "Customer Success is Ours",
     icon: <HeartHandshake className="text-deewan-primary" size={24} />,
-    roles: ["Account Managers", "Support Specialists", "Solution Architects"]
+    description: "From onboarding to optimization, our success team is your strategic partner—making sure you get the most out of every interaction."
   }, {
-    title: "Sales & Marketing",
+    title: "Unlock Business Growth, One Message at a Time.",
     icon: <LineChart className="text-deewan-primary" size={24} />,
-    roles: ["Business Development", "Marketing Specialists", "Market Analysts"]
-  }, {
-    title: "Communications",
-    icon: <MessageSquareText className="text-deewan-primary" size={24} />,
-    roles: ["Communication Strategists", "Content Creators", "Media Relations"]
+    description: "We help businesses turn conversations into conversions—tackling communication challenges with smart, scalable solutions."
   }];
 
   return (

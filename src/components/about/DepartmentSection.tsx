@@ -7,7 +7,7 @@ import { Code, MessageSquareText, HeartHandshake, LineChart } from 'lucide-react
 export interface Department {
   title: string;
   icon: React.ReactNode;
-  roles: string[];
+  description: string;
   description?: string;
 }
 
@@ -76,7 +76,7 @@ const DepartmentSection = ({ departments }: DepartmentSectionProps) => {
               <div>
                 <h4 className="text-xl font-bold mb-3 text-deewan-dark">{department.title}</h4>
                 <p className="text-deewan-dark/70">
-                  {department.description || department.roles.join(', ')}
+                  {department.description}
                 </p>
               </div>
             </div>
