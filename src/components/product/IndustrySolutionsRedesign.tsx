@@ -45,7 +45,7 @@ const IndustrySolutionsRedesign = () => {
       }}>
           <div className="inline-flex items-center bg-white/70 backdrop-blur-sm px-6 py-2 rounded-full shadow-sm mb-6">
             <span className="w-2 h-2 bg-deewan-secondary rounded-full mr-2"></span>
-            <span className="text-sm font-medium text-deewan-dark/80">Industry Solutions</span>
+            <span className="text-sm font-medium text-deewan-dark/80"><span className="text-deewan-primary">Industry</span> Solutions</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
