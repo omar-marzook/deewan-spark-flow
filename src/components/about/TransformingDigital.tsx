@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Globe, Shield } from 'lucide-react';
-
 const TransformingDigital = () => {
-  return (
-    <section className="py-24 relative overflow-hidden">
+  return <section className="py-24 relative overflow-hidden">
       {/* Gradient background with blur effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-deewan-primary/1 via-deewan-secondary/10 to-deewan-accent/10 pointer-events-none">
         <div className="absolute top-0 -left-32 w-96 h-96 bg-deewan-primary/20 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow"></div>
@@ -17,42 +14,31 @@ const TransformingDigital = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Transforming Digital <span className="text-deewan-primary">Communication</span>
           </h2>
-          <p className="text-lg text-deewan-dark/80 max-w-3xl mx-auto">
-            As a Saudi technology company, we're proud to contribute to the Kingdom's digital transformation journey while expanding our reach globally.
-          </p>
+          <p className="text-lg text-deewan-dark/80 max-w-3xl mx-auto">Rooted in excellence and driven by innovation, we’re proud to be part of Saudi Arabia’s digital transformation journey—while building solutions that resonate across the globe.</p>
         </div>
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {[
-            {
-              icon: <Globe className="w-8 h-8" />,
-              title: "Growing Globally",
-              description: "Building on our success in Saudi Arabia, we're expanding our reach to serve clients across the Middle East and beyond."
-            },
-            {
-              icon: <Shield className="w-8 h-8" />,
-              title: "Saudi Vision 2030",
-              description: "Aligned with Saudi Vision 2030, we're committed to digital transformation and economic diversification through innovative communication solutions."
-            },
-            {
-              icon: <Shield className="w-8 h-8" />,
-              title: "Technology Leadership",
-              description: "As a leading technology company based in Saudi Arabia, we're driving innovation in enterprise communication and digital solutions."
-            }
-          ].map((item, index) => (
-            <div 
-              key={index}
-              className="group backdrop-blur-md bg-white/10 rounded-xl p-8 border border-white/20 
-                        transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-lg"
-            >
+          {[{
+          icon: <Globe className="w-8 h-8" />,
+          title: "Growing Globally",
+          description: "Building on our success in Saudi Arabia, we're expanding our reach to serve clients across the Middle East and beyond."
+        }, {
+          icon: <Shield className="w-8 h-8" />,
+          title: "Saudi Vision 2030",
+          description: "Aligned with Saudi Vision 2030, we're committed to digital transformation and economic diversification through innovative communication solutions."
+        }, {
+          icon: <Shield className="w-8 h-8" />,
+          title: "Technology Leadership",
+          description: "As a leading technology company based in Saudi Arabia, we're driving innovation in enterprise communication and digital solutions."
+        }].map((item, index) => <div key={index} className="group backdrop-blur-md bg-white/10 rounded-xl p-8 border border-white/20 
+                        transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-lg">
               <div className="text-deewan-primary mb-6 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
               <h3 className="text-xl font-bold mb-4">{item.title}</h3>
               <p className="text-deewan-dark/70">{item.description}</p>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Additional Information with glassy effect */}
@@ -80,8 +66,6 @@ const TransformingDigital = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default TransformingDigital;
