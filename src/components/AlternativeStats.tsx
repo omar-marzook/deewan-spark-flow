@@ -9,9 +9,9 @@ const AlternativeStats = () => {
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="mb-4">Our <span className="text-deewan-primary">Impact</span> By Numbers</h2>
+          <h2 className="mb-4"><span className="text-deewan-primary">Deewan</span> in Numbers</h2>
           <p className="text-xl text-deewan-dark/80">
-            The scale and reach of our communication solutions
+            Real impact. Measurable growth
           </p>
         </div>
 
