@@ -4,21 +4,25 @@ import { History } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 const OurStory = () => {
   const timelineItems = [{
-    year: '2018',
+    year: '2010',
     title: 'Foundation',
-    description: 'Started with a mission to transform digital communication'
+    description: 'Deewan launches in Saudi Arabia, offering SMS messaging built for unlimited customer reach.'
+  }, {
+    year: '2012',
+    title: 'Expansion',
+    description: 'Quickly rising as a leading SMS platform, Deewan strengthens brand–customer relationships across the Kingdom.'
+  }, {
+    year: '2018',
+    title: 'Innovation',
+    description: 'We introduce our powerful API suite — streamlining communication with seamless integration across applications.'
   }, {
     year: '2020',
-    title: 'Expansion',
-    description: 'Launched comprehensive communication suite'
+    title: 'Elevated',
+    description: 'Our platform levels up with advanced tech and standout features, delivering world-class communication experiences.'
   }, {
-    year: '2022',
-    title: 'Innovation',
-    description: 'Introduced AI-powered solutions'
-  }, {
-    year: '2024',
+    year: '2025',
     title: 'Growth',
-    description: 'Serving 100+ enterprises across Saudi Arabia'
+    description: 'With 1,000+ satisfied clients throughout the years, Deewan proudly leads the messaging market in Saudi Arabia — and continues to grow.'
   }];
   return <section id="our-story" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -41,7 +45,7 @@ const OurStory = () => {
           
           
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-deewan-dark">
-            Our Story of <span className="text-deewan-primary">Growth</span>
+            Our <span className="text-deewan-primary">Story</span>
           </h2>
           
           <p className="text-lg text-deewan-dark/80 max-w-2xl mx-auto">A journey of innovation, growth, and trust</p>
