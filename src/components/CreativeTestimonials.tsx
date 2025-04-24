@@ -19,6 +19,22 @@ const testimonials = [{
   image: "https://www.deewan.sa/hs-fs/hubfs/Moahmed%20Ali_Al%20Moosa%201.png?width=416&height=416&name=Moahmed%20Ali_Al%20Moosa%201.png",
   companyLogo: "https://www.deewan.sa/hs-fs/hubfs/deewan_2024/Almoosa.jpg?width=225&height=225&name=Almoosa.jpg",
   rating: 5
+}, {
+  id: 3,
+  quote: "In our operations as Mrsool we need stable service provider and that,s why we considered Deewan, theyve met our criteria in stability, support, and guidance in any challenges that we come across Most importantly they stood out in our selection process because of the of quality of their documentation, their support with all our requirements and their willingness to accommodate us in both technical and operational aspects. With Deewan SMS service we've reduced SMS related complaints and incidents, and would definitely recommend anyone considering.",
+  name: "Mazn Bin Rayyis",
+  role: "Site Reliability Engineering Lead, Mrsool",
+  image: "https://www.deewan.sa/hs-fs/hubfs/Imported%20sitepage%20images/Mazn_Mrsool%20(1)%201-1.png?width=272&height=272&name=Mazn_Mrsool%20(1)%201-1.png",
+  companyLogo: "https://www.deewan.sa/hs-fs/hubfs/deewan_2024/mrsool.jpg?width=400&height=400&name=mrsool.jpg",
+  rating: 5
+}, {
+  id: 4,
+  quote: "Since integration, the SMS API fitted smoothly into our operations with its user-friendly interface, increasing productivity and reducing errors. It helped us improve collaboration among team members and decision-making. To those considering Deewan's products, thoroughly explore their features and capabilities; the investment is truly worth it.",
+  name: "Mohamed Ali",
+  role: "Business Applications Director, Al Moosa Hospital",
+  image: "https://www.deewan.sa/hs-fs/hubfs/Moahmed%20Ali_Al%20Moosa%201.png?width=416&height=416&name=Moahmed%20Ali_Al%20Moosa%201.png",
+  companyLogo: "https://www.deewan.sa/hs-fs/hubfs/deewan_2024/Almoosa.jpg?width=225&height=225&name=Almoosa.jpg",
+  rating: 5
 }];
 const CreativeTestimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
