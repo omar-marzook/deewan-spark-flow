@@ -93,7 +93,7 @@ const PowerfulCapabilitiesRedesign = () => {
       }}>
           <div className="inline-flex items-center bg-white/70 backdrop-blur-sm px-6 py-2 rounded-full shadow-sm mb-6">
             <span className="w-2 h-2 bg-deewan-primary rounded-full mr-2"></span>
-            <span className="text-sm font-medium text-deewan-dark/80">Powerful Capabilities</span>
+            <span className="text-sm font-medium text-deewan-dark/80">Our Capabilities</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">
