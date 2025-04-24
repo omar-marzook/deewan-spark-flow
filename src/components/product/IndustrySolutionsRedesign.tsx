@@ -48,7 +48,7 @@ const IndustrySolutionsRedesign = () => {
             <span className="text-sm font-medium text-deewan-dark/80">Industry Solutions</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
             Tailored for Your Industry
           </h2>
           
