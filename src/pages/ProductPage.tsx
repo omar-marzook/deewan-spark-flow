@@ -5,7 +5,6 @@ import ProductHero from "@/components/product/ProductHero";
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import ProductUseCases from "@/components/product/ProductUseCases";
-import ProductSubscriptionPlans from "@/components/product/ProductSubscriptionPlans";
 import ProductCTA from "@/components/product/ProductCTA";
 import IndustrySolutionsRedesign from "@/components/product/IndustrySolutionsRedesign";
 import HowItWorksSteps from "@/components/product/HowItWorksSteps";
@@ -129,7 +128,6 @@ export default function ProductPage() {
       <IndustrySolutionsRedesign />
       <HowItWorksSteps />
       <HowItWorksVideo />
-      <ProductSubscriptionPlans subscriptionPlans={subscriptionPlans} onContactClick={scrollToContact} />
       <BlogSection />
       <div id="contact">
         <ContactSection />
