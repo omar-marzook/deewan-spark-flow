@@ -13,17 +13,13 @@ const Hero = () => {
               <span className="font-bold">Intelligent</span> Communication<br />
               Solutions
             </h1>
-            <p className="text-xl mb-8 text-deewan-dark max-w-lg">
-              Customizable and secure communication tools that scale with your business needs across Saudi Arabia and beyond.
-            </p>
+            <p className="text-xl mb-8 text-deewan-dark max-w-lg">Customizable, secure communications built to scale across every channel.</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="#products" className="btn-primary flex items-center justify-center gap-2">
                 Explore Solutions
                 <ArrowRight size={20} />
               </a>
-              <a href="#contact" className="btn-secondary flex items-center justify-center">
-                Talk to an Expert
-              </a>
+              <a href="#contact" className="btn-secondary flex items-center justify-center">Talk to an expert </a>
             </div>
           </div>
           
