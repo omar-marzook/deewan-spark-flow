@@ -21,7 +21,7 @@ const Hero = () => {
                 Explore Solutions
                 <ArrowRight size={20} />
               </a>
-              <a href="#contact" className="btn-secondary flex items-center justify-center">Talk to an expert </a>
+              <a href="/contact" className="btn-secondary flex items-center justify-center">Talk to an expert </a>
             </div>
           </div>
           
