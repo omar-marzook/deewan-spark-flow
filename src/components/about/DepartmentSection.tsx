@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, MessageSquareText, HeartHandshake, LineChart } from 'lucide-react';
@@ -7,8 +8,8 @@ export interface Department {
   title: string;
   icon: React.ReactNode;
   description: string;
-  description?: string;
 }
+
 export interface DepartmentSectionProps {
   departments: Department[];
 }
@@ -25,6 +26,7 @@ const containerVariants = {
     }
   }
 };
+
 const itemVariants = {
   hidden: {
     opacity: 0,
@@ -38,6 +40,7 @@ const itemVariants = {
     }
   }
 };
+
 const DepartmentSection = ({
   departments
 }: DepartmentSectionProps) => {
@@ -78,4 +81,5 @@ const DepartmentSection = ({
       </motion.div>
     </div>;
 };
+
 export default DepartmentSection;

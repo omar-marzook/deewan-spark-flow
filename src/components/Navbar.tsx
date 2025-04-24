@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import ProductsMegaMenu from './navbar/ProductsMegaMenu';
 import MobileProductsAccordion from './navbar/MobileProductsAccordion';
