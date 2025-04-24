@@ -6,22 +6,22 @@ import TeamMemberCard from './TeamMemberCard';
 import DepartmentSection from './DepartmentSection';
 
 const OurTeam = () => {
-  const teamMembers = [{
-    image: "https://avatar.iran.liara.run/public",
-    name: "Ahmed Al-Saud",
-    position: "Chief Executive Officer",
-    description: "Leading Deewan's vision and strategy with over 15 years of experience in technology and communication."
-  }, {
-    image: "https://avatar.iran.liara.run/public",
-    name: "Sarah Al-Rashid",
-    position: "Head of Product",
-    description: "Driving product innovation and development with a focus on user experience and market needs."
-  }, {
-    image: "https://avatar.iran.liara.run/public",
-    name: "Mohammed Al-Qahtani",
-    position: "Technical Director",
-    description: "Overseeing technical infrastructure and ensuring robust, scalable solutions."
-  }];
+  // const teamMembers = [{
+  //   image: "https://avatar.iran.liara.run/public",
+  //   name: "Ahmed Al-Saud",
+  //   position: "Chief Executive Officer",
+  //   description: "Leading Deewan's vision and strategy with over 15 years of experience in technology and communication."
+  // }, {
+  //   image: "https://avatar.iran.liara.run/public",
+  //   name: "Sarah Al-Rashid",
+  //   position: "Head of Product",
+  //   description: "Driving product innovation and development with a focus on user experience and market needs."
+  // }, {
+  //   image: "https://avatar.iran.liara.run/public",
+  //   name: "Mohammed Al-Qahtani",
+  //   position: "Technical Director",
+  //   description: "Overseeing technical infrastructure and ensuring robust, scalable solutions."
+  // }];
 
   const departments = [{
     title: "Engineered to Deliver",
@@ -44,7 +44,7 @@ const OurTeam = () => {
   return (
     <section className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -81,7 +81,7 @@ const OurTeam = () => {
           <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
             Specialized teams working together to deliver comprehensive communication solutions.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         <DepartmentSection departments={departments} />
       </div>
