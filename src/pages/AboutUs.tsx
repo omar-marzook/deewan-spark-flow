@@ -29,6 +29,7 @@ const AboutUs = () => {
         <OurStory />
         <AlternativeStats />
         <OurValues />
+        <OurTeam />
         <CreativeTestimonials />
         <LogoCarousel />
         <ContactSection />
