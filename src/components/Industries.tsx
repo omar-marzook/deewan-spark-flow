@@ -9,7 +9,7 @@ const Industries = () => {
   }, {
     id: 2,
     name: "Education",
-    description: "Enhance student and parent communication for better educational outcomes.",
+    description: "Empower schools and universities to streamline communication with students, parents, and staff—boosting engagement, performance, and operations.",
     icon: <GraduationCap className="h-12 w-12 text-deewan-secondary" />,
     applications: ["Parent notifications", "Student engagement", "Campus alerts"]
   }, {
@@ -43,7 +43,7 @@ const Industries = () => {
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="mb-4">Industries We <span className="gradient-text">Serve</span></h2>
+          <h2 className="mb-4"><span className="text-deewan-primary">Industries</span> We Serve</h2>
           <p className="text-xl text-deewan-gray">
             Tailored communication solutions for various industries with unique requirements
           </p>
