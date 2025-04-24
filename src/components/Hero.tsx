@@ -1,9 +1,6 @@
-
 import { ArrowRight } from 'lucide-react';
-
 const Hero = () => {
-  return (
-    <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
+  return <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
       {/* Background Gradient Elements */}
       <div className="absolute top-40 -left-20 w-72 h-72 bg-deewan-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
       <div className="absolute top-40 -right-20 w-72 h-72 bg-deewan-primary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow delay-700"></div>
@@ -12,7 +9,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
-            <h1 className="mb-6 text-deewan-dark">
+            <h1 className="text-4xl lg:text-5xl mb-6 text-deewan-dark">
               Connect smarter.<br />Grow faster.
             </h1>
             <p className="text-xl mb-8 text-deewan-dark max-w-lg">Customizable, secure communications built to scale across every channel.</p>
@@ -69,8 +66,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
