@@ -1,9 +1,6 @@
-
 import { CheckCircle, Users, Briefcase, BarChart } from 'lucide-react';
-
 const AlternativeStats = () => {
-  return (
-    <section id="alternative-stats" className="py-24 relative overflow-hidden">
+  return <section id="alternative-stats" className="py-24 relative overflow-hidden">
       <div className="absolute -top-40 -left-40 w-80 h-80 bg-deewan-primary rounded-full opacity-5"></div>
       <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-deewan-secondary rounded-full opacity-5"></div>
       
@@ -65,7 +62,7 @@ const AlternativeStats = () => {
               </div>
               <h3 className="text-xl font-bold text-deewan-dark">Fast Growth</h3>
             </div>
-            <p className="text-deewan-dark/80">35% year-over-year growth in message volume across our platform</p>
+            <p className="text-deewan-dark/80">35% year-over-year growth in message volume — our platform keeps scaling with you</p>
           </div>
           
           <div className="bg-white shadow-md rounded-lg p-6 border border-deewan-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -75,7 +72,7 @@ const AlternativeStats = () => {
               </div>
               <h3 className="text-xl font-bold text-deewan-dark">High Delivery</h3>
             </div>
-            <p className="text-deewan-dark/80">98.5% average message delivery rate across all channels</p>
+            <p className="text-deewan-dark/80">98.5% average delivery rate — ensuring your messages land where they matter, every time</p>
           </div>
           
           <div className="bg-white shadow-md rounded-lg p-6 border border-deewan-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -85,12 +82,10 @@ const AlternativeStats = () => {
               </div>
               <h3 className="text-xl font-bold text-deewan-dark">Global Reach</h3>
             </div>
-            <p className="text-deewan-dark/80">Supporting communication to over 230 countries and territories</p>
+            <p className="text-deewan-dark/80">Connecting you to over 230 countries and territories — wherever your customers are, we’re there</p>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AlternativeStats;
