@@ -45,24 +45,16 @@ const TransformingDigital = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="backdrop-blur-md bg-white/10 rounded-xl p-8 border border-white/20 
                          transition-all duration-300 hover:bg-white/20">
-            <h3 className="text-2xl font-bold mb-4">About Deewan</h3>
-            <p className="text-deewan-dark/70 mb-4">
-              Deewan is a pioneering technology company based in Saudi Arabia, specializing in enterprise communication solutions. Our mission is to transform how organizations connect, collaborate, and communicate in the digital age.
-            </p>
-            <p className="text-deewan-dark/70">
-              We combine innovative technology with deep industry expertise to deliver secure, scalable, and user-friendly communication platforms that help businesses thrive in an increasingly connected world.
-            </p>
+            <h3 className="text-2xl font-bold mb-4">Redefining Enterprise Communication—From the Heart of Saudi Arabia.</h3>
+            <p className="text-deewan-dark/70 mb-4">At Deewan, we’re on a mission to reinvent how businesses connect, collaborate, and communicate. Born in Saudi Arabia and built for the digital age, we fuse breakthrough technology with industry know-how to create secure, scalable, and intuitive communication platforms that drive real results.</p>
+            
           </div>
 
           <div className="backdrop-blur-md bg-white/10 rounded-xl p-8 border border-white/20 
                          transition-all duration-300 hover:bg-white/20">
             <h3 className="text-2xl font-bold mb-4">Vision 2030 Alignment</h3>
-            <p className="text-deewan-dark/70 mb-4">
-              As part of our commitment to Saudi Vision 2030, we're actively contributing to the Kingdom's digital transformation journey. Our solutions empower businesses to embrace digital innovation, fostering economic growth and technological advancement.
-            </p>
-            <p className="text-deewan-dark/70">
-              Through our enterprise communication platforms, we're helping organizations across Saudi Arabia modernize their operations, enhance efficiency, and build stronger connections with their stakeholders.
-            </p>
+            <p className="text-deewan-dark/70 mb-4">Deewan is proud to play a part in Saudi Arabia’s Vision 2030. By equipping organizations with modern communication tools, we’re helping accelerate digital transformation, fuel economic growth, and spark innovation across every sector.</p>
+            
           </div>
         </div>
       </div>
