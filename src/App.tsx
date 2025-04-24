@@ -46,7 +46,7 @@ const App = () => {
             {/* Redirect /product to /products/messaging-api */}
             <Route path="/products" element={<Navigate to="/products/messaging-api" replace />} />
             {/* Dynamic product pages */}
-            <Route path="/products/:slug" element={<ProductDetailPage />} />
+            <Route path="/products/:slug" element={<ProductPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
