@@ -54,7 +54,7 @@ const ContactSection = () => {
       setIsSubmitting(false);
     }
   };
-  return <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[#edf7f2] to-[#f4faef] via-[#f0f8f3]">
+  return <section id="contact" className="py-24 relative overflow-hidden bg-gradient-to-br from-[#edf7f2] to-[#f4faef] via-[#f0f8f3]">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#edf7f2] via-[#f0f8f3] to-[#f4faef] -z-10"></div>
       
