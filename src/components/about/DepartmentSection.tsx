@@ -45,15 +45,15 @@ const itemVariants = {
 const DepartmentSection = ({ departments }: DepartmentSectionProps) => {
   return (
     <div className="max-w-6xl mx-auto">
-      <motion.h3 
+      <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5 }}
-        className="text-3xl md:text-4xl font-bold mb-16 text-deewan-dark text-center"
+        className="text-4xl lg:text-5xl font-bold mb-16 text-deewan-dark text-center"
       >
         What We Do
-      </motion.h3>
+      </motion.h2>
       
       <motion.div 
         variants={containerVariants} 
