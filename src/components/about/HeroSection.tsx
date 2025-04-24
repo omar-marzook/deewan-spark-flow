@@ -22,14 +22,9 @@ const HeroSection = () => {
         }} className="text-center lg:text-left">
             
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Transforming Communication in 
-              
-            </h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Transforming Communication Across Industries</h1>
             
-            <p className="text-xl mb-8 text-deewan-dark/80 max-w-xl">
-              Building intelligent communication tools that bridge gaps and empower organizations to connect meaningfully.
-            </p>
+            <p className="text-xl mb-8 text-deewan-dark/80 max-w-xl">We build intelligent tools that bridge gaps, spark conversations, and help organizations connect.</p>
             
             <a href="#our-story" className="btn-primary flex items-center justify-center w-fit mx-auto lg:mx-0 gap-2">
               Discover Our Story
