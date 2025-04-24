@@ -40,7 +40,7 @@ const OurValues = () => {
       }} transition={{
         duration: 0.6
       }} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-deewan-dark">Innovation First – And Always.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-deewan-dark">Our Core Values</h2>
           <p className="text-lg text-deewan-dark/80 max-w-2xl mx-auto">These principles guide everything we do and define who we are as a company.</p>
         </motion.div>
 
