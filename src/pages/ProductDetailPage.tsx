@@ -1,8 +1,7 @@
-
 import React from "react";
 import { useParams } from "react-router-dom";
 import ProductTemplate from "@/components/ProductTemplate";
-import { Info, Check, Users, Bookmark, Phone, Mail, Star, Zap, Package, CircleCheck } from "lucide-react";
+import { Info, Check, Users, Bookmark, Phone, Mail, Star, Zap, Package, CircleCheck, MessageCircle, Route, Bell, History, ChartBar, Building2, ShoppingBag, HeartHandshake } from "lucide-react";
 import NotFound from "./NotFound";
 
 // This would typically come from an API or CMS
@@ -118,7 +117,62 @@ const productsData = {
       }
     ]
   },
-  // Additional products would be added here
+  "omni-channel-chat": {
+    slug: "omni-channel-chat",
+    name: "Omni-Channel Chat",
+    tagline: "Centralize all your customer conversations in one secure, responsive, and scalable platform.",
+    description: "Manage real-time messages from WhatsApp, live chat, social channels, and email — all in a unified inbox.",
+    features: [
+      {
+        icon: <MessageCircle className="w-6 h-6" />,
+        title: "Multi-Channel Inbox",
+        description: "Manage WhatsApp, email, chat, and social messages all in one unified platform. Stay organized and responsive across all channels."
+      },
+      {
+        icon: <Route className="w-6 h-6" />,
+        title: "Smart Routing",
+        description: "Automatically assign conversations based on team availability, priority levels, and time zones for optimal response times."
+      },
+      {
+        icon: <Bell className="w-6 h-6" />,
+        title: "Real-Time Notifications",
+        description: "Get instant alerts for new messages and important conversations. Never miss critical customer communications."
+      },
+      {
+        icon: <History className="w-6 h-6" />,
+        title: "Searchable History",
+        description: "Access complete conversation histories across all channels with powerful search and filtering capabilities."
+      },
+      {
+        icon: <ChartBar className="w-6 h-6" />,
+        title: "Insightful Analytics",
+        description: "Track team performance, response times, and conversation quality with comprehensive analytics dashboards."
+      }
+    ],
+    useCases: [
+      {
+        title: "Public Sector",
+        desc: "Streamline citizen services and support with secure, compliant communication channels for government agencies.",
+        icon: <Building2 className="h-6 w-6" />
+      },
+      {
+        title: "Customer Support",
+        desc: "Deliver exceptional customer service with unified messaging and smart team collaboration tools.",
+        icon: <Users className="h-6 w-6" />
+      },
+      {
+        title: "eCommerce & Logistics",
+        desc: "Keep customers informed with real-time order updates and instant support across all channels.",
+        icon: <ShoppingBag className="h-6 w-6" />
+      },
+      {
+        title: "Internal Help Desk",
+        desc: "Streamline HR and IT support with an efficient internal communication platform.",
+        icon: <HeartHandshake className="h-6 w-6" />
+      }
+    ],
+    heroImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80"
+  },
 };
 
 const ProductDetailPage: React.FC = () => {

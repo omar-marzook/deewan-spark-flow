@@ -1,4 +1,3 @@
-
 import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid } from 'lucide-react';
 
 export type Product = {
@@ -15,6 +14,12 @@ export type ProductCategories = {
 
 export const products: ProductCategories = {
   applications: [
+    {
+      name: "Omni-Channel Chat",
+      description: "Unified inbox for all your customer conversations",
+      slug: "omni-channel-chat",
+      icon: MessageSquare
+    },
     {
       name: "Customer Portal",
       description: "Self-service dashboard for your customers",
