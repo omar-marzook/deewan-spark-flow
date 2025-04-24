@@ -1,6 +1,9 @@
+
 import { ArrowRight } from 'lucide-react';
+
 const Hero = () => {
-  return <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
+  return (
+    <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
       {/* Background Gradient Elements */}
       <div className="absolute top-40 -left-20 w-72 h-72 bg-deewan-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
       <div className="absolute top-40 -right-20 w-72 h-72 bg-deewan-primary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow delay-700"></div>
@@ -18,7 +21,7 @@ const Hero = () => {
                 Explore Solutions
                 <ArrowRight size={20} />
               </a>
-              <a href="#contact" className="btn-secondary flex items-center justify-center">Talk to an expert </a>
+              <a href="#contact" className="btn-secondary flex items-center justify-center">Talk to an expert </a>
             </div>
           </div>
           
@@ -66,6 +69,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
