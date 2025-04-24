@@ -7,7 +7,6 @@ import Industries from "../components/Industries";
 import Stats from "../components/Stats";
 import LogoCarousel from "../components/LogoCarousel";
 import DepartmentsWeServe from "../components/DepartmentsWeServe";
-import DepartmentsOption from "../components/DepartmentsOption";
 import CreativeTestimonials from "../components/CreativeTestimonials";
 import BlogSection from "../components/BlogSection";
 import ContactSection from "../components/ContactSection";
@@ -25,7 +24,6 @@ const Index = () => {
       <AlternativeStats />
       <LogoCarousel />
       <DepartmentsWeServe />
-      <DepartmentsOption />
       <CreativeTestimonials />
       <BlogSection />
       <ContactSection />
