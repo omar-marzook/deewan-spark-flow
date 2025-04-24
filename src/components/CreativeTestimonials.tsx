@@ -5,35 +5,19 @@ import { Button } from '@/components/ui/button';
 // Sample testimonial data
 const testimonials = [{
   id: 1,
-  quote: "Deewan has transformed how we communicate with our customers. Their platform is reliable, scalable, and incredibly easy to use. The analytics dashboard provides us with invaluable insights.",
-  name: "Ahmed Al-Saud",
-  role: "CTO, Tech Innovations",
-  image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=60",
-  companyLogo: "/placeholder.svg",
+  quote: "In our operations as Mrsool we need stable service provider and that,s why we considered Deewan, theyve met our criteria in stability, support, and guidance in any challenges that we come across Most importantly they stood out in our selection process because of the of quality of their documentation, their support with all our requirements and their willingness to accommodate us in both technical and operational aspects. With Deewan SMS service we've reduced SMS related complaints and incidents, and would definitely recommend anyone considering.",
+  name: "Mazn Bin Rayyis",
+  role: "Site Reliability Engineering Lead, Mrsool",
+  image: "https://www.deewan.sa/hs-fs/hubfs/Imported%20sitepage%20images/Mazn_Mrsool%20(1)%201-1.png?width=272&height=272&name=Mazn_Mrsool%20(1)%201-1.png",
+  companyLogo: "https://www.deewan.sa/hs-fs/hubfs/deewan_2024/mrsool.jpg?width=400&height=400&name=mrsool.jpg",
   rating: 5
 }, {
   id: 2,
-  quote: "The customer support team at Deewan is exceptional. They're always available to help and have gone above and beyond for our business. Implementing their solution increased our customer satisfaction by 45%.",
-  name: "Fatima Rahman",
-  role: "Head of Customer Experience, Global Retail Group",
-  image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=60",
-  companyLogo: "/placeholder.svg",
-  rating: 5
-}, {
-  id: 3,
-  quote: "We've seen a 40% increase in customer engagement since implementing Deewan's omnichannel solution. The analytics provide invaluable insights that help us adjust our strategies in real-time.",
-  name: "Mohammed Al-Qahtani",
-  role: "Marketing Director, Finance Solutions Inc.",
-  image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=60",
-  companyLogo: "/placeholder.svg",
-  rating: 4
-}, {
-  id: 4,
-  quote: "Our healthcare communications now meet all compliance standards while improving patient engagement. Deewan's solutions have been transformative.",
-  name: "Dr. Khalid Rahman",
-  role: "Medical Director, International Health Group",
-  image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60",
-  companyLogo: "/placeholder.svg",
+  quote: "Since integration, the SMS API fitted smoothly into our operations with its user-friendly interface, increasing productivity and reducing errors. It helped us improve collaboration among team members and decision-making. To those considering Deewan's products, thoroughly explore their features and capabilities; the investment is truly worth it.",
+  name: "Mohamed Ali",
+  role: "Business Applications Director, Al Moosa Hospital",
+  image: "https://www.deewan.sa/hs-fs/hubfs/Moahmed%20Ali_Al%20Moosa%201.png?width=416&height=416&name=Moahmed%20Ali_Al%20Moosa%201.png",
+  companyLogo: "https://www.deewan.sa/hs-fs/hubfs/deewan_2024/Almoosa.jpg?width=225&height=225&name=Almoosa.jpg",
   rating: 5
 }];
 const CreativeTestimonials = () => {
