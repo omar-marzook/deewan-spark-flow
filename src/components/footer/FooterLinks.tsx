@@ -8,10 +8,7 @@ const FooterLinks = () => {
         <div className="mb-6">
           <img alt="Deewan Logo" src="/lovable-uploads/8d8800bd-2260-4a4d-afd1-36c89189fe63.png" className="h-7" />
         </div>
-        <p className="text-gray-600 mb-6">
-          Deewan provides intelligent communication solutions prioritizing security and 
-          scalability for businesses across Saudi Arabia and beyond.
-        </p>
+        <p className="text-gray-600 mb-6">At Deewan, we provide intelligent, secure, and scalable communication solutions for businesses in Saudi Arabia and beyond.</p>
         
         <SocialLinks />
       </div>
