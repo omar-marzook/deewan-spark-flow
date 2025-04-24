@@ -49,7 +49,7 @@ const IndustrySolutionsRedesign = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-            Tailored for Your <span className="text-deewan-primary">Industry</span>
+            Tailored for Your <span className="text-deewan-secondary">Industry</span>
           </h2>
           
           <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">Our communication platform adapts to the unique needs of your business</p>
