@@ -57,7 +57,7 @@ const LogoCarousel: React.FC = () => {
             Our Clients
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-deewan-dark font-display">
-            Trusted by <span className="text-deewan-primary">Leading</span> Organizations
+            Trusted By <span className="text-deewan-primary">Leading</span> Organizations
           </h2>
           <p className="text-lg text-deewan-gray">Helping businesses across Saudi Arabia and beyond connect, engage, and grow</p>
         </div>
