@@ -4,20 +4,20 @@ import { Star } from 'lucide-react';
 const OurValues = () => {
   const values = [{
     icon: <Star className="w-8 h-8 text-deewan-primary" />,
-    title: "Innovation First",
-    description: "We constantly push boundaries to create cutting-edge solutions.",
+    title: "Innovation First – And Always.",
+    description: "We don’t just think outside the box—we rebuild it. Innovation is in our DNA, and progress is our default.",
     color: "bg-deewan-primary/10 text-deewan-primary",
     gradient: "from-deewan-primary/20 to-transparent"
   }, {
     icon: <Star className="w-8 h-8 text-deewan-secondary" />,
-    title: "Customer Focus",
-    description: "Every decision we make starts with our customers' needs.",
+    title: "Start with People. End with Impact.",
+    description: "Every decision, feature, and fix begins with a simple question: Does this make life better for our customers?",
     color: "bg-deewan-secondary/10 text-deewan-secondary",
     gradient: "from-deewan-secondary/20 to-transparent"
   }, {
     icon: <Star className="w-8 h-8 text-deewan-accent" />,
-    title: "Quality Excellence",
-    description: "We maintain the highest standards in everything we do.",
+    title: "Built Right. Every Time.",
+    description: "We manage the details so you don’t have to. Because great isn’t good enough when reliability is everything.",
     color: "bg-deewan-accent/10 text-deewan-accent",
     gradient: "from-deewan-accent/20 to-transparent"
   }];
@@ -40,7 +40,7 @@ const OurValues = () => {
       }} transition={{
         duration: 0.6
       }} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-deewan-dark">Our Core Values</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-deewan-dark">Our Core <span className="text-deewan-primary">Values</span></h2>
           <p className="text-lg text-deewan-dark/80 max-w-2xl mx-auto">These principles guide everything we do and define who we are as a company.</p>
         </motion.div>
 
