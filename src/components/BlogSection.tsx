@@ -1,27 +1,48 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import BlogCard from "./blog/BlogCard";
-import { getAllPosts, PostMetadata } from "@/lib/markdownUtils";
+
+// Sample blog post data (placeholder content)
+const blogPosts = [
+  {
+    id: 1,
+    title: "How to prepare for an interview",
+    description: "Find out how to impress an employer and increase your chances of successful employment.",
+    date: "June 12, 2024",
+    readTime: "5 min",
+    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60",
+    category: "Career",
+    slug: "prepare-for-interview"
+  },
+  {
+    id: 2,
+    title: "10 Key Skills Employers Are Looking For",
+    description: "Develop skills in demand in the labor market and increase your career opportunities.",
+    date: "June 2, 2024",
+    readTime: "7 min",
+    imageUrl: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop&q=60",
+    category: "Skills",
+    slug: "key-skills-employers"
+  },
+  {
+    id: 3,
+    title: "How to create a resume that gets noticed",
+    description: "Helpful tips and templates for creating a resume that will set you apart from your competition.",
+    date: "May 15, 2024",
+    readTime: "6 min",
+    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=60",
+    category: "Resume",
+    slug: "create-resume"
+  },
+];
 
 const BlogSection = () => {
-  const [posts, setPosts] = useState<PostMetadata[]>([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const allPosts = await getAllPosts();
-      // Only get the latest 3 posts for the homepage section
-      setPosts(allPosts.slice(0, 3));
-    };
-
-    fetchPosts();
-  }, []);
-
   return (
     <section className="py-24 px-4 md:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
+        {/* Section header - centered with description */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
             Blog
@@ -30,26 +51,66 @@ const BlogSection = () => {
             Stay updated with the latest insights, trends, and best practices
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 items-stretch">
-          {posts.map((post, index) => (
-            <div className="flex flex-col h-full" key={post.slug}>
-              <BlogCard 
-                post={{
-                  id: index,
-                  slug: post.slug,
-                  title: post.title,
-                  excerpt: post.excerpt,
-                  date: post.date,
-                  readTime: post.readTime,
-                  category: post.category,
-                  imageUrl: post.coverImage,
-                }}
-              />
-            </div>
+
+        {/* Blog posts grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {blogPosts.map((post) => (
+            <Link 
+              key={post.id} 
+              to={`/blog/${post.slug}`} 
+              className="group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white"
+            >
+              {/* Post thumbnail */}
+              <div className="aspect-video overflow-hidden">
+                <img
+                  src={post.imageUrl}
+                  alt={post.title}
+                  className="w-full h-full object-cover transition-transform duration-500"
+                />
+              </div>
+              
+              <div className="p-6 flex flex-col flex-grow">
+                {/* Category */}
+                <div className="mb-2">
+                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-deewan-primary/10 text-deewan-primary">
+                    {post.category}
+                  </span>
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-xl font-bold text-deewan-dark mb-3 group-hover:text-deewan-primary transition-colors">
+                  {post.title}
+                </h3>
+                
+                {/* Meta: Date & Read Time */}
+                <div className="flex items-center text-deewan-gray text-sm mb-3">
+                  <span>{post.date}</span>
+                  <span className="mx-2">•</span>
+                  <span className="flex items-center">
+                    <Clock size={14} className="mr-1" />
+                    {post.readTime} read
+                  </span>
+                </div>
+                
+                {/* Description */}
+                <p className="text-deewan-gray mb-5 line-clamp-2">
+                  {post.description}
+                </p>
+                
+                {/* Read more link */}
+                <div className="mt-auto">
+                  <span className="text-sm font-medium text-deewan-primary flex items-center">
+                    Read more <ArrowRight className="ml-1 h-4 w-4" />
+                  </span>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
+
+        {/* View all button - centered */}
         <div className="text-center">
-          <Button
+          <Button 
             asChild
             className="bg-deewan-primary hover:bg-deewan-primary/90 text-white"
           >
