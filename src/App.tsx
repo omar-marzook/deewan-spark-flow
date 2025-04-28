@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductPage from "./pages/ProductPage";
+import OmniChannelChatPage from "./pages/OmniChannelChatPage";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import BlogPage from "./pages/BlogPage";
@@ -41,7 +43,8 @@ const App = () => {
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/product" element={<ProductPage />} />
             <Route path="/products" element={<Navigate to="/products/messaging-api" replace />} />
-            <Route path="/products/:slug" element={<ProductPage />} />
+            <Route path="/products/omni-channel-chat" element={<OmniChannelChatPage />} />
+            <Route path="/products/:slug" element={<ProductDetailPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/citc-regulations" element={<CitcRegulations />} />
             <Route path="*" element={<NotFound />} />
