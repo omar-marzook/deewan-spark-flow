@@ -1,142 +1,70 @@
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
+import { PostMetadata } from '@/lib/markdownUtils';
 import BlogCard from './BlogCard';
-import { Button } from '@/components/ui/button';
 
-// Sample blog post data (placeholder content)
-const blogPosts = [
-  {
-    id: 1,
-    slug: 'future-communication-ai',
-    title: 'The Future of Communication in the Age of AI',
-    excerpt: 'Explore how artificial intelligence is transforming business communication platforms and what this means for enterprises in Saudi Arabia.',
-    date: 'April 15, 2025',
-    readTime: '5 min',
-    category: 'AI',
-    imageUrl: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 2,
-    slug: 'secure-messaging-enterprise',
-    title: 'Secure Messaging for Enterprise: A Complete Guide',
-    excerpt: 'A comprehensive look at security considerations for enterprise messaging solutions in regulated industries.',
-    date: 'April 8, 2025',
-    readTime: '8 min',
-    category: 'Security',
-    imageUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 3,
-    slug: 'omnichannel-strategy',
-    title: 'Building an Effective Omnichannel Communication Strategy',
-    excerpt: 'Learn how businesses can create seamless customer experiences across multiple communication channels.',
-    date: 'March 27, 2025',
-    readTime: '6 min',
-    category: 'Strategy',
-    imageUrl: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 4,
-    slug: 'api-integration-best-practices',
-    title: 'API Integration Best Practices for Communication Platforms',
-    excerpt: 'Technical insights on integrating communication APIs into your existing systems with minimal friction.',
-    date: 'March 15, 2025',
-    readTime: '7 min',
-    category: 'Technical',
-    imageUrl: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 5,
-    slug: 'communication-financial-services',
-    title: 'Communication Solutions for Financial Services',
-    excerpt: 'How banks and financial institutions are leveraging modern communication tools while maintaining compliance.',
-    date: 'March 7, 2025',
-    readTime: '5 min',
-    category: 'Finance',
-    imageUrl: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 6,
-    slug: 'messaging-platform-roi',
-    title: 'Measuring ROI of Your Messaging Platform',
-    excerpt: 'Frameworks and metrics to help you quantify the business impact of your communication investments.',
-    date: 'February 28, 2025',
-    readTime: '9 min',
-    category: 'Business',
-    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 7,
-    slug: 'chatbot-development',
-    title: 'From Simple to Sophisticated: Evolving Your Chatbot Strategy',
-    excerpt: 'Key considerations when developing intelligent chatbots that truly enhance customer communication.',
-    date: 'February 20, 2025',
-    readTime: '6 min',
-    category: 'Technology',
-    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 8,
-    slug: 'real-time-analytics',
-    title: 'Leveraging Real-Time Analytics in Customer Communication',
-    excerpt: 'How data-driven insights can transform your communication strategy and improve customer satisfaction.',
-    date: 'February 12, 2025',
-    readTime: '7 min',
-    category: 'Analytics',
-    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 9,
-    slug: 'healthcare-communication',
-    title: 'Secure Patient Communication in Healthcare',
-    excerpt: 'Balancing accessibility with privacy in healthcare communication systems for better patient outcomes.',
-    date: 'February 1, 2025',
-    readTime: '5 min',
-    category: 'Healthcare',
-    imageUrl: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&auto=format&fit=crop&q=60'
-  }
-];
+interface BlogGridProps {
+  posts: PostMetadata[];
+  loading?: boolean;
+}
 
-const BlogGrid = () => {
-  const [visiblePosts, setVisiblePosts] = useState(7); // Initially show featured + 6 posts
-  
-  const handleLoadMore = () => {
-    setVisiblePosts(prev => Math.min(prev + 3, blogPosts.length));
-  };
-  
-  return (
-    <section className="py-16 px-4 md:px-6">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {/* Featured post (first post) */}
-          {blogPosts.length > 0 && (
-            <BlogCard post={blogPosts[0]} featured={true} />
-          )}
-          
-          {/* Regular posts */}
-          {blogPosts.slice(1, visiblePosts).map(post => (
-            <BlogCard key={post.id} post={post} />
+const BlogGrid: React.FC<BlogGridProps> = ({ posts, loading = false }) => {
+  if (loading) {
+    return (
+      <div className="container mx-auto max-w-7xl px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {Array(3).fill(0).map((_, i) => (
+            <div key={i} className="rounded-xl overflow-hidden border border-gray-100 shadow-sm bg-white/90">
+              <div className="aspect-video bg-gray-200 animate-pulse" />
+              <div className="p-6">
+                <div className="w-1/4 h-5 bg-gray-200 rounded-full mb-4 animate-pulse" />
+                <div className="w-3/4 h-7 bg-gray-200 rounded-lg mb-3 animate-pulse" />
+                <div className="flex gap-2 mb-3">
+                  <div className="w-20 h-4 bg-gray-200 rounded-full animate-pulse" />
+                  <div className="w-12 h-4 bg-gray-200 rounded-full animate-pulse" />
+                </div>
+                <div className="space-y-2 mb-6">
+                  <div className="w-full h-4 bg-gray-200 rounded-lg animate-pulse" />
+                  <div className="w-5/6 h-4 bg-gray-200 rounded-lg animate-pulse" />
+                  <div className="w-4/6 h-4 bg-gray-200 rounded-lg animate-pulse" />
+                </div>
+                <div className="w-32 h-5 bg-gray-200 rounded-lg animate-pulse" />
+              </div>
+            </div>
           ))}
         </div>
-        
-        {/* Load More Button - only show if there are more posts to load */}
-        {visiblePosts < blogPosts.length && (
-          <motion.div 
-            className="mt-12 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            <Button 
-              onClick={handleLoadMore}
-              className="px-8 py-6 h-auto bg-deewan-primary hover:bg-deewan-primary/90 text-white text-lg"
-            >
-              Load More
-            </Button>
-          </motion.div>
-        )}
       </div>
+    );
+  }
+
+  return (
+    <section className="container mx-auto max-w-7xl px-4 py-16">
+      {posts.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post, index) => (
+            <div key={post.slug} className="flex flex-col h-full">
+              <BlogCard
+                post={{
+                  id: index,
+                  slug: post.slug,
+                  title: post.title,
+                  excerpt: post.excerpt,
+                  date: post.date,
+                  readTime: post.readTime,
+                  category: post.category,
+                  imageUrl: post.coverImage,
+                }}
+                featured={index === 0 && posts.length > 1}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-16">
+          <h3 className="text-2xl font-semibold text-deewan-dark">No posts found</h3>
+          <p className="text-deewan-gray mt-2">Check back later for new content!</p>
+        </div>
+      )}
     </section>
   );
 };
