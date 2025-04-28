@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,8 @@ import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CitcRegulations from "./pages/CitcRegulations";
 
 const queryClient = new QueryClient();
 
@@ -34,19 +35,15 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            {/* About Us page */}
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
-            {/* Blog listing page */}
             <Route path="/blog" element={<BlogPage />} />
-            {/* Blog post page */}
             <Route path="/blog/:slug" element={<BlogPostPage />} />
-            {/* Add a direct route to ProductPage */}
             <Route path="/product" element={<ProductPage />} />
-            {/* Redirect /product to /products/messaging-api */}
             <Route path="/products" element={<Navigate to="/products/messaging-api" replace />} />
-            {/* Dynamic product pages */}
             <Route path="/products/:slug" element={<ProductPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/citc-regulations" element={<CitcRegulations />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
