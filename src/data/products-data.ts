@@ -1,6 +1,7 @@
 
 import { ProductData } from '@/components/ProductTemplate';
 import { Check, Star, Users, Bookmark, Phone, Mail, MessageSquare, Database, Server, Box, Globe, Link, LayoutGrid, Layers } from 'lucide-react';
+import React from 'react';
 
 const productsData: Record<string, ProductData> = {
   "messaging-api": {
