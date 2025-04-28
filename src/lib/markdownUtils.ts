@@ -131,8 +131,14 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
     const markdownWithMeta = await response.text();
     console.log(`Got markdown content, length: ${markdownWithMeta.length}`);
     
+    if (!markdownWithMeta || markdownWithMeta.trim() === '') {
+      console.error("Empty markdown content received from fetch");
+      return null;
+    }
+    
     const { frontmatter, content } = parseFrontMatter(markdownWithMeta);
     console.log(`Parsed frontmatter:`, frontmatter);
+    console.log(`Content first 100 chars:`, content.substring(0, 100));
     
     // Create a correctly structured post metadata object
     const metadata: PostMetadata = {
@@ -153,7 +159,7 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
     
     return {
       metadata,
-      content
+      content: content
     };
   } catch (error) {
     console.error(`Error fetching post with slug ${slug}:`, error);

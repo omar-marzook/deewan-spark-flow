@@ -27,11 +27,15 @@ const BlogPostPage = () => {
       if (!slug) return;
       
       setLoading(true);
+      console.log("Fetching post data for slug:", slug);
       
       // Fetch the main post
       const postData = await getPostBySlug(slug);
       
       if (postData) {
+        console.log("Post data fetched successfully:", postData.metadata.title);
+        console.log("Content length:", postData.content.length);
+        
         setPost({
           ...postData.metadata,
           content: postData.content
@@ -56,6 +60,8 @@ const BlogPostPage = () => {
           }));
         
         setRelatedPosts(related);
+      } else {
+        console.error("Failed to fetch post data for slug:", slug);
       }
       
       setLoading(false);
