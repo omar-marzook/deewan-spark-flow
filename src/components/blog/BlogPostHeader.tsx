@@ -24,22 +24,24 @@ const BlogPostHeader = ({ post }) => (
         </p>
       )}
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-deewan-dark/60">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-deewan-primary/20">
-            <img
-              src={post.author.avatar}
-              alt={post.author.name}
-              className="w-full h-full object-cover"
-            />
+        {post.author && (
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-deewan-primary/20">
+              <img
+                src={post.author.avatar || '/placeholder.svg'}
+                alt={post.author.name || 'Author'}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <p className="font-medium text-deewan-dark">{post.author.name || 'Anonymous'}</p>
+              <p className="text-xs">{post.author.role || 'Author'}</p>
+            </div>
           </div>
-          <div>
-            <p className="font-medium text-deewan-dark">{post.author.name}</p>
-            <p className="text-xs">{post.author.role}</p>
-          </div>
-        </div>
+        )}
         <div className="flex items-center gap-1">
           <Calendar className="w-4 h-4" />
-          <span>{post.publishDate}</span>
+          <span>{post.date || post.publishDate}</span>
         </div>
         <div className="flex items-center gap-1">
           <Clock className="w-4 h-4" />
