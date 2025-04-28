@@ -1,6 +1,7 @@
 import React from "react";
 import { Twitter, Linkedin, Mail, Facebook, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
+
 export function useHeadingData(content: any[]) {
   const headings: {
     id: string;
@@ -55,6 +56,7 @@ export function useHeadingData(content: any[]) {
     headings
   };
 }
+
 const SOCIALS = [{
   label: "Twitter",
   icon: Twitter,
@@ -72,6 +74,7 @@ const SOCIALS = [{
   icon: Mail,
   url: "#"
 }];
+
 const PostContent = ({
   content,
   children
@@ -81,23 +84,10 @@ const PostContent = ({
 }) => {
   // If children provided, use that
   if (children) {
-    return <motion.article initial={{
-      opacity: 0,
-      y: 18
-    }} whileInView={{
-      opacity: 1,
-      y: 0
-    }} viewport={{
-      once: true
-    }} transition={{
-      duration: 0.5
-    }} className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-p:text-deewan-dark prose-blockquote:rounded-xl prose-blockquote:bg-deewan-secondary/10 prose-blockquote:p-6 prose-blockquote:font-medium prose-blockquote:text-deewan-secondary/90 prose-img:my-6" style={{
-      fontFamily: "'Gilroy', 'Poppins', ui-sans-serif, system-ui, sans-serif"
-    }}>
-        {/* Make headings, paragraphs and spacing mimic the screenshot: bolder headings, a bit more line height */}
-        <div className="space-y-7">
-          {children}
-        </div>
+    return (
+      <div className="space-y-7">
+        {children}
+        
         {/* Share section */}
         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 mt-12 mb-6 glass border border-white/30 rounded-xl py-4 px-6 shadow">
           <div className="flex items-center gap-2 text-deewan-dark font-semibold">
@@ -106,59 +96,75 @@ const PostContent = ({
           </div>
           <div className="flex gap-2 ml-2">
             {SOCIALS.map(({
-            label,
-            icon: Icon,
-            url
-          }) => <a key={label} href={url} className={`p-2 rounded-full hover:bg-deewan-primary/20 bg-gray-100 transition-colors text-deewan-primary`} aria-label={label}>
-                <Icon className="w-5 h-5" />
-              </a>)}
+              label,
+              icon: Icon,
+              url
+            }) => <a key={label} href={url} className={`p-2 rounded-full hover:bg-deewan-primary/20 bg-gray-100 transition-colors text-deewan-primary`} aria-label={label}>
+              <Icon className="w-5 h-5" />
+            </a>)}
           </div>
         </div>
-      </motion.article>;
+      </div>
+    );
   }
 
-  // Existing rendering as fallback
-  return <motion.article initial={{
-    opacity: 0,
-    y: 18
-  }} whileInView={{
-    opacity: 1,
-    y: 0
-  }} viewport={{
-    once: true
-  }} transition={{
-    duration: 0.5
-  }} className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mb-4 prose-h3:text-xl prose-h3:mb-3 prose-p:text-deewan-dark prose-p:mb-5 prose-blockquote:rounded-xl prose-blockquote:bg-deewan-secondary/10 prose-blockquote:p-6 prose-blockquote:font-medium prose-blockquote:text-deewan-secondary/90 prose-img:rounded-lg prose-img:my-6" style={{
-    fontFamily: "'Gilroy', 'Poppins', ui-sans-serif, system-ui, sans-serif"
-  }}>
-      <div className="space-y-7">
-        {content.map((item, idx) => {
+  // Handle object-based content (non-JSX)
+  return (
+    <div className="space-y-7">
+      {Array.isArray(content) && content.map((item, idx) => {
+        if (React.isValidElement(item)) {
+          // If it's already a React element, just return it
+          return React.cloneElement(item, { key: idx });
+        }
+        
+        // Otherwise handle based on type
         switch (item.type) {
           case "paragraph":
             return <p key={idx}>{item.text}</p>;
           case "heading":
-            return <h2 key={idx} className="font-bold text-2xl mt-10 mb-3">{item.text}</h2>;
+          case "h2":
+            return <h2 key={idx} id={`heading-${idx}`} className="font-bold text-2xl mt-10 mb-3">{item.text}</h2>;
+          case "subheading":
+          case "h3":
+            return <h3 key={idx} id={`heading-sub-${idx}`} className="font-bold text-xl mt-8 mb-3">{item.text}</h3>;
           case "quote":
             return <blockquote key={idx} className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-secondary/10 border-l-4 border-deewan-primary">
-                  "{item.text}"
-                  <footer className="mt-2 text-deewan-primary font-medium">
-                    {item.author}
-                  </footer>
-                </blockquote>;
+              "{item.text}"
+              <footer className="mt-2 text-deewan-primary font-medium">
+                {item.author}
+              </footer>
+            </blockquote>;
           case "image":
             return <figure key={idx} className="w-full flex flex-col items-center">
-                  <img src={item.src} alt={item.caption || ""} className="rounded-3xl my-6 shadow border border-white/40" />
-                  {item.caption && <figcaption className="text-center text-sm text-deewan-gray mt-2">
-                      {item.caption}
-                    </figcaption>}
-                </figure>;
+              <img src={item.src} alt={item.caption || ""} className="rounded-3xl my-6 shadow border border-white/40" />
+              {item.caption && <figcaption className="text-center text-sm text-deewan-gray mt-2">
+                {item.caption}
+              </figcaption>}
+            </figure>;
           default:
-            return null;
+            // For any unhandled type or if it's already a JSX element
+            return item;
         }
       })}
-      </div>
-      {/* Share section */}
       
-    </motion.article>;
+      {/* Share section */}
+      <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 mt-12 mb-6 glass border border-white/30 rounded-xl py-4 px-6 shadow">
+        <div className="flex items-center gap-2 text-deewan-dark font-semibold">
+          <Share2 className="w-5 h-5 text-deewan-primary" />
+          <span>Share:</span>
+        </div>
+        <div className="flex gap-2 ml-2">
+          {SOCIALS.map(({
+            label,
+            icon: Icon,
+            url
+          }) => <a key={label} href={url} className={`p-2 rounded-full hover:bg-deewan-primary/20 bg-gray-100 transition-colors text-deewan-primary`} aria-label={label}>
+              <Icon className="w-5 h-5" />
+            </a>)}
+        </div>
+      </div>
+    </div>
+  );
 };
+
 export default PostContent;
