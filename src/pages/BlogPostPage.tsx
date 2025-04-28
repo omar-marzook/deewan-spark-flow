@@ -7,7 +7,6 @@ import remarkGfm from 'remark-gfm';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import PostAuthor from "@/components/blog/PostAuthor";
 import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
 import BlogPostHeader from "@/components/blog/BlogPostHeader";
 import BlogCoverImage from "@/components/blog/BlogCoverImage";
@@ -151,40 +150,54 @@ const BlogPostPage = () => {
               <ReactMarkdown 
                 remarkPlugins={[remarkGfm]}
                 components={{
-                  h1: ({node, ...props}) => 
-                    <h1 
-                      id={props.children ? props.children.toString().toLowerCase().replace(/\s+/g, '-') : ''} 
-                      className="text-3xl font-bold mb-6"
-                      {...props} 
-                    />,
-                  h2: ({node, ...props}) => 
-                    <h2 
-                      id={props.children ? props.children.toString().toLowerCase().replace(/\s+/g, '-') : ''} 
-                      className="text-2xl font-bold mt-10 mb-4"
-                      {...props} 
-                    />,
-                  h3: ({node, ...props}) => 
-                    <h3 
-                      id={props.children ? props.children.toString().toLowerCase().replace(/\s+/g, '-') : ''} 
-                      className="text-xl font-bold mt-8 mb-3"
-                      {...props} 
-                    />,
+                  h1: ({node, ...props}) => {
+                    const id = props.children ? props.children.toString().toLowerCase().replace(/\s+/g, '-') : '';
+                    return (
+                      <h1 
+                        id={id} 
+                        className="text-3xl font-bold mb-6"
+                        {...props} 
+                      />
+                    );
+                  },
+                  h2: ({node, ...props}) => {
+                    const id = props.children ? props.children.toString().toLowerCase().replace(/\s+/g, '-') : '';
+                    return (
+                      <h2 
+                        id={id} 
+                        className="text-2xl font-bold mt-10 mb-4"
+                        {...props} 
+                      />
+                    );
+                  },
+                  h3: ({node, ...props}) => {
+                    const id = props.children ? props.children.toString().toLowerCase().replace(/\s+/g, '-') : '';
+                    return (
+                      <h3 
+                        id={id} 
+                        className="text-xl font-bold mt-8 mb-3"
+                        {...props} 
+                      />
+                    );
+                  },
                   ul: ({node, ...props}) => <ul {...props} className="list-disc pl-6 my-4" />,
                   ol: ({node, ...props}) => <ol {...props} className="list-decimal pl-6 my-4" />,
                   li: ({node, ...props}) => <li {...props} className="mb-2" />,
                   p: ({node, ...props}) => <p {...props} className="mb-4" />,
-                  blockquote: ({node, ...props}) => 
+                  blockquote: ({node, ...props}) => (
                     <blockquote 
                       {...props} 
                       className="pl-4 border-l-4 border-deewan-primary/50 italic my-6" 
-                    />,
-                  a: ({node, ...props}) => 
+                    />
+                  ),
+                  a: ({node, ...props}) => (
                     <a 
                       {...props} 
                       className="text-deewan-primary hover:underline" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                    />,
+                    />
+                  ),
                 }}
               >
                 {post.content}

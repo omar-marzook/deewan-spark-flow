@@ -14,6 +14,7 @@ export interface PostMetadata {
     role: string;
     avatar: string;
   };
+  subtitle?: string;
 }
 
 export interface Post {
@@ -23,48 +24,89 @@ export interface Post {
 
 // Simple frontmatter parser for browser environment
 const parseFrontMatter = (markdown: string): { frontmatter: any; content: string } => {
+  if (!markdown) {
+    console.error("Empty markdown content received");
+    return { frontmatter: {}, content: "" };
+  }
+
   const frontMatterRegex = /^---\s*([\s\S]*?)\s*---/;
   const match = frontMatterRegex.exec(markdown);
   
   if (!match) {
+    console.warn("No frontmatter found in markdown");
     return { frontmatter: {}, content: markdown };
   }
   
   const frontMatterBlock = match[1];
   const content = markdown.replace(frontMatterRegex, '').trim();
-  const frontMatter = {};
+  const frontMatter: Record<string, any> = {};
   
   // Parse the frontmatter into an object
   frontMatterBlock.split('\n').forEach(line => {
-    const [key, ...valueArr] = line.split(':');
-    if (key && valueArr.length) {
-      let value = valueArr.join(':').trim();
+    const colonIndex = line.indexOf(':');
+    if (colonIndex !== -1) {
+      const key = line.slice(0, colonIndex).trim();
+      let value = line.slice(colonIndex + 1).trim();
+      
+      // Remove quotes if present
+      if (value.startsWith('"') && value.endsWith('"')) {
+        value = value.slice(1, -1);
+      }
+      
       // Handle nested objects like author
       if (key.includes('.')) {
         const [parent, child] = key.split('.');
         frontMatter[parent] = frontMatter[parent] || {};
         frontMatter[parent][child] = value;
       } else {
-        // Remove quotes if present
-        if (value.startsWith('"') && value.endsWith('"')) {
-          value = value.slice(1, -1);
-        }
-        frontMatter[key.trim()] = value;
+        frontMatter[key] = value;
       }
     }
   });
+  
+  // Special handling for author object
+  if (frontMatter.author && typeof frontMatter.author === 'string') {
+    // If author is a string but we also have author.* properties
+    const authorName = frontMatter.author;
+    frontMatter.author = {
+      name: authorName,
+      role: frontMatter['author.role'] || 'Author',
+      avatar: frontMatter['author.avatar'] || '/placeholder.svg'
+    };
+  } else if (typeof frontMatter.author === 'object') {
+    // Make sure all required fields exist
+    frontMatter.author.name = frontMatter.author.name || 'Anonymous';
+    frontMatter.author.role = frontMatter.author.role || 'Author';
+    frontMatter.author.avatar = frontMatter.author.avatar || '/placeholder.svg';
+  } else if (frontMatter['author.name']) {
+    // Handle case where we have author.* properties but no author object
+    frontMatter.author = {
+      name: frontMatter['author.name'],
+      role: frontMatter['author.role'] || 'Author',
+      avatar: frontMatter['author.avatar'] || '/placeholder.svg'
+    };
+    
+    // Clean up the separate properties
+    delete frontMatter['author.name'];
+    delete frontMatter['author.role'];
+    delete frontMatter['author.avatar'];
+  }
   
   return { frontmatter: frontMatter, content };
 };
 
 export const getPostBySlug = async (slug: string): Promise<Post | null> => {
   try {
+    console.log(`Fetching post with slug: ${slug}`);
+    
     // Try to fetch the markdown file with the .md extension
     let response = await fetch(`/posts/${slug}.md`);
+    console.log(`First attempt status: ${response.status}`);
     
     // If not found, try without extension
     if (!response.ok) {
       response = await fetch(`/posts/${slug}`);
+      console.log(`Second attempt status: ${response.status}`);
     }
     
     // If still not found, check specific files we know about
@@ -78,6 +120,8 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
         response = await fetch('/posts/security-in-communications.md');
       }
       
+      console.log(`Fallback attempt status: ${response.status}`);
+      
       if (!response.ok) {
         console.error(`Failed to fetch post with slug: ${slug}`);
         return null;
@@ -85,7 +129,10 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
     }
     
     const markdownWithMeta = await response.text();
+    console.log(`Got markdown content, length: ${markdownWithMeta.length}`);
+    
     const { frontmatter, content } = parseFrontMatter(markdownWithMeta);
+    console.log(`Parsed frontmatter:`, frontmatter);
     
     // Create a correctly structured post metadata object
     const metadata: PostMetadata = {
@@ -96,10 +143,11 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
       coverImage: frontmatter.coverImage || '/placeholder.svg',
       category: frontmatter.category || 'Uncategorized',
       readTime: frontmatter.readTime || '3 min',
+      subtitle: frontmatter.subtitle || '',
       author: frontmatter.author || {
-        name: frontmatter['author.name'] || 'Anonymous',
-        role: frontmatter['author.role'] || 'Author',
-        avatar: frontmatter['author.avatar'] || '/placeholder.svg'
+        name: 'Anonymous',
+        role: 'Author',
+        avatar: '/placeholder.svg'
       }
     };
     
