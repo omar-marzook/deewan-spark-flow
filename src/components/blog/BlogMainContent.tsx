@@ -3,7 +3,7 @@ import React from "react";
 
 interface BlogMainContentProps {
   post: {
-    content: React.ReactNode[];
+    content: React.ReactElement[];
     [key: string]: any;
   };
   headings: {
@@ -34,18 +34,23 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({ post, headings, Table
         prose-blockquote:border-deewan-primary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
         prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8"
     >
+      {/* Rendered content expects that all h2/h3 headings have an id in form heading-{index} */}
       {React.Children.map(post.content, (child, idx) => {
-        if (React.isValidElement(child)) {
-          if (child.type === 'h2' || child.type === 'h3') {
-            const headingIndex = headings.findIndex(h => h.text === String(child.props.children));
-            return React.cloneElement(child, {
-              id: `heading-${headingIndex}`,
-              ...child.props
-            });
-          }
-          return child;
+        if (
+          React.isValidElement(child) &&
+          (child.type === 'h2' || child.type === 'h3')
+        ) {
+          // Type cast the props to access the children
+          const childProps = child.props as { children: string };
+          // Ensure IDs are deterministic and match TOC
+          const headingIndex = headings.findIndex(h => h.text === childProps.children);
+          // Clone the element with the new id prop
+          return React.cloneElement(child, { 
+            id: `heading-${headingIndex}`,
+            ...child.props
+          });
         }
-        return null;
+        return child;
       })}
     </article>
     <aside className="hidden lg:block">
