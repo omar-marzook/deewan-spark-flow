@@ -4,17 +4,29 @@ import { motion } from 'framer-motion';
 import PostContent from './PostContent';
 
 interface BlogMainContentProps {
-  content: {
+  content?: {
     type: string;
     text: string;
     author?: string;
     src?: string;
     caption?: string;
   }[];
+  post?: any; // Add post prop
+  headings?: any[]; // Add headings prop
+  TableOfContents?: React.ComponentType<{ headings: any }>; // Add TableOfContents prop
   children?: React.ReactNode;
 }
 
-const BlogMainContent: React.FC<BlogMainContentProps> = ({ content, children }) => {
+const BlogMainContent: React.FC<BlogMainContentProps> = ({ 
+  content, 
+  post, 
+  headings, 
+  TableOfContents,
+  children 
+}) => {
+  // Use content directly if provided, otherwise use post.content if available
+  const contentToRender = content || (post && post.content);
+  
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -25,9 +37,10 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({ content, children }) 
         fontFamily: "'Gilroy', 'Poppins', ui-sans-serif, system-ui, sans-serif",
       }}
     >
-      <PostContent content={content}>
+      {TableOfContents && headings && <TableOfContents headings={headings} />}
+      {contentToRender && <PostContent content={contentToRender}>
         {children}
-      </PostContent>
+      </PostContent>}
     </motion.article>
   );
 };
