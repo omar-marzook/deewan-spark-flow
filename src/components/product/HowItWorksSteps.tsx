@@ -1,25 +1,38 @@
 
 import { motion } from "framer-motion";
 
-const steps = [
+interface HowItWorksStepsProps {
+  steps?: {
+    number: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+const defaultSteps = [
   {
     number: "01",
-    title: "Connect Your Account",
-    description: "Set up your Deewan account and configure your preferences in minutes."
+    title: "Connect Your Channels",
+    description: "Integrate WhatsApp, live chat, email, and more into one system."
   },
   {
     number: "02",
-    title: "Choose Your Channels",
-    description: "Select which communication channels you want to integrate - SMS, WhatsApp, or Voice."
+    title: "Automate and Route Chats",
+    description: "Set up routing logic based on your teams, departments, and workflows."
   },
   {
     number: "03",
-    title: "Start Communicating",
-    description: "Begin sending messages and engaging with your customers across all channels."
+    title: "Manage Conversations Real-Time",
+    description: "View, track, and respond to chats instantly inside the dashboard."
+  },
+  {
+    number: "04",
+    title: "Analyze and Improve",
+    description: "Use real-time analytics to measure and enhance customer support."
   }
 ];
 
-const HowItWorksSteps = () => {
+const HowItWorksSteps = ({ steps = defaultSteps }: HowItWorksStepsProps) => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background decorative elements */}

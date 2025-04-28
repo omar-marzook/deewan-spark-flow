@@ -114,6 +114,24 @@ export default function ProductPage() {
     }
   };
 
+  const defaultSteps = [
+    {
+      number: "01",
+      title: "Connect Your Channels",
+      description: "Integrate WhatsApp, live chat, email, and more into one system."
+    },
+    {
+      number: "02",
+      title: "Automate and Route Chats",
+      description: "Set up routing logic based on your teams, departments, and workflows."
+    },
+    {
+      number: "03",
+      title: "Manage Conversations Real-Time",
+      description: "View, track, and respond to chats instantly inside the dashboard."
+    }
+  ];
+
   return (
     <div className="overflow-x-hidden font-sans bg-white text-deewan-dark">
       <Navbar />
@@ -126,7 +144,7 @@ export default function ProductPage() {
       <CoreFeaturesStaggered />
       <ProductUseCases useCases={useCases} />
       <IndustrySolutionsRedesign />
-      <HowItWorksSteps />
+      <HowItWorksSteps steps={defaultSteps} />
       <HowItWorksVideo />
       <BlogSection />
       <div id="contact">

@@ -1,9 +1,63 @@
-
 import { ProductData } from '@/components/ProductTemplate';
-import { Check, Star, Users, Bookmark, Phone, Mail, MessageSquare, Database, Server, Box, Globe, Link, LayoutGrid, Layers } from 'lucide-react';
+import { Check, MessageSquare, Database, Server, Box, Globe, Link, LayoutGrid, Layers, Phone, Mail, Star } from 'lucide-react';
 import React from 'react';
 
 const productsData: Record<string, ProductData> = {
+  "omni-channel-chat": {
+    slug: "omni-channel-chat",
+    name: "Deewan Omni-Channel Chat",
+    tagline: "Centralize customer conversations in one unified platform.",
+    description: "Manage real-time communications across WhatsApp, live chat, social media, and email — all in one simple, secure dashboard.",
+    features: [
+      {
+        icon: React.createElement(MessageSquare, { className: "w-6 h-6" }),
+        title: "Unified Inbox",
+        description: "Access all your customer conversations from WhatsApp, live chat, social, and email in a single platform."
+      },
+      {
+        icon: React.createElement(Link, { className: "w-6 h-6" }),
+        title: "Multi-Channel Integration",
+        description: "Easily integrate popular communication channels with seamless transition between chats."
+      },
+      {
+        icon: React.createElement(Star, { className: "w-6 h-6" }),
+        title: "Smart Routing",
+        description: "Automatically assign chats to agents based on availability, skillset, and workload balancing."
+      },
+      {
+        icon: React.createElement(Database, { className: "w-6 h-6" }),
+        title: "Real-Time Notifications",
+        description: "Get instant notifications for new chats, important updates, and escalations."
+      },
+      {
+        icon: React.createElement(LayoutGrid, { className: "w-6 h-6" }),
+        title: "Analytics & Insights",
+        description: "Track response times, chat volume, agent performance, and customer satisfaction through insightful dashboards."
+      }
+    ],
+    useCases: [
+      {
+        title: "Government Service Desks",
+        desc: "Deliver faster, more responsive communication to citizens.",
+        icon: React.createElement(Users, { className: "h-6 w-6" })
+      },
+      {
+        title: "Customer Support Centers",
+        desc: "Manage high-volume inquiries efficiently across multiple channels.",
+        icon: React.createElement(Layers, { className: "h-6 w-6" })
+      },
+      {
+        title: "eCommerce & Logistics",
+        desc: "Streamline customer order support, delivery inquiries, and updates.",
+        icon: React.createElement(Server, { className: "h-6 w-6" })
+      },
+      {
+        title: "Internal HR & IT Helpdesk",
+        desc: "Support employees with real-time HR and technical issue resolutions.",
+        icon: React.createElement(Mail, { className: "h-6 w-6" })
+      }
+    ]
+  },
   "messaging-api": {
     slug: "messaging-api",
     name: "Messaging API",
@@ -56,57 +110,6 @@ const productsData: Record<string, ProductData> = {
         title: "Healthcare",
         desc: "Send appointment reminders, prescription notifications, and health tips.",
         icon: React.createElement(Users, { className: "h-6 w-6" })
-      }
-    ]
-  },
-  "omni-channel-chat": {
-    slug: "omni-channel-chat",
-    name: "Omni-Channel Chat",
-    tagline: "Centralize all your customer conversations in one secure, responsive, and scalable platform.",
-    description: "Manage real-time messages from WhatsApp, live chat, social channels, and email — all in a unified inbox.",
-    heroImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
-    features: [
-      {
-        icon: React.createElement(MessageSquare, { className: "w-6 h-6" }),
-        title: "Multi-Channel Inbox",
-        description: "Manage WhatsApp, email, chat, and social messages all in one unified platform."
-      },
-      {
-        icon: React.createElement(Link, { className: "w-6 h-6" }),
-        title: "Smart Routing",
-        description: "Automatically assign conversations based on team availability and priority."
-      },
-      {
-        icon: React.createElement(Star, { className: "w-6 h-6" }),
-        title: "Real-Time Notifications",
-        description: "Get instant alerts for new messages and important conversations."
-      },
-      {
-        icon: React.createElement(Database, { className: "w-6 h-6" }),
-        title: "Searchable History",
-        description: "Access complete conversation histories with powerful search capabilities."
-      },
-      {
-        icon: React.createElement(LayoutGrid, { className: "w-6 h-6" }),
-        title: "Insightful Analytics",
-        description: "Track team performance and conversation quality with analytics dashboards."
-      }
-    ],
-    useCases: [
-      {
-        title: "Customer Support",
-        desc: "Deliver exceptional customer service with unified messaging tools.",
-        icon: React.createElement(Users, { className: "h-6 w-6" })
-      },
-      {
-        title: "Sales Teams",
-        desc: "Convert leads faster with organized communication channels.",
-        icon: React.createElement(Layers, { className: "h-6 w-6" })
-      },
-      {
-        title: "IT Help Desk",
-        desc: "Streamline internal support with efficient communication.",
-        icon: React.createElement(Server, { className: "h-6 w-6" })
       }
     ]
   },
