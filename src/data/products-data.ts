@@ -62,56 +62,51 @@ const productsData: Record<string, ProductData> = {
   "omni-channel-chat": {
     slug: "omni-channel-chat",
     name: "Omni-Channel Chat",
-    tagline: "Centralize your customer communication in one powerful platform.",
-    description: "Seamlessly manage conversations from WhatsApp, live chat, email, and more — all in a unified dashboard.",
-    heroImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60",
+    tagline: "Centralize all your customer conversations in one secure, responsive, and scalable platform.",
+    description: "Manage real-time messages from WhatsApp, live chat, social channels, and email — all in a unified inbox.",
+    heroImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
     features: [
       {
         icon: React.createElement(MessageSquare, { className: "w-6 h-6" }),
-        title: "Unified Chat Interface",
-        description: "Streamline all customer conversations into a single, intuitive interface for faster response times."
+        title: "Multi-Channel Inbox",
+        description: "Manage WhatsApp, email, chat, and social messages all in one unified platform."
       },
       {
         icon: React.createElement(Link, { className: "w-6 h-6" }),
-        title: "Multi-channel Integration",
-        description: "Connect WhatsApp, Facebook, Instagram, live chat, email, and other platforms into one system."
+        title: "Smart Routing",
+        description: "Automatically assign conversations based on team availability and priority."
       },
       {
         icon: React.createElement(Star, { className: "w-6 h-6" }),
-        title: "Smart Routing & Automation",
-        description: "Automatically assign conversations to the right team members based on availability and expertise."
+        title: "Real-Time Notifications",
+        description: "Get instant alerts for new messages and important conversations."
       },
       {
         icon: React.createElement(Database, { className: "w-6 h-6" }),
-        title: "Real-time Notifications",
-        description: "Never miss a customer message with instant alerts across desktop and mobile devices."
+        title: "Searchable History",
+        description: "Access complete conversation histories with powerful search capabilities."
       },
       {
         icon: React.createElement(LayoutGrid, { className: "w-6 h-6" }),
-        title: "Analytics & Insights",
-        description: "Track performance metrics, conversation quality, and customer satisfaction with advanced dashboards."
+        title: "Insightful Analytics",
+        description: "Track team performance and conversation quality with analytics dashboards."
       }
     ],
     useCases: [
       {
-        title: "Government Services",
-        desc: "Provide efficient citizen support through unified communication channels for government agencies.",
-        icon: React.createElement(Users, { className: "h-6 w-6" })
-      },
-      {
         title: "Customer Support",
-        desc: "Build stronger customer relationships with responsive, omnichannel support capabilities.",
-        icon: React.createElement(MessageSquare, { className: "h-6 w-6" })
-      },
-      {
-        title: "eCommerce & Logistics",
-        desc: "Streamline order inquiries and delivery updates across multiple messaging platforms.",
-        icon: React.createElement(Box, { className: "h-6 w-6" })
-      },
-      {
-        title: "HR Communications",
-        desc: "Improve internal communications and employee engagement with centralized messaging.",
+        desc: "Deliver exceptional customer service with unified messaging tools.",
         icon: React.createElement(Users, { className: "h-6 w-6" })
+      },
+      {
+        title: "Sales Teams",
+        desc: "Convert leads faster with organized communication channels.",
+        icon: React.createElement(Layers, { className: "h-6 w-6" })
+      },
+      {
+        title: "IT Help Desk",
+        desc: "Streamline internal support with efficient communication.",
+        icon: React.createElement(Server, { className: "h-6 w-6" })
       }
     ]
   },
