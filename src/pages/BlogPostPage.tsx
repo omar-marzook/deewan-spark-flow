@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -35,46 +37,6 @@ const extractHeadings = (content) => {
   }
   
   return headings;
-};
-
-// Simple function to render markdown to HTML
-const renderMarkdown = (markdown) => {
-  if (!markdown) return '';
-  
-  // Convert headings (# Heading)
-  let html = markdown.replace(/^###\s+(.*?)$/gm, '<h3 id="$1">$1</h3>');
-  html = html.replace(/^##\s+(.*?)$/gm, '<h2 id="$1">$1</h2>');
-  html = html.replace(/^#\s+(.*?)$/gm, '<h1 id="$1">$1</h1>');
-  
-  // Convert paragraphs
-  html = html.replace(/^(?!<h[1-6]|<ul|<ol|<li|<blockquote)(.*?)$/gm, (match, p1) => {
-    if (p1.trim() === '') return '';
-    return `<p>${p1}</p>`;
-  });
-  
-  // Convert lists
-  html = html.replace(/^- (.*)$/gm, '<li>$1</li>');
-  html = html.replace(/(<li>.*?<\/li>\n)+/gs, (match) => {
-    return `<ul>${match}</ul>`;
-  });
-  
-  // Convert numbered lists
-  html = html.replace(/^\d+\. (.*)$/gm, '<li>$1</li>');
-  html = html.replace(/^(\d+\. .*\n)+/gm, (match) => {
-    return `<ol>${match.replace(/^\d+\. (.*)/gm, '<li>$1</li>')}</ol>`;
-  });
-  
-  // Convert blockquotes
-  html = html.replace(/^>\s+(.*?)$/gm, '<blockquote>$1</blockquote>');
-  
-  // Convert bold and italic
-  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-  
-  // Convert links
-  html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
-  
-  return html;
 };
 
 const BlogPostPage = () => {
@@ -184,8 +146,21 @@ const BlogPostPage = () => {
             style={{
               fontFamily: "'Gilroy', 'Poppins', ui-sans-serif, system-ui, sans-serif",
             }}
-            dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }}
-          />
+          >
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h1: ({ node, ...props }) => <h1 id={props.children.toString().toLowerCase().replace(/\s+/g, '-')} {...props} className="text-3xl font-bold mb-6" />,
+                h2: ({ node, ...props }) => <h2 id={props.children.toString().toLowerCase().replace(/\s+/g, '-')} {...props} className="text-2xl font-bold mt-10 mb-4" />,
+                h3: ({ node, ...props }) => <h3 id={props.children.toString().toLowerCase().replace(/\s+/g, '-')} {...props} className="text-xl font-bold mt-8 mb-3" />,
+                ul: ({ node, ...props }) => <ul {...props} className="list-disc pl-6 my-4" />,
+                ol: ({ node, ...props }) => <ol {...props} className="list-decimal pl-6 my-4" />,
+                li: ({ node, ...props }) => <li {...props} className="mb-2" />,
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
+          </motion.article>
           
           {/* Table of contents (floating on desktop) */}
           {headings && headings.length > 0 && (
