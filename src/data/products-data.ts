@@ -1,5 +1,6 @@
+
 import { ProductData } from '@/components/ProductTemplate';
-import { Check, MessageSquare, Database, Server, Box, Globe, Link, LayoutGrid, Layers, Phone, Mail, Star } from 'lucide-react';
+import { Check, MessageSquare, Database, Server, Box, Globe, Link, LayoutGrid, Layers, Phone, Mail, Star, Users, Bookmark } from 'lucide-react';
 import React from 'react';
 
 const productsData: Record<string, ProductData> = {
