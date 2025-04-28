@@ -1,5 +1,6 @@
+
 import { useNavigate } from "react-router-dom";
-import { Info, Check, Users, Bookmark, Phone, Mail, Star } from "lucide-react";
+import { useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import ProductHero from "@/components/product/ProductHero";
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
@@ -12,98 +13,20 @@ import HowItWorksVideo from "@/components/product/HowItWorksVideo";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-
-const features = [
-  {
-    icon: <Check className="w-7 h-7 text-deewan-primary" />,
-    title: "Real-time Communications",
-    description: "Deliver instant messages to customers through SMS, WhatsApp, or Voice with high reliability.",
-  },
-  {
-    icon: <Bookmark className="w-7 h-7 text-deewan-primary" />,
-    title: "Centralized Management",
-    description: "One dashboard to manage campaigns, user conversations, analytics, and reporting.",
-  },
-  {
-    icon: <Users className="w-7 h-7 text-deewan-primary" />,
-    title: "AI-powered Automation",
-    description: "Automate customer replies, authentication, and routine tasks with smart bots.",
-  },
-  {
-    icon: <Star className="w-7 h-7 text-deewan-primary" />,
-    title: "Insightful Analytics",
-    description: "Gain actionable insights from comprehensive analytics and reporting.",
-  },
-  {
-    icon: <Phone className="w-7 h-7 text-deewan-primary" />,
-    title: "Omnichannel APIs",
-    description: "APIs for SMS, WhatsApp, Voice, Verification and more, easily integrated with your applications.",
-  },
-  {
-    icon: <Mail className="w-7 h-7 text-deewan-primary" />,
-    title: "Personalization",
-    description: "Personalize messages at scale to improve engagement and conversion.",
-  },
-];
-
-const useCases = [
-  {
-    title: "Marketing",
-    desc: "Send promotions to customers over their preferred channels instantly.",
-    icon: <Users className="h-9 w-9 text-deewan-secondary" />,
-  },
-  {
-    title: "Finance",
-    desc: "Deliver OTPs, alerts, and payment confirmations securely.",
-    icon: <Bookmark className="h-9 w-9 text-deewan-secondary" />,
-  },
-  {
-    title: "Support & Operations",
-    desc: "Automate support and provide notifications 24/7.",
-    icon: <Info className="h-9 w-9 text-deewan-secondary" />,
-  },
-];
-
-const subscriptionPlans = [
-  {
-    name: "Starter",
-    price: "Free",
-    description: "Basic access for testing & trial use",
-    features: [
-      "Up to 100 messages/month",
-      "Email & Chat Support",
-      "All core features",
-    ],
-    highlight: false,
-  },
-  {
-    name: "Business",
-    price: "SAR 299/mo",
-    description: "Professional communications for businesses",
-    features: [
-      "Up to 10,000 messages/month",
-      "Multi-channel APIs",
-      "Priority Support",
-      "Analytics Dashboard",
-    ],
-    highlight: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    description: "Custom solutions for high-volume needs",
-    features: [
-      "Unlimited messaging",
-      "Dedicated Account Manager",
-      "Bespoke Integration",
-      "SLA & Compliance",
-    ],
-    highlight: false,
-  },
-];
+import productsData from "@/data/products-data";
+import NotFound from "./NotFound";
 
 export default function ProductPage() {
   const navigate = useNavigate();
+  const { slug } = useParams<{ slug: string }>();
+  
+  // Find the product data based on the slug
+  const productData = slug ? productsData[slug] : null;
+  
+  // If no product is found, show the 404 page
+  if (!productData) {
+    return <NotFound />;
+  }
 
   const scrollToContact = () => {
     const contactElem = document.getElementById("contact");
@@ -114,38 +37,24 @@ export default function ProductPage() {
     }
   };
 
-  const defaultSteps = [
-    {
-      number: "01",
-      title: "Connect Your Channels",
-      description: "Integrate WhatsApp, live chat, email, and more into one system."
-    },
-    {
-      number: "02",
-      title: "Automate and Route Chats",
-      description: "Set up routing logic based on your teams, departments, and workflows."
-    },
-    {
-      number: "03",
-      title: "Manage Conversations Real-Time",
-      description: "View, track, and respond to chats instantly inside the dashboard."
-    }
-  ];
-
   return (
     <div className="overflow-x-hidden font-sans bg-white text-deewan-dark">
       <Navbar />
       <ProductHero 
-        name="Messaging Solutions" 
-        tagline="Connect with your customers instantly across multiple channels with our unified messaging solution."
+        name={productData.name} 
+        tagline={productData.tagline}
         onContactClick={scrollToContact} 
       />
       <PowerfulCapabilitiesRedesign />
       <CoreFeaturesStaggered />
-      <ProductUseCases useCases={useCases} />
+      <ProductUseCases useCases={productData.useCases} />
       <IndustrySolutionsRedesign />
-      <HowItWorksSteps steps={defaultSteps} />
-      <HowItWorksVideo />
+      {productData.howItWorks?.steps && (
+        <HowItWorksSteps steps={productData.howItWorks.steps} />
+      )}
+      {productData.howItWorks?.videoUrl && (
+        <HowItWorksVideo videoUrl={productData.howItWorks.videoUrl} />
+      )}
       <BlogSection />
       <div id="contact">
         <ContactSection />

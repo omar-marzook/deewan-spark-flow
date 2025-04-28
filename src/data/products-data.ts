@@ -57,7 +57,32 @@ const productsData: Record<string, ProductData> = {
         desc: "Support employees with real-time HR and technical issue resolutions.",
         icon: React.createElement(Mail, { className: "h-6 w-6" })
       }
-    ]
+    ],
+    howItWorks: {
+      steps: [
+        {
+          number: "01",
+          title: "Connect Your Channels",
+          description: "Integrate WhatsApp, live chat, email, and more into one system."
+        },
+        {
+          number: "02", 
+          title: "Automate and Route Chats",
+          description: "Set up routing logic based on your teams, departments, and workflows."
+        },
+        {
+          number: "03",
+          title: "Manage Conversations Real-Time",
+          description: "View, track, and respond to chats instantly inside the dashboard."
+        },
+        {
+          number: "04",
+          title: "Analyze and Improve",
+          description: "Use real-time analytics to measure and enhance customer support."
+        }
+      ],
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    }
   },
   "messaging-api": {
     slug: "messaging-api",
