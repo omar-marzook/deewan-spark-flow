@@ -36,10 +36,10 @@ const TableOfContentsInline = ({ headings }) => {
       <div className="rounded-xl glass p-5 border-l-4 border-deewan-primary">
         <h4 className="font-bold text-lg text-deewan-dark/90 mb-3 flex items-center">
           <Bookmark className="w-4 h-4 mr-2 text-deewan-primary" />
-          Contents
+          Table of content
         </h4>
         <nav>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-1 text-sm">
             {headings.map((heading) => (
               <li key={heading.id} className={`${heading.level === 3 ? 'ml-3' : ''}`}>
                 <a
