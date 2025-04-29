@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -37,6 +38,7 @@ const useHeadings = content => {
   });
   return headings;
 };
+
 const BlogPostPage = () => {
   const {
     slug
@@ -44,6 +46,7 @@ const BlogPostPage = () => {
   const [post, setPost] = useState(null);
   const [relatedPosts, setRelatedPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setPost({
@@ -132,7 +135,9 @@ const BlogPostPage = () => {
     }, 1000);
     return () => clearTimeout(timeout);
   }, [slug]);
+
   const headings = useHeadings(post?.content || []);
+
   if (loading) {
     return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
         <Navbar />
@@ -151,6 +156,7 @@ const BlogPostPage = () => {
         <Footer />
       </div>;
   }
+
   if (!post) {
     return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
         <Navbar />
@@ -167,6 +173,7 @@ const BlogPostPage = () => {
         <Footer />
       </div>;
   }
+
   return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50 pt-20">
       <Navbar />
       <ReadingProgressBar />
@@ -179,4 +186,5 @@ const BlogPostPage = () => {
       <Footer />
     </div>;
 };
+
 export default BlogPostPage;
