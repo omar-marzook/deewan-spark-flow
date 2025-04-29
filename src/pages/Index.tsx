@@ -1,5 +1,6 @@
 
 import Navbar from "../components/Navbar";
+import HomeHero from "../components/HomeHero";
 import Hero from "../components/Hero";
 import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
 import AlternativeProducts from "../components/AlternativeProducts";
@@ -17,6 +18,7 @@ const Index = () => {
   return (
     <div className="overflow-x-hidden">
       <Navbar />
+      <HomeHero />
       <Hero />
       <ProductsTabbedLayout />
       <AlternativeProducts />
