@@ -1,7 +1,7 @@
 import React from "react";
-import { Twitter, Linkedin, Mail, Facebook, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
+import ShareSection from "./ShareSection";
 
 export function useHeadingData(content: any[] | string) {
   const headings: {
@@ -85,23 +85,6 @@ export function useHeadingData(content: any[] | string) {
   };
 }
 
-const SOCIALS = [{
-  label: "Twitter",
-  icon: Twitter,
-  url: "#"
-}, {
-  label: "LinkedIn",
-  icon: Linkedin,
-  url: "#"
-}, {
-  label: "Facebook",
-  icon: Facebook,
-  url: "#"
-}, {
-  label: "Email",
-  icon: Mail,
-  url: "#"
-}];
 
 const PostContent = ({
   content,
@@ -119,21 +102,7 @@ const PostContent = ({
         {children}
         
         {/* Share section */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 mt-12 mb-6 glass border border-white/30 rounded-xl py-4 px-6 shadow">
-          <div className="flex items-center gap-2 text-deewan-dark font-semibold">
-            <Share2 className="w-5 h-5 text-deewan-primary" />
-            <span>Share:</span>
-          </div>
-          <div className="flex gap-2 ml-2">
-            {SOCIALS.map(({
-              label,
-              icon: Icon,
-              url
-            }) => <a key={label} href={url} className={`p-2 rounded-full hover:bg-deewan-primary/20 bg-gray-100 transition-colors text-deewan-primary`} aria-label={label}>
-              <Icon className="w-5 h-5" />
-            </a>)}
-          </div>
-        </div>
+        <ShareSection blogUrl={window.location.href} title="Share this article" />
       </div>
     );
   }
@@ -190,21 +159,7 @@ const PostContent = ({
         </ReactMarkdown>
         
         {/* Share section */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 mt-12 mb-6 glass border border-white/30 rounded-xl py-4 px-6 shadow">
-          <div className="flex items-center gap-2 text-deewan-dark font-semibold">
-            <Share2 className="w-5 h-5 text-deewan-primary" />
-            <span>Share:</span>
-          </div>
-          <div className="flex gap-2 ml-2">
-            {SOCIALS.map(({
-              label,
-              icon: Icon,
-              url
-            }) => <a key={label} href={url} className={`p-2 rounded-full hover:bg-deewan-primary/20 bg-gray-100 transition-colors text-deewan-primary`} aria-label={label}>
-              <Icon className="w-5 h-5" />
-            </a>)}
-          </div>
-        </div>
+        <ShareSection blogUrl={window.location.href} title="Share this article" />
       </div>
     );
   }
@@ -249,21 +204,7 @@ const PostContent = ({
       })}
       
       {/* Share section */}
-      <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 mt-12 mb-6 glass border border-white/30 rounded-xl py-4 px-6 shadow">
-        <div className="flex items-center gap-2 text-deewan-dark font-semibold">
-          <Share2 className="w-5 h-5 text-deewan-primary" />
-          <span>Share:</span>
-        </div>
-        <div className="flex gap-2 ml-2">
-          {SOCIALS.map(({
-            label,
-            icon: Icon,
-            url
-          }) => <a key={label} href={url} className={`p-2 rounded-full hover:bg-deewan-primary/20 bg-gray-100 transition-colors text-deewan-primary`} aria-label={label}>
-              <Icon className="w-5 h-5" />
-            </a>)}
-        </div>
-      </div>
+      <ShareSection blogUrl={window.location.href} title="Share this article" />
     </div>
   );
 };

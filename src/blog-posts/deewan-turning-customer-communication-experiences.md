@@ -3,6 +3,7 @@ title: Deewan turning customer communication experiences
 excerpt: Al Moosa hospital is one of the well-known hospitals in Saudi Arabia and specifically Eastern region, as one 
 date: February 11, 2024
 readTime: 2 min
+category: Product Guide
 coverImage: https://www.deewan.sa/hubfs/deewan_2024/AlMoosa.gif
 author:
   name: Times of India

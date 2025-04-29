@@ -29,7 +29,7 @@ const BlogGrid = () => {
           title: post.frontmatter.title,
           excerpt: post.frontmatter.excerpt || '',
           date: post.frontmatter.date,
-          readTime: post.frontmatter.readTime || '5 min',
+          readTime: post.frontmatter.readTime || '3 min',
           category: post.frontmatter.category || 'General',
           imageUrl: post.frontmatter.coverImage || ''
         };
