@@ -12,13 +12,11 @@ const BlogGrid = () => {
     try {
       // Get the slugs directly
       const slugs = ['future-communication-ai', 'secure-messaging-enterprise'];
-      console.log('Hard-coded blog post slugs:', slugs);
       
       // Create posts directly from the slugs
       const posts = slugs.map((slug, index) => {
         // Get the post data from the slug
         const post = getPostBySlug(slug);
-        console.log(`Post data for ${slug}:`, post);
         
         if (!post) {
           console.error(`Post not found for slug: ${slug}`);
@@ -37,7 +35,6 @@ const BlogGrid = () => {
         };
       }).filter(Boolean);
       
-      console.log('Directly created blog posts:', posts);
       setBlogPosts(posts);
     } catch (err) {
       console.error('Error loading blog posts:', err);

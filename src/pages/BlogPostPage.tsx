@@ -49,14 +49,10 @@ const BlogPostPage = () => {
     const timeout = setTimeout(() => {
       if (slug) {
         try {
-          console.log('Getting post for slug:', slug);
           const markdownPost = getPostBySlug(slug);
-          console.log('Markdown post found:', markdownPost ? 'Yes' : 'No');
           
           if (markdownPost) {
             const { frontmatter, content, rawContent } = markdownPost;
-            console.log('Post frontmatter:', frontmatter);
-            console.log('Content array length:', content ? content.length : 0);
             const { headings } = useHeadingData(rawContent);
             
             setPost({
@@ -74,7 +70,6 @@ const BlogPostPage = () => {
             
             // Get related posts
             const allPosts = getAllPosts();
-            console.log('All posts for related posts:', allPosts);
             const related = allPosts
               .filter(p => p.slug !== slug)
               .slice(0, 3)
@@ -89,7 +84,6 @@ const BlogPostPage = () => {
                 readTime: p.frontmatter.readTime || '5 min'
               }));
             
-            console.log('Related posts:', related);
             setRelatedPosts(related);
           } else {
             // No post found

@@ -155,12 +155,35 @@ const PostContent = ({
             blockquote: ({ node, ...props }) => (
               <blockquote className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-primary/5 border-l-4 border-deewan-primary" {...props} />
             ),
-            img: ({ node, ...props }) => (
-              <figure className="w-full flex flex-col items-center">
-                <img src={props.src} alt={props.alt || ""} className="rounded-3xl my-6 shadow border border-white/40" />
-                {props.alt && <figcaption className="text-center text-sm text-deewan-gray mt-2">{props.alt}</figcaption>}
-              </figure>
-            ),
+            // Fix for DOM nesting error
+            p: ({ node, children }) => {
+              // Check if the paragraph contains only an image
+              const hasOnlyImage = React.Children.toArray(children).every(
+                child => React.isValidElement(child) && child.type === 'img'
+              );
+              
+              if (hasOnlyImage) {
+                // Extract the image element
+                const imgElement = React.Children.toArray(children).find(
+                  child => React.isValidElement(child) && child.type === 'img'
+                ) as React.ReactElement;
+                
+                if (imgElement) {
+                  const { src, alt } = imgElement.props;
+                  
+                  // Return a figure instead of a paragraph
+                  return (
+                    <figure className="w-full flex flex-col items-center my-6">
+                      <img src={src} alt={alt || ""} className="rounded-3xl shadow border border-white/40" />
+                      {alt && <figcaption className="text-center text-sm text-deewan-gray mt-2">{alt}</figcaption>}
+                    </figure>
+                  );
+                }
+              }
+              
+              // Regular paragraph
+              return <p>{children}</p>;
+            },
           }}
         >
           {markdownContent}

@@ -10,10 +10,7 @@ const blogPostsContent = {
   'secure-messaging-enterprise': secureMessagingContent
 };
 
-// Log available blog posts
-console.log('Available blog posts:', Object.keys(blogPostsContent));
-// Log sample content length instead of content itself to avoid console clutter
-console.log('Sample content length:', futureAiContent.length);
+// Available blog posts are: future-communication-ai, secure-messaging-enterprise
 
 export function getPostSlugs() {
   try {
@@ -37,12 +34,8 @@ export function getPostBySlug(slug: string) {
       return null;
     }
     
-    console.log(`Processing blog post ${slug}, content length: ${fileContents.length}`);
-    
     // Use gray-matter to parse the post metadata section
     const { data, content } = matter(fileContents);
-    
-    console.log(`Frontmatter for ${slug}:`, data);
     
     // Convert the content to the format expected by the existing PostContent component
     const formattedContent = formatMarkdownToContentArray(content);
