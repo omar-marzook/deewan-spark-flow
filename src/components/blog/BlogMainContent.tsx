@@ -1,62 +1,61 @@
 
-import React from "react";
+import React from 'react';
+import { motion } from 'framer-motion';
+import PostContent from './PostContent';
 
 interface BlogMainContentProps {
-  post: {
-    content: React.ReactElement[];
-    [key: string]: any;
-  };
-  headings: {
-    id: string;
+  content?: {
+    type: string;
     text: string;
-    level: number;
+    author?: string;
+    src?: string;
+    caption?: string;
   }[];
-  TableOfContents: React.ComponentType<{
-    headings: {
-      id: string;
-      text: string;
-      level: number;
-    }[];
-  }>;
+  post?: any; // Post prop
+  headings?: any[]; // Headings prop
+  TableOfContents?: React.ComponentType<{ headings: any }>; // TableOfContents component
+  children?: React.ReactNode;
 }
 
-const BlogMainContent: React.FC<BlogMainContentProps> = ({ post, headings, TableOfContents }) => (
-  <div className="container mx-auto max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-12 mb-20">
-    <article
-      id="article-content"
-      className="prose prose-lg max-w-none
-        prose-h1:mb-4 prose-h2:mb-4 prose-h3:mb-4 prose-h4:mb-4 prose-h5:mb-4 prose-h6:mb-4 prose-p:mb-4 prose-ul:mb-4 prose-ol:mb-4 prose-blockquote:mb-4
-        prose-h2:text-2xl prose-h2:font-bold prose-h2:text-deewan-dark prose-h2:mt-10
-        prose-h3:text-xl prose-h3:font-semibold prose-h3:text-deewan-dark/90 prose-h3:mt-8
-        prose-p:text-deewan-dark/90 prose-p:leading-relaxed
-        prose-ul:my-5 prose-li:my-2 prose-li:text-deewan-dark/80
-        prose-a:text-deewan-primary prose-a:no-underline hover:prose-a:underline 
-        prose-blockquote:border-deewan-primary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
-        prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8"
-    >
-      {/* Rendered content expects that all h2/h3 headings have an id in form heading-{index} */}
-      {React.Children.map(post.content, (child, idx) => {
-        if (
-          React.isValidElement(child) &&
-          (child.type === 'h2' || child.type === 'h3')
-        ) {
-          // Type cast the props to access the children
-          const childProps = child.props as { children: string };
-          // Ensure IDs are deterministic and match TOC
-          const headingIndex = headings.findIndex(h => h.text === childProps.children);
-          // Clone the element with the new id prop
-          return React.cloneElement(child, { 
-            id: `heading-${headingIndex}`,
-            ...child.props
-          });
-        }
-        return child;
-      })}
-    </article>
-    <aside className="hidden lg:block">
-      <TableOfContents headings={headings} />
-    </aside>
-  </div>
-);
+const BlogMainContent: React.FC<BlogMainContentProps> = ({ 
+  content, 
+  post, 
+  headings, 
+  TableOfContents,
+  children 
+}) => {
+  // Use content directly if provided, otherwise use post.content if available
+  const contentToRender = content || (post && post.content);
+  
+  return (
+    <div className="container mx-auto max-w-6xl px-4 py-8 relative">
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Main content area */}
+        <motion.article
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="prose prose-lg max-w-none md:max-w-3xl prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-p:text-deewan-dark prose-blockquote:rounded-xl prose-blockquote:bg-deewan-secondary/10 prose-blockquote:p-6 prose-blockquote:font-medium prose-blockquote:text-deewan-secondary/90 prose-img:my-6"
+          style={{
+            fontFamily: "'Gilroy', 'Poppins', ui-sans-serif, system-ui, sans-serif",
+          }}
+        >
+          {contentToRender && <PostContent content={contentToRender}>
+            {children}
+          </PostContent>}
+        </motion.article>
+        
+        {/* Table of contents (floating on desktop) */}
+        {TableOfContents && headings && headings.length > 0 && (
+          <div className="hidden md:block md:w-72 flex-shrink-0">
+            <div className="sticky top-24">
+              <TableOfContents headings={headings} />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default BlogMainContent;
