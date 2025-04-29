@@ -1,7 +1,11 @@
 
 import { motion } from "framer-motion";
 
-const HowItWorksVideo = () => {
+interface HowItWorksVideoProps {
+  videoUrl?: string;
+}
+
+const HowItWorksVideo = ({ videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ" }: HowItWorksVideoProps) => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -26,10 +30,9 @@ const HowItWorksVideo = () => {
         >
           <div className="rounded-2xl overflow-hidden backdrop-blur-xl bg-white/30 border border-white/20 shadow-lg p-4">
             <div className="aspect-video relative rounded-lg overflow-hidden">
-              {/* Replace with actual video ID */}
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src={videoUrl}
                 title="Product Demo"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

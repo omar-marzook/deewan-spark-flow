@@ -9,6 +9,8 @@ import LogoCarousel from "./LogoCarousel";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
 import ProductCTA from "./product/ProductCTA";
+import HowItWorksSteps from "./product/HowItWorksSteps";
+import HowItWorksVideo from "./product/HowItWorksVideo";
 
 // Define the types for our dynamic product data
 export interface ProductFeature {
@@ -23,6 +25,12 @@ export interface ProductUseCase {
   icon: React.ReactNode;
 }
 
+export interface ProductHowItWorksStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
 export interface ProductData {
   slug: string;
   name: string;
@@ -32,6 +40,10 @@ export interface ProductData {
   features: ProductFeature[];
   useCases: ProductUseCase[];
   ctaLink?: string;
+  howItWorks?: {
+    steps?: ProductHowItWorksStep[];
+    videoUrl?: string;
+  };
 }
 
 interface ProductTemplateProps {
@@ -73,6 +85,19 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       
       {/* Use Cases Section */}
       <ProductUseCases useCases={product.useCases} />
+      
+      {/* How It Works Section */}
+      {product.howItWorks?.steps && product.howItWorks.steps.length > 0 && (
+        <HowItWorksSteps steps={product.howItWorks.steps.map((step, index) => ({
+          number: `0${index + 1}`,
+          title: step.title,
+          description: step.description
+        }))} />
+      )}
+      
+      {product.howItWorks?.videoUrl && (
+        <HowItWorksVideo videoUrl={product.howItWorks.videoUrl} />
+      )}
       
       {/* Client Logos Section */}
       <LogoCarousel />
