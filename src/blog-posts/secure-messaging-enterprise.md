@@ -14,7 +14,7 @@ author:
   linkedin: https://linkedin.com/in/ahmedhassan
 ---
 
-# Secure Messaging for Enterprise: A Complete Guide
+## Secure Messaging for Enterprise: A Complete Guide
 
 In today's digital landscape, secure messaging has become a critical component of enterprise communication strategies. As businesses exchange sensitive information across various channels, ensuring the security and compliance of these communications is paramount.
 
