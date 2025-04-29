@@ -1,25 +1,36 @@
-import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 
-const postsDirectory = path.join(process.cwd(), 'public/blog-posts');
+// Use Vite's import.meta.glob to import all markdown files from src directory
+const blogPostFiles = import.meta.glob('/src/blog-posts/*.md', { as: 'raw', eager: true });
 
 export function getPostSlugs() {
   try {
-    return fs.readdirSync(postsDirectory)
-      .filter(file => file.endsWith('.md'));
+    // Extract slugs from the file paths
+    return Object.keys(blogPostFiles)
+      .map(path => {
+        // Extract the filename from the path
+        const filename = path.split('/').pop() || '';
+        // Return the slug (filename without .md extension)
+        return filename.replace(/\.md$/, '');
+      });
   } catch (error) {
-    console.error('Error reading blog posts directory:', error);
+    console.error('Error getting blog post slugs:', error);
     return [];
   }
 }
 
 export function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, '');
-  const fullPath = path.join(postsDirectory, `${realSlug}.md`);
+  const filePath = `/src/blog-posts/${realSlug}.md`;
   
   try {
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    // Get the file contents using the import.meta.glob result
+    const fileContents = blogPostFiles[filePath];
+    
+    if (!fileContents) {
+      console.error(`Blog post not found: ${slug}`);
+      return null;
+    }
     
     // Use gray-matter to parse the post metadata section
     const { data, content } = matter(fileContents);
@@ -40,17 +51,25 @@ export function getPostBySlug(slug: string) {
 }
 
 export function getAllPosts() {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map(slug => getPostBySlug(slug))
-    .filter(Boolean) // Remove null values
-    .sort((post1, post2) => {
-      const date1 = new Date(post1?.frontmatter.date || 0);
-      const date2 = new Date(post2?.frontmatter.date || 0);
-      return date2.getTime() - date1.getTime(); // Sort by date descending
-    });
-  
-  return posts;
+  try {
+    // Get all post slugs
+    const slugs = getPostSlugs();
+    
+    // Map each slug to its post data
+    const posts = slugs
+      .map(slug => getPostBySlug(slug))
+      .filter(Boolean) // Remove null values
+      .sort((post1, post2) => {
+        const date1 = new Date(post1?.frontmatter.date || 0);
+        const date2 = new Date(post2?.frontmatter.date || 0);
+        return date2.getTime() - date1.getTime(); // Sort by date descending
+      });
+    
+    return posts;
+  } catch (error) {
+    console.error('Error getting all posts:', error);
+    return [];
+  }
 }
 
 // Helper function to convert markdown content to the format expected by PostContent
