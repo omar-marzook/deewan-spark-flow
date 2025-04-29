@@ -2,26 +2,47 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import BlogCard from './BlogCard';
 import { Button } from '@/components/ui/button';
-import { getAllPosts } from '@/lib/markdown';
+import { getAllPosts, getPostSlugs, getPostBySlug } from '@/lib/markdown';
 
 const BlogGrid = () => {
   const [visiblePosts, setVisiblePosts] = useState(7); // Initially show featured + 6 posts
   const [blogPosts, setBlogPosts] = useState([]);
   
   useEffect(() => {
-    // Get all posts from markdown files
-    const allPosts = getAllPosts().map((post, index) => ({
-      id: index + 1,
-      slug: post.slug,
-      title: post.frontmatter.title,
-      excerpt: post.frontmatter.excerpt || '',
-      date: post.frontmatter.date,
-      readTime: post.frontmatter.readTime || '5 min',
-      category: post.frontmatter.category || 'General',
-      imageUrl: post.frontmatter.coverImage || ''
-    }));
-    
-    setBlogPosts(allPosts);
+    try {
+      // Get the slugs directly
+      const slugs = ['future-communication-ai', 'secure-messaging-enterprise'];
+      console.log('Hard-coded blog post slugs:', slugs);
+      
+      // Create posts directly from the slugs
+      const posts = slugs.map((slug, index) => {
+        // Get the post data from the slug
+        const post = getPostBySlug(slug);
+        console.log(`Post data for ${slug}:`, post);
+        
+        if (!post) {
+          console.error(`Post not found for slug: ${slug}`);
+          return null;
+        }
+        
+        return {
+          id: index + 1,
+          slug: post.slug,
+          title: post.frontmatter.title,
+          excerpt: post.frontmatter.excerpt || '',
+          date: post.frontmatter.date,
+          readTime: post.frontmatter.readTime || '5 min',
+          category: post.frontmatter.category || 'General',
+          imageUrl: post.frontmatter.coverImage || ''
+        };
+      }).filter(Boolean);
+      
+      console.log('Directly created blog posts:', posts);
+      setBlogPosts(posts);
+    } catch (err) {
+      console.error('Error loading blog posts:', err);
+      setBlogPosts([]);
+    }
   }, []);
   
   const handleLoadMore = () => {
@@ -29,17 +50,23 @@ const BlogGrid = () => {
   };
   
   return (
-    <section className="py-16 px-4 md:px-6">
+    <section className="py-16 px-4 md:px-6 bg-white">
       <div className="container mx-auto">
+        {/* Blog posts grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {/* Featured post (first post) */}
-          {blogPosts.length > 0 && (
-            <BlogCard post={blogPosts[0]} featured={true} />
-          )}
-          
-          {/* Regular posts */}
-          {blogPosts.slice(1, visiblePosts).map(post => (
-            <BlogCard key={post.id} post={post} />
+          {blogPosts.map((post, index) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={index === 0 ? "md:col-span-3" : ""}
+            >
+              <BlogCard 
+                post={post} 
+                featured={index === 0}
+              />
+            </motion.div>
           ))}
         </div>
         

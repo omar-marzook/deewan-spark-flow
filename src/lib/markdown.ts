@@ -1,18 +1,24 @@
 import matter from 'gray-matter';
 
-// Use Vite's import.meta.glob to import all markdown files from src directory
-const blogPostFiles = import.meta.glob('/src/blog-posts/*.md', { as: 'raw', eager: true });
+// Direct imports of blog posts - use relative paths
+import futureAiContent from '../blog-posts/future-communication-ai.md?raw';
+import secureMessagingContent from '../blog-posts/secure-messaging-enterprise.md?raw';
+
+// Create a mapping of slugs to content
+const blogPostsContent = {
+  'future-communication-ai': futureAiContent,
+  'secure-messaging-enterprise': secureMessagingContent
+};
+
+// Log available blog posts
+console.log('Available blog posts:', Object.keys(blogPostsContent));
+// Log sample content length instead of content itself to avoid console clutter
+console.log('Sample content length:', futureAiContent.length);
 
 export function getPostSlugs() {
   try {
-    // Extract slugs from the file paths
-    return Object.keys(blogPostFiles)
-      .map(path => {
-        // Extract the filename from the path
-        const filename = path.split('/').pop() || '';
-        // Return the slug (filename without .md extension)
-        return filename.replace(/\.md$/, '');
-      });
+    // Return the keys from our mapping
+    return Object.keys(blogPostsContent);
   } catch (error) {
     console.error('Error getting blog post slugs:', error);
     return [];
@@ -21,19 +27,22 @@ export function getPostSlugs() {
 
 export function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, '');
-  const filePath = `/src/blog-posts/${realSlug}.md`;
   
   try {
-    // Get the file contents using the import.meta.glob result
-    const fileContents = blogPostFiles[filePath];
+    // Get the content from our mapping
+    const fileContents = blogPostsContent[realSlug];
     
     if (!fileContents) {
       console.error(`Blog post not found: ${slug}`);
       return null;
     }
     
+    console.log(`Processing blog post ${slug}, content length: ${fileContents.length}`);
+    
     // Use gray-matter to parse the post metadata section
     const { data, content } = matter(fileContents);
+    
+    console.log(`Frontmatter for ${slug}:`, data);
     
     // Convert the content to the format expected by the existing PostContent component
     const formattedContent = formatMarkdownToContentArray(content);

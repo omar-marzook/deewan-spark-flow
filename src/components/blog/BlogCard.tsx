@@ -22,7 +22,7 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
-  const imageSrc = post.imageUrl || post.coverImage || '';
+  const imageSrc = post.imageUrl || post.coverImage || 'https://via.placeholder.com/800x450?text=Cequens+Blog';
   const date = post.date || post.publishDate || '';
 
   return (

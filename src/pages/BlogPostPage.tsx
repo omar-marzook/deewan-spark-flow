@@ -48,48 +48,61 @@ const BlogPostPage = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (slug) {
-        const markdownPost = getPostBySlug(slug);
-        
-        if (markdownPost) {
-          const { frontmatter, content, rawContent } = markdownPost;
-          const { headings } = useHeadingData(rawContent);
+        try {
+          console.log('Getting post for slug:', slug);
+          const markdownPost = getPostBySlug(slug);
+          console.log('Markdown post found:', markdownPost ? 'Yes' : 'No');
           
-          setPost({
-            title: frontmatter.title,
-            subtitle: frontmatter.subtitle || frontmatter.excerpt,
-            category: frontmatter.category,
-            coverImage: frontmatter.coverImage,
-            publishDate: frontmatter.date,
-            readTime: frontmatter.readTime || '5 min',
-            author: frontmatter.author,
-            content: content,
-            rawContent: rawContent,
-            headings: headings
-          });
-          
-          // Get related posts
-          const allPosts = getAllPosts();
-          const related = allPosts
-            .filter(p => p.slug !== slug)
-            .slice(0, 3)
-            .map(p => ({
-              id: p.slug,
-              slug: p.slug,
-              title: p.frontmatter.title,
-              excerpt: p.frontmatter.excerpt || '',
-              coverImage: p.frontmatter.coverImage,
-              category: p.frontmatter.category,
-              publishDate: p.frontmatter.date,
-              readTime: p.frontmatter.readTime || '5 min'
-            }));
-          
-          setRelatedPosts(related);
-        } else {
-          // No post found
+          if (markdownPost) {
+            const { frontmatter, content, rawContent } = markdownPost;
+            console.log('Post frontmatter:', frontmatter);
+            console.log('Content array length:', content ? content.length : 0);
+            const { headings } = useHeadingData(rawContent);
+            
+            setPost({
+              title: frontmatter.title,
+              subtitle: frontmatter.subtitle || frontmatter.excerpt,
+              category: frontmatter.category,
+              coverImage: frontmatter.coverImage,
+              publishDate: frontmatter.date,
+              readTime: frontmatter.readTime || '5 min',
+              author: frontmatter.author,
+              content: content,
+              rawContent: rawContent,
+              headings: headings
+            });
+            
+            // Get related posts
+            const allPosts = getAllPosts();
+            console.log('All posts for related posts:', allPosts);
+            const related = allPosts
+              .filter(p => p.slug !== slug)
+              .slice(0, 3)
+              .map(p => ({
+                id: p.slug,
+                slug: p.slug,
+                title: p.frontmatter.title,
+                excerpt: p.frontmatter.excerpt || '',
+                coverImage: p.frontmatter.coverImage,
+                category: p.frontmatter.category,
+                publishDate: p.frontmatter.date,
+                readTime: p.frontmatter.readTime || '5 min'
+              }));
+            
+            console.log('Related posts:', related);
+            setRelatedPosts(related);
+          } else {
+            // No post found
+            console.error('No post found for slug:', slug);
+            setPost(null);
+          }
+        } catch (error) {
+          console.error('Error loading blog post:', error);
           setPost(null);
         }
       } else {
         // No slug provided
+        console.error('No slug provided');
         setPost(null);
       }
       

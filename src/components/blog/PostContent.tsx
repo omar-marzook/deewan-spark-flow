@@ -115,7 +115,7 @@ const PostContent = ({
   // If children provided, use that
   if (children) {
     return (
-      <div className="space-y-7">
+      <div className="space-y-4">
         {children}
         
         {/* Share section */}
@@ -141,7 +141,7 @@ const PostContent = ({
   // If markdown content is provided, render it
   if (markdownContent) {
     return (
-      <div className="space-y-7">
+      <div className="space-y-4">
         <ReactMarkdown
           components={{
             h2: ({ node, ...props }) => {
@@ -153,7 +153,7 @@ const PostContent = ({
               return <h3 id={id} className="font-bold text-xl mt-8 mb-3" {...props} />;
             },
             blockquote: ({ node, ...props }) => (
-              <blockquote className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-secondary/10 border-l-4 border-deewan-primary" {...props} />
+              <blockquote className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-primary/5 border-l-4 border-deewan-primary" {...props} />
             ),
             img: ({ node, ...props }) => (
               <figure className="w-full flex flex-col items-center">
@@ -188,7 +188,7 @@ const PostContent = ({
 
   // Handle object-based content (non-JSX)
   return (
-    <div className="space-y-7">
+    <div className="space-y-4">
       {Array.isArray(content) && content.map((item, idx) => {
         if (React.isValidElement(item)) {
           // If it's already a React element, just return it
@@ -206,7 +206,7 @@ const PostContent = ({
           case "h3":
             return <h3 key={idx} id={`heading-sub-${idx}`} className="font-bold text-xl mt-8 mb-3">{item.text}</h3>;
           case "quote":
-            return <blockquote key={idx} className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-secondary/10 border-l-4 border-deewan-primary">
+            return <blockquote key={idx} className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-primary/5 border-l-4 border-deewan-primary">
               "{item.text}"
               <footer className="mt-2 text-deewan-primary font-medium">
                 {item.author}
