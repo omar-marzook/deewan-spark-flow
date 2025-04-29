@@ -11,6 +11,7 @@ interface BlogMainContentProps {
     src?: string;
     caption?: string;
   }[];
+  markdownContent?: string; // Added for markdown content
   post?: any; // Post prop
   headings?: any[]; // Headings prop
   TableOfContents?: React.ComponentType<{ headings: any }>; // TableOfContents component
@@ -19,6 +20,7 @@ interface BlogMainContentProps {
 
 const BlogMainContent: React.FC<BlogMainContentProps> = ({ 
   content, 
+  markdownContent,
   post, 
   headings, 
   TableOfContents,
@@ -26,6 +28,7 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({
 }) => {
   // Use content directly if provided, otherwise use post.content if available
   const contentToRender = content || (post && post.content);
+  const markdownToRender = markdownContent || (post && post.rawContent);
   
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8 relative">
@@ -40,9 +43,14 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({
             fontFamily: "'Gilroy', 'Poppins', ui-sans-serif, system-ui, sans-serif",
           }}
         >
-          {contentToRender && <PostContent content={contentToRender}>
-            {children}
-          </PostContent>}
+          {(contentToRender || markdownToRender) && 
+            <PostContent 
+              content={contentToRender} 
+              markdownContent={markdownToRender}
+            >
+              {children}
+            </PostContent>
+          }
         </motion.article>
         
         {/* Table of contents (floating on desktop) */}
