@@ -9,7 +9,6 @@ import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
 import BlogPostHeader from "@/components/blog/BlogPostHeader";
 import BlogCoverImage from "@/components/blog/BlogCoverImage";
 import BlogMainContent from "@/components/blog/BlogMainContent";
-import BlogShareSection from "@/components/blog/BlogShareSection";
 import BlogRelatedArticles from "@/components/blog/BlogRelatedArticles";
 import TableOfContentsInline from "@/components/blog/TableOfContentsInline";
 import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
@@ -174,7 +173,6 @@ const BlogPostPage = () => {
       <BlogPostHeader post={post} />
       <BlogCoverImage post={post} />
       <BlogMainContent post={post} headings={headings} TableOfContents={TableOfContentsInline} />
-      <BlogShareSection />
       <BlogRelatedArticles relatedPosts={relatedPosts} />
       <Footer />
     </div>;
