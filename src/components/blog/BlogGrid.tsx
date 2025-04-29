@@ -10,8 +10,8 @@ const BlogGrid = () => {
   
   useEffect(() => {
     try {
-      // Get the slugs directly
-      const slugs = ['future-communication-ai', 'secure-messaging-enterprise'];
+      // Get all available slugs dynamically
+      const slugs = getPostSlugs();
       
       // Create posts directly from the slugs
       const posts = slugs.map((slug, index) => {

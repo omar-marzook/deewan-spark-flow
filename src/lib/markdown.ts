@@ -1,16 +1,25 @@
 import matter from 'gray-matter';
 
-// Direct imports of blog posts - use relative paths
-import futureAiContent from '../blog-posts/future-communication-ai.md?raw';
-import secureMessagingContent from '../blog-posts/secure-messaging-enterprise.md?raw';
+// Use Vite's import.meta.glob to dynamically import all markdown files
+const blogPostFiles = import.meta.glob('../blog-posts/*.md', {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+});
 
 // Create a mapping of slugs to content
-const blogPostsContent = {
-  'future-communication-ai': futureAiContent,
-  'secure-messaging-enterprise': secureMessagingContent
-};
+const blogPostsContent: Record<string, string> = {};
 
-// Available blog posts are: future-communication-ai, secure-messaging-enterprise
+// Process each blog post file
+Object.entries(blogPostFiles).forEach(([path, content]) => {
+  // Extract the slug from the path (filename without extension)
+  const slug = path.split('/').pop()?.replace(/\.md$/, '');
+  if (slug) {
+    blogPostsContent[slug] = content;
+  }
+});
+
+// Available blog posts are dynamically loaded from the blog-posts directory
 
 export function getPostSlugs() {
   try {
