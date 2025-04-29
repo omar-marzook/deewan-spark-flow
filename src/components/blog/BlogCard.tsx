@@ -26,25 +26,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
   const date = post.date || post.publishDate || '';
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
-      whileHover={{
-        y: -5,
-        boxShadow: '0 10px 30px rgba(0,0,0,0.07)',
-        transition: { duration: 0.2 }
-      }}
-      className={cn(
-        "flex flex-col h-full overflow-hidden rounded-xl border border-gray-100 bg-white/90 shadow-sm transition-all duration-300 hover:shadow-lg",
-        featured ? "md:col-span-3 md:flex-row" : ""
-      )}
-    >
       <Link
         to={`/blog/${post.slug}`}
         className={cn(
-          "group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white",
+          "group flex flex-col h-full rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white/90",
           featured ? "md:col-span-3 md:flex-row" : ""
         )}
       >
@@ -101,7 +86,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
           </div>
         </div>
       </Link>
-    </motion.div>
   );
 };
 
