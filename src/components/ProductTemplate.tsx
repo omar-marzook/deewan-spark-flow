@@ -11,6 +11,7 @@ import ContactSection from "./ContactSection";
 import ProductCTA from "./product/ProductCTA";
 import HowItWorksSteps from "./product/HowItWorksSteps";
 import HowItWorksVideo from "./product/HowItWorksVideo";
+import DepartmentsWeServe from "./DepartmentsWeServe";
 
 // Define the types for our dynamic product data
 export interface ProductFeature {
@@ -98,6 +99,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       {product.howItWorks?.videoUrl && (
         <HowItWorksVideo videoUrl={product.howItWorks.videoUrl} />
       )}
+      
+      {/* Departments We Serve Section */}
+      <DepartmentsWeServe />
       
       {/* Client Logos Section */}
       <LogoCarousel />
