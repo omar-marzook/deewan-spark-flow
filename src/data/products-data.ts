@@ -27,6 +27,15 @@ import {
     TrendingUp,
     Target,
     ThumbsUp,
+    DollarSign,
+    Workflow,
+    BarChart2,
+    Settings,
+    UserCog,
+    Building,
+    Sparkles,
+    Rocket,
+    ShoppingBag,
 } from 'lucide-react';
 import React from 'react';
 
@@ -54,6 +63,164 @@ interface ExtendedProductData extends ProductData {
 }
 
 const productsData: Record<string, ExtendedProductData> = {
+    'ivr': {
+        slug: 'ivr',
+        name: 'Deewan IVR',
+        tagline:
+            'Add interactive voice response and voice capabilities to your communications and take the customer experience to the next level.',
+        description:
+            'Add interactive voice response and voice capabilities to your communications and take the customer experience to the next level.',
+        coreFeatures: {
+            title: 'The win-win voice solution for <span class="text-deewan-primary">businesses and customers</span>',
+            subtitle:
+                'Deewan IVR helps businesses offer a cohesive and effective customer experience that customers will enjoy and come back for.',
+        },
+        features: [
+            {
+                icon: React.createElement(Phone, {
+                    className: 'w-6 h-6',
+                }),
+                title: 'Call distribution & Routing',
+                description:
+                    'Build easy voice services for customers and reduce workload, waiting times and infrastructure utilization via call distribution and routing.',
+            },
+            {
+                icon: React.createElement(Headset, { className: 'w-6 h-6' }),
+                title: 'Speech Services',
+                description:
+                    'Deewan IVR offers advanced speech-based services including speech recognition, text-to-speech, and interactive voice menus.',
+            },
+            {
+                icon: React.createElement(BarChart, { className: 'w-6 h-6' }),
+                title: 'Reporting & Analytics',
+                description:
+                    'Measure performance, monitor events, track call volumes, and understand caller behavior better using the smart analytics of Deewan IVR.',
+            },
+            {
+                icon: React.createElement(Link, { className: 'w-6 h-6' }),
+                title: 'Integration Capabilities',
+                description:
+                    'Like other Deewan solutions, Deewan IVR was designed with integration in mind, to ensure seamless embedding into systems and optimal utility in any workflow.',
+            },
+            {
+                icon: React.createElement(UserCog, { className: 'w-6 h-6' }),
+                title: 'Personalization',
+                description:
+                    'Deewan IVR makes it easy to classify, direct and handle calls in a manner that provides customers with a personalized and relevant experience.',
+            },
+        ],
+        powerfulCapabilities: {
+            title: 'The impact of <span class="text-deewan-primary">Deewan IVR</span>',
+            subtitle:
+                'Our IVR platform combines intelligent voice technology with efficiency to transform your customer service operations',
+            features: [
+                {
+                    id: 'cost-optimization',
+                    icon: React.createElement(DollarSign),
+                    title: 'Cost and Resource Optimization',
+                    description:
+                        'Deewan IVR fits perfectly within any customer service structure to improve performance, reduce waiting times, route call volume efficiently, as well as reduce costs associated with not doing any of that. This will reflect in:',
+                    bulletPoints: [
+                        'Reduced call handling time',
+                        'Increased customer satisfaction',
+                        'Stronger brand loyalty',
+                    ],
+                },
+                {
+                    id: 'automation-efficiency',
+                    icon: React.createElement(Workflow),
+                    title: 'Automation and Efficiency',
+                    description:
+                        'Deewan IVR enables you to automate a large volume of repetitive tasks and reinforces your department\'s ability to handle customer inquiries without dropping points in handling time or performance. This will reflect in:',
+                    bulletPoints: [
+                        'Improved performance',
+                        'Reduction in abandoned calls',
+                        'Increased customer satisfaction',
+                    ],
+                },
+                {
+                    id: 'stronger-brand',
+                    icon: React.createElement(Building),
+                    title: 'Stronger Brand',
+                    description:
+                        'Deewan IVR will provide your brand with the customer service it needs to scale up, expand, enter new regions, or target new audiences. Design your customer experience and move steadily towards your business objectives. This will reflect in:',
+                    bulletPoints: [
+                        'Improved brand recognition',
+                        'Higher conversion rates',
+                        'Increased customer loyalty',
+                    ],
+                },
+            ],
+        },
+        useCases: [
+            {
+                title: 'Banking & Financial Services',
+                desc: 'Provide secure account access and transaction services via voice authentication.',
+                icon: React.createElement(Shield, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'Healthcare Providers',
+                desc: 'Streamline appointment scheduling and patient information services.',
+                icon: React.createElement(Users, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'Retail & Customer Service',
+                desc: 'Handle order status inquiries and product information requests efficiently.',
+                icon: React.createElement(ShoppingBag, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'Telecommunications',
+                desc: 'Manage service inquiries, technical support, and billing questions.',
+                icon: React.createElement(Phone, { className: 'h-6 w-6' }),
+            },
+        ],
+        howItWorks: {
+            steps: [
+                {
+                    number: '01',
+                    title: 'Register',
+                    description:
+                        'Fill up the registration form and check you inbox for a message from Deewan activating your account.',
+                },
+                {
+                    number: '02',
+                    title: 'Configure',
+                    description:
+                        'Set up your IVR flow, call routing rules, and voice menus to match your business requirements.',
+                },
+                {
+                    number: '03',
+                    title: 'Launch',
+                    description:
+                        'Deploy your IVR system and start providing efficient, automated voice service to your customers.',
+                },
+            ],
+            videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        },
+        stats: [
+            {
+                icon: React.createElement(TrendingUp, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '15%',
+                label: 'Increase in conversion for retail customers',
+            },
+            {
+                icon: React.createElement(Clock, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '-30%',
+                label: 'Reduction in call-handling time',
+            },
+            {
+                icon: React.createElement(Shield, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '90%',
+                label: 'Success rate of fraud detection via voice',
+            },
+        ],
+    },
     'omni-channel-chat': {
         slug: 'omni-channel-chat',
         name: 'Deewan Omnichannel Chat',
