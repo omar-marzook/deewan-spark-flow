@@ -41,10 +41,10 @@ const HowItWorksSteps = ({ steps = defaultSteps }: HowItWorksStepsProps) => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Are you ready to <span className="text-deewan-primary">connect?</span>
+            Get started in 3 simple steps!
           </h2>
           <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
-            Get started with Deewan's communication platform in three simple steps
+            Sign up for a free account on Deewan's communication platform and launched your first campaign in a few minutes.
           </p>
         </div>
 

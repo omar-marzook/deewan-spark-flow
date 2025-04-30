@@ -62,23 +62,18 @@ const productsData: Record<string, ProductData> = {
       steps: [
         {
           number: "01",
-          title: "Connect Your Channels",
-          description: "Integrate WhatsApp, live chat, email, and more into one system."
+          title: "Register",
+          description: "Fill up the registration form and check you inbox for a message from Deewan activating your account."
         },
         {
           number: "02", 
-          title: "Automate and Route Chats",
-          description: "Set up routing logic based on your teams, departments, and workflows."
+          title: "Login",
+          description: "Log into your account and enjoy $5 complimentary credit to try out the platform's smart campaign settings."
         },
         {
           number: "03",
-          title: "Manage Conversations Real-Time",
-          description: "View, track, and respond to chats instantly inside the dashboard."
-        },
-        {
-          number: "04",
-          title: "Analyze and Improve",
-          description: "Use real-time analytics to measure and enhance customer support."
+          title: "Launch",
+          description: "Import your contact list into the platform and launch your first campaign via SMS or WhatsApp."
         }
       ],
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
