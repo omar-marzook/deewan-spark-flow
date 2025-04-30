@@ -19,7 +19,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
   }, []);
 
   return (
-    <section className={`container mx-auto px-4 py-12 md:py-24 relative z-10 ${className}`}>
+    <section className={`container mx-auto px-4 py-12 md:py-24 xl:pt-48 relative z-10 ${className}`}>
       {/* Floating Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <CircleDot
@@ -63,11 +63,11 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
       {/* Text Content - Moved above visual */}
       <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deewan-dark leading-tight">
-          <span className="block">Intelligent</span>
-          <span className="block">communications, <span className="text-deewan-primary">limitless growth</span>.</span>
+          Connect smarter.<br/>
+          Grow faster.
         </h1>
         <p className="text-xl text-deewan-dark mb-8 max-w-2xl mx-auto">
-          Intelligent and scalability, customizable communication solutions that prioritize security and scalability.
+          Customizable, secure communications built to scale across every channel.
         </p>
 
         {/* CTA Button */}
