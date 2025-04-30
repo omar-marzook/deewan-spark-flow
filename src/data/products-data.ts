@@ -19,6 +19,14 @@ import {
     Shield,
     BarChart,
     Headset,
+    Brain,
+    Zap,
+    Cloud,
+    UserCheck,
+    Clock,
+    TrendingUp,
+    Target,
+    ThumbsUp,
 } from 'lucide-react';
 import React from 'react';
 
@@ -208,7 +216,7 @@ const productsData: Record<string, ExtendedProductData> = {
         slug: 'campaigns',
         name: 'Deewan Campaigns',
         tagline:
-            'Revolutionize your business communications with personalized interactions at every touchpoint, and speak to any conversational app from one dashboard.',
+            'Reach your customers instantly on any communication channel from one platform. In a few minutes, your next SMS or WhatsApp campaign will be ready to go live.',
         description:
             'Reach your customers instantly on any communication channel from one platform. In a few minutes, your next SMS or WhatsApp campaign will be ready to go live.',
         coreFeatures: {
@@ -223,7 +231,7 @@ const productsData: Record<string, ExtendedProductData> = {
                 }),
                 title: 'Natural Language Processing',
                 description:
-                    'The integrated AI assistant can easily understand and respond to customers\' language, providing an engaging and satisfying communication experience.',
+                    "The integrated AI assistant can easily understand and respond to customers' language, providing an engaging and satisfying communication experience.",
             },
             {
                 icon: React.createElement(Bookmark, { className: 'w-6 h-6' }),
@@ -347,6 +355,164 @@ const productsData: Record<string, ExtendedProductData> = {
                 }),
                 value: '+45%',
                 label: 'Increase in conversion rate with Deewan Campaigns',
+            },
+        ],
+    },
+    bots: {
+        slug: 'bots',
+        name: 'Deewan Bots',
+        tagline:
+            'Allocate resources efficiently and answer customer queries in real time with the AI-powered chatbots of Deewan Bots.',
+        description:
+            'Allocate resources efficiently and answer customer queries in real time with the AI-powered chatbots of Deewan Bots.',
+        coreFeatures: {
+            title: 'Transforming the customer experience with <span class="text-deewan-primary">advanced bots</span>',
+            subtitle:
+                'Deewan Bots covers extensive chatbot and customer engagement use cases to help your business achieve better results with less resources.',
+        },
+        features: [
+            {
+                icon: React.createElement(Brain, {
+                    className: 'w-6 h-6',
+                }),
+                title: 'Cognitive Abilities',
+                description:
+                    'Deewan Bots are equipped with cognitive technologies that ensure continued improvement and learning.',
+            },
+            {
+                icon: React.createElement(Globe, { className: 'w-6 h-6' }),
+                title: 'Multilingual Support',
+                description:
+                    'Use Deewan Bots to deploy multilingual bots that can handle customer interactions fluently in a variety of languages.',
+            },
+            {
+                icon: React.createElement(Zap, { className: 'w-6 h-6' }),
+                title: 'Adaptive Technology',
+                description:
+                    'Adaptive technology stacks allow for smarter chatbots on every conversational communication channel.',
+            },
+            {
+                icon: React.createElement(MessageSquare, { className: 'w-6 h-6' }),
+                title: 'Multichannel Support',
+                description:
+                    'Deewan Bots integrates seamlessly with all main conversational channels to provide customers with answers on their preferred platforms.',
+            },
+            {
+                icon: React.createElement(Cloud, { className: 'w-6 h-6' }),
+                title: 'Flexible Deployment',
+                description:
+                    'The solution can be deployed in on-premise and cloud modes, with comprehensive support and coverage plans.',
+            },
+        ],
+        powerfulCapabilities: {
+            title: 'The impact of <span class="text-deewan-primary">Deewan Bots</span>',
+            subtitle:
+                'Our Bots platform brings together AI technology and personalization to enhance your customer support experience',
+            features: [
+                {
+                    id: 'personalized-support',
+                    icon: React.createElement(UserCheck),
+                    title: 'Personalized Support',
+                    description:
+                        'Deewan Bots enables your business to offer personalized support to customers based on profile, context, and the customer\'s preferred conversational channel. This will reflect in:',
+                    bulletPoints: [
+                        'Better conversational experiences',
+                        'Higher customer satisfaction',
+                        'Higher loyalty and retention',
+                    ],
+                },
+                {
+                    id: 'real-time-response',
+                    icon: React.createElement(Clock),
+                    title: 'Real-Time Response',
+                    description:
+                        'Use Deewan Bots to deploy fluent FAQ (rules-based) and AI-powered chatbots that can handle any customer query any time of the day, any day of the week. This will reflect in:',
+                    bulletPoints: [
+                        'Faster response rates',
+                        'Improved customer service',
+                        'Increased customer loyalty',
+                    ],
+                },
+                {
+                    id: 'better-tracking',
+                    icon: React.createElement(BarChart),
+                    title: 'Better Tracking',
+                    description:
+                        'Deewan Bots is equipped with built-in AI analytics tools that generate informative statistical and analytical reports. This supports decision making and improves overall service performance. This will reflect in:',
+                    bulletPoints: [
+                        'Higher data accuracy',
+                        'Stronger personalization',
+                        'Cost optimization',
+                    ],
+                },
+            ],
+        },
+        useCases: [
+            {
+                title: 'Government Service Desks',
+                desc: 'Deliver faster, more responsive communication to citizens.',
+                icon: React.createElement(Users, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'Customer Support Centers',
+                desc: 'Manage high-volume inquiries efficiently across multiple channels.',
+                icon: React.createElement(Layers, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'eCommerce & Logistics',
+                desc: 'Streamline customer order support, delivery inquiries, and updates.',
+                icon: React.createElement(Server, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'Internal HR & IT Helpdesk',
+                desc: 'Support employees with real-time HR and technical issue resolutions.',
+                icon: React.createElement(Mail, { className: 'h-6 w-6' }),
+            },
+        ],
+        howItWorks: {
+            steps: [
+                {
+                    number: '01',
+                    title: 'Register',
+                    description:
+                        'Fill up the registration form and check you inbox for a message from Deewan activating your account.',
+                },
+                {
+                    number: '02',
+                    title: 'Login',
+                    description:
+                        "Log into your account and enjoy $5 complimentary credit to try out the platform's smart bot settings.",
+                },
+                {
+                    number: '03',
+                    title: 'Launch',
+                    description:
+                        'Configure your bot with your business logic and deploy it to your preferred communication channels.',
+                },
+            ],
+            videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        },
+        stats: [
+            {
+                icon: React.createElement(TrendingUp, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '30%',
+                label: 'Increase in conversion rate',
+            },
+            {
+                icon: React.createElement(Target, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '55%',
+                label: 'Of businesses generate quality leads via bots',
+            },
+            {
+                icon: React.createElement(ThumbsUp, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '95%',
+                label: 'Increase in customer satisfaction',
             },
         ],
     },
