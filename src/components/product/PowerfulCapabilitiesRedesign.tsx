@@ -232,10 +232,10 @@ const PowerfulCapabilitiesRedesign = ({
                   </div>
 
                   {/* Decorative illustration or content specific to each feature could go here */}
-                  <div className="mt-4 relative">
+                  <div className="relative">
                     <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-tl from-deewan-primary/20 to-transparent rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
                     {feature.bulletPoints && feature.bulletPoints.length > 0 && (
-                      <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-lg relative space-y-3">
+                      <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-sm relative space-y-3">
                         {feature.bulletPoints.map((point, idx) => (
                           <div className="flex items-center" key={idx}>
                             <div className="h-3 w-3 bg-deewan-primary rounded-full mr-3"></div>
