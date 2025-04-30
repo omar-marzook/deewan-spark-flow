@@ -84,7 +84,7 @@ export default function ProductPage() {
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
       )}
-      <DepartmentsWeServe />
+      <DepartmentsWeServe departments={productData.departmentsWeServe} />
       <BlogSection />
       <div id="contact">
         <ContactSection />

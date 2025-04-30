@@ -1,5 +1,5 @@
 
-import React, { useRef } from "react";
+import React, { useRef, ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductHero from "./product/ProductHero";
@@ -31,6 +31,15 @@ export interface ProductHowItWorksStep {
   description: string;
 }
 
+// Define the DepartmentData interface
+export interface DepartmentData {
+  id: number;
+  name: string;
+  description: string[];
+  icon: ReactNode;
+  color: string;
+}
+
 export interface ProductData {
   slug: string;
   name: string;
@@ -44,6 +53,7 @@ export interface ProductData {
     steps?: ProductHowItWorksStep[];
     videoUrl?: string;
   };
+  departmentsWeServe?: DepartmentData[];
 }
 
 interface ProductTemplateProps {
@@ -97,7 +107,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       )}
       
       {/* Departments We Serve Section */}
-      <DepartmentsWeServe />
+      <DepartmentsWeServe departments={product.departmentsWeServe} />
       
       {/* Client Logos Section */}
       <LogoCarousel />

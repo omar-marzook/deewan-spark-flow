@@ -1,4 +1,5 @@
 import { ProductData } from '@/components/ProductTemplate';
+import { Megaphone, UserRoundCog } from "lucide-react";
 import { StatItem } from '@/components/AlternativeStats';
 import {
     Check,
@@ -40,7 +41,7 @@ import {
 } from 'lucide-react';
 import React from 'react';
 
-// Define the PowerfulCapability interface
+// Define interfaces
 interface PowerfulCapability {
     id: string;
     icon: React.ReactNode;
@@ -49,7 +50,10 @@ interface PowerfulCapability {
     bulletPoints?: string[];
 }
 
-// Extend the ProductData interface to include stats, core features, and powerful capabilities
+// Import DepartmentData interface from ProductTemplate
+import { DepartmentData } from '@/components/ProductTemplate';
+
+// Extend the ProductData interface to include stats, core features, powerful capabilities, and departments
 interface ExtendedProductData extends ProductData {
     stats?: StatItem[];
     coreFeatures?: {
@@ -61,10 +65,49 @@ interface ExtendedProductData extends ProductData {
         subtitle?: string;
         features?: PowerfulCapability[];
     };
+    departmentsWeServe?: DepartmentData[];
 }
+
+// Default departments data that will be used for all products
+const defaultDepartmentsData: DepartmentData[] = [
+    {
+        id: 1,
+        name: "Marketing and Sales",
+        description: [
+            "Marketing and promotions",
+            "Product catalogs"
+        ],
+        icon: React.createElement(Megaphone, { className: "h-10 w-10 text-deewan-primary" }),
+        color: "bg-deewan-primary/10"
+    },
+    {
+        id: 2,
+        name: "Customer Service",
+        description: [
+            "Surveys and questionnaires",
+            "Follow ups and reminders",
+            "Feedback and support"
+        ],
+        icon: React.createElement(Headset, { className: "h-10 w-10 text-deewan-secondary" }),
+        color: "bg-deewan-secondary/10"
+    },
+    {
+        id: 3,
+        name: "Administration",
+        description: [
+            "Authentications",
+            "Transaction confirmation",
+            "Account updates",
+            "Onboarding"
+        ],
+        icon: React.createElement(UserRoundCog, { className: "h-10 w-10 text-deewan-accent" }),
+        color: "bg-deewan-accent/10"
+    }
+];
 
 const productsData: Record<string, ExtendedProductData> = {
     mfa: {
+        departmentsWeServe: defaultDepartmentsData,
         slug: 'mfa',
         name: 'Deewan MFA',
         tagline:
@@ -233,6 +276,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
     },
     ivr: {
+        departmentsWeServe: defaultDepartmentsData,
         slug: 'ivr',
         name: 'Deewan IVR',
         tagline:
@@ -401,6 +445,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
     },
     'omni-channel-chat': {
+        departmentsWeServe: defaultDepartmentsData,
         slug: 'omni-channel-chat',
         name: 'Deewan Omnichannel Chat',
         tagline:
@@ -567,6 +612,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
     },
     campaigns: {
+        departmentsWeServe: defaultDepartmentsData,
         slug: 'campaigns',
         name: 'Deewan Campaigns',
         tagline:
@@ -717,6 +763,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
     },
     bots: {
+        departmentsWeServe: defaultDepartmentsData,
         slug: 'bots',
         name: 'Deewan Bots',
         tagline:
