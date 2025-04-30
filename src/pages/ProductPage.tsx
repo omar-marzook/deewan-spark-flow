@@ -7,8 +7,6 @@ import AlternativeStats from "@/components/AlternativeStats";
 import { CheckCircle, MessageSquare, Globe } from 'lucide-react';
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
-import ProductCTA from "@/components/product/ProductCTA";
-import IndustrySolutionsRedesign from "@/components/product/IndustrySolutionsRedesign";
 import HowItWorksSteps from "@/components/product/HowItWorksSteps";
 import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
@@ -20,10 +18,10 @@ import NotFound from "./NotFound";
 export default function ProductPage() {
   const navigate = useNavigate();
   const { slug } = useParams<{ slug: string }>();
-  
+
   // Find the product data based on the slug
   const productData = slug ? productsData[slug] : null;
-  
+
   // If no product is found, show the 404 page
   if (!productData) {
     return <NotFound />;
@@ -41,14 +39,14 @@ export default function ProductPage() {
   return (
     <div className="overflow-x-hidden">
       <Navbar />
-      <ProductHero 
-        name={productData.name} 
+      <ProductHero
+        name={productData.name}
         tagline={productData.tagline}
-        onContactClick={scrollToContact} 
+        onContactClick={scrollToContact}
       />
-      <AlternativeStats 
-        showCards={false} 
-        gridCount={3} 
+      <AlternativeStats
+        showCards={false}
+        gridCount={3}
         showTitle={false}
         stats={productData.stats || [
           // Fallback stats if product doesn't have specific stats
@@ -73,13 +71,12 @@ export default function ProductPage() {
           description: "Powerful performance metrics"
         }}
       />
-      <PowerfulCapabilitiesRedesign />
-      <CoreFeaturesStaggered 
+      <CoreFeaturesStaggered
         features={productData.features}
         title={productData.coreFeatures?.title || `<span class="text-deewan-primary">${productData.name}</span> Features`}
         subtitle={productData.coreFeatures?.subtitle || `Discover how ${productData.name} can transform your communication experience`}
       />
-      <IndustrySolutionsRedesign />
+      <PowerfulCapabilitiesRedesign />
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
       )}
