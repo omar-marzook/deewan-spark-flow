@@ -11,7 +11,6 @@ import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import ProductCTA from "@/components/product/ProductCTA";
 import IndustrySolutionsRedesign from "@/components/product/IndustrySolutionsRedesign";
 import HowItWorksSteps from "@/components/product/HowItWorksSteps";
-import HowItWorksVideo from "@/components/product/HowItWorksVideo";
 import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
@@ -80,9 +79,6 @@ export default function ProductPage() {
       <IndustrySolutionsRedesign />
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
-      )}
-      {productData.howItWorks?.videoUrl && (
-        <HowItWorksVideo videoUrl={productData.howItWorks.videoUrl} />
       )}
       <DepartmentsWeServe />
       <BlogSection />
