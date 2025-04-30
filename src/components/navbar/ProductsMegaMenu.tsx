@@ -51,7 +51,7 @@ interface ProductsMegaMenuProps {
 const ProductsMegaMenu = ({ onSelect }: ProductsMegaMenuProps) => {
   return (
     <div className="absolute w-full top-full pt-4 right-[640px] translate-x-[320px]">
-      <div className="glass mx-4 rounded-xl overflow-hidden border border-white/20 w-fit">
+      <div className="bg-white/90 backdrop-blur-md shadow-md mx-4 rounded-xl overflow-hidden border border-white/20 w-fit">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
