@@ -3,7 +3,7 @@ import React, { useRef, ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductHero from "./product/ProductHero";
-import ProductFeatures from "./product/ProductFeatures";
+import ProductFeatures from "./product/ProductFeatures"; 
 import LogoCarousel from "./LogoCarousel";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
@@ -54,6 +54,14 @@ export interface ProductData {
     videoUrl?: string;
   };
   departmentsWeServe?: DepartmentData[];
+  productFeatures?: {
+    title?: string;
+    subtitle?: string;
+    capabilities?: Array<{
+      icon: React.ElementType;
+      title: string;
+    }>;
+  };
 }
 
 interface ProductTemplateProps {
@@ -104,6 +112,15 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       
       {product.howItWorks?.videoUrl && (
         <HowItWorksVideo videoUrl={product.howItWorks.videoUrl} />
+      )}
+      
+      {/* Product Features Section */}
+      {product.productFeatures && (
+        <ProductFeatures 
+          title={product.productFeatures.title}
+          subtitle={product.productFeatures.subtitle}
+          capabilities={product.productFeatures.capabilities}
+        />
       )}
       
       {/* Departments We Serve Section */}

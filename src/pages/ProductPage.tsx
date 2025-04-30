@@ -8,6 +8,7 @@ import { CheckCircle, MessageSquare, Globe } from 'lucide-react';
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import HowItWorksSteps from "@/components/product/HowItWorksSteps";
+import ProductFeatures from "@/components/product/ProductFeatures";
 import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
@@ -83,6 +84,13 @@ export default function ProductPage() {
       />
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
+      )}
+      {productData.productFeatures && (
+        <ProductFeatures 
+          title={productData.productFeatures.title}
+          subtitle={productData.productFeatures.subtitle}
+          capabilities={productData.productFeatures.capabilities}
+        />
       )}
       <DepartmentsWeServe departments={productData.departmentsWeServe} />
       <BlogSection />

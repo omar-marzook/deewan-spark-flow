@@ -1,73 +1,206 @@
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { 
+  CheckCircle, 
+  Database, 
+  Bot, 
+  UserCog, 
+  Shield, 
+  CheckSquare 
+} from 'lucide-react';
 
-import { ReactNode } from "react";
+interface CapabilityItem {
+  icon: React.ElementType;
+  title: string;
+}
 
-interface Feature {
-  icon: ReactNode;
+interface ProductFeature {
+  icon: React.ReactNode;
   title: string;
   description: string;
 }
 
 interface ProductFeaturesProps {
-  features: Feature[];
+  capabilities?: CapabilityItem[];
+  features?: ProductFeature[];
+  title?: string;
+  subtitle?: string;
 }
 
-const ProductFeatures: React.FC<ProductFeaturesProps> = ({ features }) => {
+const defaultCapabilities: CapabilityItem[] = [
+  { icon: CheckCircle, title: 'Verified Account' },
+  { icon: Database, title: 'Database Management' },
+  { icon: Bot, title: 'Chatbot Integration' },
+  { icon: UserCog, title: 'Account Management' },
+  { icon: Shield, title: 'Data Encryption' },
+  { icon: CheckSquare, title: 'Opt-In Requirement' }
+];
+
+const ProductFeatures: React.FC<ProductFeaturesProps> = ({
+  capabilities,
+  features,
+  title = "Powerful WhatsApp Business capabilities in one API from Deewan",
+  subtitle
+}) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, {
+    once: true,
+    amount: 0.2
+  });
+
+  // Determine if we're rendering capabilities or features
+  const isCapabilitiesMode = capabilities !== undefined;
+
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section 
+      ref={sectionRef} 
+      className="relative py-16 md:py-24 overflow-hidden"
+    >
       {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-deewan-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-deewan-secondary/5 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[70%] h-[50%] bg-deewan-primary/5 rounded-full blur-[120px] transform translate-x-1/4 -translate-y-1/4"></div>
+        <div className="absolute bottom-0 left-0 w-[60%] h-[60%] bg-deewan-secondary/5 rounded-full blur-[100px] transform -translate-x-1/4 translate-y-1/4"></div>
+        <div className="absolute inset-0 opacity-20" style={{
+          backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(33, 161, 124, 0.15) 0%, transparent 70%), radial-gradient(circle at 80% 70%, rgba(53, 101, 178, 0.1) 0%, transparent 70%)'
+        }}></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-2 rounded-full shadow-sm mb-6">
-            <span className="w-2 h-2 bg-deewan-primary rounded-full mr-2"></span>
-            <span className="text-sm font-medium text-deewan-dark/80">Core Features</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent font-display">
-            Powerful Capabilities
+        {/* Section Title */}
+        <motion.div 
+          className="text-center mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <h2 className="text-2xl md:text-4xl font-bold text-deewan-dark">
+            {title}
           </h2>
-          
-          <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
-            Explore the advanced features that make our solution stand out
-          </p>
-        </div>
+          {subtitle && (
+            <p className="mt-4 text-lg text-deewan-dark/70 max-w-2xl mx-auto">
+              {subtitle}
+            </p>
+          )}
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="group relative"
-            >
-              {/* Feature card with hover effects */}
-              <div className="h-full p-8 rounded-2xl bg-gradient-to-br from-white/40 to-white/20 backdrop-blur-md border border-white/20 transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl">
-                {/* Icon container */}
-                <div className="mb-6 relative">
-                  <div className="absolute inset-0 bg-deewan-primary/10 rounded-xl blur-xl transform group-hover:scale-110 transition-transform"></div>
-                  <div className="relative w-14 h-14 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-white/40">
-                    {feature.icon}
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-bold mb-4 text-deewan-dark group-hover:text-deewan-primary transition-colors">
-                  {feature.title}
-                </h3>
-
-                <p className="text-deewan-dark/70 leading-relaxed">
-                  {feature.description}
-                </p>
-
-                {/* Decorative line */}
-                <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-gradient-to-r from-deewan-primary/0 via-deewan-primary/20 to-deewan-primary/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-              </div>
-            </div>
-          ))}
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {isCapabilitiesMode ? (
+            // Render capabilities (WhatsApp features)
+            (capabilities || defaultCapabilities).map((capability, index) => (
+              <CapabilityCard 
+                key={index} 
+                capability={capability} 
+                index={index} 
+                isInView={isInView} 
+              />
+            ))
+          ) : (
+            // Render product features
+            features?.map((feature, index) => (
+              <FeatureCard 
+                key={index} 
+                feature={feature} 
+                index={index} 
+                isInView={isInView} 
+              />
+            ))
+          )}
         </div>
       </div>
     </section>
+  );
+};
+
+// Card for WhatsApp capabilities
+interface CapabilityCardProps {
+  capability: CapabilityItem;
+  index: number;
+  isInView: boolean;
+}
+
+const CapabilityCard: React.FC<CapabilityCardProps> = ({ capability, index, isInView }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        ease: "easeOut" 
+      }}
+      whileHover={{ 
+        y: -4,
+        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)" 
+      }}
+      className={cn(
+        "flex items-center p-4 md:p-6 rounded-xl",
+        "backdrop-blur bg-white/10 shadow-md border border-white/10",
+        "transition-all duration-300"
+      )}
+    >
+      {/* Icon Container */}
+      <div className="flex-shrink-0 mr-4 md:mr-6">
+        <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-deewan-primary flex items-center justify-center">
+          {React.createElement(capability.icon, {
+            className: "w-6 h-6 md:w-8 md:h-8 text-white"
+          })}
+        </div>
+      </div>
+
+      {/* Title */}
+      <div className="flex-grow">
+        <h3 className="text-lg md:text-xl font-medium text-deewan-dark">
+          {capability.title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+};
+
+// Card for product features
+interface FeatureCardProps {
+  feature: ProductFeature;
+  index: number;
+  isInView: boolean;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, isInView }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        ease: "easeOut" 
+      }}
+      whileHover={{ 
+        y: -4,
+        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)" 
+      }}
+      className={cn(
+        "flex flex-col p-6 rounded-xl",
+        "backdrop-blur bg-white/10 shadow-md border border-white/10",
+        "transition-all duration-300"
+      )}
+    >
+      {/* Icon */}
+      <div className="mb-4">
+        {feature.icon}
+      </div>
+
+      {/* Title */}
+      <h3 className="text-lg md:text-xl font-medium text-deewan-dark mb-2">
+        {feature.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-deewan-dark/70">
+        {feature.description}
+      </p>
+    </motion.div>
   );
 };
 

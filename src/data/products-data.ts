@@ -38,6 +38,8 @@ import {
     Rocket,
     ShoppingBag,
     Bell,
+    Bot,
+    CheckSquare,
 } from 'lucide-react';
 import React from 'react';
 
@@ -66,6 +68,14 @@ interface ExtendedProductData extends ProductData {
         features?: PowerfulCapability[];
     };
     departmentsWeServe?: DepartmentData[];
+    productFeatures?: {
+        title?: string;
+        subtitle?: string;
+        capabilities?: Array<{
+            icon: React.ElementType;
+            title: string;
+        }>;
+    };
 }
 
 // Default departments data that will be used for all products
@@ -251,6 +261,18 @@ const productsData: Record<string, ExtendedProductData> = {
             ],
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
+        productFeatures: {
+            title: "Powerful MFA capabilities in one API from Deewan",
+            subtitle: "Leverage the full potential of Multi-Factor Authentication with our comprehensive API solution",
+            capabilities: [
+                { icon: CheckCircle, title: 'Verified Authentication' },
+                { icon: Shield, title: 'Security Management' },
+                { icon: Bot, title: 'Automated Verification' },
+                { icon: UserCog, title: 'Account Management' },
+                { icon: Database, title: 'Data Protection' },
+                { icon: CheckSquare, title: 'Compliance Requirements' }
+            ]
+        },
         stats: [
             {
                 icon: React.createElement(TrendingUp, {
@@ -420,6 +442,18 @@ const productsData: Record<string, ExtendedProductData> = {
             ],
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
+        productFeatures: {
+            title: "Powerful IVR capabilities in one API from Deewan",
+            subtitle: "Leverage the full potential of Interactive Voice Response with our comprehensive API solution",
+            capabilities: [
+                { icon: Phone, title: 'Voice Recognition' },
+                { icon: Headset, title: 'Call Management' },
+                { icon: Bot, title: 'Automated Response' },
+                { icon: UserCog, title: 'Call Routing' },
+                { icon: Database, title: 'Call Analytics' },
+                { icon: Shield, title: 'Voice Security' }
+            ]
+        },
         stats: [
             {
                 icon: React.createElement(TrendingUp, {
@@ -452,6 +486,18 @@ const productsData: Record<string, ExtendedProductData> = {
             'Revolutionize your business communications with personalized interactions at every touchpoint, and speak to any conversational app from one dashboard.',
         description:
             'Manage real-time communications across WhatsApp, live chat, social media, and email — all in one simple, secure dashboard.',
+        productFeatures: {
+            title: "Powerful WhatsApp Business capabilities in one API from Deewan",
+            subtitle: "Leverage the full potential of WhatsApp Business with our comprehensive API solution",
+            capabilities: [
+                { icon: CheckCircle, title: 'Verified Account' },
+                { icon: Database, title: 'Database Management' },
+                { icon: Bot, title: 'Chatbot Integration' },
+                { icon: UserCog, title: 'Account Management' },
+                { icon: Shield, title: 'Data Encryption' },
+                { icon: CheckSquare, title: 'Opt-In Requirement' }
+            ]
+        },
         coreFeatures: {
             title: 'Improve every aspect of <span class="text-deewan-primary">customer engagement</span>',
             subtitle:
@@ -738,6 +784,18 @@ const productsData: Record<string, ExtendedProductData> = {
             ],
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
+        productFeatures: {
+            title: "Powerful Campaign capabilities in one API from Deewan",
+            subtitle: "Leverage the full potential of Messaging Campaigns with our comprehensive API solution",
+            capabilities: [
+                { icon: MessageSquare, title: 'Multi-Channel Messaging' },
+                { icon: Database, title: 'Contact Management' },
+                { icon: BarChart, title: 'Campaign Analytics' },
+                { icon: Clock, title: 'Scheduled Delivery' },
+                { icon: Target, title: 'Audience Targeting' },
+                { icon: CheckSquare, title: 'Delivery Confirmation' }
+            ]
+        },
         stats: [
             {
                 icon: React.createElement(Phone, {
@@ -904,6 +962,18 @@ const productsData: Record<string, ExtendedProductData> = {
                 },
             ],
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        },
+        productFeatures: {
+            title: "Powerful Chatbot capabilities in one API from Deewan",
+            subtitle: "Leverage the full potential of AI-powered Chatbots with our comprehensive API solution",
+            capabilities: [
+                { icon: Bot, title: 'AI-Powered Responses' },
+                { icon: Brain, title: 'Natural Language Processing' },
+                { icon: MessageSquare, title: 'Multi-Channel Support' },
+                { icon: Globe, title: 'Multilingual Capabilities' },
+                { icon: Database, title: 'Knowledge Base Integration' },
+                { icon: UserCog, title: 'Conversation Management' }
+            ]
         },
         stats: [
             {
