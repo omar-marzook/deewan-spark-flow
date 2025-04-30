@@ -1,24 +1,24 @@
 
 import React, { useRef, useEffect } from "react";
-import { Megaphone, Users, DollarSign } from "lucide-react";
+import { Megaphone, Headset, UserRoundCog } from "lucide-react";
 
 const departmentsData = [{
   id: 1,
-  name: "Marketing",
+  name: "Marketing and Sales",
   description: "We empower marketing teams with real-time communication tools that streamline campaign coordination and boost customer engagement.",
   icon: <Megaphone className="h-10 w-10 text-deewan-primary" />,
   color: "bg-deewan-primary/10"
 }, {
   id: 2,
-  name: "Human Resources",
+  name: "Customer Service",
   description: "Our solutions help HR departments deliver timely updates, onboard employees efficiently, and maintain clear internal communications.",
-  icon: <Users className="h-10 w-10 text-deewan-secondary" />,
+  icon: <Headset className="h-10 w-10 text-deewan-secondary" />,
   color: "bg-deewan-secondary/10"
 }, {
   id: 3,
-  name: "Finance",
+  name: "Administration",
   description: "We provide secure channels for finance teams to send confidential information, payment confirmations, and time-sensitive alerts.",
-  icon: <DollarSign className="h-10 w-10 text-deewan-accent" />,
+  icon: <UserRoundCog className="h-10 w-10 text-deewan-accent" />,
   color: "bg-deewan-accent/10"
 }];
 
@@ -125,13 +125,6 @@ const DepartmentsWeServe = () => {
               <p className="text-deewan-gray mb-4">
                 {dept.description}
               </p>
-              
-              <div className="flex items-center mt-4">
-                <div className="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-full">
-                  <Users size={16} className="text-deewan-dark/60" />
-                  <span className="text-sm font-medium text-deewan-dark/80">View Solutions</span>
-                </div>
-              </div>
             </div>
           ))}
         </div>
