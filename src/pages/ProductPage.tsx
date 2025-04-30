@@ -39,7 +39,7 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="overflow-x-hidden bg-white text-deewan-dark">
+    <div className="overflow-x-hidden">
       <Navbar />
       <ProductHero 
         name={productData.name} 
