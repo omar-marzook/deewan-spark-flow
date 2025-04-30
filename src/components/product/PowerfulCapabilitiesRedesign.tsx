@@ -2,44 +2,89 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { CheckCircle, Zap, Shield, Globe, BarChart, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
 interface FeatureItem {
   id: string;
   icon: React.ElementType;
   title: string;
   description: string;
+  bulletPoints?: string[];
 }
-const features: FeatureItem[] = [{
+
+// Default features as fallback
+const defaultFeatures: FeatureItem[] = [{
   id: 'realtime',
   icon: Zap,
   title: 'Real-time Communications',
-  description: 'Deliver instant messages to customers through SMS, WhatsApp, or Voice with high reliability.'
+  description: 'Deliver instant messages to customers through SMS, WhatsApp, or Voice with high reliability.',
+  bulletPoints: [
+    'Millisecond delivery times for critical messages',
+    'Seamless channel switching without losing context',
+    'Automatic fallback to alternative channels'
+  ]
 }, {
   id: 'centralized',
   icon: Globe,
   title: 'Centralized Management',
-  description: 'One dashboard to manage campaigns, user conversations, analytics, and reporting.'
+  description: 'One dashboard to manage campaigns, user conversations, analytics, and reporting.',
+  bulletPoints: [
+    'Unified inbox for all communication channels',
+    'Centralized campaign management and scheduling',
+    'Consolidated reporting across all touchpoints'
+  ]
 }, {
   id: 'ai',
   icon: CheckCircle,
   title: 'AI-powered Automation',
-  description: 'Automate customer replies, authentication, and routine tasks with smart bots.'
+  description: 'Automate customer replies, authentication, and routine tasks with smart bots.',
+  bulletPoints: [
+    'Natural language processing for intent recognition',
+    'Automated responses to common inquiries',
+    'Smart routing based on conversation context'
+  ]
 }, {
   id: 'analytics',
   icon: BarChart,
   title: 'Insightful Analytics',
-  description: 'Gain actionable insights from comprehensive analytics and reporting.'
+  description: 'Gain actionable insights from comprehensive analytics and reporting.',
+  bulletPoints: [
+    'Real-time performance dashboards',
+    'Customer engagement metrics and trends',
+    'Conversion tracking and attribution'
+  ]
 }, {
   id: 'api',
   icon: MessageCircle,
   title: 'Omnichannel APIs',
-  description: 'APIs for SMS, WhatsApp, Voice, Verification and more, easily integrated with your applications.'
+  description: 'APIs for SMS, WhatsApp, Voice, Verification and more, easily integrated with your applications.',
+  bulletPoints: [
+    'Simple REST API integration',
+    'Comprehensive SDK support for major platforms',
+    'Webhook support for real-time event notifications'
+  ]
 }, {
   id: 'personalization',
   icon: Shield,
   title: 'Personalization',
-  description: 'Personalize messages at scale to improve engagement and conversion.'
+  description: 'Personalize messages at scale to improve engagement and conversion.',
+  bulletPoints: [
+    'Dynamic content insertion based on user data',
+    'Behavioral targeting and segmentation',
+    'A/B testing for message optimization'
+  ]
 }];
-const PowerfulCapabilitiesRedesign = () => {
+
+interface PowerfulCapabilitiesRedesignProps {
+  features?: FeatureItem[];
+  title?: string;
+  subtitle?: string;
+}
+
+const PowerfulCapabilitiesRedesign = ({
+  features = defaultFeatures,
+  title = "Designed for Modern <span class=\"text-deewan-primary\">Communication</span>",
+  subtitle = "Our platform brings together technology and simplicity to power your business communications"
+}: PowerfulCapabilitiesRedesignProps) => {
   const [activeFeature, setActiveFeature] = useState(features[0].id);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, {
@@ -92,12 +137,12 @@ const PowerfulCapabilitiesRedesign = () => {
         ease: "easeOut"
       }}>
 
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-          Designed for Modern <span className="text-deewan-primary">Communication</span>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black"
+            dangerouslySetInnerHTML={{ __html: title }}>
         </h2>
 
         <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
-          Our platform brings together technology and simplicity to power your business communications
+          {subtitle}
         </p>
       </motion.div>
 
@@ -123,9 +168,9 @@ const PowerfulCapabilitiesRedesign = () => {
               <button onClick={() => setActiveFeature(feature.id)} className={cn("w-full text-left p-4 rounded-xl transition-all duration-300 glass border group", isActive ? "bg-white/80 border-deewan-primary/30 shadow-lg shadow-deewan-primary/5" : "bg-white/40 border-white/20 hover:bg-white/60 hover:shadow-md")}>
                 <div className="flex items-center gap-4">
                   <div className={cn("p-3 rounded-lg transition-colors duration-300", isActive ? "bg-gradient-to-br from-deewan-primary to-deewan-primary/70 text-white" : "bg-white/70 text-deewan-primary group-hover:bg-white/90")}>
-                    {React.createElement(feature.icon, {
-                      className: "h-5 w-5"
-                    })}
+                {React.createElement(feature.icon, {
+                  className: "h-5 w-5"
+                })}
                   </div>
                   <span className={cn("font-medium transition-colors duration-300", isActive ? "text-deewan-dark" : "text-deewan-dark/70")}>
                     {feature.title}
@@ -162,14 +207,25 @@ const PowerfulCapabilitiesRedesign = () => {
                 }}>
                   <div>
                     <div className="p-4 mb-6 inline-flex rounded-xl bg-gradient-to-br from-deewan-primary/10 to-deewan-primary/5 backdrop-blur-sm text-deewan-primary">
-                      <IconComponent className="h-10 w-10" />
+                <IconComponent className="h-10 w-10" />
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-deewan-dark mb-4">
                       {feature.title}
                     </h3>
-                    <p className="text-lg text-deewan-dark/70 max-w-2xl mb-8">
+                    <p className="text-lg text-deewan-dark/70 max-w-2xl mb-4">
                       {feature.description}
                     </p>
+                    
+                    {feature.bulletPoints && feature.bulletPoints.length > 0 && (
+                      <ul className="space-y-2 mb-8">
+                        {feature.bulletPoints.map((point, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <span className="mr-2 mt-1 text-deewan-primary">•</span>
+                            <span className="text-deewan-dark/70">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
                   {/* Decorative illustration or content specific to each feature could go here */}

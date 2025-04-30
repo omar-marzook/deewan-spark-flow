@@ -16,15 +16,31 @@ import {
     Users,
     Bookmark,
     CheckCircle,
+    Shield,
+    BarChart,
 } from 'lucide-react';
 import React from 'react';
 
-// Extend the ProductData interface to include stats and core features
+// Define the PowerfulCapability interface
+interface PowerfulCapability {
+    id: string;
+    icon: React.ReactNode;
+    title: string;
+    description: string;
+    bulletPoints?: string[];
+}
+
+// Extend the ProductData interface to include stats, core features, and powerful capabilities
 interface ExtendedProductData extends ProductData {
     stats?: StatItem[];
     coreFeatures?: {
         title?: string;
         subtitle?: string;
+    };
+    powerfulCapabilities?: {
+        title?: string;
+        subtitle?: string;
+        features?: PowerfulCapability[];
     };
 }
 
@@ -75,6 +91,91 @@ const productsData: Record<string, ExtendedProductData> = {
                     'Integrate the chat platform with customer support systems such as Freshdesk and HubSpot to allow agents to create support requests for clients.',
             },
         ],
+        powerfulCapabilities: {
+            title: 'Designed for Modern <span class="text-deewan-primary">Customer Engagement</span>',
+            subtitle:
+                'Our omnichannel platform brings together technology and simplicity to power your customer interactions',
+            features: [
+                {
+                    id: 'realtime',
+                    icon: React.createElement(MessageSquare, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Real-time Messaging',
+                    description:
+                        'Engage with customers instantly across multiple channels with seamless conversation history.',
+                    bulletPoints: [
+                        'Connect with customers on their preferred channels',
+                        'Maintain conversation context across channel switches',
+                        'Deliver messages with millisecond latency',
+                    ],
+                },
+                {
+                    id: 'automation',
+                    icon: React.createElement(CheckCircle, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Smart Automation',
+                    description:
+                        'Deploy AI-powered chatbots to handle routine inquiries and route complex issues to human agents.',
+                    bulletPoints: [
+                        'Reduce response time by up to 80% with AI automation',
+                        'Handle common inquiries 24/7 without human intervention',
+                        'Seamlessly escalate to human agents when needed',
+                    ],
+                },
+                {
+                    id: 'analytics',
+                    icon: React.createElement(LayoutGrid, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Comprehensive Analytics',
+                    description:
+                        'Gain insights into customer interactions, agent performance, and conversation outcomes.',
+                    bulletPoints: [
+                        'Track key metrics like response time and resolution rate',
+                        'Identify trends and patterns in customer inquiries',
+                        'Optimize agent performance with data-driven insights',
+                    ],
+                },
+                {
+                    id: 'integration',
+                    icon: React.createElement(Link, { className: 'w-6 h-6' }),
+                    title: 'Seamless Integration',
+                    description:
+                        'Connect with your existing CRM, helpdesk, and business systems for unified customer data.',
+                    bulletPoints: [
+                        'Integrate with popular CRM and helpdesk platforms',
+                        'Synchronize customer data across all systems',
+                        'Automate workflows between different platforms',
+                    ],
+                },
+                {
+                    id: 'multichannel',
+                    icon: React.createElement(Globe, { className: 'w-6 h-6' }),
+                    title: 'Multi-Channel Support',
+                    description:
+                        'Manage WhatsApp, SMS, web chat, and social media conversations from a single interface.',
+                    bulletPoints: [
+                        'Support for WhatsApp, SMS, Facebook, Instagram, and more',
+                        'Unified inbox for all customer conversations',
+                        'Consistent experience across all channels',
+                    ],
+                },
+                {
+                    id: 'security',
+                    icon: React.createElement(Shield, { className: 'w-6 h-6' }),
+                    title: 'Enterprise Security',
+                    description:
+                        'Protect sensitive customer data with end-to-end encryption and role-based access controls.',
+                    bulletPoints: [
+                        'End-to-end encryption for all communications',
+                        'Role-based access control for team management',
+                        'Compliance with global data protection regulations',
+                    ],
+                },
+            ],
+        },
         useCases: [
             {
                 title: 'Government Service Desks',
@@ -155,6 +256,93 @@ const productsData: Record<string, ExtendedProductData> = {
             title: 'Messaging API <span class="text-deewan-primary">Features</span>',
             subtitle:
                 'Explore the powerful capabilities of our Messaging API solution',
+        },
+        powerfulCapabilities: {
+            title: 'Powerful <span class="text-deewan-primary">Messaging Capabilities</span>',
+            subtitle:
+                'Our API provides robust messaging features for businesses of all sizes',
+            features: [
+                {
+                    id: 'multichannel',
+                    icon: React.createElement(MessageSquare, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Multi-Channel Messaging',
+                    description:
+                        'Send and receive messages via SMS, WhatsApp, and other channels through a single API.',
+                    bulletPoints: [
+                        'One API for all messaging channels',
+                        'Consistent request/response format across channels',
+                        'Automatic channel fallback options',
+                    ],
+                },
+                {
+                    id: 'delivery',
+                    icon: React.createElement(CheckCircle, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Delivery Intelligence',
+                    description:
+                        'Get detailed delivery reports and analytics for all your messaging campaigns.',
+                    bulletPoints: [
+                        'Real-time delivery status updates',
+                        'Comprehensive delivery reports and analytics',
+                        'Insights into message engagement and conversion',
+                    ],
+                },
+                {
+                    id: 'templates',
+                    icon: React.createElement(LayoutGrid, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Template Management',
+                    description:
+                        'Create, store, and reuse message templates for consistent communication.',
+                    bulletPoints: [
+                        'Pre-approved WhatsApp Business templates',
+                        'Dynamic variable insertion for personalization',
+                        'Template performance analytics',
+                    ],
+                },
+                {
+                    id: 'global',
+                    icon: React.createElement(Globe, { className: 'w-6 h-6' }),
+                    title: 'Global Reach',
+                    description:
+                        'Connect with customers worldwide through our extensive carrier network.',
+                    bulletPoints: [
+                        'Coverage in over 200 countries and territories',
+                        'Direct carrier connections for optimal delivery',
+                        'Local number support in major markets',
+                    ],
+                },
+                {
+                    id: 'scale',
+                    icon: React.createElement(Database, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Enterprise Scalability',
+                    description:
+                        'Handle millions of messages with high throughput and low latency.',
+                    bulletPoints: [
+                        'Process thousands of messages per second',
+                        'Auto-scaling infrastructure for peak loads',
+                        '99.99% uptime SLA for enterprise customers',
+                    ],
+                },
+                {
+                    id: 'security',
+                    icon: React.createElement(Shield, { className: 'w-6 h-6' }),
+                    title: 'Secure Messaging',
+                    description:
+                        'Protect sensitive information with encryption and secure authentication.',
+                    bulletPoints: [
+                        'TLS encryption for all API communications',
+                        'Secure API key management',
+                        'Two-factor authentication for account access',
+                    ],
+                },
+            ],
         },
         features: [
             {
@@ -246,6 +434,91 @@ const productsData: Record<string, ExtendedProductData> = {
             title: 'Voice API <span class="text-deewan-primary">Features</span>',
             subtitle:
                 'Discover the advanced capabilities of our Voice API solution',
+        },
+        powerfulCapabilities: {
+            title: 'Advanced <span class="text-deewan-primary">Voice Solutions</span>',
+            subtitle:
+                'Transform your applications with powerful voice communication features',
+            features: [
+                {
+                    id: 'calls',
+                    icon: React.createElement(Phone, { className: 'w-6 h-6' }),
+                    title: 'Programmable Voice',
+                    description:
+                        'Build custom voice applications with our flexible and powerful API.',
+                    bulletPoints: [
+                        'Create interactive voice response (IVR) systems',
+                        'Develop custom call flows with simple code',
+                        'Integrate voice capabilities into any application',
+                    ],
+                },
+                {
+                    id: 'recording',
+                    icon: React.createElement(CheckCircle, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Call Recording',
+                    description:
+                        'Record, store, and retrieve call recordings for compliance and training.',
+                    bulletPoints: [
+                        'Secure storage of call recordings',
+                        'Easy retrieval and playback of recordings',
+                        'Compliance with industry regulations',
+                    ],
+                },
+                {
+                    id: 'tts',
+                    icon: React.createElement(MessageSquare, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Text-to-Speech',
+                    description:
+                        'Convert text to natural-sounding speech in multiple languages and voices.',
+                    bulletPoints: [
+                        'Natural-sounding voices in multiple languages',
+                        'Customizable speech parameters like speed and pitch',
+                        'SSML support for advanced speech control',
+                    ],
+                },
+                {
+                    id: 'conference',
+                    icon: React.createElement(Users, { className: 'w-6 h-6' }),
+                    title: 'Conference Calling',
+                    description:
+                        'Create dynamic conference calls with multiple participants and moderator controls.',
+                    bulletPoints: [
+                        'Support for up to 250 participants per call',
+                        'Moderator controls for managing participants',
+                        'High-quality audio for clear communication',
+                    ],
+                },
+                {
+                    id: 'analytics',
+                    icon: React.createElement(BarChart, {
+                        className: 'w-6 h-6',
+                    }),
+                    title: 'Voice Analytics',
+                    description:
+                        'Gain insights into call quality, duration, and user engagement patterns.',
+                    bulletPoints: [
+                        'Detailed call quality metrics and analytics',
+                        'User engagement and interaction tracking',
+                        'Custom reports for business intelligence',
+                    ],
+                },
+                {
+                    id: 'global',
+                    icon: React.createElement(Globe, { className: 'w-6 h-6' }),
+                    title: 'Global Coverage',
+                    description:
+                        'Make and receive calls worldwide with high-quality audio and low latency.',
+                    bulletPoints: [
+                        'Global voice network with local presence',
+                        'HD voice quality for crystal-clear calls',
+                        'Low-latency connections for natural conversations',
+                    ],
+                },
+            ],
         },
         features: [
             {

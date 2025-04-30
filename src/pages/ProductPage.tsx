@@ -21,7 +21,7 @@ export default function ProductPage() {
 
   // Find the product data based on the slug
   const productData = slug ? productsData[slug] : null;
-
+  
   // If no product is found, show the 404 page
   if (!productData) {
     return <NotFound />;
@@ -76,7 +76,10 @@ export default function ProductPage() {
         title={productData.coreFeatures?.title || `<span class="text-deewan-primary">${productData.name}</span> Features`}
         subtitle={productData.coreFeatures?.subtitle || `Discover how ${productData.name} can transform your communication experience`}
       />
-      <PowerfulCapabilitiesRedesign />
+      <PowerfulCapabilitiesRedesign 
+        title={productData.powerfulCapabilities?.title}
+        subtitle={productData.powerfulCapabilities?.subtitle}
+      />
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
       )}
