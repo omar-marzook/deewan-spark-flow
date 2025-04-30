@@ -9,7 +9,7 @@ import OurValues from "@/components/about/OurValues";
 import WhatWeDo from "@/components/about/WhatWeDo";
 import ContactSection from "@/components/ContactSection";
 import AlternativeStats from "@/components/AlternativeStats";
-import CreativeTestimonials from "@/components/CreativeTestimonials";
+import AlternativeTestimonials from "@/components/AlternativeTestimonials";
 import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
 
 const AboutUs = () => {
@@ -59,7 +59,7 @@ const AboutUs = () => {
             description: "Real impact. Measurable growth"
           }}
         />
-        <CreativeTestimonials />
+        <AlternativeTestimonials />
         <ContactSection />
       </main>
       <Footer />
