@@ -6,8 +6,8 @@ import React from 'react';
 const productsData: Record<string, ProductData> = {
   "omni-channel-chat": {
     slug: "omni-channel-chat",
-    name: "Deewan Omni-Channel Chat",
-    tagline: "Centralize customer conversations in one unified platform.",
+    name: "Deewan Omnichannel Chat",
+    tagline: "Revolutionize your business communications with personalized interactions at every touchpoint, and speak to any conversational app from one dashboard.",
     description: "Manage real-time communications across WhatsApp, live chat, social media, and email — all in one simple, secure dashboard.",
     features: [
       {
