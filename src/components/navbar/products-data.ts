@@ -1,4 +1,4 @@
-import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid } from 'lucide-react';
+import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid, Shield } from 'lucide-react';
 
 export type Product = {
   name: string;
@@ -14,6 +14,12 @@ export type ProductCategories = {
 
 export const products: ProductCategories = {
   applications: [
+    {
+      name: "MFA",
+      description: "Multi-Factor Authentication for enhanced security",
+      slug: "mfa",
+      icon: Shield
+    },
     {
       name: "IVR",
       description: "Interactive voice response for enhanced customer experience",

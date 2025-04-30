@@ -36,6 +36,7 @@ import {
     Sparkles,
     Rocket,
     ShoppingBag,
+    Bell,
 } from 'lucide-react';
 import React from 'react';
 
@@ -63,6 +64,164 @@ interface ExtendedProductData extends ProductData {
 }
 
 const productsData: Record<string, ExtendedProductData> = {
+    'mfa': {
+        slug: 'mfa',
+        name: 'Deewan MFA',
+        tagline:
+            'Add an extra layer of security to your applications with Multi-Factor Authentication that enhances user experience without compromising security.',
+        description:
+            'Add an extra layer of security to your applications with Multi-Factor Authentication that enhances user experience without compromising security.',
+        coreFeatures: {
+            title: 'Secure authentication <span class="text-deewan-primary">without compromising experience</span>',
+            subtitle:
+                'Deewan MFA provides robust security solutions that protect your users while maintaining a seamless authentication experience.',
+        },
+        features: [
+            {
+                icon: React.createElement(Shield, {
+                    className: 'w-6 h-6',
+                }),
+                title: 'Automated OTPs',
+                description:
+                    'Add an extra layer of security to accounts and transactions with Deewan MFA\'s auto generated one-time passwords.',
+            },
+            {
+                icon: React.createElement(MessageSquare, { className: 'w-6 h-6' }),
+                title: 'WhatsApp Authentication',
+                description:
+                    'Add user and account functions to your experience and enable users to authenticate securely through the world\'s favorite chat app.',
+            },
+            {
+                icon: React.createElement(Headset, { className: 'w-6 h-6' }),
+                title: 'Voice Verification',
+                description:
+                    'Use Deewan MFA to improve account security and accessibility through human voice authentication.',
+            },
+            {
+                icon: React.createElement(Bell, { className: 'w-6 h-6' }),
+                title: 'Push Authentication',
+                description:
+                    'Maintain the smoothness of your user experience with push authentication without codes or message communications.',
+            },
+            {
+                icon: React.createElement(BarChart, { className: 'w-6 h-6' }),
+                title: 'Advanced Analytics',
+                description:
+                    'Deewan MFA contains advanced analytics offering performance insights and verification statistics to improve the experience and boost security.',
+            },
+        ],
+        powerfulCapabilities: {
+            title: 'The impact of <span class="text-deewan-primary">Deewan MFA</span>',
+            subtitle:
+                'Our MFA platform combines robust security with user experience to protect your applications and users',
+            features: [
+                {
+                    id: 'improved-user-experience',
+                    icon: React.createElement(UserCheck),
+                    title: 'Improved User Experience',
+                    description:
+                        'Deewan MFA integrates with your platform to add a formidable layer of security without compromising the smoothness or flow of the user experience. With multichannel support, this reflects in:',
+                    bulletPoints: [
+                        'Better login experiences',
+                        'Faster onboarding',
+                        'Stronger data security',
+                    ],
+                },
+                {
+                    id: 'cost-effective-security',
+                    icon: React.createElement(DollarSign),
+                    title: 'Cost-Effective Security',
+                    description:
+                        'By design, Deewan MFA is qualified to address any credential-based cyber attack attempting to compromise login details or passwords without requiring investment in expensive infrastructure. This reflects in:',
+                    bulletPoints: [
+                        'Cost reduction',
+                        'Better resource allocation',
+                        'Efficient onboarding',
+                    ],
+                },
+                {
+                    id: 'stronger-data-protection',
+                    icon: React.createElement(Shield),
+                    title: 'Stronger Data Protection',
+                    description:
+                        'Deewan MFA provides your brand with authentication options that ensure any user can easily protect their account without technical literacy or specialization. This reflects in:',
+                    bulletPoints: [
+                        'Higher security compliance',
+                        'Better data protection',
+                        'Cost optimization',
+                    ],
+                },
+            ],
+        },
+        useCases: [
+            {
+                title: 'Banking & Financial Services',
+                desc: 'Secure account access and transactions with multi-factor verification.',
+                icon: React.createElement(Building, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'Healthcare Providers',
+                desc: 'Protect sensitive patient data with robust authentication.',
+                icon: React.createElement(Users, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'eCommerce & Retail',
+                desc: 'Secure customer accounts and payment information.',
+                icon: React.createElement(ShoppingBag, { className: 'h-6 w-6' }),
+            },
+            {
+                title: 'Enterprise Solutions',
+                desc: 'Protect corporate data and applications with advanced authentication.',
+                icon: React.createElement(Server, { className: 'h-6 w-6' }),
+            },
+        ],
+        howItWorks: {
+            steps: [
+                {
+                    number: '01',
+                    title: 'Register',
+                    description:
+                        'Fill up the registration form and check you inbox for a message from Deewan activating your account.',
+                },
+                {
+                    number: '02',
+                    title: 'Configure',
+                    description:
+                        'Set up your MFA methods, authentication flows, and security policies to match your business requirements.',
+                },
+                {
+                    number: '03',
+                    title: 'Launch',
+                    description:
+                        'Integrate the MFA solution with your applications and start providing secure authentication to your users.',
+                },
+            ],
+            videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        },
+        stats: [
+            {
+                icon: React.createElement(TrendingUp, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '$17B+',
+                label: 'Projected MFA market size by 2025',
+            },
+            {
+                icon: React.createElement(BarChart, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '20M+',
+                label: 'Transaction processed monthly',
+            },
+            {
+                icon: React.createElement(Clock, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '24/7',
+                label: 'Technical support',
+            },
+        ],
+    },
     'ivr': {
         slug: 'ivr',
         name: 'Deewan IVR',
