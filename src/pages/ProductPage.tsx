@@ -53,7 +53,8 @@ export default function ProductPage() {
         showCards={false} 
         gridCount={3} 
         showTitle={false}
-        stats={[
+        stats={productData.stats || [
+          // Fallback stats if product doesn't have specific stats
           {
             icon: <MessageSquare className="h-6 w-6 text-deewan-primary" />,
             value: productData.features.length.toString() + "+",

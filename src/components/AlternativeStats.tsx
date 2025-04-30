@@ -1,19 +1,19 @@
 import { CheckCircle, Users, Briefcase, BarChart, LucideIcon } from 'lucide-react';
 import React from 'react';
 
-interface StatItem {
+export interface StatItem {
   icon: React.ReactNode;
   value: string;
   label: string;
 }
 
-interface CardItem {
+export interface CardItem {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
 
-interface TitleContent {
+export interface TitleContent {
   title: string;
   description: string;
 }
