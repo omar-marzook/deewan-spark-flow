@@ -1,9 +1,17 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check, Users, Bookmark, Phone, Mail, Star } from "lucide-react";
+import { ReactNode } from "react";
 
-// Reuse the same features data for consistency
-const features = [{
+// Define the feature type
+interface Feature {
+  icon: ReactNode;
+  title: string;
+  description: string;
+}
+
+// Default features as fallback
+const defaultFeatures: Feature[] = [{
   icon: <Check className="w-7 h-7 text-deewan-primary" />,
   title: "Real-time Communications",
   description: "Deliver instant messages to customers through SMS, WhatsApp, or Voice with high reliability."
@@ -32,7 +40,7 @@ const FeatureCard = ({
   feature,
   index
 }: {
-  feature: typeof features[0];
+  feature: Feature;
   index: number;
 }) => {
   const ref = useRef(null);
@@ -74,7 +82,17 @@ const FeatureCard = ({
       </div>
     </motion.div>;
 };
-const CoreFeaturesStaggered = () => {
+interface CoreFeaturesStaggeredProps {
+  features?: Feature[];
+  title?: string;
+  subtitle?: string;
+}
+
+const CoreFeaturesStaggered = ({
+  features = defaultFeatures,
+  title = "Core <span class=\"text-deewan-primary\">Features</span>",
+  subtitle = "Discover how our intelligent solutions can transform your communication",
+}: CoreFeaturesStaggeredProps) => {
   return <section className="relative py-24 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
@@ -98,17 +116,12 @@ const CoreFeaturesStaggered = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-2 rounded-full shadow-sm mb-6">
-            <span className="w-2 h-2 bg-deewan-primary rounded-full mr-2"></span>
-            <span className="text-sm font-medium text-deewan-dark/80">Alternative Design</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-            Core <span className="text-deewan-primary">Features</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black" 
+               dangerouslySetInnerHTML={{ __html: title }}>
           </h2>
           
           <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
-            Discover how our intelligent solutions can transform your communication
+            {subtitle}
           </p>
         </div>
 

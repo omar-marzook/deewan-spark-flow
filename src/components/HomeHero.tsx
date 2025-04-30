@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowUpRight, ArrowRight, CircleDot, Circle, CircleCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonLink } from "@/components/ui/button";
 
 
 interface HomeHeroProps {
@@ -70,11 +70,11 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
           Intelligent and scalability, customizable communication solutions that prioritize security and scalability.
         </p>
 
-        {/* CTA Button - Updated to use tailwind classes */}
-        <a href="#products" className="btn-primary inline-flex items-center justify-center gap-2">
+        {/* CTA Button */}
+        <ButtonLink href="#products" variant="default" size="lg">
           Explore Solutions
           <ArrowRight size={20} />
-        </a>
+        </ButtonLink>
       </div>
 
       {/* Visual with green gradient illumination */}

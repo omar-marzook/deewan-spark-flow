@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { ButtonLink } from "@/components/ui/button";
 const HeroSection = () => {
   return <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background gradient elements */}
@@ -26,10 +27,10 @@ const HeroSection = () => {
             
             <p className="text-xl mb-8 text-deewan-dark/80 max-w-xl">We build intelligent tools that bridge gaps, spark conversations, and help organizations connect.</p>
             
-            <a href="#our-story" className="btn-primary flex items-center justify-center w-fit mx-auto lg:mx-0 gap-2">
+            <ButtonLink href="#our-story" variant="default" className="w-fit mx-auto lg:mx-0">
               Discover Our Story
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </ButtonLink>
           </motion.div>
 
           <motion.div initial={{

@@ -1,4 +1,6 @@
+import { Button, ButtonLink } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
+
 const Hero = () => {
   return <section className="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
       {/* Background Gradient Elements */}
@@ -14,11 +16,14 @@ const Hero = () => {
             </h1>
             <p className="text-xl mb-8 text-deewan-dark max-w-lg">Customizable, secure communications built to scale across every channel.</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#products" className="btn-primary flex items-center justify-center gap-2">
+              <ButtonLink href="#products" variant="default" size="lg">
                 Explore Solutions
                 <ArrowRight size={20} />
-              </a>
-              <a href="#contact" className="btn-secondary flex items-center justify-center">Talk to an expert </a>
+              </ButtonLink>
+
+              <ButtonLink href="#contact" variant="secondary" size="lg">
+                Talk to an expert
+              </ButtonLink>
             </div>
           </div>
           
