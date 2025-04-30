@@ -18,7 +18,7 @@ const Newsletter = () => {
               </div>
               <Input type="email" placeholder="Enter your email" className="w-full pl-10 pr-4 py-2.5 rounded-lg backdrop-blur-sm border border-white/50 focus:border-deewan-primary/30 focus:ring-deewan-primary/20 bg-white" />
             </div>
-            <Button className="bg-deewan-primary hover:bg-deewan-primary/90 text-white flex items-center justify-center gap-2 shadow-md shadow-deewan-primary/20">
+          <Button className="bg-deewan-primary hover:bg-deewan-primary/90 text-white flex items-center justify-center gap-2 shadow-md shadow-deewan-primary/20" transition='no'>
               Subscribe
               <ArrowRight size={16} />
             </Button>
