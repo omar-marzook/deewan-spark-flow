@@ -46,33 +46,33 @@ const productsData: Record<string, ExtendedProductData> = {
                 icon: React.createElement(MessageSquare, {
                     className: 'w-6 h-6',
                 }),
-                title: 'Unified Inbox',
+                title: 'Real Time Communication',
                 description:
-                    'Access all your customer conversations from WhatsApp, live chat, social, and email in a single platform.',
+                    'Allow your customers to engage with your brand in real-time and receive instant responses via instant messaging.',
             },
             {
-                icon: React.createElement(Link, { className: 'w-6 h-6' }),
-                title: 'Multi-Channel Integration',
+                icon: React.createElement(Users, { className: 'w-6 h-6' }),
+                title: 'Automated Responses',
                 description:
-                    'Easily integrate popular communication channels with seamless transition between chats.',
-            },
-            {
-                icon: React.createElement(Star, { className: 'w-6 h-6' }),
-                title: 'Smart Routing',
-                description:
-                    'Automatically assign chats to agents based on availability, skillset, and workload balancing.',
-            },
-            {
-                icon: React.createElement(Database, { className: 'w-6 h-6' }),
-                title: 'Real-Time Notifications',
-                description:
-                    'Get instant notifications for new chats, important updates, and escalations.',
+                    'Respond to common consumer inquiries automatically utilizing FAQ chatbots or customized rule-based or AI-based chatbots.',
             },
             {
                 icon: React.createElement(LayoutGrid, { className: 'w-6 h-6' }),
-                title: 'Analytics & Insights',
+                title: 'Queue Management',
                 description:
-                    'Track response times, chat volume, agent performance, and customer satisfaction through insightful dashboards.',
+                    'Route customer interactions to the right agent or team depending on the availability and the duties assigned.',
+            },
+            {
+                icon: React.createElement(Database, { className: 'w-6 h-6' }),
+                title: 'Analytics & Reporting',
+                description:
+                    'Measure and evaluate customer interactions and agent performance to improve customer service.',
+            },
+            {
+                icon: React.createElement(Link, { className: 'w-6 h-6' }),
+                title: 'Integration Capabilities',
+                description:
+                    'Integrate the chat platform with customer support systems such as Freshdesk and HubSpot to allow agents to create support requests for clients.',
             },
         ],
         useCases: [
