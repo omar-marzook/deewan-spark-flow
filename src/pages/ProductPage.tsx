@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import ProductHero from "@/components/product/ProductHero";
+import AlternativeStats from "@/components/AlternativeStats";
+import { CheckCircle, MessageSquare, Globe } from 'lucide-react';
+
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import ProductUseCases from "@/components/product/ProductUseCases";
@@ -45,6 +48,32 @@ export default function ProductPage() {
         name={productData.name} 
         tagline={productData.tagline}
         onContactClick={scrollToContact} 
+      />
+      <AlternativeStats 
+        showCards={false} 
+        gridCount={3} 
+        showTitle={false}
+        stats={[
+          {
+            icon: <MessageSquare className="h-6 w-6 text-deewan-primary" />,
+            value: productData.features.length.toString() + "+",
+            label: "Powerful Features"
+          },
+          {
+            icon: <Globe className="h-6 w-6 text-deewan-primary" />,
+            value: "24/7",
+            label: "Customer Support"
+          },
+          {
+            icon: <CheckCircle className="h-6 w-6 text-deewan-primary" />,
+            value: "99.9%",
+            label: "Uptime Reliability"
+          }
+        ]}
+        titleContent={{
+          title: `<span class="text-deewan-primary">${productData.name}</span> Stats`,
+          description: "Powerful performance metrics"
+        }}
       />
       <PowerfulCapabilitiesRedesign />
       <CoreFeaturesStaggered />

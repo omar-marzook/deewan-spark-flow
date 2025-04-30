@@ -12,6 +12,7 @@ import BlogSection from "../components/BlogSection";
 import ContactSection from "../components/ContactSection";
 import AlternativeStats from "../components/AlternativeStats";
 import Footer from "../components/Footer";
+import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -23,7 +24,38 @@ const Index = () => {
       <ProductsTabbedLayout />
       <AlternativeProducts />
       <Industries />
-      <AlternativeStats />
+      <AlternativeStats 
+        // Using default props explicitly for clarity
+        showCards={true}
+        gridCount={4}
+        showTitle={true}
+        stats={[
+          {
+            icon: <BarChart className="h-6 w-6 text-deewan-primary" />,
+            value: "9+ Billion",
+            label: "Annual Transactions"
+          },
+          {
+            icon: <Users className="h-6 w-6 text-deewan-primary" />,
+            value: "300+",
+            label: "Satisfied Customers"
+          },
+          {
+            icon: <Briefcase className="h-6 w-6 text-deewan-primary" />,
+            value: "6+",
+            label: "Industries Served"
+          },
+          {
+            icon: <CheckCircle className="h-6 w-6 text-deewan-primary" />,
+            value: "99.9%",
+            label: "Uptime Reliability"
+          }
+        ]}
+        titleContent={{
+          title: "<span class=\"text-deewan-primary\">Deewan</span> in Numbers",
+          description: "Real impact. Measurable growth"
+        }}
+      />
       <DepartmentsWeServe />
       <CreativeTestimonials />
       <BlogSection />
