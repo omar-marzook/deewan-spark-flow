@@ -64,7 +64,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center">
             <img 
               alt="Deewan Logo" 
-              src="/lovable-uploads/c80ff29e-8abe-499f-9535-050008919d86.png" 
+              src="/deewan-logo.svg" 
               className="h-5 lg:h-7 mr-2" 
             />
           </Link>

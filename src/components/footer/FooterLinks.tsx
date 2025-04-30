@@ -5,9 +5,9 @@ const FooterLinks = () => {
   return <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
       {/* Logo and description column */}
       <div className="flex flex-col backdrop-blur-sm bg-white/20 rounded-xl p-6 border border-white/30">
-        <div className="mb-6">
-          <img alt="Deewan Logo" src="/lovable-uploads/8d8800bd-2260-4a4d-afd1-36c89189fe63.png" className="h-7" />
-        </div>
+        <a href="/" className="mb-6">
+        <img alt="Deewan." src="/deewan-logo.svg" className="h-7" />
+        </a>
         <p className="text-gray-600 mb-6">At Deewan, we provide intelligent, secure, and scalable communication solutions for businesses in Saudi Arabia and beyond.</p>
         
         <SocialLinks />
