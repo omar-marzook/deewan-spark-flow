@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/about/HeroSection";
 import TransformingDigital from "@/components/about/TransformingDigital";
-import GlassyTransformingDigital from "@/components/about/GlassyTransformingDigital";
 import OurStory from "@/components/about/OurStory";
 import OurValues from "@/components/about/OurValues";
 import OurTeam from "@/components/about/OurTeam";
@@ -24,14 +23,13 @@ const AboutUs = () => {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
-        <TransformingDigital />
-        <GlassyTransformingDigital />
         <OurStory />
-        <AlternativeStats />
+        <TransformingDigital />
         <OurValues />
         <OurTeam />
-        <CreativeTestimonials />
+        <AlternativeStats />
         <LogoCarousel />
+        <CreativeTestimonials />
         <ContactSection />
       </main>
       <Footer />
