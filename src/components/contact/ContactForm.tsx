@@ -144,6 +144,7 @@ const ContactForm = () => {
 
             <Button 
               type="submit" 
+              transition='no'
               className="w-full bg-deewan-primary hover:bg-deewan-primary/90 text-white"
             >
               Send Message

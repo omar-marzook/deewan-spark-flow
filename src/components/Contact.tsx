@@ -1,5 +1,6 @@
 
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   return (
@@ -119,7 +120,7 @@ const Contact = () => {
                 ></textarea>
               </div>
               
-              <button type="submit" className="btn-primary w-full">Send Message</button>
+              <Button type="submit" variant="default" className="w-full" transition='no'>Send Message</Button>
             </form>
           </div>
         </div>

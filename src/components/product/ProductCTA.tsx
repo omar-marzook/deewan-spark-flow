@@ -24,12 +24,12 @@ const ProductCTA: React.FC<ProductCTAProps> = ({
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <Button onClick={onContactClick} size="lg" className="btn-primary flex items-center justify-center gap-2 bg-deewan-primary">
+            <Button onClick={onContactClick} variant="default" size="lg">
               Get Started Today
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             
-            <Button variant="outline" size="lg" onClick={onContactClick} className="btn-secondary flex items-center justify-center bg-white">
+            <Button variant="secondary" size="lg" onClick={onContactClick}>
               Schedule a Demo
             </Button>
           </div>

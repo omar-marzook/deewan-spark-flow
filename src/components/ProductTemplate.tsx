@@ -4,13 +4,13 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductHero from "./product/ProductHero";
 import ProductFeatures from "./product/ProductFeatures";
-import ProductUseCases from "./product/ProductUseCases";
 import LogoCarousel from "./LogoCarousel";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
 import ProductCTA from "./product/ProductCTA";
 import HowItWorksSteps from "./product/HowItWorksSteps";
 import HowItWorksVideo from "./product/HowItWorksVideo";
+import DepartmentsWeServe from "./DepartmentsWeServe";
 
 // Define the types for our dynamic product data
 export interface ProductFeature {
@@ -83,9 +83,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
         <ProductFeatures features={product.features} />
       </div>
       
-      {/* Use Cases Section */}
-      <ProductUseCases useCases={product.useCases} />
-      
       {/* How It Works Section */}
       {product.howItWorks?.steps && product.howItWorks.steps.length > 0 && (
         <HowItWorksSteps steps={product.howItWorks.steps.map((step, index) => ({
@@ -98,6 +95,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       {product.howItWorks?.videoUrl && (
         <HowItWorksVideo videoUrl={product.howItWorks.videoUrl} />
       )}
+      
+      {/* Departments We Serve Section */}
+      <DepartmentsWeServe />
       
       {/* Client Logos Section */}
       <LogoCarousel />

@@ -83,7 +83,7 @@ const CreativeTestimonials = () => {
 
         {/* Testimonial cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-          {visibleTestimonials.map(testimonial => <div key={testimonial.id} className="bg-gray-50/70 rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          {visibleTestimonials.map(testimonial => <div key={testimonial.id} className="flex flex-col bg-gray-50/70 rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex">{renderStars(testimonial.rating)}</div>
                 <img src={testimonial.companyLogo} alt={`${testimonial.name}'s company`} className="h-8 object-contain" />
@@ -93,7 +93,7 @@ const CreativeTestimonials = () => {
                 "{testimonial.quote}"
               </blockquote>
               
-              <div className="flex items-center">
+              <div className="flex items-center mt-auto">
                 <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
                   <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
                 </div>

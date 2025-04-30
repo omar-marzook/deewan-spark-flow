@@ -4,14 +4,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/about/HeroSection";
 import TransformingDigital from "@/components/about/TransformingDigital";
-import GlassyTransformingDigital from "@/components/about/GlassyTransformingDigital";
 import OurStory from "@/components/about/OurStory";
 import OurValues from "@/components/about/OurValues";
-import OurTeam from "@/components/about/OurTeam";
+import WhatWeDo from "@/components/about/WhatWeDo";
 import ContactSection from "@/components/ContactSection";
-import LogoCarousel from "@/components/LogoCarousel";
 import AlternativeStats from "@/components/AlternativeStats";
 import CreativeTestimonials from "@/components/CreativeTestimonials";
+import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
 
 const AboutUs = () => {
   useEffect(() => {
@@ -24,14 +23,43 @@ const AboutUs = () => {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
-        <TransformingDigital />
-        <GlassyTransformingDigital />
         <OurStory />
-        <AlternativeStats />
+        <TransformingDigital />
         <OurValues />
-        <OurTeam />
+        <WhatWeDo />
+        <AlternativeStats
+          // Using default props explicitly for clarity
+          showCards={true}
+          gridCount={4}
+          showTitle={true}
+          stats={[
+            {
+              icon: <BarChart className="h-6 w-6 text-deewan-primary" />,
+              value: "9+ Billion",
+              label: "Annual Transactions"
+            },
+            {
+              icon: <Users className="h-6 w-6 text-deewan-primary" />,
+              value: "300+",
+              label: "Satisfied Customers"
+            },
+            {
+              icon: <Briefcase className="h-6 w-6 text-deewan-primary" />,
+              value: "6+",
+              label: "Industries Served"
+            },
+            {
+              icon: <CheckCircle className="h-6 w-6 text-deewan-primary" />,
+              value: "99.9%",
+              label: "Uptime Reliability"
+            }
+          ]}
+          titleContent={{
+            title: "<span class=\"text-deewan-primary\">Deewan</span> in Numbers",
+            description: "Real impact. Measurable growth"
+          }}
+        />
         <CreativeTestimonials />
-        <LogoCarousel />
         <ContactSection />
       </main>
       <Footer />
