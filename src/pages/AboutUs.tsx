@@ -6,7 +6,7 @@ import HeroSection from "@/components/about/HeroSection";
 import TransformingDigital from "@/components/about/TransformingDigital";
 import OurStory from "@/components/about/OurStory";
 import OurValues from "@/components/about/OurValues";
-import OurTeam from "@/components/about/OurTeam";
+import WhatWeDo from "@/components/about/WhatWeDo";
 import ContactSection from "@/components/ContactSection";
 import LogoCarousel from "@/components/LogoCarousel";
 import AlternativeStats from "@/components/AlternativeStats";
@@ -26,7 +26,7 @@ const AboutUs = () => {
         <OurStory />
         <TransformingDigital />
         <OurValues />
-        <OurTeam />
+        <WhatWeDo />
         <AlternativeStats />
         <LogoCarousel />
         <CreativeTestimonials />
