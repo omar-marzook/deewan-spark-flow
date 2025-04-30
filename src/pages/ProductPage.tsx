@@ -79,6 +79,7 @@ export default function ProductPage() {
       <PowerfulCapabilitiesRedesign 
         title={productData.powerfulCapabilities?.title}
         subtitle={productData.powerfulCapabilities?.subtitle}
+        features={productData.powerfulCapabilities?.features}
       />
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />

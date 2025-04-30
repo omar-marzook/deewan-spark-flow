@@ -18,6 +18,7 @@ import {
     CheckCircle,
     Shield,
     BarChart,
+    Headset,
 } from 'lucide-react';
 import React from 'react';
 
@@ -92,86 +93,44 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         powerfulCapabilities: {
-            title: 'Designed for Modern <span class="text-deewan-primary">Customer Engagement</span>',
+            title: 'The impact of <span class="text-deewan-primary">Deewan Omnichannel Chat</span>',
             subtitle:
-                'Our omnichannel platform brings together technology and simplicity to power your customer interactions',
+                'Our Omnichannel platform brings together technology and simplicity to power your customer interactions',
             features: [
                 {
-                    id: 'realtime',
-                    icon: React.createElement(MessageSquare, {
-                        className: 'w-6 h-6',
-                    }),
-                    title: 'Real-time Messaging',
+                    id: 'improved-customer-service',
+                    icon: React.createElement(Headset),
+                    title: 'Improved Customer Service',
                     description:
-                        'Engage with customers instantly across multiple channels with seamless conversation history.',
+                        'Provide uninterrupted support using WhatsApp and other communication platforms favored by customers. Allow customers to begin the conversation on their preferred application. This will reflect in:',
                     bulletPoints: [
-                        'Connect with customers on their preferred channels',
-                        'Maintain conversation context across channel switches',
-                        'Deliver messages with millisecond latency',
+                        'Improved response rates',
+                        'Better customer experience',
+                        'Communication efficiency',
                     ],
                 },
                 {
-                    id: 'automation',
-                    icon: React.createElement(CheckCircle, {
-                        className: 'w-6 h-6',
-                    }),
-                    title: 'Smart Automation',
+                    id: 'new-opportunities',
+                    icon: React.createElement(Users),
+                    title: 'Cultivate New Opportunities',
                     description:
-                        'Deploy AI-powered chatbots to handle routine inquiries and route complex issues to human agents.',
+                        'By integrating Deewan Omnichannel Chat into your website and app, you will be able to respond to inquiries, extending customer service, promote products, and create new opportunities. This will reflect in:',
                     bulletPoints: [
-                        'Reduce response time by up to 80% with AI automation',
-                        'Handle common inquiries 24/7 without human intervention',
-                        'Seamlessly escalate to human agents when needed',
+                        'Cross-selling opportunities',
+                        'Improved conversion rates',
+                        'Better customer service',
                     ],
                 },
                 {
-                    id: 'analytics',
-                    icon: React.createElement(LayoutGrid, {
-                        className: 'w-6 h-6',
-                    }),
-                    title: 'Comprehensive Analytics',
+                    id: 'brand-identity',
+                    icon: React.createElement(Star),
+                    title: 'Stronger Brand Identity',
                     description:
-                        'Gain insights into customer interactions, agent performance, and conversation outcomes.',
+                        "Design and display your catalog so that potential customers may find exactly what they're looking for. Add calls-to-action for a visual, simple, and secure purchasing experience. This will reflect in:",
                     bulletPoints: [
-                        'Track key metrics like response time and resolution rate',
-                        'Identify trends and patterns in customer inquiries',
-                        'Optimize agent performance with data-driven insights',
-                    ],
-                },
-                {
-                    id: 'integration',
-                    icon: React.createElement(Link, { className: 'w-6 h-6' }),
-                    title: 'Seamless Integration',
-                    description:
-                        'Connect with your existing CRM, helpdesk, and business systems for unified customer data.',
-                    bulletPoints: [
-                        'Integrate with popular CRM and helpdesk platforms',
-                        'Synchronize customer data across all systems',
-                        'Automate workflows between different platforms',
-                    ],
-                },
-                {
-                    id: 'multichannel',
-                    icon: React.createElement(Globe, { className: 'w-6 h-6' }),
-                    title: 'Multi-Channel Support',
-                    description:
-                        'Manage WhatsApp, SMS, web chat, and social media conversations from a single interface.',
-                    bulletPoints: [
-                        'Support for WhatsApp, SMS, Facebook, Instagram, and more',
-                        'Unified inbox for all customer conversations',
-                        'Consistent experience across all channels',
-                    ],
-                },
-                {
-                    id: 'security',
-                    icon: React.createElement(Shield, { className: 'w-6 h-6' }),
-                    title: 'Enterprise Security',
-                    description:
-                        'Protect sensitive customer data with end-to-end encryption and role-based access controls.',
-                    bulletPoints: [
-                        'End-to-end encryption for all communications',
-                        'Role-based access control for team management',
-                        'Compliance with global data protection regulations',
+                        'Improved brand recognition',
+                        'Higher conversion rates',
+                        'Increased customer loyalty',
                     ],
                 },
             ],

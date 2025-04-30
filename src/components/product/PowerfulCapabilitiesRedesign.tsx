@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface FeatureItem {
   id: string;
-  icon: React.ElementType;
+  icon: React.ElementType | React.ReactNode;
   title: string;
   description: string;
   bulletPoints?: string[];
@@ -168,9 +168,15 @@ const PowerfulCapabilitiesRedesign = ({
               <button onClick={() => setActiveFeature(feature.id)} className={cn("w-full text-left p-4 rounded-xl transition-all duration-300 glass border group", isActive ? "bg-white/80 border-deewan-primary/30 shadow-lg shadow-deewan-primary/5" : "bg-white/40 border-white/20 hover:bg-white/60 hover:shadow-md")}>
                 <div className="flex items-center gap-4">
                   <div className={cn("p-3 rounded-lg transition-colors duration-300", isActive ? "bg-gradient-to-br from-deewan-primary to-deewan-primary/70 text-white" : "bg-white/70 text-deewan-primary group-hover:bg-white/90")}>
-                    {React.createElement(feature.icon, {
-                      className: "h-5 w-5"
-                    })}
+                    {typeof feature.icon === 'function' 
+                      ? React.createElement(feature.icon as React.ElementType, {
+                          className: "h-5 w-5"
+                        })
+                      : React.isValidElement(feature.icon)
+                        ? React.cloneElement(feature.icon as React.ReactElement, {
+                            className: "h-5 w-5"
+                          })
+                        : feature.icon}
                   </div>
                   <span className={cn("font-medium transition-colors duration-300", isActive ? "text-deewan-dark" : "text-deewan-dark/70")}>
                     {feature.title}
@@ -207,7 +213,15 @@ const PowerfulCapabilitiesRedesign = ({
                 }}>
                   <div>
                     <div className="p-4 mb-6 inline-flex rounded-xl bg-gradient-to-br from-deewan-primary/10 to-deewan-primary/5 backdrop-blur-sm text-deewan-primary">
-                      <IconComponent className="h-10 w-10" />
+                      {typeof feature.icon === 'function' 
+                        ? React.createElement(feature.icon as React.ElementType, {
+                            className: "h-10 w-10"
+                          })
+                        : React.isValidElement(feature.icon)
+                          ? React.cloneElement(feature.icon as React.ReactElement, {
+                              className: "h-10 w-10"
+                            })
+                          : feature.icon}
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-deewan-dark mb-4">
                       {feature.title}
