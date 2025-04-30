@@ -15,6 +15,24 @@ export type ProductCategories = {
 export const products: ProductCategories = {
   applications: [
     {
+      name: "IVR",
+      description: "Interactive voice response for enhanced customer experience",
+      slug: "ivr",
+      icon: Phone
+    },
+    {
+      name: "Bots",
+      description: "AI-powered chatbots for efficient customer support",
+      slug: "bots",
+      icon: Code
+    },
+    {
+      name: "Campaigns",
+      description: "Reach customers instantly on any communication channel",
+      slug: "campaigns",
+      icon: MessageSquare
+    },
+    {
       name: "Omni-Channel Chat",
       description: "Unified inbox for all your customer conversations",
       slug: "omni-channel-chat",
