@@ -10,6 +10,7 @@ import ProductCTA from "@/components/product/ProductCTA";
 import IndustrySolutionsRedesign from "@/components/product/IndustrySolutionsRedesign";
 import HowItWorksSteps from "@/components/product/HowItWorksSteps";
 import HowItWorksVideo from "@/components/product/HowItWorksVideo";
+import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -38,7 +39,7 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="overflow-x-hidden font-sans bg-white text-deewan-dark">
+    <div className="overflow-x-hidden bg-white text-deewan-dark">
       <Navbar />
       <ProductHero 
         name={productData.name} 
@@ -55,6 +56,7 @@ export default function ProductPage() {
       {productData.howItWorks?.videoUrl && (
         <HowItWorksVideo videoUrl={productData.howItWorks.videoUrl} />
       )}
+      <DepartmentsWeServe />
       <BlogSection />
       <div id="contact">
         <ContactSection />
