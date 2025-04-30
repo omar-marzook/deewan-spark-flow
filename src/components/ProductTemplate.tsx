@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductHero from "./product/ProductHero";
 import ProductFeatures from "./product/ProductFeatures";
-import ProductUseCases from "./product/ProductUseCases";
 import LogoCarousel from "./LogoCarousel";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
@@ -83,9 +82,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       <div ref={featuresRef}>
         <ProductFeatures features={product.features} />
       </div>
-      
-      {/* Use Cases Section */}
-      <ProductUseCases useCases={product.useCases} />
       
       {/* How It Works Section */}
       {product.howItWorks?.steps && product.howItWorks.steps.length > 0 && (

@@ -8,7 +8,6 @@ import { CheckCircle, MessageSquare, Globe } from 'lucide-react';
 
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
-import ProductUseCases from "@/components/product/ProductUseCases";
 import ProductCTA from "@/components/product/ProductCTA";
 import IndustrySolutionsRedesign from "@/components/product/IndustrySolutionsRedesign";
 import HowItWorksSteps from "@/components/product/HowItWorksSteps";
@@ -78,7 +77,6 @@ export default function ProductPage() {
       />
       <PowerfulCapabilitiesRedesign />
       <CoreFeaturesStaggered />
-      <ProductUseCases useCases={productData.useCases} />
       <IndustrySolutionsRedesign />
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
