@@ -1,8 +1,6 @@
 import { CheckCircle, Users, Briefcase, BarChart } from 'lucide-react';
 const AlternativeStats = () => {
-  return <section id="alternative-stats" className="py-24 relative overflow-hidden">
-      <div className="absolute -top-40 -left-40 w-80 h-80 bg-deewan-primary rounded-full opacity-5"></div>
-      <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-deewan-secondary rounded-full opacity-5"></div>
+  return <section id="alternative-stats" className="py-24">
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
