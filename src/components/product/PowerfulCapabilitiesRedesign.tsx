@@ -138,7 +138,7 @@ const PowerfulCapabilitiesRedesign = ({
       }}>
 
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black"
-            dangerouslySetInnerHTML={{ __html: title }}>
+          dangerouslySetInnerHTML={{ __html: title }}>
         </h2>
 
         <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
@@ -168,9 +168,9 @@ const PowerfulCapabilitiesRedesign = ({
               <button onClick={() => setActiveFeature(feature.id)} className={cn("w-full text-left p-4 rounded-xl transition-all duration-300 glass border group", isActive ? "bg-white/80 border-deewan-primary/30 shadow-lg shadow-deewan-primary/5" : "bg-white/40 border-white/20 hover:bg-white/60 hover:shadow-md")}>
                 <div className="flex items-center gap-4">
                   <div className={cn("p-3 rounded-lg transition-colors duration-300", isActive ? "bg-gradient-to-br from-deewan-primary to-deewan-primary/70 text-white" : "bg-white/70 text-deewan-primary group-hover:bg-white/90")}>
-                {React.createElement(feature.icon, {
-                  className: "h-5 w-5"
-                })}
+                    {React.createElement(feature.icon, {
+                      className: "h-5 w-5"
+                    })}
                   </div>
                   <span className={cn("font-medium transition-colors duration-300", isActive ? "text-deewan-dark" : "text-deewan-dark/70")}>
                     {feature.title}
@@ -194,7 +194,7 @@ const PowerfulCapabilitiesRedesign = ({
               {features.map(feature => {
                 const isActive = activeFeature === feature.id;
                 const IconComponent = feature.icon;
-                return <motion.div key={feature.id} className="absolute inset-0 flex flex-col justify-between h-full w-full p-8" initial={{
+                return <motion.div key={feature.id} className="absolute inset-0 flex flex-col h-full w-full p-8" initial={{
                   opacity: 0,
                   scale: 0.9
                 }} animate={{
@@ -207,7 +207,7 @@ const PowerfulCapabilitiesRedesign = ({
                 }}>
                   <div>
                     <div className="p-4 mb-6 inline-flex rounded-xl bg-gradient-to-br from-deewan-primary/10 to-deewan-primary/5 backdrop-blur-sm text-deewan-primary">
-                <IconComponent className="h-10 w-10" />
+                      <IconComponent className="h-10 w-10" />
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-deewan-dark mb-4">
                       {feature.title}
@@ -215,30 +215,21 @@ const PowerfulCapabilitiesRedesign = ({
                     <p className="text-lg text-deewan-dark/70 max-w-2xl mb-4">
                       {feature.description}
                     </p>
-                    
-                    {feature.bulletPoints && feature.bulletPoints.length > 0 && (
-                      <ul className="space-y-2 mb-8">
-                        {feature.bulletPoints.map((point, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <span className="mr-2 mt-1 text-deewan-primary">•</span>
-                            <span className="text-deewan-dark/70">{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
                   </div>
 
                   {/* Decorative illustration or content specific to each feature could go here */}
-                  <div className="mt-auto relative">
+                  <div className="mt-4 relative">
                     <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-tl from-deewan-primary/20 to-transparent rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
-                    <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-lg relative">
-                      <div className="flex items-center">
-                        <div className="h-3 w-3 bg-deewan-primary rounded-full mr-3"></div>
-                        <p className="text-sm text-deewan-dark/80 italic">
-                          "{feature.id === 'ai' ? 'Reduce response time by up to 80%' : feature.id === 'analytics' ? 'Understand customer behavior in real-time' : feature.id === 'realtime' ? 'Deliver messages in milliseconds' : feature.id === 'centralized' ? 'Manage all communications from one place' : feature.id === 'api' ? 'Connect with any channel or service' : 'Boost engagement with personalized messaging'}"
-                        </p>
+                    {feature.bulletPoints && feature.bulletPoints.length > 0 && (
+                      <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-lg relative space-y-2">
+                        {feature.bulletPoints.map((point, idx) => (
+                          <div className="flex items-center" key={idx}>
+                            <div className="h-3 w-3 bg-deewan-primary rounded-full mr-3"></div>
+                            <p className="text-md text-deewan-dark/80">{point}</p>
+                          </div>
+                        ))}
                       </div>
-                    </div>
+                    )}
                   </div>
                 </motion.div>;
               })}
