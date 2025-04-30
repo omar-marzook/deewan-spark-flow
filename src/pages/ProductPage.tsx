@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import ProductHero from "@/components/product/ProductHero";
 import AlternativeStats from "@/components/AlternativeStats";
 import { CheckCircle, MessageSquare, Globe } from 'lucide-react';
-
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import ProductCTA from "@/components/product/ProductCTA";
@@ -75,7 +74,11 @@ export default function ProductPage() {
         }}
       />
       <PowerfulCapabilitiesRedesign />
-      <CoreFeaturesStaggered />
+      <CoreFeaturesStaggered 
+        features={productData.features}
+        title={productData.coreFeatures?.title || `<span class="text-deewan-primary">${productData.name}</span> Features`}
+        subtitle={productData.coreFeatures?.subtitle || `Discover how ${productData.name} can transform your communication experience`}
+      />
       <IndustrySolutionsRedesign />
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />

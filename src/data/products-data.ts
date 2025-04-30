@@ -19,9 +19,13 @@ import {
 } from 'lucide-react';
 import React from 'react';
 
-// Extend the ProductData interface to include stats
+// Extend the ProductData interface to include stats and core features
 interface ExtendedProductData extends ProductData {
     stats?: StatItem[];
+    coreFeatures?: {
+        title?: string;
+        subtitle?: string;
+    };
 }
 
 const productsData: Record<string, ExtendedProductData> = {
@@ -32,6 +36,11 @@ const productsData: Record<string, ExtendedProductData> = {
             'Revolutionize your business communications with personalized interactions at every touchpoint, and speak to any conversational app from one dashboard.',
         description:
             'Manage real-time communications across WhatsApp, live chat, social media, and email — all in one simple, secure dashboard.',
+        coreFeatures: {
+            title: 'Improve every aspect of <span class="text-deewan-primary">customer engagement</span>',
+            subtitle:
+                'Deewan Omnichannel Chat was developed to serve as the ultimate customer service solution, equipped with tools that address every aspect of customer engagement operations.',
+        },
         features: [
             {
                 icon: React.createElement(MessageSquare, {
@@ -142,6 +151,11 @@ const productsData: Record<string, ExtendedProductData> = {
             'Connect with your customers instantly across multiple channels with our unified messaging solution.',
         description:
             'Our Messaging API provides a unified interface for sending and receiving messages across SMS, WhatsApp, and more.',
+        coreFeatures: {
+            title: 'Messaging API <span class="text-deewan-primary">Features</span>',
+            subtitle:
+                'Explore the powerful capabilities of our Messaging API solution',
+        },
         features: [
             {
                 icon: React.createElement(Check, { className: 'w-6 h-6' }),
@@ -228,6 +242,11 @@ const productsData: Record<string, ExtendedProductData> = {
             'Add powerful voice capabilities to your applications for enhanced customer engagement.',
         description:
             'Our Voice API enables businesses to add voice calling features to their applications, improving customer engagement and support.',
+        coreFeatures: {
+            title: 'Voice API <span class="text-deewan-primary">Features</span>',
+            subtitle:
+                'Discover the advanced capabilities of our Voice API solution',
+        },
         features: [
             {
                 icon: React.createElement(Phone, { className: 'w-6 h-6' }),
