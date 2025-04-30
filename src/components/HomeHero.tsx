@@ -71,7 +71,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
         </p>
 
         {/* CTA Button */}
-        <ButtonLink href="#products" variant="default" size="lg" transition="no">
+        <ButtonLink href="#products" variant="default" size="lg">
           Explore Solutions
           <ArrowRight size={20} />
         </ButtonLink>
