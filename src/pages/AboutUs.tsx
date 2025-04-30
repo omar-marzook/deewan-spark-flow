@@ -8,7 +8,6 @@ import OurStory from "@/components/about/OurStory";
 import OurValues from "@/components/about/OurValues";
 import WhatWeDo from "@/components/about/WhatWeDo";
 import ContactSection from "@/components/ContactSection";
-import LogoCarousel from "@/components/LogoCarousel";
 import AlternativeStats from "@/components/AlternativeStats";
 import CreativeTestimonials from "@/components/CreativeTestimonials";
 
@@ -28,7 +27,6 @@ const AboutUs = () => {
         <OurValues />
         <WhatWeDo />
         <AlternativeStats />
-        <LogoCarousel />
         <CreativeTestimonials />
         <ContactSection />
       </main>

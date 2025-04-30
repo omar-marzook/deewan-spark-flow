@@ -5,7 +5,6 @@ import Hero from "../components/Hero";
 import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
 import AlternativeProducts from "../components/AlternativeProducts";
 import Industries from "../components/Industries";
-import Stats from "../components/Stats";
 import LogoCarousel from "../components/LogoCarousel";
 import DepartmentsWeServe from "../components/DepartmentsWeServe";
 import CreativeTestimonials from "../components/CreativeTestimonials";
@@ -20,11 +19,11 @@ const Index = () => {
       <Navbar />
       <HomeHero />
       <Hero />
+      <LogoCarousel />
       <ProductsTabbedLayout />
       <AlternativeProducts />
       <Industries />
       <AlternativeStats />
-      <LogoCarousel />
       <DepartmentsWeServe />
       <CreativeTestimonials />
       <BlogSection />
