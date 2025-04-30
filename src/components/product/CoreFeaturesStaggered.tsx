@@ -64,7 +64,7 @@ const FeatureCard = ({
     duration: 0.5,
     delay: index * 0.1
   }} className="group relative">
-      <div className="h-full p-8 rounded-2xl bg-gradient-to-br from-white/40 to-white/20 backdrop-blur-md border border-white/20 transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl">
+      <div className="h-full p-8 rounded-2xl bg-gradient-to-br from-white/40 to-white/20 backdrop-blur-md border border-white/20 shadow transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl">
         <div className="mb-6 relative">
           <div className="absolute inset-0 bg-deewan-primary/10 rounded-xl blur-xl transform group-hover:scale-110 transition-transform"></div>
           <div className="relative w-14 h-14 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-white/40">
