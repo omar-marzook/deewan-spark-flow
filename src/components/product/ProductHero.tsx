@@ -52,7 +52,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               {name}
             </h1>
 
-            <p className="text-xl md:text-2xl text-deewan-dark/80 mb-8 leading-relaxed max-w-xl">
+            <p className="text-lg md:text-xl text-deewan-dark/80 mb-8 leading-relaxed max-w-xl">
               {tagline}
             </p>
 
