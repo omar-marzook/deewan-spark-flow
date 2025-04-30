@@ -16,33 +16,32 @@ export const products: ProductCategories = {
     applications: [
         {
             name: 'Omni-Channel Chat',
-            description: 'Unified inbox for all your customer conversations',
+            description: 'Conversations across any platform',
             slug: 'omni-channel-chat',
             icon: MessageSquare,
         },
         {
             name: 'Campaigns',
-            description:
-                'Reach customers instantly on any communication channel',
+            description: 'SMS and WhatsApp campaign management',
             slug: 'campaigns',
             icon: MessageSquare,
         },
         {
             name: 'Bots',
-            description: 'AI-powered chatbots for efficient customer support',
+            description: 'Rules-based and AI chatbots',
             slug: 'bots',
             icon: Code,
         },
         {
             name: 'MFA',
-            description: 'Multi-Factor Authentication for enhanced security',
+            description: 'Multifactor multichannel authentication',
             slug: 'mfa',
             icon: Shield,
         },
         {
             name: 'IVR',
             description:
-                'Interactive voice response for enhanced customer experience',
+                'Interactive voice response system',
             slug: 'ivr',
             icon: Phone,
         },
