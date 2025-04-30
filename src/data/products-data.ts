@@ -64,7 +64,7 @@ interface ExtendedProductData extends ProductData {
 }
 
 const productsData: Record<string, ExtendedProductData> = {
-    'mfa': {
+    mfa: {
         slug: 'mfa',
         name: 'Deewan MFA',
         tagline:
@@ -72,39 +72,47 @@ const productsData: Record<string, ExtendedProductData> = {
         description:
             'Add an extra layer of security to your applications with Multi-Factor Authentication that enhances user experience without compromising security.',
         coreFeatures: {
-            title: 'Secure authentication <span class="text-deewan-primary">without compromising experience</span>',
+            title: '<span class="text-deewan-primary">Secure authentication</span> without compromising experience',
             subtitle:
                 'Deewan MFA provides robust security solutions that protect your users while maintaining a seamless authentication experience.',
         },
         features: [
             {
                 icon: React.createElement(Shield, {
-                    className: 'w-6 h-6',
+                    className: 'w-7 h-7 text-deewan-primary',
                 }),
                 title: 'Automated OTPs',
                 description:
-                    'Add an extra layer of security to accounts and transactions with Deewan MFA\'s auto generated one-time passwords.',
+                    "Add an extra layer of security to accounts and transactions with Deewan MFA's auto generated one-time passwords.",
             },
             {
-                icon: React.createElement(MessageSquare, { className: 'w-6 h-6' }),
+                icon: React.createElement(MessageSquare, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'WhatsApp Authentication',
                 description:
-                    'Add user and account functions to your experience and enable users to authenticate securely through the world\'s favorite chat app.',
+                    "Add user and account functions to your experience and enable users to authenticate securely through the world's favorite chat app.",
             },
             {
-                icon: React.createElement(Headset, { className: 'w-6 h-6' }),
+                icon: React.createElement(Headset, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Voice Verification',
                 description:
                     'Use Deewan MFA to improve account security and accessibility through human voice authentication.',
             },
             {
-                icon: React.createElement(Bell, { className: 'w-6 h-6' }),
+                icon: React.createElement(Bell, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Push Authentication',
                 description:
                     'Maintain the smoothness of your user experience with push authentication without codes or message communications.',
             },
             {
-                icon: React.createElement(BarChart, { className: 'w-6 h-6' }),
+                icon: React.createElement(BarChart, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Advanced Analytics',
                 description:
                     'Deewan MFA contains advanced analytics offering performance insights and verification statistics to improve the experience and boost security.',
@@ -167,7 +175,9 @@ const productsData: Record<string, ExtendedProductData> = {
             {
                 title: 'eCommerce & Retail',
                 desc: 'Secure customer accounts and payment information.',
-                icon: React.createElement(ShoppingBag, { className: 'h-6 w-6' }),
+                icon: React.createElement(ShoppingBag, {
+                    className: 'h-6 w-6',
+                }),
             },
             {
                 title: 'Enterprise Solutions',
@@ -222,7 +232,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
     },
-    'ivr': {
+    ivr: {
         slug: 'ivr',
         name: 'Deewan IVR',
         tagline:
@@ -237,32 +247,40 @@ const productsData: Record<string, ExtendedProductData> = {
         features: [
             {
                 icon: React.createElement(Phone, {
-                    className: 'w-6 h-6',
+                    className: 'w-7 h-7 text-deewan-primary',
                 }),
                 title: 'Call distribution & Routing',
                 description:
                     'Build easy voice services for customers and reduce workload, waiting times and infrastructure utilization via call distribution and routing.',
             },
             {
-                icon: React.createElement(Headset, { className: 'w-6 h-6' }),
+                icon: React.createElement(Headset, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Speech Services',
                 description:
                     'Deewan IVR offers advanced speech-based services including speech recognition, text-to-speech, and interactive voice menus.',
             },
             {
-                icon: React.createElement(BarChart, { className: 'w-6 h-6' }),
+                icon: React.createElement(BarChart, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Reporting & Analytics',
                 description:
                     'Measure performance, monitor events, track call volumes, and understand caller behavior better using the smart analytics of Deewan IVR.',
             },
             {
-                icon: React.createElement(Link, { className: 'w-6 h-6' }),
+                icon: React.createElement(Link, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Integration Capabilities',
                 description:
                     'Like other Deewan solutions, Deewan IVR was designed with integration in mind, to ensure seamless embedding into systems and optimal utility in any workflow.',
             },
             {
-                icon: React.createElement(UserCog, { className: 'w-6 h-6' }),
+                icon: React.createElement(UserCog, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Personalization',
                 description:
                     'Deewan IVR makes it easy to classify, direct and handle calls in a manner that provides customers with a personalized and relevant experience.',
@@ -290,7 +308,7 @@ const productsData: Record<string, ExtendedProductData> = {
                     icon: React.createElement(Workflow),
                     title: 'Automation and Efficiency',
                     description:
-                        'Deewan IVR enables you to automate a large volume of repetitive tasks and reinforces your department\'s ability to handle customer inquiries without dropping points in handling time or performance. This will reflect in:',
+                        "Deewan IVR enables you to automate a large volume of repetitive tasks and reinforces your department's ability to handle customer inquiries without dropping points in handling time or performance. This will reflect in:",
                     bulletPoints: [
                         'Improved performance',
                         'Reduction in abandoned calls',
@@ -325,7 +343,9 @@ const productsData: Record<string, ExtendedProductData> = {
             {
                 title: 'Retail & Customer Service',
                 desc: 'Handle order status inquiries and product information requests efficiently.',
-                icon: React.createElement(ShoppingBag, { className: 'h-6 w-6' }),
+                icon: React.createElement(ShoppingBag, {
+                    className: 'h-6 w-6',
+                }),
             },
             {
                 title: 'Telecommunications',
@@ -395,32 +415,40 @@ const productsData: Record<string, ExtendedProductData> = {
         features: [
             {
                 icon: React.createElement(MessageSquare, {
-                    className: 'w-6 h-6',
+                    className: 'w-7 h-7 text-deewan-primary',
                 }),
                 title: 'Real Time Communication',
                 description:
                     'Allow your customers to engage with your brand in real-time and receive instant responses via instant messaging.',
             },
             {
-                icon: React.createElement(Users, { className: 'w-6 h-6' }),
+                icon: React.createElement(Users, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Automated Responses',
                 description:
                     'Respond to common consumer inquiries automatically utilizing FAQ chatbots or customized rule-based or AI-based chatbots.',
             },
             {
-                icon: React.createElement(LayoutGrid, { className: 'w-6 h-6' }),
+                icon: React.createElement(LayoutGrid, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Queue Management',
                 description:
                     'Route customer interactions to the right agent or team depending on the availability and the duties assigned.',
             },
             {
-                icon: React.createElement(Database, { className: 'w-6 h-6' }),
+                icon: React.createElement(Database, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Analytics & Reporting',
                 description:
                     'Measure and evaluate customer interactions and agent performance to improve customer service.',
             },
             {
-                icon: React.createElement(Link, { className: 'w-6 h-6' }),
+                icon: React.createElement(Link, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Integration Capabilities',
                 description:
                     'Integrate the chat platform with customer support systems such as Freshdesk and HubSpot to allow agents to create support requests for clients.',
@@ -553,20 +581,24 @@ const productsData: Record<string, ExtendedProductData> = {
         features: [
             {
                 icon: React.createElement(MessageSquare, {
-                    className: 'w-6 h-6',
+                    className: 'w-7 h-7 text-deewan-primary',
                 }),
                 title: 'Natural Language Processing',
                 description:
                     "The integrated AI assistant can easily understand and respond to customers' language, providing an engaging and satisfying communication experience.",
             },
             {
-                icon: React.createElement(Bookmark, { className: 'w-6 h-6' }),
+                icon: React.createElement(Bookmark, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Content Summarization',
                 description:
                     'This feature optimizes SMS costs without affecting the quality of summarized content or missing context.',
             },
             {
-                icon: React.createElement(Star, { className: 'w-6 h-6' }),
+                icon: React.createElement(Star, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Content Generation',
                 description:
                     'Produce high-quality SMS content, such as product descriptions, promotional messages, and customer engagement messages.',
@@ -699,32 +731,40 @@ const productsData: Record<string, ExtendedProductData> = {
         features: [
             {
                 icon: React.createElement(Brain, {
-                    className: 'w-6 h-6',
+                    className: 'w-7 h-7 text-deewan-primary',
                 }),
                 title: 'Cognitive Abilities',
                 description:
                     'Deewan Bots are equipped with cognitive technologies that ensure continued improvement and learning.',
             },
             {
-                icon: React.createElement(Globe, { className: 'w-6 h-6' }),
+                icon: React.createElement(Globe, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Multilingual Support',
                 description:
                     'Use Deewan Bots to deploy multilingual bots that can handle customer interactions fluently in a variety of languages.',
             },
             {
-                icon: React.createElement(Zap, { className: 'w-6 h-6' }),
+                icon: React.createElement(Zap, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Adaptive Technology',
                 description:
                     'Adaptive technology stacks allow for smarter chatbots on every conversational communication channel.',
             },
             {
-                icon: React.createElement(MessageSquare, { className: 'w-6 h-6' }),
+                icon: React.createElement(MessageSquare, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Multichannel Support',
                 description:
                     'Deewan Bots integrates seamlessly with all main conversational channels to provide customers with answers on their preferred platforms.',
             },
             {
-                icon: React.createElement(Cloud, { className: 'w-6 h-6' }),
+                icon: React.createElement(Cloud, {
+                    className: 'w-7 h-7 text-deewan-primary',
+                }),
                 title: 'Flexible Deployment',
                 description:
                     'The solution can be deployed in on-premise and cloud modes, with comprehensive support and coverage plans.',
@@ -740,7 +780,7 @@ const productsData: Record<string, ExtendedProductData> = {
                     icon: React.createElement(UserCheck),
                     title: 'Personalized Support',
                     description:
-                        'Deewan Bots enables your business to offer personalized support to customers based on profile, context, and the customer\'s preferred conversational channel. This will reflect in:',
+                        "Deewan Bots enables your business to offer personalized support to customers based on profile, context, and the customer's preferred conversational channel. This will reflect in:",
                     bulletPoints: [
                         'Better conversational experiences',
                         'Higher customer satisfaction',
