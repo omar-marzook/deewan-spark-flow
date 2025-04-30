@@ -58,7 +58,7 @@ const HowItWorksSteps = ({ steps = defaultSteps }: HowItWorksStepsProps) => {
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/30 border border-white/20 shadow-lg transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl">
+              <div className="p-8 h-full rounded-2xl backdrop-blur-xl bg-white/30 border border-white/20 shadow-lg transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl">
                 <div className="mb-4">
                   <span className="text-4xl font-bold bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent">
                     {step.number}
