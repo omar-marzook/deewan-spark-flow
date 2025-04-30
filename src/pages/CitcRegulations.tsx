@@ -17,7 +17,7 @@ const CitcRegulations = () => {
             className="relative backdrop-blur-sm bg-white/20 rounded-2xl p-8 md:p-12 border border-white/30 shadow-lg"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-deewan-dark mb-12 font-display">CITC Regulations Compliance Policy</h1>
-            <div className="prose prose-lg max-w-none space-y-4">
+            <div className="prose prose-lg max-w-none space-y-4 text-deewan-dark">
               <h3>Reduce SPAM</h3>
               <p>Based on the need of the telecom sector; The TRA has issued this document for the use of messages to include new technical solutions to raise the efficiency of providing telecommunications services to end users, to contribute to a clear regulatory environment to regulate the use of messages and calls, and to improve the experience of the end user and beneficiary, thus contributing to reducing fraudulent, spoofing and spam messages. which is next:</p>
               <p><strong>Compliance with the regulations in force in the Kingdom of Saudi Arabia, and not to send any messages containing content contrary to any of these regulations, including the content of links in the text of the message</strong>.</p>

@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
             className="relative backdrop-blur-sm bg-white/20 rounded-2xl p-8 md:p-12 border border-white/30 shadow-lg"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-deewan-dark mb-12 font-display">Privacy Policy</h1>
-            <div className="prose prose-lg max-w-none space-y-4">
+            <div className="prose prose-lg max-w-none space-y-4 text-deewan-dark">
               <h3>Introduction</h3>
               <p>DEEWAN collects a series of general information and data when you use our site. This general information and data are stored in our server log files. The information and data collected may include the following: the browser types and versions used, the operating system used by the accessing system, the website from which an accessing system reaches our website (so-called referrers), the sub-websites, the date and time of access to the Internet site, an Internet Protocol address (IP address), the Internet service provider of the accessing system, and any other similar information and data that may be used in the event of attacks on our information technology systems.When using this general information and data, we will not draw any conclusions about you.Rather, this information is needed to ensure that the content of our website is being continuously optimized and correctly delivered. The anonymous data of the server log files are stored separately from all personal data that you provide that is mentioned above.</p>
               <h5>Account</h5>
