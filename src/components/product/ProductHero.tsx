@@ -41,6 +41,10 @@ const ProductHero: React.FC<ProductHeroProps> = ({
                 <BreadcrumbItem>
                   <BreadcrumbPage>Products</BreadcrumbPage>
                 </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{name}</BreadcrumbPage>
+                </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
 
