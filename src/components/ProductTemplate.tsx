@@ -1,9 +1,10 @@
 
-import React, { useRef } from "react";
+import React, { useRef, ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductHero from "./product/ProductHero";
-import ProductFeatures from "./product/ProductFeatures";
+import ProductFeatures from "./product/ProductFeatures"; 
+import ConversionApiBenefits from "./product/ConversionApiBenefits";
 import LogoCarousel from "./LogoCarousel";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
@@ -31,6 +32,15 @@ export interface ProductHowItWorksStep {
   description: string;
 }
 
+// Define the DepartmentData interface
+export interface DepartmentData {
+  id: number;
+  name: string;
+  description: string[];
+  icon: ReactNode;
+  color: string;
+}
+
 export interface ProductData {
   slug: string;
   name: string;
@@ -44,6 +54,16 @@ export interface ProductData {
     steps?: ProductHowItWorksStep[];
     videoUrl?: string;
   };
+  departmentsWeServe?: DepartmentData[];
+  productFeatures?: {
+    title?: string;
+    subtitle?: string;
+    capabilities?: Array<{
+      icon: React.ElementType;
+      title: string;
+    }>;
+  };
+  isConversionApi?: boolean; // Flag to identify if the product is a conversion API
 }
 
 interface ProductTemplateProps {
@@ -78,13 +98,15 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
         onContactClick={scrollToContact}
       />
       
-      {/* Features Section */}
-      <div ref={featuresRef}>
-        <ProductFeatures features={product.features} />
-      </div>
+      {/* Features Section - Only show for non-conversion API products */}
+      {!product.isConversionApi && (
+        <div ref={featuresRef}>
+          <ProductFeatures features={product.features} />
+        </div>
+      )}
       
-      {/* How It Works Section */}
-      {product.howItWorks?.steps && product.howItWorks.steps.length > 0 && (
+      {/* How It Works Section - Only show for non-conversion API products */}
+      {!product.isConversionApi && product.howItWorks?.steps && product.howItWorks.steps.length > 0 && (
         <HowItWorksSteps steps={product.howItWorks.steps.map((step, index) => ({
           number: `0${index + 1}`,
           title: step.title,
@@ -92,12 +114,29 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
         }))} />
       )}
       
-      {product.howItWorks?.videoUrl && (
+      {!product.isConversionApi && product.howItWorks?.videoUrl && (
         <HowItWorksVideo videoUrl={product.howItWorks.videoUrl} />
       )}
       
+      {/* Product Features Section - Optional for conversion APIs, not shown for applications */}
+      {product.isConversionApi && product.productFeatures && (
+        <ProductFeatures 
+          title={product.productFeatures.title}
+          subtitle={product.productFeatures.subtitle}
+          capabilities={product.productFeatures.capabilities}
+        />
+      )}
+      
+      {/* ConversionApiBenefits Section - Only shown for conversion APIs */}
+      {product.isConversionApi && (
+        <ConversionApiBenefits 
+          isConversionApi={product.isConversionApi} 
+          productSlug={product.slug}
+        />
+      )}
+      
       {/* Departments We Serve Section */}
-      <DepartmentsWeServe />
+      <DepartmentsWeServe departments={product.departmentsWeServe} />
       
       {/* Client Logos Section */}
       <LogoCarousel />

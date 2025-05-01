@@ -1,7 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { Megaphone, Headset, UserRoundCog } from "lucide-react";
+import { useParams } from "react-router-dom";
+import productsData from "@/data/products-data";
+import { DepartmentData } from "@/components/ProductTemplate";
 
-const departmentsData = [{
+// Default departments data as fallback
+const defaultDepartmentsData: DepartmentData[] = [{
   id: 1,
   name: "Marketing and Sales",
   description: [
@@ -33,7 +37,21 @@ const departmentsData = [{
   color: "bg-deewan-accent/10"
 }];
 
-const DepartmentsWeServe = () => {
+interface DepartmentsWeServeProps {
+  departments?: DepartmentData[];
+}
+
+const DepartmentsWeServe: React.FC<DepartmentsWeServeProps> = ({ departments }) => {
+  // Get the current product slug from URL params
+  const { slug } = useParams<{ slug: string }>();
+  
+  // Determine which departments data to use
+  // 1. Use provided departments prop if available
+  // 2. Use product-specific departments from products-data if available
+  // 3. Fall back to default departments data
+  const departmentsData = departments || 
+    (slug && productsData[slug]?.departmentsWeServe) || 
+    defaultDepartmentsData;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   useEffect(() => {
