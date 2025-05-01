@@ -130,19 +130,15 @@ const CapabilityCard: React.FC<CapabilityCardProps> = ({ capability, index, isIn
         delay: index * 0.1,
         ease: "easeOut" 
       }}
-      whileHover={{ 
-        y: -4,
-        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)" 
-      }}
       className={cn(
         "flex items-center p-4 md:p-6 rounded-xl",
         "backdrop-blur bg-white/10 shadow-md border border-white/10",
-        "transition-all duration-300"
+        "transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
       )}
     >
       {/* Icon Container */}
       <div className="flex-shrink-0 mr-4 md:mr-6">
-        <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-deewan-primary flex items-center justify-center">
+        <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg  bg-gradient-to-br from-deewan-primary to-deewan-primary/70 flex items-center justify-center">
           {React.createElement(capability.icon, {
             className: "w-6 h-6 md:w-8 md:h-8 text-white"
           })}
