@@ -127,6 +127,127 @@ const defaultDepartmentsData: DepartmentData[] = [
 ];
 
 const productsData: Record<string, ExtendedProductData> = {
+    'voice-api': {
+        departmentsWeServe: [
+            {
+                id: 1,
+                name: 'Emergency Services',
+                description: ['Voice menus', 'Reporting emergencies', 'Accessing services'],
+                icon: React.createElement(Phone, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 2,
+                name: 'Telecommunications',
+                description: ['Troubleshooting', 'Account services', 'Bill payment'],
+                icon: React.createElement(Headset, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 3,
+                name: 'Finance',
+                description: ['Payments', 'Fraud reporting', 'Account information'],
+                icon: React.createElement(Building, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+            {
+                id: 4,
+                name: 'Transportation',
+                description: ['Timetables', 'Route planning', 'Report delays'],
+                icon: React.createElement(Workflow, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 5,
+                name: 'Health Care',
+                description: ['Self-diagnosis', 'Schedule appointments', 'Check-in'],
+                icon: React.createElement(UserCheck, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 6,
+                name: 'E-commerce',
+                description: ['Place orders', 'Track deliveries', 'Check inventory'],
+                icon: React.createElement(ShoppingBag, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+        ],
+        slug: 'voice-api',
+        name: 'Voice API',
+        isConversionApi: true,
+        tagline:
+            'Add powerful voice capabilities to your applications and take customer communication to the next level.',
+        description:
+            'Add powerful voice capabilities to your applications and take customer communication to the next level.',
+        conversionBenefits: [
+            {
+                title: "Improved Customer Experience",
+                description: "Voice API will help you improve the customer experience, reduce waiting times and provide 24/7 customer support"
+            },
+            {
+                title: "Efficient and Streamlined Operations",
+                description: "It offers many features for automating customer service support, speech recognition, text-to-speech, call recording & more"
+            },
+            {
+                title: "Lower Operational Expenses",
+                description: "Voice API will help you optimize your costs and devote your employees' time to complex, mission-critical tasks"
+            }
+        ],
+        // Add empty features and useCases to satisfy TypeScript
+        features: [],
+        useCases: [],
+        stats: [
+            {
+                icon: React.createElement(BarChart, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '55%',
+                label: 'Of businesses use voice',
+            },
+            {
+                icon: React.createElement(Users, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '50%+',
+                label: 'Of customers prefer voice assistance',
+            },
+            {
+                icon: React.createElement(Clock, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '24/7',
+                label: 'Technical support',
+            },
+        ],
+        productFeatures: {
+            title: 'Powerful voice capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of Voice API with our comprehensive solution',
+            capabilities: [
+                { icon: Phone, title: 'Interactive Voice Response' },
+                { icon: Headset, title: 'Text-to-Speech' },
+                { icon: Bot, title: 'Automated Interactions' },
+                { icon: Shield, title: 'Number Masking' },
+                { icon: Database, title: 'Call Transcriptions' },
+                { icon: Workflow, title: 'Call Workflows' },
+                { icon: Brain, title: 'Speech Recognition' },
+                { icon: Phone, title: 'A2P Calls' },
+                { icon: Globe, title: 'Virtual DID Numbers' },
+            ],
+        },
+    },
     mfa: {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'mfa',
