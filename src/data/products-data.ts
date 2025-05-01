@@ -485,7 +485,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'omni-channel-chat',
         name: 'Deewan Omnichannel Chat',
-        isConversionApi: true, // Omnichannel Chat is an application
+        isConversionApi: false, // Omnichannel Chat is an application
         tagline:
             'Revolutionize your business communications with personalized interactions at every touchpoint, and speak to any conversational app from one dashboard.',
         description:

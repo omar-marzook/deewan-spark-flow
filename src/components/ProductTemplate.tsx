@@ -97,13 +97,15 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
         onContactClick={scrollToContact}
       />
       
-      {/* Features Section */}
-      <div ref={featuresRef}>
-        <ProductFeatures features={product.features} />
-      </div>
+      {/* Features Section - Only show for non-conversion API products */}
+      {!product.isConversionApi && (
+        <div ref={featuresRef}>
+          <ProductFeatures features={product.features} />
+        </div>
+      )}
       
-      {/* How It Works Section */}
-      {product.howItWorks?.steps && product.howItWorks.steps.length > 0 && (
+      {/* How It Works Section - Only show for non-conversion API products */}
+      {!product.isConversionApi && product.howItWorks?.steps && product.howItWorks.steps.length > 0 && (
         <HowItWorksSteps steps={product.howItWorks.steps.map((step, index) => ({
           number: `0${index + 1}`,
           title: step.title,
@@ -111,7 +113,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
         }))} />
       )}
       
-      {product.howItWorks?.videoUrl && (
+      {!product.isConversionApi && product.howItWorks?.videoUrl && (
         <HowItWorksVideo videoUrl={product.howItWorks.videoUrl} />
       )}
       

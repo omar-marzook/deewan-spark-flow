@@ -82,17 +82,25 @@ export default function ProductPage() {
         />
       )}
 
-      <CoreFeaturesStaggered
-        features={productData.features}
-        title={productData.coreFeatures?.title || `<span class="text-deewan-primary">${productData.name}</span> Features`}
-        subtitle={productData.coreFeatures?.subtitle || `Discover how ${productData.name} can transform your communication experience`}
-      />
-      <PowerfulCapabilitiesRedesign
-        title={productData.powerfulCapabilities?.title}
-        subtitle={productData.powerfulCapabilities?.subtitle}
-        features={productData.powerfulCapabilities?.features}
-      />
-      {productData.howItWorks?.steps && (
+      {/* CoreFeaturesStaggered should only appear for applications, not for conversion APIs */}
+      {!productData.isConversionApi && (
+        <CoreFeaturesStaggered
+          features={productData.features}
+          title={productData.coreFeatures?.title || `<span class="text-deewan-primary">${productData.name}</span> Features`}
+          subtitle={productData.coreFeatures?.subtitle || `Discover how ${productData.name} can transform your communication experience`}
+        />
+      )}
+      {/* PowerfulCapabilitiesRedesign should only appear for applications, not for conversion APIs */}
+      {!productData.isConversionApi && (
+        <PowerfulCapabilitiesRedesign 
+          title={productData.powerfulCapabilities?.title}
+          subtitle={productData.powerfulCapabilities?.subtitle}
+          features={productData.powerfulCapabilities?.features}
+        />
+      )}
+      
+      {/* HowItWorksSteps should only appear for applications, not for conversion APIs */}
+      {!productData.isConversionApi && productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
       )}
       <DepartmentsWeServe departments={productData.departmentsWeServe} />
