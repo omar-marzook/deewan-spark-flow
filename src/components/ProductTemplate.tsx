@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductHero from "./product/ProductHero";
 import ProductFeatures from "./product/ProductFeatures"; 
+import ConversionApiBenefits from "./product/ConversionApiBenefits";
 import LogoCarousel from "./LogoCarousel";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
@@ -124,6 +125,11 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
           subtitle={product.productFeatures.subtitle}
           capabilities={product.productFeatures.capabilities}
         />
+      )}
+      
+      {/* ConversionApiBenefits Section - Only shown for conversion APIs */}
+      {product.isConversionApi && (
+        <ConversionApiBenefits isConversionApi={product.isConversionApi} />
       )}
       
       {/* Departments We Serve Section */}

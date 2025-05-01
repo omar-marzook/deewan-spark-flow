@@ -9,6 +9,7 @@ import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilit
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import HowItWorksSteps from "@/components/product/HowItWorksSteps";
 import ProductFeatures from "@/components/product/ProductFeatures";
+import ConversionApiBenefits from "@/components/product/ConversionApiBenefits";
 import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
@@ -80,6 +81,11 @@ export default function ProductPage() {
           subtitle={productData.productFeatures.subtitle}
           capabilities={productData.productFeatures.capabilities}
         />
+      )}
+      
+      {/* ConversionApiBenefits should only appear for conversion APIs */}
+      {productData.isConversionApi && (
+        <ConversionApiBenefits isConversionApi={productData.isConversionApi} />
       )}
 
       {/* CoreFeaturesStaggered should only appear for applications, not for conversion APIs */}
