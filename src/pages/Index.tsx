@@ -7,10 +7,10 @@ import AlternativeProducts from "../components/AlternativeProducts";
 import Industries from "../components/Industries";
 import LogoCarousel from "../components/LogoCarousel";
 import DepartmentsWeServe from "../components/DepartmentsWeServe";
-import CreativeTestimonials from "../components/CreativeTestimonials";
 import BlogSection from "../components/BlogSection";
 import ContactSection from "../components/ContactSection";
 import AlternativeStats from "../components/AlternativeStats";
+import AlternativeTestimonials from "../components/AlternativeTestimonials";
 import Footer from "../components/Footer";
 import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
 
@@ -57,7 +57,7 @@ const Index = () => {
         }}
       />
       <DepartmentsWeServe />
-      <CreativeTestimonials />
+      <AlternativeTestimonials />
       <BlogSection />
       <ContactSection />
       <Footer />

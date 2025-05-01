@@ -1,4 +1,4 @@
-import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid, Shield } from 'lucide-react';
+import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid, Shield, Mail, Bell } from 'lucide-react';
 
 export type Product = {
   name: string;
@@ -40,42 +40,41 @@ export const products: ProductCategories = {
         },
         {
             name: 'IVR',
-            description:
-                'Interactive voice response system',
+            description: 'Interactive voice response system',
             slug: 'ivr',
             icon: Phone,
         },
     ],
     communicationAPIs: [
         {
-            name: 'Messaging API',
-            description: 'Send SMS, WhatsApp & more',
-            slug: 'messaging-api',
-            icon: Code,
+            name: 'Email API',
+            description: 'Email personalization and automation',
+            slug: 'email-api',
+            icon: Mail,
+        },
+        {
+            name: 'Push Notifications API',
+            description: 'Push notification customization and engagement',
+            slug: 'push-notifications-api',
+            icon: Bell,
+        },
+        {
+            name: 'WhatsApp Business API',
+            description: 'Full access to WhatsApp platform',
+            slug: 'whatsapp-api',
+            icon: MessageSquare,
+        },
+        {
+            name: 'SMS API',
+            description: 'A2P and P2P SMS capabilities',
+            slug: 'sms-api',
+            icon: MessageSquare,
         },
         {
             name: 'Voice API',
-            description: 'Programmable voice calls & IVR',
+            description: 'Comprehensive voice capabilities',
             slug: 'voice-api',
             icon: Phone,
-        },
-        {
-            name: 'Database API',
-            description: 'Managed cloud database service',
-            slug: 'database-api',
-            icon: Database,
-        },
-        {
-            name: 'Server API',
-            description: 'Scalable backend infrastructure',
-            slug: 'server-api',
-            icon: Server,
-        },
-        {
-            name: 'Authentication API',
-            description: 'Secure user authentication',
-            slug: 'auth-api',
-            icon: Code,
         },
     ],
 };

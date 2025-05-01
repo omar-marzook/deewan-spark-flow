@@ -8,6 +8,8 @@ import { CheckCircle, MessageSquare, Globe } from 'lucide-react';
 import PowerfulCapabilitiesRedesign from "@/components/product/PowerfulCapabilitiesRedesign";
 import CoreFeaturesStaggered from "@/components/product/CoreFeaturesStaggered";
 import HowItWorksSteps from "@/components/product/HowItWorksSteps";
+import ProductFeatures from "@/components/product/ProductFeatures";
+import ConversionApiBenefits from "@/components/product/ConversionApiBenefits";
 import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
@@ -21,7 +23,7 @@ export default function ProductPage() {
 
   // Find the product data based on the slug
   const productData = slug ? productsData[slug] : null;
-  
+
   // If no product is found, show the 404 page
   if (!productData) {
     return <NotFound />;
@@ -71,20 +73,46 @@ export default function ProductPage() {
           description: "Powerful performance metrics"
         }}
       />
-      <CoreFeaturesStaggered
-        features={productData.features}
-        title={productData.coreFeatures?.title || `<span class="text-deewan-primary">${productData.name}</span> Features`}
-        subtitle={productData.coreFeatures?.subtitle || `Discover how ${productData.name} can transform your communication experience`}
-      />
-      <PowerfulCapabilitiesRedesign 
-        title={productData.powerfulCapabilities?.title}
-        subtitle={productData.powerfulCapabilities?.subtitle}
-        features={productData.powerfulCapabilities?.features}
-      />
-      {productData.howItWorks?.steps && (
+      
+      {/* For conversion APIs, ProductFeatures is optional. For applications, it should not be rendered */}
+      {productData.isConversionApi && productData.productFeatures && (
+        <ProductFeatures
+          title={productData.productFeatures.title}
+          subtitle={productData.productFeatures.subtitle}
+          capabilities={productData.productFeatures.capabilities}
+        />
+      )}
+      
+      {/* ConversionApiBenefits should only appear for conversion APIs */}
+      {productData.isConversionApi && (
+        <ConversionApiBenefits 
+          isConversionApi={productData.isConversionApi} 
+          productSlug={slug}
+        />
+      )}
+
+      {/* CoreFeaturesStaggered should only appear for applications, not for conversion APIs */}
+      {!productData.isConversionApi && (
+        <CoreFeaturesStaggered
+          features={productData.features}
+          title={productData.coreFeatures?.title || `<span class="text-deewan-primary">${productData.name}</span> Features`}
+          subtitle={productData.coreFeatures?.subtitle || `Discover how ${productData.name} can transform your communication experience`}
+        />
+      )}
+      {/* PowerfulCapabilitiesRedesign should only appear for applications, not for conversion APIs */}
+      {!productData.isConversionApi && (
+        <PowerfulCapabilitiesRedesign 
+          title={productData.powerfulCapabilities?.title}
+          subtitle={productData.powerfulCapabilities?.subtitle}
+          features={productData.powerfulCapabilities?.features}
+        />
+      )}
+      
+      {/* HowItWorksSteps should only appear for applications, not for conversion APIs */}
+      {!productData.isConversionApi && productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
       )}
-      <DepartmentsWeServe />
+      <DepartmentsWeServe departments={productData.departmentsWeServe} />
       <BlogSection />
       <div id="contact">
         <ContactSection />
