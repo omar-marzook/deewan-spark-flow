@@ -1,4 +1,4 @@
-import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid, Shield, Mail } from 'lucide-react';
+import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid, Shield, Mail, Bell } from 'lucide-react';
 
 export type Product = {
   name: string;
@@ -94,6 +94,12 @@ export const products: ProductCategories = {
             description: 'Secure user authentication',
             slug: 'auth-api',
             icon: Code,
+        },
+        {
+            name: 'Push Notifications API',
+            description: 'Powerful push notification capabilities',
+            slug: 'push-notifications-api',
+            icon: Bell,
         },
     ],
 };
