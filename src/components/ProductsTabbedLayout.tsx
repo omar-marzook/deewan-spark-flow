@@ -1,71 +1,45 @@
 import { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Bell, MessageSquare, Zap, Shield, Database, Phone, Server, FileText, Globe, Code } from 'lucide-react';
+import { Bell, MessageSquare, Zap, Shield, Database, Phone, Server, FileText, Globe, Code, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import productsData from '@/data/products-data';
+
 const ProductsTabbedLayout = () => {
-  // Product data
-  const applications = [{
-    id: 1,
-    title: "Deewan Campaigns",
-    description: "Manage SMS and WhatsApp campaigns efficiently with detailed analytics and scheduling tools.",
-    icon: <Bell className="w-12 h-12 text-deewan-primary" />,
-    color: "bg-deewan-primary/10"
-  }, {
-    id: 2,
-    title: "Deewan Omnichannel",
-    description: "Handle customer inquiries across various platforms from a single interface.",
-    icon: <MessageSquare className="w-12 h-12 text-deewan-primary" />,
-    color: "bg-deewan-primary/10"
-  }, {
-    id: 3,
-    title: "Deewan Bots",
-    description: "AI-powered customer service bots that handle routine inquiries and learn from interactions.",
-    icon: <Zap className="w-12 h-12 text-deewan-primary" />,
-    color: "bg-deewan-primary/10"
-  }, {
-    id: 4,
-    title: "Deewan MFA",
-    description: "Secure multifactor authentication system for enhanced account protection.",
-    icon: <Shield className="w-12 h-12 text-deewan-primary" />,
-    color: "bg-deewan-primary/10"
-  }, {
-    id: 5,
-    title: "Deewan Analytics",
-    description: "Comprehensive analytics for all your communication channels.",
-    icon: <Database className="w-12 h-12 text-deewan-primary" />,
-    color: "bg-deewan-primary/10"
-  }];
-  const apis = [{
-    id: 6,
-    title: "SMS API",
-    description: "Seamlessly integrate SMS functionality into your applications.",
-    icon: <Phone className="w-12 h-12 text-deewan-secondary" />,
-    color: "bg-deewan-secondary/10"
-  }, {
-    id: 7,
-    title: "WhatsApp API",
-    description: "Official WhatsApp Business API for businesses of all sizes.",
-    icon: <MessageSquare className="w-12 h-12 text-deewan-secondary" />,
-    color: "bg-deewan-secondary/10"
-  }, {
-    id: 8,
-    title: "Verification API",
-    description: "Verify users through multiple channels with a single API.",
-    icon: <Shield className="w-12 h-12 text-deewan-secondary" />,
-    color: "bg-deewan-secondary/10"
-  }, {
-    id: 9,
-    title: "Voice API",
-    description: "Build voice-enabled applications with our simple Voice API.",
-    icon: <Phone className="w-12 h-12 text-deewan-secondary" />,
-    color: "bg-deewan-secondary/10"
-  }, {
-    id: 10,
-    title: "Lookup API",
-    description: "Validate phone numbers and reduce undeliverable messages.",
-    icon: <Server className="w-12 h-12 text-deewan-secondary" />,
-    color: "bg-deewan-secondary/10"
-  }];
+  // Extract application products and API products from productsData
+  const applicationSlugs = ['campaigns', 'omni-channel-chat', 'bots', 'mfa', 'ivr'];
+  const apiSlugs = ['sms-api', 'whatsapp-api', 'email-api', 'voice-api', 'push-notifications-api'];
+  
+  const applications = applicationSlugs.map(slug => {
+    const product = productsData[slug];
+    return {
+      id: slug,
+      title: product.name,
+      description: product.tagline,
+      slug: slug,
+      // Use the first feature's icon if available, or default to Bell
+      icon: product.features && product.features.length > 0 && product.features[0].icon ? 
+            product.features[0].icon : 
+            <Bell className="w-12 h-12 text-deewan-primary" />,
+      color: "bg-deewan-primary/10"
+    };
+  });
+  
+  const apis = apiSlugs.map(slug => {
+    const product = productsData[slug];
+    return {
+      id: slug,
+      title: product.name,
+      description: product.tagline,
+      slug: slug,
+      // Use appropriate icon based on product name
+      icon: slug === 'sms-api' ? <MessageSquare className="w-12 h-12 text-deewan-secondary" /> :
+            slug === 'whatsapp-api' ? <MessageSquare className="w-12 h-12 text-deewan-secondary" /> :
+            slug === 'voice-api' ? <Phone className="w-12 h-12 text-deewan-secondary" /> :
+            slug === 'email-api' ? <Mail className="w-12 h-12 text-deewan-secondary" /> :
+            <Bell className="w-12 h-12 text-deewan-secondary" />,
+      color: "bg-deewan-secondary/10"
+    };
+  });
 
   // Animation variants
   const container = {
@@ -138,7 +112,8 @@ const ProductsTabbedLayout = () => {
                     </p>
                     
                     <div className="mt-auto text-center">
-                      <a href="#" className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-primary/20 text-deewan-primary px-5 py-2 font-medium hover:bg-deewan-primary hover:text-white transition-colors duration-300 border border-deewan-primary/20">
+                      <a href={`/products/${app.slug}`} 
+                         className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-primary/20 text-deewan-primary px-5 py-2 font-medium hover:bg-deewan-primary hover:text-white transition-colors duration-300 border border-deewan-primary/20">
                         View Product
                         <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -168,8 +143,9 @@ const ProductsTabbedLayout = () => {
                     </p>
                     
                     <div className="mt-auto text-center">
-                      <a href="#" className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-secondary/20 text-deewan-secondary px-5 py-2 font-medium hover:bg-deewan-secondary hover:text-white transition-colors duration-300 border border-deewan-secondary/20">
-                        View API
+                      <a href={`/products/${api.slug}`} 
+                         className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-secondary/20 text-deewan-secondary px-5 py-2 font-medium hover:bg-deewan-secondary hover:text-white transition-colors duration-300 border border-deewan-secondary/20">
+                        View Product
                         <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>

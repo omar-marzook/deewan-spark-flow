@@ -52,7 +52,7 @@ const Products = () => {
                 <div className="mb-6">{product.icon}</div>
                 <h3 className="text-xl font-bold mb-3 text-deewan-dark">{product.title}</h3>
                 <p className="text-deewan-dark flex-grow">{product.description}</p>
-                <a href="#" className="mt-4 inline-flex items-center text-deewan-primary font-medium">
+                <a href={`/products/${product.id === 1 ? 'campaigns' : product.id === 2 ? 'omni-channel-chat' : product.id === 3 ? 'bots' : 'mfa'}`} className="mt-4 inline-flex items-center text-deewan-primary font-medium">
                   Learn more
                   <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
