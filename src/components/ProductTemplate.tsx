@@ -62,6 +62,7 @@ export interface ProductData {
       title: string;
     }>;
   };
+  isConversionApi?: boolean; // Flag to identify if the product is a conversion API
 }
 
 interface ProductTemplateProps {
@@ -114,8 +115,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
         <HowItWorksVideo videoUrl={product.howItWorks.videoUrl} />
       )}
       
-      {/* Product Features Section */}
-      {product.productFeatures && (
+      {/* Product Features Section - Optional for conversion APIs, not shown for applications */}
+      {product.isConversionApi && product.productFeatures && (
         <ProductFeatures 
           title={product.productFeatures.title}
           subtitle={product.productFeatures.subtitle}

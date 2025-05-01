@@ -22,7 +22,7 @@ export default function ProductPage() {
 
   // Find the product data based on the slug
   const productData = slug ? productsData[slug] : null;
-  
+
   // If no product is found, show the 404 page
   if (!productData) {
     return <NotFound />;
@@ -72,25 +72,28 @@ export default function ProductPage() {
           description: "Powerful performance metrics"
         }}
       />
+      
+      {/* For conversion APIs, ProductFeatures is optional. For applications, it should not be rendered */}
+      {productData.isConversionApi && productData.productFeatures && (
+        <ProductFeatures
+          title={productData.productFeatures.title}
+          subtitle={productData.productFeatures.subtitle}
+          capabilities={productData.productFeatures.capabilities}
+        />
+      )}
+
       <CoreFeaturesStaggered
         features={productData.features}
         title={productData.coreFeatures?.title || `<span class="text-deewan-primary">${productData.name}</span> Features`}
         subtitle={productData.coreFeatures?.subtitle || `Discover how ${productData.name} can transform your communication experience`}
       />
-      <PowerfulCapabilitiesRedesign 
+      <PowerfulCapabilitiesRedesign
         title={productData.powerfulCapabilities?.title}
         subtitle={productData.powerfulCapabilities?.subtitle}
         features={productData.powerfulCapabilities?.features}
       />
       {productData.howItWorks?.steps && (
         <HowItWorksSteps steps={productData.howItWorks.steps} />
-      )}
-      {productData.productFeatures && (
-        <ProductFeatures 
-          title={productData.productFeatures.title}
-          subtitle={productData.productFeatures.subtitle}
-          capabilities={productData.productFeatures.capabilities}
-        />
       )}
       <DepartmentsWeServe departments={productData.departmentsWeServe} />
       <BlogSection />

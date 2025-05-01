@@ -76,6 +76,7 @@ interface ExtendedProductData extends ProductData {
             title: string;
         }>;
     };
+    isConversionApi?: boolean; // Flag to identify if the product is a conversion API
 }
 
 // Default departments data that will be used for all products
@@ -120,6 +121,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'mfa',
         name: 'Deewan MFA',
+        isConversionApi: false, // MFA is a conversion API
         tagline:
             'Add an extra layer of security to your applications with Multi-Factor Authentication that enhances user experience without compromising security.',
         description:
@@ -301,6 +303,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'ivr',
         name: 'Deewan IVR',
+        isConversionApi: false, // IVR is a conversion API
         tagline:
             'Add interactive voice response and voice capabilities to your communications and take the customer experience to the next level.',
         description:
@@ -482,6 +485,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'omni-channel-chat',
         name: 'Deewan Omnichannel Chat',
+        isConversionApi: true, // Omnichannel Chat is an application
         tagline:
             'Revolutionize your business communications with personalized interactions at every touchpoint, and speak to any conversational app from one dashboard.',
         description:
@@ -661,6 +665,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'campaigns',
         name: 'Deewan Campaigns',
+        isConversionApi: false, // Campaigns is an application
         tagline:
             'Reach your customers instantly on any communication channel from one platform. In a few minutes, your next SMS or WhatsApp campaign will be ready to go live.',
         description:
@@ -824,6 +829,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'bots',
         name: 'Deewan Bots',
+        isConversionApi: false, // Bots is an application
         tagline:
             'Allocate resources efficiently and answer customer queries in real time with the AI-powered chatbots of Deewan Bots.',
         description:
