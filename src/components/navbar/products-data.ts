@@ -40,8 +40,7 @@ export const products: ProductCategories = {
         },
         {
             name: 'IVR',
-            description:
-                'Interactive voice response system',
+            description: 'Interactive voice response system',
             slug: 'ivr',
             icon: Phone,
         },
@@ -49,57 +48,33 @@ export const products: ProductCategories = {
     communicationAPIs: [
         {
             name: 'Email API',
-            description: 'Powerful email capabilities',
+            description: 'Email personalization and automation',
             slug: 'email-api',
             icon: Mail,
         },
         {
-            name: 'WhatsApp',
-            description: 'WhatsApp Business API',
-            slug: 'whatsapp',
+            name: 'Push Notifications API',
+            description: 'Push notification customization and engagement',
+            slug: 'push-notifications-api',
+            icon: Bell,
+        },
+        {
+            name: 'WhatsApp Business API',
+            description: 'Full access to WhatsApp platform',
+            slug: 'whatsapp-api',
             icon: MessageSquare,
         },
         {
             name: 'SMS API',
-            description: 'Powerful SMS messaging capabilities',
+            description: 'A2P and P2P SMS capabilities',
             slug: 'sms-api',
             icon: MessageSquare,
         },
         {
-            name: 'Messaging API',
-            description: 'Send SMS, WhatsApp & more',
-            slug: 'messaging-api',
-            icon: Code,
-        },
-        {
             name: 'Voice API',
-            description: 'Programmable voice calls & IVR',
+            description: 'Comprehensive voice capabilities',
             slug: 'voice-api',
             icon: Phone,
-        },
-        {
-            name: 'Database API',
-            description: 'Managed cloud database service',
-            slug: 'database-api',
-            icon: Database,
-        },
-        {
-            name: 'Server API',
-            description: 'Scalable backend infrastructure',
-            slug: 'server-api',
-            icon: Server,
-        },
-        {
-            name: 'Authentication API',
-            description: 'Secure user authentication',
-            slug: 'auth-api',
-            icon: Code,
-        },
-        {
-            name: 'Push Notifications API',
-            description: 'Powerful push notification capabilities',
-            slug: 'push-notifications-api',
-            icon: Bell,
         },
     ],
 };

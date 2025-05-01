@@ -133,418 +133,6 @@ const defaultDepartmentsData: DepartmentData[] = [
 ];
 
 const productsData: Record<string, ExtendedProductData> = {
-    'push-notifications-api': {
-        departmentsWeServe: [
-            {
-                id: 1,
-                name: 'Transactions',
-                description: ['Codes and OTPs', 'Confirmation', 'Billing and invoicing'],
-                icon: React.createElement(CheckCircle, {
-                    className: 'h-10 w-10 text-deewan-primary',
-                }),
-                color: 'bg-deewan-primary/10',
-            },
-            {
-                id: 2,
-                name: 'Authentication',
-                description: ['Email authentication'],
-                icon: React.createElement(Shield, {
-                    className: 'h-10 w-10 text-deewan-secondary',
-                }),
-                color: 'bg-deewan-secondary/10',
-            },
-            {
-                id: 3,
-                name: 'Marketing',
-                description: ['Product announcements', 'Targeted promotions'],
-                icon: React.createElement(Megaphone, {
-                    className: 'h-10 w-10 text-deewan-accent',
-                }),
-                color: 'bg-deewan-accent/10',
-            },
-            {
-                id: 4,
-                name: 'Services',
-                description: ['Information updates', 'Customer support'],
-                icon: React.createElement(Headset, {
-                    className: 'h-10 w-10 text-deewan-primary',
-                }),
-                color: 'bg-deewan-primary/10',
-            },
-        ],
-        slug: 'push-notifications-api',
-        name: 'Push Notifications API',
-        isConversionApi: true,
-        tagline:
-            'Add powerful push notification capabilities to your applications and take customer engagement to the next level.',
-        description:
-            'Add powerful push notification capabilities to your applications and take customer engagement to the next level.',
-        conversionBenefits: [
-            {
-                title: "Better Personalization",
-                description: "Using the functions of Push Notifications API by Deewan will enable you to easily personalize notifications for a better experience."
-            },
-            {
-                title: "Operational Efficiency",
-                description: "Automatically triggered notifications, account functions and transaction confirmations are easily automated with Push Notifications API."
-            },
-            {
-                title: "Stronger Promotional Edge",
-                description: "The push notification format provides enough space and diversity of elements to communicate relevant product updates and feature announcements."
-            }
-        ],
-        // Add empty features and useCases to satisfy TypeScript
-        features: [],
-        useCases: [],
-        stats: [
-            {
-                icon: React.createElement(BellDot, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '-25%',
-                label: 'Reduced fraud',
-            },
-            {
-                icon: React.createElement(BarChart, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '3.5x',
-                label: 'Higher retention rate',
-            },
-            {
-                icon: React.createElement(Smartphone, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '88%',
-                label: 'Increase in app engagement',
-            },
-        ],
-        productFeatures: {
-            title: 'Powerful Push Notification capabilities in one API from Deewan',
-            subtitle:
-                'Leverage the full potential of Push Notification API with our comprehensive solution',
-            capabilities: [
-                { icon: BellRing, title: 'Self-Onboarding' },
-                { icon: Gauge, title: 'Consumption Tracking' },
-                { icon: UserCog, title: 'Personalization' },
-                { icon: Smartphone, title: 'Multi-Platform Support' },
-                { icon: BarChart4, title: 'Data Analytics' },
-                { icon: Repeat, title: 'Recurring and Triggered' },
-            ],
-        },
-    },
-    'email-api': {
-        departmentsWeServe: [
-            {
-                id: 1,
-                name: 'Transactions',
-                description: ['Codes and OTPs', 'Confirmation', 'Billing and invoicing'],
-                icon: React.createElement(CheckCircle, {
-                    className: 'h-10 w-10 text-deewan-primary',
-                }),
-                color: 'bg-deewan-primary/10',
-            },
-            {
-                id: 2,
-                name: 'Authentication',
-                description: ['Email authentication'],
-                icon: React.createElement(Shield, {
-                    className: 'h-10 w-10 text-deewan-secondary',
-                }),
-                color: 'bg-deewan-secondary/10',
-            },
-            {
-                id: 3,
-                name: 'Marketing',
-                description: ['Product announcements', 'Targeted promotions'],
-                icon: React.createElement(Megaphone, {
-                    className: 'h-10 w-10 text-deewan-accent',
-                }),
-                color: 'bg-deewan-accent/10',
-            },
-            {
-                id: 4,
-                name: 'Services',
-                description: ['Information updates', 'Customer support'],
-                icon: React.createElement(Headset, {
-                    className: 'h-10 w-10 text-deewan-primary',
-                }),
-                color: 'bg-deewan-primary/10',
-            },
-        ],
-        slug: 'email-api',
-        name: 'Email API',
-        isConversionApi: true,
-        tagline:
-            'Add powerful email capabilities to your applications and take customer communication to the next level.',
-        description:
-            'Add powerful email capabilities to your applications and take customer communication to the next level.',
-        conversionBenefits: [
-            {
-                title: "Better Personalization",
-                description: "Using the functions of Email API by Deewan will enable you to easily personalize email communications for a better experience."
-            },
-            {
-                title: "Operational Efficiency",
-                description: "Automatically triggered emails, account functions and transaction confirmations are easily automated with Email API."
-            },
-            {
-                title: "Stronger Promotional Edge",
-                description: "The email format provides enough space and diversity of elements to communicate relevant product catalogues and feature updates by email."
-            }
-        ],
-        // Add empty features and useCases to satisfy TypeScript
-        features: [],
-        useCases: [],
-        stats: [
-            {
-                icon: React.createElement(Globe, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '4B+',
-                label: 'Global email users',
-            },
-            {
-                icon: React.createElement(BarChart, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '20%+',
-                label: 'Use of email in transactions',
-            },
-            {
-                icon: React.createElement(Smartphone, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '60%',
-                label: 'Emails opened on mobile',
-            },
-        ],
-        productFeatures: {
-            title: 'Powerful email capabilities in one API from Deewan',
-            subtitle:
-                'Leverage the full potential of Email API with our comprehensive solution',
-            capabilities: [
-                { icon: Zap, title: 'Swift Delivery' },
-                { icon: Database, title: 'High-Volume Support' },
-                { icon: UserCog, title: 'Personalization' },
-                { icon: Link, title: 'Easy Integration' },
-                { icon: BarChart, title: 'Data Analytics' },
-                { icon: Shield, title: 'Email Authentication' },
-            ],
-        },
-    },
-    'sms-api': {
-        departmentsWeServe: [
-            {
-                id: 1,
-                name: 'Communications',
-                description: ['Alerts and notifications', 'Reminders and updates'],
-                icon: React.createElement(Bell, {
-                    className: 'h-10 w-10 text-deewan-primary',
-                }),
-                color: 'bg-deewan-primary/10',
-            },
-            {
-                id: 2,
-                name: 'Authentication',
-                description: ['Login codes', 'Identity verification', 'One-time passwords'],
-                icon: React.createElement(Shield, {
-                    className: 'h-10 w-10 text-deewan-secondary',
-                }),
-                color: 'bg-deewan-secondary/10',
-            },
-            {
-                id: 3,
-                name: 'Marketing',
-                description: ['Promotions and offers', 'Surveys and URLs', 'Activation'],
-                icon: React.createElement(Megaphone, {
-                    className: 'h-10 w-10 text-deewan-accent',
-                }),
-                color: 'bg-deewan-accent/10',
-            },
-        ],
-        slug: 'sms-api',
-        name: 'SMS API',
-        isConversionApi: true,
-        tagline:
-            'Add powerful SMS capabilities to your applications and take customer communication to the next level.',
-        description:
-            'Add powerful SMS capabilities to your applications and take customer communication to the next level.',
-        conversionBenefits: [
-            {
-                title: "Improved Customer Experience",
-                description: "Use SMS API to personalize your SMS communications and deliver the right message to your target audience."
-            },
-            {
-                title: "Advanced Data Security",
-                description: "Use SMS API for 2-factor authentication to secure customer accounts, authenticate access to information, and verify transactions."
-            },
-            {
-                title: "Communication Efficiency",
-                description: "Improve efficiency by scheduling and automating SMS communications based on events, actions and other factors."
-            }
-        ],
-        // Add empty features and useCases to satisfy TypeScript
-        features: [],
-        useCases: [],
-        stats: [
-            {
-                icon: React.createElement(MessageSquare, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '98%',
-                label: 'SMS open rate',
-            },
-            {
-                icon: React.createElement(CheckCircle, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '90%+',
-                label: 'SMS delivery success rate',
-            },
-            {
-                icon: React.createElement(Server, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '99.9%',
-                label: 'Deewan API uptime',
-            },
-        ],
-        productFeatures: {
-            title: 'Powerful SMS capabilities in one API from Deewan',
-            subtitle:
-                'Leverage the full potential of SMS API with our comprehensive solution',
-            capabilities: [
-                { icon: MessageSquare, title: 'Two-Way Messaging' },
-                { icon: BarChart, title: 'Data Analytics' },
-                { icon: UserCog, title: 'Personalization' },
-                { icon: Globe, title: 'SMS Termination' },
-                { icon: Link, title: 'Text Concatenation' },
-                { icon: Workflow, title: 'Smart Routing' },
-            ],
-        },
-    },
-    'voice-api': {
-        departmentsWeServe: [
-            {
-                id: 1,
-                name: 'Emergency Services',
-                description: ['Voice menus', 'Reporting emergencies', 'Accessing services'],
-                icon: React.createElement(Phone, {
-                    className: 'h-10 w-10 text-deewan-primary',
-                }),
-                color: 'bg-deewan-primary/10',
-            },
-            {
-                id: 2,
-                name: 'Telecommunications',
-                description: ['Troubleshooting', 'Account services', 'Bill payment'],
-                icon: React.createElement(Headset, {
-                    className: 'h-10 w-10 text-deewan-secondary',
-                }),
-                color: 'bg-deewan-secondary/10',
-            },
-            {
-                id: 3,
-                name: 'Finance',
-                description: ['Payments', 'Fraud reporting', 'Account information'],
-                icon: React.createElement(Building, {
-                    className: 'h-10 w-10 text-deewan-accent',
-                }),
-                color: 'bg-deewan-accent/10',
-            },
-            {
-                id: 4,
-                name: 'Transportation',
-                description: ['Timetables', 'Route planning', 'Report delays'],
-                icon: React.createElement(Workflow, {
-                    className: 'h-10 w-10 text-deewan-primary',
-                }),
-                color: 'bg-deewan-primary/10',
-            },
-            {
-                id: 5,
-                name: 'Health Care',
-                description: ['Self-diagnosis', 'Schedule appointments', 'Check-in'],
-                icon: React.createElement(UserCheck, {
-                    className: 'h-10 w-10 text-deewan-secondary',
-                }),
-                color: 'bg-deewan-secondary/10',
-            },
-            {
-                id: 6,
-                name: 'E-commerce',
-                description: ['Place orders', 'Track deliveries', 'Check inventory'],
-                icon: React.createElement(ShoppingBag, {
-                    className: 'h-10 w-10 text-deewan-accent',
-                }),
-                color: 'bg-deewan-accent/10',
-            },
-        ],
-        slug: 'voice-api',
-        name: 'Voice API',
-        isConversionApi: true,
-        tagline:
-            'Add powerful voice capabilities to your applications and take customer communication to the next level.',
-        description:
-            'Add powerful voice capabilities to your applications and take customer communication to the next level.',
-        conversionBenefits: [
-            {
-                title: "Improved Customer Experience",
-                description: "Voice API will help you improve the customer experience, reduce waiting times and provide 24/7 customer support"
-            },
-            {
-                title: "Efficient and Streamlined Operations",
-                description: "It offers many features for automating customer service support, speech recognition, text-to-speech, call recording & more"
-            },
-            {
-                title: "Lower Operational Expenses",
-                description: "Voice API will help you optimize your costs and devote your employees' time to complex, mission-critical tasks"
-            }
-        ],
-        // Add empty features and useCases to satisfy TypeScript
-        features: [],
-        useCases: [],
-        stats: [
-            {
-                icon: React.createElement(BarChart, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '55%',
-                label: 'Of businesses use voice',
-            },
-            {
-                icon: React.createElement(Users, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '50%+',
-                label: 'Of customers prefer voice assistance',
-            },
-            {
-                icon: React.createElement(Clock, {
-                    className: 'h-6 w-6 text-deewan-primary',
-                }),
-                value: '24/7',
-                label: 'Technical support',
-            },
-        ],
-        productFeatures: {
-            title: 'Powerful voice capabilities in one API from Deewan',
-            subtitle:
-                'Leverage the full potential of Voice API with our comprehensive solution',
-            capabilities: [
-                { icon: Phone, title: 'Interactive Voice Response' },
-                { icon: Headset, title: 'Text-to-Speech' },
-                { icon: Bot, title: 'Automated Interactions' },
-                { icon: Shield, title: 'Number Masking' },
-                { icon: Database, title: 'Call Transcriptions' },
-                { icon: Workflow, title: 'Call Workflows' },
-                { icon: Brain, title: 'Speech Recognition' },
-                { icon: Phone, title: 'A2P Calls' },
-                { icon: Globe, title: 'Virtual DID Numbers' },
-            ],
-        },
-    },
     mfa: {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'mfa',
@@ -1438,12 +1026,16 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
     },
-    whatsapp: {
+    "whatsapp-api": {
         departmentsWeServe: [
             {
                 id: 1,
                 name: 'Utility',
-                description: ['Delivery management', 'Order placement', 'Account recovery'],
+                description: [
+                    'Delivery management',
+                    'Order placement',
+                    'Account recovery',
+                ],
                 icon: React.createElement(Box, {
                     className: 'h-10 w-10 text-deewan-primary',
                 }),
@@ -1452,7 +1044,11 @@ const productsData: Record<string, ExtendedProductData> = {
             {
                 id: 2,
                 name: 'Authentication',
-                description: ['Login codes', 'Identity verification', 'One-time passwords'],
+                description: [
+                    'Login codes',
+                    'Identity verification',
+                    'One-time passwords',
+                ],
                 icon: React.createElement(Shield, {
                     className: 'h-10 w-10 text-deewan-secondary',
                 }),
@@ -1461,7 +1057,11 @@ const productsData: Record<string, ExtendedProductData> = {
             {
                 id: 3,
                 name: 'Marketing',
-                description: ['Product announcements', 'Targeted promotions', 'Cart check out reminders'],
+                description: [
+                    'Product announcements',
+                    'Targeted promotions',
+                    'Cart check out reminders',
+                ],
                 icon: React.createElement(Megaphone, {
                     className: 'h-10 w-10 text-deewan-accent',
                 }),
@@ -1470,33 +1070,40 @@ const productsData: Record<string, ExtendedProductData> = {
             {
                 id: 4,
                 name: 'Services',
-                description: ['Troubleshooting', 'Standard FAQs', 'Issue handling'],
+                description: [
+                    'Troubleshooting',
+                    'Standard FAQs',
+                    'Issue handling',
+                ],
                 icon: React.createElement(Headset, {
                     className: 'h-10 w-10 text-deewan-primary',
                 }),
                 color: 'bg-deewan-primary/10',
             },
         ],
-        slug: 'whatsapp',
+        slug: 'whatsapp-api',
         name: 'WhatsApp Business API',
         isConversionApi: true,
         tagline:
-            'Join the world\'s best businesses on WhatsApp Business and unleash your brand\'s full potential.',
+            "Join the world's best businesses on WhatsApp Business and unleash your brand's full potential.",
         description:
-            'Join the world\'s best businesses on WhatsApp Business and unleash your brand\'s full potential.',
+            "Join the world's best businesses on WhatsApp Business and unleash your brand's full potential.",
         conversionBenefits: [
             {
-                title: "Convenient Customer Support",
-                description: "Enabling your customers to submit requests and get information on their preferred chat app will improve experience, loyalty and retention."
+                title: 'Convenient Customer Support',
+                description:
+                    'Enabling your customers to submit requests and get information on their preferred chat app will improve experience, loyalty and retention.',
             },
             {
-                title: "Secure Data and Communications",
-                description: "With WhatsApp Business API you will be utilizing proven security standards and encryption methods trusted by the whole world."
+                title: 'Secure Data and Communications',
+                description:
+                    'With WhatsApp Business API you will be utilizing proven security standards and encryption methods trusted by the whole world.',
             },
             {
-                title: "Easy Promotions and Fast Conversions",
-                description: "Using your brand to send personalized promotions to your customers will significantly boost your conversion rates and ROI."
-            }
+                title: 'Easy Promotions and Fast Conversions',
+                description:
+                    'Using your brand to send personalized promotions to your customers will significantly boost your conversion rates and ROI.',
+            },
         ],
         // Add empty features and useCases to satisfy TypeScript
         features: [],
@@ -1538,6 +1145,469 @@ const productsData: Record<string, ExtendedProductData> = {
             ],
         },
     },
+    'push-notifications-api': {
+        departmentsWeServe: [
+            {
+                id: 1,
+                name: 'Transactions',
+                description: [
+                    'Codes and OTPs',
+                    'Confirmation',
+                    'Billing and invoicing',
+                ],
+                icon: React.createElement(CheckCircle, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 2,
+                name: 'Authentication',
+                description: ['Email authentication'],
+                icon: React.createElement(Shield, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 3,
+                name: 'Marketing',
+                description: ['Product announcements', 'Targeted promotions'],
+                icon: React.createElement(Megaphone, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+            {
+                id: 4,
+                name: 'Services',
+                description: ['Information updates', 'Customer support'],
+                icon: React.createElement(Headset, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+        ],
+        slug: 'push-notifications-api',
+        name: 'Push Notifications API',
+        isConversionApi: true,
+        tagline:
+            'Communicate information instantly and cultivate deeper connections with your customers with personalized notifications.',
+        description:
+            'Communicate information instantly and cultivate deeper connections with your customers with personalized notifications.',
+        conversionBenefits: [
+            {
+                title: 'Better Personalization',
+                description:
+                    'Using the functions of Push Notifications API by Deewan will enable you to easily personalize notifications for a better experience.',
+            },
+            {
+                title: 'Operational Efficiency',
+                description:
+                    'Automatically triggered notifications, account functions and transaction confirmations are easily automated with Push Notifications API.',
+            },
+            {
+                title: 'Stronger Promotional Edge',
+                description:
+                    'The push notification format provides enough space and diversity of elements to communicate relevant product updates and feature announcements.',
+            },
+        ],
+        // Add empty features and useCases to satisfy TypeScript
+        features: [],
+        useCases: [],
+        stats: [
+            {
+                icon: React.createElement(BellDot, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '-25%',
+                label: 'Reduced fraud',
+            },
+            {
+                icon: React.createElement(BarChart, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '3.5x',
+                label: 'Higher retention rate',
+            },
+            {
+                icon: React.createElement(Smartphone, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '88%',
+                label: 'Increase in app engagement',
+            },
+        ],
+        productFeatures: {
+            title: 'Powerful Push Notification capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of Push Notification API with our comprehensive solution',
+            capabilities: [
+                { icon: BellRing, title: 'Self-Onboarding' },
+                { icon: Gauge, title: 'Consumption Tracking' },
+                { icon: UserCog, title: 'Personalization' },
+                { icon: Smartphone, title: 'Multi-Platform Support' },
+                { icon: BarChart4, title: 'Data Analytics' },
+                { icon: Repeat, title: 'Recurring and Triggered' },
+            ],
+        },
+    },
+    'email-api': {
+        departmentsWeServe: [
+            {
+                id: 1,
+                name: 'Transactions',
+                description: [
+                    'Codes and OTPs',
+                    'Confirmation',
+                    'Billing and invoicing',
+                ],
+                icon: React.createElement(CheckCircle, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 2,
+                name: 'Authentication',
+                description: ['Email authentication'],
+                icon: React.createElement(Shield, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 3,
+                name: 'Marketing',
+                description: ['Product announcements', 'Targeted promotions'],
+                icon: React.createElement(Megaphone, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+            {
+                id: 4,
+                name: 'Services',
+                description: ['Information updates', 'Customer support'],
+                icon: React.createElement(Headset, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+        ],
+        slug: 'email-api',
+        name: 'Email API',
+        isConversionApi: true,
+        tagline:
+            'Complete your digital experience with transactional and informational communications via email.',
+        description:
+            'Complete your digital experience with transactional and informational communications via email.',
+        conversionBenefits: [
+            {
+                title: 'Better Personalization',
+                description:
+                    'Using the functions of Email API by Deewan will enable you to easily personalize email communications for a better experience.',
+            },
+            {
+                title: 'Operational Efficiency',
+                description:
+                    'Automatically triggered emails, account functions and transaction confirmations are easily automated with Email API.',
+            },
+            {
+                title: 'Stronger Promotional Edge',
+                description:
+                    'The email format provides enough space and diversity of elements to communicate relevant product catalogues and feature updates by email.',
+            },
+        ],
+        // Add empty features and useCases to satisfy TypeScript
+        features: [],
+        useCases: [],
+        stats: [
+            {
+                icon: React.createElement(Globe, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '4B+',
+                label: 'Global email users',
+            },
+            {
+                icon: React.createElement(BarChart, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '20%+',
+                label: 'Use of email in transactions',
+            },
+            {
+                icon: React.createElement(Smartphone, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '60%',
+                label: 'Emails opened on mobile',
+            },
+        ],
+        productFeatures: {
+            title: 'Powerful email capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of Email API with our comprehensive solution',
+            capabilities: [
+                { icon: Zap, title: 'Swift Delivery' },
+                { icon: Database, title: 'High-Volume Support' },
+                { icon: UserCog, title: 'Personalization' },
+                { icon: Link, title: 'Easy Integration' },
+                { icon: BarChart, title: 'Data Analytics' },
+                { icon: Shield, title: 'Email Authentication' },
+            ],
+        },
+    },
+    'sms-api': {
+        departmentsWeServe: [
+            {
+                id: 1,
+                name: 'Communications',
+                description: [
+                    'Alerts and notifications',
+                    'Reminders and updates',
+                ],
+                icon: React.createElement(Bell, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 2,
+                name: 'Authentication',
+                description: [
+                    'Login codes',
+                    'Identity verification',
+                    'One-time passwords',
+                ],
+                icon: React.createElement(Shield, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 3,
+                name: 'Marketing',
+                description: [
+                    'Promotions and offers',
+                    'Surveys and URLs',
+                    'Activation',
+                ],
+                icon: React.createElement(Megaphone, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+        ],
+        slug: 'sms-api',
+        name: 'SMS API',
+        isConversionApi: true,
+        tagline:
+            'A secure, multifunctional API capable of handling high-volume SMS traffic efficiently and economically.',
+        description:
+            'A secure, multifunctional API capable of handling high-volume SMS traffic efficiently and economically.',
+        conversionBenefits: [
+            {
+                title: 'Improved Customer Experience',
+                description:
+                    'Use SMS API to personalize your SMS communications and deliver the right message to your target audience.',
+            },
+            {
+                title: 'Advanced Data Security',
+                description:
+                    'Use SMS API for 2-factor authentication to secure customer accounts, authenticate access to information, and verify transactions.',
+            },
+            {
+                title: 'Communication Efficiency',
+                description:
+                    'Improve efficiency by scheduling and automating SMS communications based on events, actions and other factors.',
+            },
+        ],
+        // Add empty features and useCases to satisfy TypeScript
+        features: [],
+        useCases: [],
+        stats: [
+            {
+                icon: React.createElement(MessageSquare, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '98%',
+                label: 'SMS open rate',
+            },
+            {
+                icon: React.createElement(CheckCircle, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '90%+',
+                label: 'SMS delivery success rate',
+            },
+            {
+                icon: React.createElement(Server, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '99.9%',
+                label: 'Deewan API uptime',
+            },
+        ],
+        productFeatures: {
+            title: 'Powerful SMS capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of SMS API with our comprehensive solution',
+            capabilities: [
+                { icon: MessageSquare, title: 'Two-Way Messaging' },
+                { icon: BarChart, title: 'Data Analytics' },
+                { icon: UserCog, title: 'Personalization' },
+                { icon: Globe, title: 'SMS Termination' },
+                { icon: Link, title: 'Text Concatenation' },
+                { icon: Workflow, title: 'Smart Routing' },
+            ],
+        },
+    },
+    'voice-api': {
+        departmentsWeServe: [
+            {
+                id: 1,
+                name: 'Emergency Services',
+                description: [
+                    'Voice menus',
+                    'Reporting emergencies',
+                    'Accessing services',
+                ],
+                icon: React.createElement(Phone, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 2,
+                name: 'Telecommunications',
+                description: [
+                    'Troubleshooting',
+                    'Account services',
+                    'Bill payment',
+                ],
+                icon: React.createElement(Headset, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 3,
+                name: 'Finance',
+                description: [
+                    'Payments',
+                    'Fraud reporting',
+                    'Account information',
+                ],
+                icon: React.createElement(Building, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+            {
+                id: 4,
+                name: 'Transportation',
+                description: ['Timetables', 'Route planning', 'Report delays'],
+                icon: React.createElement(Workflow, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 5,
+                name: 'Health Care',
+                description: [
+                    'Self-diagnosis',
+                    'Schedule appointments',
+                    'Check-in',
+                ],
+                icon: React.createElement(UserCheck, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 6,
+                name: 'E-commerce',
+                description: [
+                    'Place orders',
+                    'Track deliveries',
+                    'Check inventory',
+                ],
+                icon: React.createElement(ShoppingBag, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+        ],
+        slug: 'voice-api',
+        name: 'Voice API',
+        isConversionApi: true,
+        tagline:
+            'Enrich your customer experience with extensive voice features that will streamline your operations, cut costs, and improve customer loyalty.',
+        description:
+            'Enrich your customer experience with extensive voice features that will streamline your operations, cut costs, and improve customer loyalty.',
+        conversionBenefits: [
+            {
+                title: 'Improved Customer Experience',
+                description:
+                    'Voice API will help you improve the customer experience, reduce waiting times and provide 24/7 customer support',
+            },
+            {
+                title: 'Efficient and Streamlined Operations',
+                description:
+                    'It offers many features for automating customer service support, speech recognition, text-to-speech, call recording & more',
+            },
+            {
+                title: 'Lower Operational Expenses',
+                description:
+                    "Voice API will help you optimize your costs and devote your employees' time to complex, mission-critical tasks",
+            },
+        ],
+        // Add empty features and useCases to satisfy TypeScript
+        features: [],
+        useCases: [],
+        stats: [
+            {
+                icon: React.createElement(BarChart, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '55%',
+                label: 'Of businesses use voice',
+            },
+            {
+                icon: React.createElement(Users, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '50%+',
+                label: 'Of customers prefer voice assistance',
+            },
+            {
+                icon: React.createElement(Clock, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '24/7',
+                label: 'Technical support',
+            },
+        ],
+        productFeatures: {
+            title: 'Powerful voice capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of Voice API with our comprehensive solution',
+            capabilities: [
+                { icon: Phone, title: 'Interactive Voice Response' },
+                { icon: Headset, title: 'Text-to-Speech' },
+                { icon: Bot, title: 'Automated Interactions' },
+                { icon: Shield, title: 'Number Masking' },
+                { icon: Database, title: 'Call Transcriptions' },
+                { icon: Workflow, title: 'Call Workflows' },
+                { icon: Brain, title: 'Speech Recognition' },
+                { icon: Phone, title: 'A2P Calls' },
+                { icon: Globe, title: 'Virtual DID Numbers' },
+            ],
+        },
+    }
 };
 
 export default productsData;
