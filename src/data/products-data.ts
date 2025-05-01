@@ -1021,7 +1021,44 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
     },
     whatsapp: {
-        departmentsWeServe: defaultDepartmentsData,
+        departmentsWeServe: [
+            {
+                id: 1,
+                name: 'Utility',
+                description: ['Delivery management', 'Order placement', 'Account recovery'],
+                icon: React.createElement(Box, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 2,
+                name: 'Authentication',
+                description: ['Login codes', 'Identity verification', 'One-time passwords'],
+                icon: React.createElement(Shield, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 3,
+                name: 'Marketing',
+                description: ['Product announcements', 'Targeted promotions', 'Cart check out reminders'],
+                icon: React.createElement(Megaphone, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+            {
+                id: 4,
+                name: 'Services',
+                description: ['Troubleshooting', 'Standard FAQs', 'Issue handling'],
+                icon: React.createElement(Headset, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+        ],
         slug: 'whatsapp',
         name: 'WhatsApp Business API',
         isConversionApi: true,
@@ -1048,38 +1085,38 @@ const productsData: Record<string, ExtendedProductData> = {
         useCases: [],
         stats: [
             {
-                icon: React.createElement(TrendingUp, {
+                icon: React.createElement(MessageSquare, {
                     className: 'h-6 w-6 text-deewan-primary',
                 }),
-                value: '30%',
-                label: 'Increase in conversion rate',
+                value: '2B+',
+                label: 'Daily WhatsApp users',
             },
             {
-                icon: React.createElement(Target, {
+                icon: React.createElement(Mail, {
                     className: 'h-6 w-6 text-deewan-primary',
                 }),
-                value: '55%',
-                label: 'Of businesses generate quality leads via bots',
+                value: '90%+',
+                label: 'Message open rate',
             },
             {
                 icon: React.createElement(ThumbsUp, {
                     className: 'h-6 w-6 text-deewan-primary',
                 }),
-                value: '95%',
-                label: 'Increase in customer satisfaction',
+                value: '80%',
+                label: 'Response rate',
             },
         ],
         productFeatures: {
-            title: 'Powerful Chatbot capabilities in one API from Deewan',
+            title: 'Powerful WhatsApp Business capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of AI-powered Chatbots with our comprehensive API solution',
+                'Leverage the full potential of WhatsApp Business API with our comprehensive solution',
             capabilities: [
-                { icon: Bot, title: 'Verified Account' },
-                { icon: Brain, title: 'Database Management' },
-                { icon: MessageSquare, title: 'Multi-Channel Support' },
-                { icon: Globe, title: 'Multilingual Capabilities' },
-                { icon: Database, title: 'Knowledge Base Integration' },
-                { icon: UserCog, title: 'Conversation Management' },
+                { icon: CheckCircle, title: 'Verified Account' },
+                { icon: Database, title: 'Database Management' },
+                { icon: Bot, title: 'Chatbot Integration' },
+                { icon: UserCog, title: 'Account Management' },
+                { icon: Shield, title: 'Data Encryption' },
+                { icon: CheckSquare, title: 'Opt-In Requirement' },
             ],
         },
     },

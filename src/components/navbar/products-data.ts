@@ -48,6 +48,12 @@ export const products: ProductCategories = {
     ],
     communicationAPIs: [
         {
+            name: 'WhatsApp',
+            description: 'WhatsApp Business API',
+            slug: 'whatsapp',
+            icon: MessageSquare,
+        },
+        {
             name: 'Messaging API',
             description: 'Send SMS, WhatsApp & more',
             slug: 'messaging-api',
