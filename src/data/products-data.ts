@@ -127,6 +127,97 @@ const defaultDepartmentsData: DepartmentData[] = [
 ];
 
 const productsData: Record<string, ExtendedProductData> = {
+    'sms-api': {
+        departmentsWeServe: [
+            {
+                id: 1,
+                name: 'Communications',
+                description: ['Alerts and notifications', 'Reminders and updates'],
+                icon: React.createElement(Bell, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 2,
+                name: 'Authentication',
+                description: ['Login codes', 'Identity verification', 'One-time passwords'],
+                icon: React.createElement(Shield, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 3,
+                name: 'Marketing',
+                description: ['Promotions and offers', 'Surveys and URLs', 'Activation'],
+                icon: React.createElement(Megaphone, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+        ],
+        slug: 'sms-api',
+        name: 'SMS API',
+        isConversionApi: true,
+        tagline:
+            'Add powerful SMS capabilities to your applications and take customer communication to the next level.',
+        description:
+            'Add powerful SMS capabilities to your applications and take customer communication to the next level.',
+        conversionBenefits: [
+            {
+                title: "Improved Customer Experience",
+                description: "Use SMS API to personalize your SMS communications and deliver the right message to your target audience."
+            },
+            {
+                title: "Advanced Data Security",
+                description: "Use SMS API for 2-factor authentication to secure customer accounts, authenticate access to information, and verify transactions."
+            },
+            {
+                title: "Communication Efficiency",
+                description: "Improve efficiency by scheduling and automating SMS communications based on events, actions and other factors."
+            }
+        ],
+        // Add empty features and useCases to satisfy TypeScript
+        features: [],
+        useCases: [],
+        stats: [
+            {
+                icon: React.createElement(MessageSquare, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '98%',
+                label: 'SMS open rate',
+            },
+            {
+                icon: React.createElement(CheckCircle, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '90%+',
+                label: 'SMS delivery success rate',
+            },
+            {
+                icon: React.createElement(Server, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '99.9%',
+                label: 'Deewan API uptime',
+            },
+        ],
+        productFeatures: {
+            title: 'Powerful SMS capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of SMS API with our comprehensive solution',
+            capabilities: [
+                { icon: MessageSquare, title: 'Two-Way Messaging' },
+                { icon: BarChart, title: 'Data Analytics' },
+                { icon: UserCog, title: 'Personalization' },
+                { icon: Globe, title: 'SMS Termination' },
+                { icon: Link, title: 'Text Concatenation' },
+                { icon: Workflow, title: 'Smart Routing' },
+            ],
+        },
+    },
     'voice-api': {
         departmentsWeServe: [
             {

@@ -54,6 +54,12 @@ export const products: ProductCategories = {
             icon: MessageSquare,
         },
         {
+            name: 'SMS API',
+            description: 'Powerful SMS messaging capabilities',
+            slug: 'sms-api',
+            icon: MessageSquare,
+        },
+        {
             name: 'Messaging API',
             description: 'Send SMS, WhatsApp & more',
             slug: 'messaging-api',
