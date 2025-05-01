@@ -40,6 +40,7 @@ import {
     Bell,
     Bot,
     CheckSquare,
+    Smartphone,
 } from 'lucide-react';
 import React from 'react';
 
@@ -127,6 +128,106 @@ const defaultDepartmentsData: DepartmentData[] = [
 ];
 
 const productsData: Record<string, ExtendedProductData> = {
+    'email-api': {
+        departmentsWeServe: [
+            {
+                id: 1,
+                name: 'Transactions',
+                description: ['Codes and OTPs', 'Confirmation', 'Billing and invoicing'],
+                icon: React.createElement(CheckCircle, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+            {
+                id: 2,
+                name: 'Authentication',
+                description: ['Email authentication'],
+                icon: React.createElement(Shield, {
+                    className: 'h-10 w-10 text-deewan-secondary',
+                }),
+                color: 'bg-deewan-secondary/10',
+            },
+            {
+                id: 3,
+                name: 'Marketing',
+                description: ['Product announcements', 'Targeted promotions'],
+                icon: React.createElement(Megaphone, {
+                    className: 'h-10 w-10 text-deewan-accent',
+                }),
+                color: 'bg-deewan-accent/10',
+            },
+            {
+                id: 4,
+                name: 'Services',
+                description: ['Information updates', 'Customer support'],
+                icon: React.createElement(Headset, {
+                    className: 'h-10 w-10 text-deewan-primary',
+                }),
+                color: 'bg-deewan-primary/10',
+            },
+        ],
+        slug: 'email-api',
+        name: 'Email API',
+        isConversionApi: true,
+        tagline:
+            'Add powerful email capabilities to your applications and take customer communication to the next level.',
+        description:
+            'Add powerful email capabilities to your applications and take customer communication to the next level.',
+        conversionBenefits: [
+            {
+                title: "Better Personalization",
+                description: "Using the functions of Email API by Deewan will enable you to easily personalize email communications for a better experience."
+            },
+            {
+                title: "Operational Efficiency",
+                description: "Automatically triggered emails, account functions and transaction confirmations are easily automated with Email API."
+            },
+            {
+                title: "Stronger Promotional Edge",
+                description: "The email format provides enough space and diversity of elements to communicate relevant product catalogues and feature updates by email."
+            }
+        ],
+        // Add empty features and useCases to satisfy TypeScript
+        features: [],
+        useCases: [],
+        stats: [
+            {
+                icon: React.createElement(Globe, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '4B+',
+                label: 'Global email users',
+            },
+            {
+                icon: React.createElement(BarChart, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '20%+',
+                label: 'Use of email in transactions',
+            },
+            {
+                icon: React.createElement(Smartphone, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '60%',
+                label: 'Emails opened on mobile',
+            },
+        ],
+        productFeatures: {
+            title: 'Powerful email capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of Email API with our comprehensive solution',
+            capabilities: [
+                { icon: Zap, title: 'Swift Delivery' },
+                { icon: Database, title: 'High-Volume Support' },
+                { icon: UserCog, title: 'Personalization' },
+                { icon: Link, title: 'Easy Integration' },
+                { icon: BarChart, title: 'Data Analytics' },
+                { icon: Shield, title: 'Email Authentication' },
+            ],
+        },
+    },
     'sms-api': {
         departmentsWeServe: [
             {

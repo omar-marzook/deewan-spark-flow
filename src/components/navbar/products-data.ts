@@ -1,4 +1,4 @@
-import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid, Shield } from 'lucide-react';
+import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid, Shield, Mail } from 'lucide-react';
 
 export type Product = {
   name: string;
@@ -47,6 +47,12 @@ export const products: ProductCategories = {
         },
     ],
     communicationAPIs: [
+        {
+            name: 'Email API',
+            description: 'Powerful email capabilities',
+            slug: 'email-api',
+            icon: Mail,
+        },
         {
             name: 'WhatsApp',
             description: 'WhatsApp Business API',
