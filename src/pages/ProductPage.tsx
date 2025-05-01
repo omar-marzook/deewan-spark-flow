@@ -85,7 +85,10 @@ export default function ProductPage() {
       
       {/* ConversionApiBenefits should only appear for conversion APIs */}
       {productData.isConversionApi && (
-        <ConversionApiBenefits isConversionApi={productData.isConversionApi} />
+        <ConversionApiBenefits 
+          isConversionApi={productData.isConversionApi} 
+          productSlug={slug}
+        />
       )}
 
       {/* CoreFeaturesStaggered should only appear for applications, not for conversion APIs */}

@@ -129,7 +129,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       
       {/* ConversionApiBenefits Section - Only shown for conversion APIs */}
       {product.isConversionApi && (
-        <ConversionApiBenefits isConversionApi={product.isConversionApi} />
+        <ConversionApiBenefits 
+          isConversionApi={product.isConversionApi} 
+          productSlug={product.slug}
+        />
       )}
       
       {/* Departments We Serve Section */}

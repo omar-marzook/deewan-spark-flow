@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
+import { ProductData } from '@/components/ProductTemplate';
+import productsData from '@/data/products-data';
 
 interface BenefitItem {
   title: string;
@@ -10,9 +12,11 @@ interface BenefitItem {
 
 interface ConversionApiBenefitsProps {
   isConversionApi: boolean;
+  productSlug?: string;
 }
 
-const benefits: BenefitItem[] = [
+// Default benefits if none are provided in the product data
+const defaultBenefits: BenefitItem[] = [
   {
     title: "Convenient Customer Support",
     description: "Enabling your customers to submit requests and get information on their preferred chat app will improve experience, loyalty and retention."
@@ -27,17 +31,36 @@ const benefits: BenefitItem[] = [
   }
 ];
 
-const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConversionApi }) => {
+const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConversionApi, productSlug }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, {
     once: true,
     amount: 0.2
   });
 
-  // Don't render if not a conversion API
-  if (!isConversionApi) {
+  // Find the product data based on the slug or use the first conversion API product
+  const getProductData = () => {
+    if (productSlug && productsData[productSlug]) {
+      return productsData[productSlug];
+    }
+    
+    // If no specific product slug is provided, find the first product with isConversionApi: true
+    const conversionApiProduct = Object.values(productsData).find(
+      product => product.isConversionApi === true
+    );
+    
+    return conversionApiProduct || null;
+  };
+  
+  const productData = getProductData();
+  
+  // Don't render if not a conversion API or if no product data is found
+  if (!isConversionApi || !productData) {
     return null;
   }
+  
+  // Get the benefits from the product data or use default benefits
+  const benefits = productData.conversionBenefits || defaultBenefits;
 
   return (
     <section 
@@ -68,7 +91,7 @@ const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConvers
                 Offer utilities, services, information and account functions on WhatsApp with one API
               </h2>
               <p className="mt-4 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-                The benefits of WhatsApp Business API by Deewan will transform your business.
+                The benefits of {productData.name} by Deewan will transform your business.
               </p>
             </motion.div>
 
