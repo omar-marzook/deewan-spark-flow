@@ -65,7 +65,7 @@ const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConvers
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-16 px-6 md:px-20 overflow-hidden bg-gradient-to-br from-deewan-primary/80 to-deewan-secondary/70"
+      className="relative py-16 md:py-24 px-6 md:px-20 overflow-hidden bg-gradient-to-br from-deewan-primary/80 to-deewan-secondary/70"
     >
       <div className="container mx-auto relative z-10">
         {/* Glassy container */}
@@ -96,7 +96,7 @@ const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConvers
             </motion.div>
 
             {/* Benefits Cards - Vertical Layout */}
-            <div className="space-y-6 md:space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {benefits.map((benefit, index) => (
                 <BenefitCard 
                   key={index} 
@@ -145,7 +145,7 @@ const BenefitCard: React.FC<BenefitCardProps> = ({ benefit, index, isInView }) =
 
         {/* Content */}
         <div className="flex-grow">
-          <h3 className="text-xl font-semibold text-white mb-2">
+          <h3 className="text-xl lg:text-2xl font-semibold text-white mb-2">
             {benefit.title}
           </h3>
           <p className="text-base leading-relaxed text-white/95">
