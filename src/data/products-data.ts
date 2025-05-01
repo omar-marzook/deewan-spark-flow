@@ -1,5 +1,5 @@
 import { ProductData } from '@/components/ProductTemplate';
-import { Megaphone, UserRoundCog } from "lucide-react";
+import { Megaphone, UserRoundCog } from 'lucide-react';
 import { StatItem } from '@/components/AlternativeStats';
 import {
     Check,
@@ -83,37 +83,40 @@ interface ExtendedProductData extends ProductData {
 const defaultDepartmentsData: DepartmentData[] = [
     {
         id: 1,
-        name: "Marketing and Sales",
-        description: [
-            "Marketing and promotions",
-            "Product catalogs"
-        ],
-        icon: React.createElement(Megaphone, { className: "h-10 w-10 text-deewan-primary" }),
-        color: "bg-deewan-primary/10"
+        name: 'Marketing and Sales',
+        description: ['Marketing and promotions', 'Product catalogs'],
+        icon: React.createElement(Megaphone, {
+            className: 'h-10 w-10 text-deewan-primary',
+        }),
+        color: 'bg-deewan-primary/10',
     },
     {
         id: 2,
-        name: "Customer Service",
+        name: 'Customer Service',
         description: [
-            "Surveys and questionnaires",
-            "Follow ups and reminders",
-            "Feedback and support"
+            'Surveys and questionnaires',
+            'Follow ups and reminders',
+            'Feedback and support',
         ],
-        icon: React.createElement(Headset, { className: "h-10 w-10 text-deewan-secondary" }),
-        color: "bg-deewan-secondary/10"
+        icon: React.createElement(Headset, {
+            className: 'h-10 w-10 text-deewan-secondary',
+        }),
+        color: 'bg-deewan-secondary/10',
     },
     {
         id: 3,
-        name: "Administration",
+        name: 'Administration',
         description: [
-            "Authentications",
-            "Transaction confirmation",
-            "Account updates",
-            "Onboarding"
+            'Authentications',
+            'Transaction confirmation',
+            'Account updates',
+            'Onboarding',
         ],
-        icon: React.createElement(UserRoundCog, { className: "h-10 w-10 text-deewan-accent" }),
-        color: "bg-deewan-accent/10"
-    }
+        icon: React.createElement(UserRoundCog, {
+            className: 'h-10 w-10 text-deewan-accent',
+        }),
+        color: 'bg-deewan-accent/10',
+    },
 ];
 
 const productsData: Record<string, ExtendedProductData> = {
@@ -264,16 +267,17 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: "Powerful MFA capabilities in one API from Deewan",
-            subtitle: "Leverage the full potential of Multi-Factor Authentication with our comprehensive API solution",
+            title: 'Powerful MFA capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of Multi-Factor Authentication with our comprehensive API solution',
             capabilities: [
                 { icon: CheckCircle, title: 'Verified Authentication' },
                 { icon: Shield, title: 'Security Management' },
                 { icon: Bot, title: 'Automated Verification' },
                 { icon: UserCog, title: 'Account Management' },
                 { icon: Database, title: 'Data Protection' },
-                { icon: CheckSquare, title: 'Compliance Requirements' }
-            ]
+                { icon: CheckSquare, title: 'Compliance Requirements' },
+            ],
         },
         stats: [
             {
@@ -446,16 +450,17 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: "Powerful IVR capabilities in one API from Deewan",
-            subtitle: "Leverage the full potential of Interactive Voice Response with our comprehensive API solution",
+            title: 'Powerful IVR capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of Interactive Voice Response with our comprehensive API solution',
             capabilities: [
                 { icon: Phone, title: 'Voice Recognition' },
                 { icon: Headset, title: 'Call Management' },
                 { icon: Bot, title: 'Automated Response' },
                 { icon: UserCog, title: 'Call Routing' },
                 { icon: Database, title: 'Call Analytics' },
-                { icon: Shield, title: 'Voice Security' }
-            ]
+                { icon: Shield, title: 'Voice Security' },
+            ],
         },
         stats: [
             {
@@ -491,16 +496,17 @@ const productsData: Record<string, ExtendedProductData> = {
         description:
             'Manage real-time communications across WhatsApp, live chat, social media, and email — all in one simple, secure dashboard.',
         productFeatures: {
-            title: "Powerful WhatsApp Business capabilities in one API from Deewan",
-            subtitle: "Leverage the full potential of WhatsApp Business with our comprehensive API solution",
+            title: 'Powerful WhatsApp Business capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of WhatsApp Business with our comprehensive API solution',
             capabilities: [
                 { icon: CheckCircle, title: 'Verified Account' },
                 { icon: Database, title: 'Database Management' },
                 { icon: Bot, title: 'Chatbot Integration' },
                 { icon: UserCog, title: 'Account Management' },
                 { icon: Shield, title: 'Data Encryption' },
-                { icon: CheckSquare, title: 'Opt-In Requirement' }
-            ]
+                { icon: CheckSquare, title: 'Opt-In Requirement' },
+            ],
         },
         coreFeatures: {
             title: 'Improve every aspect of <span class="text-deewan-primary">customer engagement</span>',
@@ -790,16 +796,17 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: "Powerful Campaign capabilities in one API from Deewan",
-            subtitle: "Leverage the full potential of Messaging Campaigns with our comprehensive API solution",
+            title: 'Powerful Campaign capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of Messaging Campaigns with our comprehensive API solution',
             capabilities: [
                 { icon: MessageSquare, title: 'Multi-Channel Messaging' },
                 { icon: Database, title: 'Contact Management' },
                 { icon: BarChart, title: 'Campaign Analytics' },
                 { icon: Clock, title: 'Scheduled Delivery' },
                 { icon: Target, title: 'Audience Targeting' },
-                { icon: CheckSquare, title: 'Delivery Confirmation' }
-            ]
+                { icon: CheckSquare, title: 'Delivery Confirmation' },
+            ],
         },
         stats: [
             {
@@ -970,16 +977,17 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: "Powerful Chatbot capabilities in one API from Deewan",
-            subtitle: "Leverage the full potential of AI-powered Chatbots with our comprehensive API solution",
+            title: 'Powerful Chatbot capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of AI-powered Chatbots with our comprehensive API solution',
             capabilities: [
                 { icon: Bot, title: 'AI-Powered Responses' },
                 { icon: Brain, title: 'Natural Language Processing' },
                 { icon: MessageSquare, title: 'Multi-Channel Support' },
                 { icon: Globe, title: 'Multilingual Capabilities' },
                 { icon: Database, title: 'Knowledge Base Integration' },
-                { icon: UserCog, title: 'Conversation Management' }
-            ]
+                { icon: UserCog, title: 'Conversation Management' },
+            ],
         },
         stats: [
             {
@@ -1004,6 +1012,52 @@ const productsData: Record<string, ExtendedProductData> = {
                 label: 'Increase in customer satisfaction',
             },
         ],
+    },
+    whatsapp: {
+        departmentsWeServe: defaultDepartmentsData,
+        slug: 'whatsapp',
+        name: 'WhatsApp Business API',
+        isConversionApi: true, // Bots is an application
+        tagline:
+            'Join the world’s best businesses on WhatsApp Business and unleash your brand’s full potential.',
+        description:
+            'Join the world’s best businesses on WhatsApp Business and unleash your brand’s full potential.',
+        stats: [
+            {
+                icon: React.createElement(TrendingUp, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '30%',
+                label: 'Increase in conversion rate',
+            },
+            {
+                icon: React.createElement(Target, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '55%',
+                label: 'Of businesses generate quality leads via bots',
+            },
+            {
+                icon: React.createElement(ThumbsUp, {
+                    className: 'h-6 w-6 text-deewan-primary',
+                }),
+                value: '95%',
+                label: 'Increase in customer satisfaction',
+            },
+        ],
+        productFeatures: {
+            title: 'Powerful Chatbot capabilities in one API from Deewan',
+            subtitle:
+                'Leverage the full potential of AI-powered Chatbots with our comprehensive API solution',
+            capabilities: [
+                { icon: Bot, title: 'Verified Account' },
+                { icon: Brain, title: 'Database Management' },
+                { icon: MessageSquare, title: 'Multi-Channel Support' },
+                { icon: Globe, title: 'Multilingual Capabilities' },
+                { icon: Database, title: 'Knowledge Base Integration' },
+                { icon: UserCog, title: 'Conversation Management' },
+            ],
+        },
     },
 };
 
