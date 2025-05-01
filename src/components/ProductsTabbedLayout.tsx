@@ -16,9 +16,12 @@ const ProductsTabbedLayout = () => {
       title: product.name,
       description: product.tagline,
       slug: slug,
-      // Use the first feature's icon if available, or default to Bell
-      icon: product.features && product.features.length > 0 && product.features[0].icon ? 
-            product.features[0].icon : 
+      // Create a new icon with the correct size
+      icon: slug === 'campaigns' ? <Bell className="w-12 h-12 text-deewan-primary" /> :
+            slug === 'omni-channel-chat' ? <MessageSquare className="w-12 h-12 text-deewan-primary" /> :
+            slug === 'bots' ? <Zap className="w-12 h-12 text-deewan-primary" /> :
+            slug === 'mfa' ? <Shield className="w-12 h-12 text-deewan-primary" /> :
+            slug === 'ivr' ? <Phone className="w-12 h-12 text-deewan-primary" /> :
             <Bell className="w-12 h-12 text-deewan-primary" />,
       color: "bg-deewan-primary/10"
     };
