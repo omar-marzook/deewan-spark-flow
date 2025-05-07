@@ -40,8 +40,8 @@ const AlternativeTestimonials = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="mb-4">Client <span className="text-deewan-primary">Testimonials</span></h2>
-          <p className="text-xl text-deewan-dark/80">
-            Don’t just take our word for it. Check out what our clients have to say about Deewan.
+          <p className="text-base md:text-lg text-deewan-gray">
+            Don't just take our word for it. Check out what our clients have to say about Deewan.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ const AlternativeTestimonials = () => {
               <CardContent className="p-0 flex flex-col h-full">
                 <Quote className="h-10 w-10 text-deewan-primary/20 absolute top-6 right-6" />
 
-                <p className="text-deewan-dark/90 mb-8 text-lg leading-relaxed relative z-10">
+                <p className="italic text-base md:text-xl text-deewan-gray mb-8 leading-relaxed relative z-10">
                   "{testimonial.quote}"
                 </p>
 

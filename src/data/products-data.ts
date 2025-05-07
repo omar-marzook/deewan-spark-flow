@@ -90,6 +90,8 @@ interface ExtendedProductData extends ProductData {
     };
     isConversionApi?: boolean; // Flag to identify if the product is a conversion API
     conversionBenefits?: BenefitItem[]; // Benefits for conversion API products
+    conversionTitle?: string; // Title for the conversion benefits section
+    conversionDescription?: string; // Description for the conversion benefits section
 }
 
 // Default departments data that will be used for all products
@@ -143,7 +145,7 @@ const productsData: Record<string, ExtendedProductData> = {
         description:
             'Add an extra layer of security to your applications with Multi-Factor Authentication that enhances user experience without compromising security.',
         coreFeatures: {
-            title: '<span class="text-deewan-primary">Secure authentication</span> without compromising experience',
+            title: '<span class="text-deewan-primary">Secure Authentication</span> without Compromising Experience',
             subtitle:
                 'Deewan MFA provides robust security solutions that protect your users while maintaining a seamless authentication experience.',
         },
@@ -280,7 +282,7 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: 'Powerful MFA capabilities in one API from Deewan',
+            title: 'Powerful MFA Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Multi-Factor Authentication with our comprehensive API solution.',
             capabilities: [
@@ -326,7 +328,7 @@ const productsData: Record<string, ExtendedProductData> = {
         description:
             'Add interactive voice response and voice capabilities to your communications and take the customer experience to the next level.',
         coreFeatures: {
-            title: 'The win-win voice solution for <span class="text-deewan-primary">businesses and customers</span>',
+            title: 'The Win-Win Voice Solution for <span class="text-deewan-primary">Businesses and Customers</span>',
             subtitle:
                 'Deewan IVR helps businesses offer a cohesive and effective customer experience that customers will enjoy and come back for.',
         },
@@ -335,7 +337,7 @@ const productsData: Record<string, ExtendedProductData> = {
                 icon: React.createElement(Phone, {
                     className: 'w-7 h-7 text-deewan-primary',
                 }),
-                title: 'Call distribution & Routing',
+                title: 'Call Distribution & Routing',
                 description:
                     'Build easy voice services for customers and reduce workload, waiting times and infrastructure utilization via call distribution and routing.',
             },
@@ -463,7 +465,7 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: 'Powerful IVR capabilities in one API from Deewan',
+            title: 'Powerful IVR Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Interactive Voice Response with our comprehensive API solution.',
             capabilities: [
@@ -509,7 +511,7 @@ const productsData: Record<string, ExtendedProductData> = {
         description:
             'Manage real-time communications across WhatsApp, live chat, social media, and email — all in one simple, secure dashboard.',
         productFeatures: {
-            title: 'Powerful WhatsApp Business capabilities in one API from Deewan',
+            title: 'Powerful WhatsApp Business Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of WhatsApp Business with our comprehensive API solution.',
             capabilities: [
@@ -531,7 +533,7 @@ const productsData: Record<string, ExtendedProductData> = {
                 icon: React.createElement(MessageSquare, {
                     className: 'w-7 h-7 text-deewan-primary',
                 }),
-                title: 'Real Time Communication',
+                title: 'Real-Time Communication',
                 description:
                     'Allow your customers to engage with your brand in real-time and receive instant responses via instant messaging.',
             },
@@ -690,7 +692,7 @@ const productsData: Record<string, ExtendedProductData> = {
         description:
             'Reach your customers instantly on any communication channel from one platform. In a few minutes, your next SMS or WhatsApp campaign will be ready to go live.',
         coreFeatures: {
-            title: 'Target better, reach higher, earn more',
+            title: 'Target Better, Reach Higher, Earn More',
             subtitle:
                 'Deewan Campaigns is a powerful application developed to support modern businesses with versatile campaign-building and management features.',
         },
@@ -809,7 +811,7 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: 'Powerful Campaign capabilities in one API from Deewan',
+            title: 'Powerful Campaign Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Messaging Campaigns with our comprehensive API solution.',
             capabilities: [
@@ -855,7 +857,7 @@ const productsData: Record<string, ExtendedProductData> = {
         description:
             'Allocate resources efficiently and answer customer queries in real time with the AI-powered chatbots of Deewan Bots.',
         coreFeatures: {
-            title: 'Transforming the customer experience with <span class="text-deewan-primary">advanced bots</span>',
+            title: 'Transforming the Customer Experience with <span class="text-deewan-primary">Advanced Bots</span>',
             subtitle:
                 'Deewan Bots covers extensive chatbot and customer engagement use cases to help your business achieve better results with less resources.',
         },
@@ -990,7 +992,7 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: 'Powerful Chatbot capabilities in one API from Deewan',
+            title: 'Powerful Chatbot Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of AI-powered Chatbots with our comprehensive API solution.',
             capabilities: [
@@ -1026,7 +1028,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
     },
-    "whatsapp-api": {
+    'whatsapp-api': {
         departmentsWeServe: [
             {
                 id: 1,
@@ -1088,6 +1090,10 @@ const productsData: Record<string, ExtendedProductData> = {
             "Join the world's best businesses on WhatsApp Business and unleash your brand's full potential.",
         description:
             "Join the world's best businesses on WhatsApp Business and unleash your brand's full potential.",
+        conversionTitle:
+            'Offer Utilities, Services, Information and Account Functions on WhatsApp with One API',
+        conversionDescription:
+            'The benefits of WhatsApp Business API by Deewan will transform your business.',
         conversionBenefits: [
             {
                 title: 'Convenient Customer Support',
@@ -1132,7 +1138,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful WhatsApp Business capabilities in one API from Deewan',
+            title: 'Powerful WhatsApp Business Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of WhatsApp Business API with our comprehensive solution.',
             capabilities: [
@@ -1195,6 +1201,10 @@ const productsData: Record<string, ExtendedProductData> = {
             'Communicate information instantly and cultivate deeper connections with your customers with personalized notifications.',
         description:
             'Communicate information instantly and cultivate deeper connections with your customers with personalized notifications.',
+        conversionTitle:
+            'Add Powerful Email Experience Capabilities to Your Platform with One API',
+        conversionDescription:
+            'Refine your digital experience with transactional and promotional email communications.',
         conversionBenefits: [
             {
                 title: 'Better Personalization',
@@ -1239,7 +1249,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful Push Notification capabilities in one API from Deewan',
+            title: 'Powerful Push Notification Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Push Notification API with our comprehensive solution.',
             capabilities: [
@@ -1302,6 +1312,10 @@ const productsData: Record<string, ExtendedProductData> = {
             'Complete your digital experience with transactional and informational communications via email.',
         description:
             'Complete your digital experience with transactional and informational communications via email.',
+        conversionTitle:
+            'Add Powerful Email Experience Capabilities to Your Platform with One API',
+        conversionDescription:
+            'Refine your digital experience with transactional and promotional email communications.',
         conversionBenefits: [
             {
                 title: 'Better Personalization',
@@ -1346,7 +1360,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful Email Capabilities in One API from Deewan',
+            title: 'Powerful Email Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Email API with our comprehensive solution.',
             capabilities: [
@@ -1407,6 +1421,9 @@ const productsData: Record<string, ExtendedProductData> = {
             'A secure, multifunctional API capable of handling high-volume SMS traffic efficiently and economically.',
         description:
             'A secure, multifunctional API capable of handling high-volume SMS traffic efficiently and economically.',
+        conversionTitle: 'Rich SMS Management Tools and Services in One API',
+        conversionDescription:
+            'The benefits of SMS API by Deewan will transform your communication strategy.',
         conversionBenefits: [
             {
                 title: 'Improved Customer Experience',
@@ -1451,7 +1468,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful SMS capabilities in one API from Deewan',
+            title: 'Powerful SMS Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of SMS API with our comprehensive solution.',
             capabilities: [
@@ -1548,6 +1565,9 @@ const productsData: Record<string, ExtendedProductData> = {
             'Enrich your customer experience with extensive voice features that will streamline your operations, cut costs, and improve customer loyalty.',
         description:
             'Enrich your customer experience with extensive voice features that will streamline your operations, cut costs, and improve customer loyalty.',
+        conversionTitle: 'Be the Brand that Speaks and Listens',
+        conversionDescription:
+            'The benefits of Voice API by Deewan for your brand will be quickly felt, both operationally and financially.',
         conversionBenefits: [
             {
                 title: 'Improved Customer Experience',
@@ -1592,7 +1612,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful voice capabilities in one API from Deewan',
+            title: 'Powerful Voice Capabilities in <span class="text-deewan-primary">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Voice API with our comprehensive solution.',
             capabilities: [
@@ -1607,7 +1627,7 @@ const productsData: Record<string, ExtendedProductData> = {
                 { icon: Globe, title: 'Virtual DID Numbers' },
             ],
         },
-    }
+    },
 };
 
 export default productsData;

@@ -25,7 +25,7 @@ const HeroSection = () => {
             
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">Transforming Communication Across Industries</h1>
             
-            <p className="text-xl mb-8 text-deewan-dark/80 max-w-xl">We build intelligent tools that bridge gaps, spark conversations, and help organizations connect.</p>
+          <p className="text-lg md:text-xl text-deewan-gray mb-8 max-w-xl">We build intelligent tools that bridge gaps, spark conversations, and help organizations connect.</p>
             
             <ButtonLink href="#our-story" variant="default" className="w-fit mx-auto lg:mx-0">
               Discover Our Story

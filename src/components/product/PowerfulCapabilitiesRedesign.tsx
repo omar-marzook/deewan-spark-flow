@@ -141,7 +141,7 @@ const PowerfulCapabilitiesRedesign = ({
           dangerouslySetInnerHTML={{ __html: title }}>
         </h2>
 
-        <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-deewan-gray max-w-2xl mx-auto">
           {subtitle}
         </p>
       </motion.div>
@@ -226,7 +226,7 @@ const PowerfulCapabilitiesRedesign = ({
                     <h3 className="text-2xl md:text-3xl font-bold text-deewan-dark mb-4">
                       {feature.title}
                     </h3>
-                    <p className="text-lg text-deewan-dark/70 max-w-2xl mb-4">
+                    <p className="text-base text-deewan-gray max-w-2xl mb-4">
                       {feature.description}
                     </p>
                   </div>

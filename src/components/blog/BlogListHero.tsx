@@ -20,7 +20,7 @@ const BlogListHero = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-deewan-dark">
             Insights & Articles
           </h1>
-          <p className="text-xl text-deewan-gray max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-deewan-gray max-w-2xl mx-auto">
             Ideas, updates, and insights from the team at Deewan.
           </p>
         </motion.div>

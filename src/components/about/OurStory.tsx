@@ -48,7 +48,7 @@ const OurStory = () => {
             Our <span className="text-deewan-primary">Story</span>
           </h2>
           
-          <p className="text-lg text-deewan-dark/80 max-w-2xl mx-auto">A journey of innovation, growth, and trust.</p>
+        <p className="text-base md:text-lg text-deewan-gray max-w-2xl mx-auto">A journey of innovation, growth, and trust.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -71,7 +71,7 @@ const OurStory = () => {
                     <span className="text-deewan-primary font-bold text-sm">{item.year}</span>
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-deewan-dark">{item.title}</h3>
-                  <p className="text-deewan-dark/70">{item.description}</p>
+                  <p className="text-base md:text-lg text-deewan-gray">{item.description}</p>
                   {index !== timelineItems.length - 1 && <div className="absolute left-4 top-8 bottom-0 w-px bg-gradient-to-b from-deewan-primary/20 to-transparent"></div>}
                 </motion.div>)}
             </div>
@@ -91,13 +91,13 @@ const OurStory = () => {
             <div className="glass p-8 rounded-2xl relative overflow-hidden">
               <div className="space-y-6 relative z-10">
                 <h3 className="text-2xl font-bold text-deewan-dark">Our Mission</h3>
-                <p className="text-deewan-dark/80">
+                <p className="text-base md:text-lg text-deewan-gray">
                   To create communication technology that brings people closer together,
                   making digital interactions as natural and effective as face-to-face conversations.
                 </p>
                 
                 <h3 className="text-2xl font-bold text-deewan-dark">Our Vision</h3>
-                <p className="text-deewan-dark/80">
+                <p className="text-base md:text-lg text-deewan-gray">
                   To be the cornerstone of communication infrastructure for forward-thinking
                   organizations, bridging the gap between technical possibility and human understanding.
                 </p>

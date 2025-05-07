@@ -74,9 +74,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-deewan-dark">
-            {title}
-          </h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-deewan-dark" dangerouslySetInnerHTML={{ __html: title }}></h2>
           {subtitle && (
             <p className="mt-4 text-lg text-deewan-dark/70 max-w-2xl mx-auto">
               {subtitle}
@@ -193,7 +191,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, isInView }) =
       </h3>
 
       {/* Description */}
-      <p className="text-deewan-dark/70">
+      <p className="text-deewan-gray">
         {feature.description}
       </p>
     </motion.div>

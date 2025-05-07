@@ -76,7 +76,7 @@ const FeatureCard = ({
           {feature.title}
         </h3>
 
-        <p className="text-deewan-dark/70 leading-relaxed">
+        <p className="text-deewan-gray leading-relaxed">
           {feature.description}
         </p>
       </div>

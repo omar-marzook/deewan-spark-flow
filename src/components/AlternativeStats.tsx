@@ -92,7 +92,7 @@ const AlternativeStats = ({
         {showTitle && (
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="mb-4" dangerouslySetInnerHTML={{ __html: titleContent.title }}></h2>
-            <p className="text-xl text-deewan-dark/80">
+            <p className="text-base md:text-lg text-deewan-gray">
               {titleContent.description}
             </p>
           </div>
@@ -106,7 +106,7 @@ const AlternativeStats = ({
               </div>
               <div className="text-center pt-4">
                 <h3 className="text-4xl font-bold mb-2 text-deewan-primary">{stat.value}</h3>
-                <p className="text-deewan-dark/70">{stat.label}</p>
+                <p className="text-deewan-gray">{stat.label}</p>
               </div>
             </div>
           ))}
@@ -122,7 +122,7 @@ const AlternativeStats = ({
                   </div>
                   <h3 className="text-xl font-bold text-deewan-dark">{card.title}</h3>
                 </div>
-                <p className="text-deewan-dark/80">{card.description}</p>
+                <p className="text-deewan-gray">{card.description}</p>
               </div>
             ))}
           </div>
