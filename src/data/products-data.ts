@@ -280,7 +280,7 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: 'Powerful MFA capabilities in one API from Deewan',
+            title: 'Powerful MFA capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Multi-Factor Authentication with our comprehensive API solution.',
             capabilities: [
@@ -463,7 +463,7 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: 'Powerful IVR capabilities in one API from Deewan',
+            title: 'Powerful IVR capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Interactive Voice Response with our comprehensive API solution.',
             capabilities: [
@@ -509,7 +509,7 @@ const productsData: Record<string, ExtendedProductData> = {
         description:
             'Manage real-time communications across WhatsApp, live chat, social media, and email — all in one simple, secure dashboard.',
         productFeatures: {
-            title: 'Powerful WhatsApp Business capabilities in one API from Deewan',
+            title: 'Powerful WhatsApp Business capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of WhatsApp Business with our comprehensive API solution.',
             capabilities: [
@@ -809,7 +809,7 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: 'Powerful Campaign capabilities in one API from Deewan',
+            title: 'Powerful Campaign capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Messaging Campaigns with our comprehensive API solution.',
             capabilities: [
@@ -990,7 +990,7 @@ const productsData: Record<string, ExtendedProductData> = {
             videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         },
         productFeatures: {
-            title: 'Powerful Chatbot capabilities in one API from Deewan',
+            title: 'Powerful Chatbot capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of AI-powered Chatbots with our comprehensive API solution.',
             capabilities: [
@@ -1132,7 +1132,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful WhatsApp Business capabilities in one API from Deewan',
+            title: 'Powerful WhatsApp Business capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of WhatsApp Business API with our comprehensive solution.',
             capabilities: [
@@ -1239,7 +1239,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful Push Notification capabilities in one API from Deewan',
+            title: 'Powerful Push Notification capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Push Notification API with our comprehensive solution.',
             capabilities: [
@@ -1346,7 +1346,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful Email Capabilities in One API from Deewan',
+            title: 'Powerful Email Capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Email API with our comprehensive solution.',
             capabilities: [
@@ -1451,7 +1451,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful SMS capabilities in one API from Deewan',
+            title: 'Powerful SMS capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of SMS API with our comprehensive solution.',
             capabilities: [
@@ -1592,7 +1592,7 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful voice capabilities in one API from Deewan',
+            title: 'Powerful voice capabilities in <span class=\"text-deewan-primary\">One API</span> from Deewan',
             subtitle:
                 'Leverage the full potential of Voice API with our comprehensive solution.',
             capabilities: [
