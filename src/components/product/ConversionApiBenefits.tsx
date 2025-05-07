@@ -86,10 +86,10 @@ const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConvers
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <h2 className="text-2xl md:text-4xl text-white">
-                Offer utilities, services, information and account functions on WhatsApp with one API
+                {productData.conversionTitle}
               </h2>
               <p className="mt-4 text-lg md:text-xl text-white/90">
-                The benefits of {productData.name} by Deewan will transform your business.
+                {productData.conversionDescription}
               </p>
             </motion.div>
 
