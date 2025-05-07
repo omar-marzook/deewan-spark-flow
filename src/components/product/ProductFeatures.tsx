@@ -191,7 +191,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, isInView }) =
       </h3>
 
       {/* Description */}
-      <p className="text-deewan-dark/70">
+      <p className="text-deewan-gray">
         {feature.description}
       </p>
     </motion.div>

@@ -52,7 +52,7 @@ const IndustrySolutionsRedesign = () => {
             Tailored for Your <span className="text-deewan-secondary">Industry</span>
           </h2>
           
-          <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">Our communication platform adapts to the unique needs of your business</p>
+          <p className="text-base md:text-lg text-deewan-gray max-w-2xl mx-auto">Our communication platform adapts to the unique needs of your business</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

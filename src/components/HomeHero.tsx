@@ -66,7 +66,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
           Connect smarter.<br/>
           Grow faster
         </h1>
-        <p className="text-xl text-deewan-dark mb-8 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-deewan-gray mb-8 max-w-2xl mx-auto">
           Customizable, secure communications built to scale across every channel.
         </p>
 

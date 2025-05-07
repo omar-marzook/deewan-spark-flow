@@ -133,7 +133,7 @@ const DepartmentsWeServe: React.FC<DepartmentsWeServeProps> = ({ departments }) 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="mb-4 text-deewan-dark"><span className="text-deewan-primary">Supporting</span> Primary Business Functions</h2>
-          <p className="text-xl text-deewan-dark">
+          <p className="text-base md:text-lg text-deewan-gray">
             Our communication solutions are tailored to meet the unique needs of various departments across your organization.
           </p>
         </div>

@@ -14,7 +14,7 @@ const TransformingDigital = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Transforming Digital <span className="text-deewan-primary">Communication</span>
           </h2>
-          <p className="text-lg text-deewan-dark/80 max-w-3xl mx-auto">Rooted in excellence and driven by innovation, we’re proud to be part of Saudi Arabia’s digital transformation journey—while building solutions that resonate across the globe.</p>
+        <p className="text-base md:text-lg text-deewan-gray max-w-3xl mx-auto">Rooted in excellence and driven by innovation, we’re proud to be part of Saudi Arabia’s digital transformation journey—while building solutions that resonate across the globe.</p>
         </div>
 
         {/* Feature Cards */}

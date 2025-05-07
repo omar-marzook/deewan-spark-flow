@@ -81,7 +81,7 @@ const ProductsTabbedLayout = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="mb-4">Our <span className="text-deewan-primary">Product</span> Ecosystem</h2>
-          <p className="text-xl text-deewan-dark">End-to-end communication tools designed to power today’s growing businesses.</p>
+          <p className="text-base md:text-lg text-deewan-gray">End-to-end communication tools designed to power today's growing businesses.</p>
         </div>
         
         {/* Enhanced glassmorphic tabs */}
