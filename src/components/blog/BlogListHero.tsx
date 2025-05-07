@@ -21,7 +21,7 @@ const BlogListHero = () => {
             Insights & Articles
           </h1>
           <p className="text-xl text-deewan-gray max-w-2xl mx-auto">
-            Ideas, updates, and insights from the team at Deewan
+            Ideas, updates, and insights from the team at Deewan.
           </p>
         </motion.div>
       </div>

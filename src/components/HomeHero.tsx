@@ -64,7 +64,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
       <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deewan-dark leading-tight">
           Connect smarter.<br/>
-          Grow faster.
+          Grow faster
         </h1>
         <p className="text-xl text-deewan-dark mb-8 max-w-2xl mx-auto">
           Customizable, secure communications built to scale across every channel.

@@ -45,7 +45,7 @@ const Industries = () => {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="mb-4"><span className="text-deewan-primary">Industries</span> We Serve</h2>
           <p className="text-xl text-deewan-gray">
-            Tailored communication solutions for various industries with unique requirements
+            Tailored communication solutions for various industries with unique requirements.
           </p>
         </div>
         

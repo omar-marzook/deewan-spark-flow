@@ -80,7 +80,7 @@ const CreativeTestimonials = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Client <span className="text-deewan-primary">Testimonials</span>
         </h2>
-        <p className="text-lg text-deewan-gray max-w-3xl mx-auto">Don’t just take our word for it—check out what our clients have to say about Deewan</p>
+        <p className="text-lg text-deewan-gray max-w-3xl mx-auto">Don’t just take our word for it. Check out what our clients have to say about Deewan.</p>
       </div>
 
       {/* Testimonial cards */}

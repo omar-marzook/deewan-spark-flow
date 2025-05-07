@@ -56,7 +56,7 @@ const AboutUs = () => {
           ]}
           titleContent={{
             title: "<span class=\"text-deewan-primary\">Deewan</span> in Numbers",
-            description: "Real impact. Measurable growth"
+            description: "Real impact for measurable growth."
           }}
         />
         <AlternativeTestimonials />

@@ -36,12 +36,12 @@ const HowItWorksSteps = ({ steps = defaultSteps }: HowItWorksStepsProps) => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" />
+      <div className="absolute -z-10 inset-0 bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" />
       
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Get started in 3 simple steps!
+            Get started in <span class="text-deewan-primary">3 simple steps!</span>
           </h2>
           <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
             Sign up for a free account on Deewan's communication platform and launched your first campaign in a few minutes.

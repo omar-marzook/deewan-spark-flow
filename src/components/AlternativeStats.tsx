@@ -73,7 +73,7 @@ const defaultCards: CardItem[] = [
 // Default title content
 const defaultTitleContent: TitleContent = {
   title: "<span class=\"text-deewan-primary\">Deewan</span> in Numbers",
-  description: "Real impact. Measurable growth"
+  description: "Real impact for measurable growth."
 };
 
 const AlternativeStats = ({

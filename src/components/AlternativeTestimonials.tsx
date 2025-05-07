@@ -41,7 +41,7 @@ const AlternativeTestimonials = () => {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="mb-4">Client <span className="text-deewan-primary">Testimonials</span></h2>
           <p className="text-xl text-deewan-dark/80">
-            Don’t just take our word for it—check out what our clients have to say about Deewan
+            Don’t just take our word for it. Check out what our clients have to say about Deewan.
           </p>
         </div>
 

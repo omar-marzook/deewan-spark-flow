@@ -41,7 +41,7 @@ const BlogSection = () => {
             Blog
           </h2>
           <p className="text-lg text-deewan-gray max-w-3xl mx-auto">
-            Stay updated with the latest insights, trends, and best practices
+            Stay updated with the latest insights, trends, and best practices.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 items-stretch">

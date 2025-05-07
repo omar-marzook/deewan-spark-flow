@@ -190,9 +190,9 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         powerfulCapabilities: {
-            title: 'The impact of <span class="text-deewan-primary">Deewan MFA</span>',
+            title: 'The Impact of <span class="text-deewan-primary">Deewan MFA</span>',
             subtitle:
-                'Our MFA platform combines robust security with user experience to protect your applications and users',
+                'Our MFA platform combines robust security with user experience to protect your applications and users.',
             features: [
                 {
                     id: 'improved-user-experience',
@@ -282,7 +282,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful MFA capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of Multi-Factor Authentication with our comprehensive API solution',
+                'Leverage the full potential of Multi-Factor Authentication with our comprehensive API solution.',
             capabilities: [
                 { icon: CheckCircle, title: 'Verified Authentication' },
                 { icon: Shield, title: 'Security Management' },
@@ -373,9 +373,9 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         powerfulCapabilities: {
-            title: 'The impact of <span class="text-deewan-primary">Deewan IVR</span>',
+            title: 'The Impact of <span class="text-deewan-primary">Deewan IVR</span>',
             subtitle:
-                'Our IVR platform combines intelligent voice technology with efficiency to transform your customer service operations',
+                'Our IVR platform combines intelligent voice technology with efficiency to transform your customer service operations.',
             features: [
                 {
                     id: 'cost-optimization',
@@ -465,7 +465,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful IVR capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of Interactive Voice Response with our comprehensive API solution',
+                'Leverage the full potential of Interactive Voice Response with our comprehensive API solution.',
             capabilities: [
                 { icon: Phone, title: 'Voice Recognition' },
                 { icon: Headset, title: 'Call Management' },
@@ -511,7 +511,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful WhatsApp Business capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of WhatsApp Business with our comprehensive API solution',
+                'Leverage the full potential of WhatsApp Business with our comprehensive API solution.',
             capabilities: [
                 { icon: CheckCircle, title: 'Verified Account' },
                 { icon: Database, title: 'Database Management' },
@@ -522,7 +522,7 @@ const productsData: Record<string, ExtendedProductData> = {
             ],
         },
         coreFeatures: {
-            title: 'Improve every aspect of <span class="text-deewan-primary">customer engagement</span>',
+            title: 'Improve Every Aspect of <span class="text-deewan-primary">Customer Engagement</span>',
             subtitle:
                 'Deewan Omnichannel Chat was developed to serve as the ultimate customer service solution, equipped with tools that address every aspect of customer engagement operations.',
         },
@@ -569,9 +569,9 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         powerfulCapabilities: {
-            title: 'The impact of <span class="text-deewan-primary">Deewan Omnichannel Chat</span>',
+            title: 'The Impact of <span class="text-deewan-primary">Deewan Omnichannel Chat</span>',
             subtitle:
-                'Our Omnichannel platform brings together technology and simplicity to power your customer interactions',
+                'Our Omnichannel platform brings together technology and simplicity to power your customer interactions.',
             features: [
                 {
                     id: 'improved-customer-service',
@@ -692,7 +692,7 @@ const productsData: Record<string, ExtendedProductData> = {
         coreFeatures: {
             title: 'Target better, reach higher, earn more',
             subtitle:
-                'Deewan Campaigns is a powerful application developed to support modern businesses with versatile campaign-building and management features',
+                'Deewan Campaigns is a powerful application developed to support modern businesses with versatile campaign-building and management features.',
         },
         features: [
             {
@@ -721,9 +721,9 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         powerfulCapabilities: {
-            title: 'The impact of <span class="text-deewan-primary">Deewan Campaigns</span>',
+            title: 'The Impact of <span class="text-deewan-primary">Deewan Campaigns</span>',
             subtitle:
-                'Our Campaigns platform brings together precision targeting and powerful analytics to maximize your marketing efforts',
+                'Our Campaigns platform brings together precision targeting and powerful analytics to maximize your marketing efforts.',
             features: [
                 {
                     id: 'enhanced-targeting',
@@ -811,7 +811,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful Campaign capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of Messaging Campaigns with our comprehensive API solution',
+                'Leverage the full potential of Messaging Campaigns with our comprehensive API solution.',
             capabilities: [
                 { icon: MessageSquare, title: 'Multi-Channel Messaging' },
                 { icon: Database, title: 'Contact Management' },
@@ -902,9 +902,9 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         powerfulCapabilities: {
-            title: 'The impact of <span class="text-deewan-primary">Deewan Bots</span>',
+            title: 'The Impact of <span class="text-deewan-primary">Deewan Bots</span>',
             subtitle:
-                'Our Bots platform brings together AI technology and personalization to enhance your customer support experience',
+                'Our Bots platform brings together AI technology and personalization to enhance your customer support experience.',
             features: [
                 {
                     id: 'personalized-support',
@@ -992,7 +992,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful Chatbot capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of AI-powered Chatbots with our comprehensive API solution',
+                'Leverage the full potential of AI-powered Chatbots with our comprehensive API solution.',
             capabilities: [
                 { icon: Bot, title: 'AI-Powered Responses' },
                 { icon: Brain, title: 'Natural Language Processing' },
@@ -1134,7 +1134,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful WhatsApp Business capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of WhatsApp Business API with our comprehensive solution',
+                'Leverage the full potential of WhatsApp Business API with our comprehensive solution.',
             capabilities: [
                 { icon: CheckCircle, title: 'Verified Account' },
                 { icon: Database, title: 'Database Management' },
@@ -1241,7 +1241,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful Push Notification capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of Push Notification API with our comprehensive solution',
+                'Leverage the full potential of Push Notification API with our comprehensive solution.',
             capabilities: [
                 { icon: BellRing, title: 'Self-Onboarding' },
                 { icon: Gauge, title: 'Consumption Tracking' },
@@ -1346,9 +1346,9 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         productFeatures: {
-            title: 'Powerful email capabilities in one API from Deewan',
+            title: 'Powerful Email Capabilities in One API from Deewan',
             subtitle:
-                'Leverage the full potential of Email API with our comprehensive solution',
+                'Leverage the full potential of Email API with our comprehensive solution.',
             capabilities: [
                 { icon: Zap, title: 'Swift Delivery' },
                 { icon: Database, title: 'High-Volume Support' },
@@ -1453,7 +1453,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful SMS capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of SMS API with our comprehensive solution',
+                'Leverage the full potential of SMS API with our comprehensive solution.',
             capabilities: [
                 { icon: MessageSquare, title: 'Two-Way Messaging' },
                 { icon: BarChart, title: 'Data Analytics' },
@@ -1594,7 +1594,7 @@ const productsData: Record<string, ExtendedProductData> = {
         productFeatures: {
             title: 'Powerful voice capabilities in one API from Deewan',
             subtitle:
-                'Leverage the full potential of Voice API with our comprehensive solution',
+                'Leverage the full potential of Voice API with our comprehensive solution.',
             capabilities: [
                 { icon: Phone, title: 'Interactive Voice Response' },
                 { icon: Headset, title: 'Text-to-Speech' },

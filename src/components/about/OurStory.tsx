@@ -48,7 +48,7 @@ const OurStory = () => {
             Our <span className="text-deewan-primary">Story</span>
           </h2>
           
-          <p className="text-lg text-deewan-dark/80 max-w-2xl mx-auto">A journey of innovation, growth, and trust</p>
+          <p className="text-lg text-deewan-dark/80 max-w-2xl mx-auto">A journey of innovation, growth, and trust.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
