@@ -69,8 +69,6 @@ const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConvers
     >
       <div className="container mx-auto relative z-10">
         {/* Glassy container */}
-        <div className="rounded-3xl backdrop-blur bg-white/5 border border-white/10 shadow-md overflow-hidden">
-          <div className="relative p-8 md:p-12">
             {/* Background gradient elements */}
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute top-0 right-0 w-[70%] h-[50%] bg-deewan-primary/5 rounded-full blur-[120px] transform translate-x-1/4 -translate-y-1/4"></div>
@@ -82,7 +80,7 @@ const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConvers
 
             {/* Section Title */}
             <motion.div 
-              className="text-center mb-12 md:mb-16"
+              className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -90,7 +88,7 @@ const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConvers
               <h2 className="text-2xl md:text-4xl text-white">
                 Offer utilities, services, information and account functions on WhatsApp with one API
               </h2>
-              <p className="mt-4 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+              <p className="mt-4 text-lg md:text-xl text-white/90">
                 The benefits of {productData.name} by Deewan will transform your business.
               </p>
             </motion.div>
@@ -106,8 +104,6 @@ const ConversionApiBenefits: React.FC<ConversionApiBenefitsProps> = ({ isConvers
                 />
               ))}
             </div>
-          </div>
-        </div>
       </div>
     </section>
   );
