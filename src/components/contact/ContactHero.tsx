@@ -62,7 +62,9 @@ const ContactHero = () => {
               duration: 0.6,
               delay: 0.2
             }}>
+              <div className="backdrop-blur-xl glass p-8 rounded-2xl">
                 <ContactForm />
+              </div>
               </motion.div>
             </AnimatePresence>
           </div>
