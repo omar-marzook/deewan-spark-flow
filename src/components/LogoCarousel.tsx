@@ -51,12 +51,12 @@ const LogoCarousel: React.FC = () => {
     skipSnaps: false
   }, [Autoplay(autoplayOptions)]);
 
-  return <section id="partners" className="py-20 relative overflow-hidden">
+  return <section id="partners" aria-labelledby="partners-heading" className="py-20 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/50 to-white"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/50 to-white" aria-hidden="true"></div>
       
       {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-deewan-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-deewan-secondary/5 rounded-full blur-3xl"></div>
       </div>
@@ -66,14 +66,14 @@ const LogoCarousel: React.FC = () => {
           <div className="inline-block bg-deewan-primary/10 backdrop-blur-sm px-5 py-2 rounded-full text-deewan-primary font-medium text-sm mb-4">
             Our Clients
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-deewan-dark font-display">
+          <h2 id="partners-heading" className="text-3xl md:text-4xl font-bold mb-4 text-deewan-dark font-display">
             Trusted By <span className="text-deewan-primary">Leading</span> Organizations
           </h2>
           <p className="text-lg text-deewan-gray">Helping businesses across Saudi Arabia and beyond connect, engage, and grow.</p>
         </div>
 
         <div className="w-full overflow-hidden">
-          <div className="embla" ref={emblaRef}>
+          <div className="embla" ref={emblaRef} role="region" aria-label="Client logos carousel">
             <div className="embla__container flex">
               {logos.map(logo => <div key={logo.id} className="embla__slide flex-[0_0_20%] min-w-0 pl-4 sm:pl-6">
                   <div className="p-2">

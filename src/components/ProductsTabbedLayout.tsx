@@ -17,12 +17,12 @@ const ProductsTabbedLayout = () => {
       description: product.tagline,
       slug: slug,
       // Create a new icon with the correct size
-      icon: slug === 'campaigns' ? <Bell className="w-12 h-12 text-deewan-primary" /> :
-            slug === 'omni-channel-chat' ? <MessageSquare className="w-12 h-12 text-deewan-primary" /> :
-            slug === 'bots' ? <Zap className="w-12 h-12 text-deewan-primary" /> :
-            slug === 'mfa' ? <Shield className="w-12 h-12 text-deewan-primary" /> :
-            slug === 'ivr' ? <Phone className="w-12 h-12 text-deewan-primary" /> :
-            <Bell className="w-12 h-12 text-deewan-primary" />,
+      icon: slug === 'campaigns' ? <Bell className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            slug === 'omni-channel-chat' ? <MessageSquare className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            slug === 'bots' ? <Zap className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            slug === 'mfa' ? <Shield className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            slug === 'ivr' ? <Phone className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            <Bell className="w-12 h-12 text-deewan-primary" aria-hidden="true" />,
       color: "bg-deewan-primary/10"
     };
   });
@@ -35,11 +35,11 @@ const ProductsTabbedLayout = () => {
       description: product.tagline,
       slug: slug,
       // Use appropriate icon based on product name
-      icon: slug === 'sms-api' ? <MessageSquare className="w-12 h-12 text-deewan-secondary" /> :
-            slug === 'whatsapp-api' ? <MessageSquare className="w-12 h-12 text-deewan-secondary" /> :
-            slug === 'voice-api' ? <Phone className="w-12 h-12 text-deewan-secondary" /> :
-            slug === 'email-api' ? <Mail className="w-12 h-12 text-deewan-secondary" /> :
-            <Bell className="w-12 h-12 text-deewan-secondary" />,
+      icon: slug === 'sms-api' ? <MessageSquare className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            slug === 'whatsapp-api' ? <MessageSquare className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            slug === 'voice-api' ? <Phone className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            slug === 'email-api' ? <Mail className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            <Bell className="w-12 h-12 text-deewan-secondary" aria-hidden="true" />,
       color: "bg-deewan-secondary/10"
     };
   });
@@ -71,16 +71,16 @@ const ProductsTabbedLayout = () => {
       }
     }
   };
-  return <section id="products" className="py-24 relative overflow-hidden">
+  return <section id="products" aria-labelledby="products-heading" className="py-24 relative overflow-hidden">
       {/* Enhanced glassmorphic background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-gray-50/30 to-white/40 backdrop-blur-sm -z-10"></div>
-      <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/20 rounded-full filter blur-3xl -z-5"></div>
-      <div className="absolute bottom-40 right-10 w-96 h-96 bg-deewan-secondary/20 rounded-full filter blur-3xl -z-5"></div>
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full h-96 bg-deewan-primary/5 rounded-full filter blur-3xl -z-5"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-gray-50/30 to-white/40 backdrop-blur-sm -z-10" aria-hidden="true"></div>
+      <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/20 rounded-full filter blur-3xl -z-5" aria-hidden="true"></div>
+      <div className="absolute bottom-40 right-10 w-96 h-96 bg-deewan-secondary/20 rounded-full filter blur-3xl -z-5" aria-hidden="true"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full h-96 bg-deewan-primary/5 rounded-full filter blur-3xl -z-5" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="mb-4">Our <span className="text-deewan-primary">Product</span> Ecosystem</h2>
+          <h2 id="products-heading" className="mb-4">Our <span className="text-deewan-primary">Product</span> Ecosystem</h2>
           <p className="text-base md:text-lg text-deewan-gray">End-to-end communication tools designed to power today's growing businesses.</p>
         </div>
         
@@ -118,7 +118,7 @@ const ProductsTabbedLayout = () => {
                       <a href={`/products/${app.slug}`} 
                          className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-primary/20 text-deewan-primary px-5 py-2 font-medium hover:bg-deewan-primary hover:text-white transition-colors duration-300 border border-deewan-primary/20">
                         View Product
-                        <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                       </a>
@@ -149,7 +149,7 @@ const ProductsTabbedLayout = () => {
                       <a href={`/products/${api.slug}`} 
                          className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-secondary/20 text-deewan-secondary px-5 py-2 font-medium hover:bg-deewan-secondary hover:text-white transition-colors duration-300 border border-deewan-secondary/20">
                         View Product
-                        <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                       </a>
