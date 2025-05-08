@@ -20,10 +20,15 @@ const FooterColumn: React.FC<FooterColumnProps> = ({ title, links }) => {
           <li key={index}>
             <a 
               href={link.href} 
-              className="text-gray-600 hover:text-deewan-primary transition-colors"
-              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="text-gray-600 hover:text-deewan-primary transition-colors focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1"
+              {...(link.external ? { 
+                target: "_blank", 
+                rel: "noopener noreferrer",
+                "aria-label": `${link.name} (opens in a new tab)`
+              } : {})}
             >
               {link.name}
+              {link.external && <span className="sr-only">(opens in a new tab)</span>}
             </a>
           </li>
         ))}

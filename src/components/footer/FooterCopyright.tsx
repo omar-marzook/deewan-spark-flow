@@ -12,14 +12,26 @@ const FooterCopyright = () => {
           &copy; {currentYear} Deewan. All rights reserved.
         </p>
         
-        <div className="flex space-x-6">
-          <Link to="/privacy-policy" className="text-gray-500 hover:text-deewan-primary text-sm transition-colors">
-            Privacy Policy
-          </Link>
-          <Link to="/citc-regulations" className="text-gray-500 hover:text-deewan-primary text-sm transition-colors">
-            CITC Regulations
-          </Link>
-        </div>
+        <nav aria-label="Legal links">
+          <ul className="flex space-x-6">
+            <li>
+              <Link 
+                to="/privacy-policy" 
+                className="text-gray-500 hover:text-deewan-primary text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1"
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/citc-regulations" 
+                className="text-gray-500 hover:text-deewan-primary text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1"
+              >
+                CITC Regulations
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

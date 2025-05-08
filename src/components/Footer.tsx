@@ -8,7 +8,7 @@ const Footer = () => {
       <Newsletter />
       
       {/* Main footer with glassmorphism gradient background */}
-      <footer className="relative pt-16 overflow-hidden" role="contentinfo">
+      <footer className="relative pt-16 overflow-hidden" role="contentinfo" aria-label="Site footer">
         {/* Glassmorphism gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50/80 via-gray-100/80 to-gray-50/80 backdrop-blur-sm z-0" aria-hidden="true"></div>
         

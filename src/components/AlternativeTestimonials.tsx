@@ -3,13 +3,6 @@ import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from 'lucide-react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 const AlternativeTestimonials = () => {
   const testimonials = [
@@ -47,37 +40,55 @@ const AlternativeTestimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.slice(0, 4).map((testimonial) => (
-            <Card key={testimonial.id} className="glass-card p-8 border-0 overflow-hidden relative h-full">
+            <Card 
+              key={testimonial.id} 
+              className="glass-card p-8 border-0 overflow-hidden relative h-full"
+              tabIndex={0}
+              role="article"
+              aria-labelledby={`author-${testimonial.id}`}
+            >
               <CardContent className="p-0 flex flex-col h-full">
                 <Quote className="h-10 w-10 text-deewan-primary/20 absolute top-6 right-6" aria-hidden="true" />
 
-                <p className="italic text-base md:text-xl text-deewan-gray mb-8 leading-relaxed relative z-10">
-                  "{testimonial.quote}"
-                </p>
+                <blockquote className="mb-8 relative z-10">
+                  <p className="italic text-base md:text-xl text-deewan-gray leading-relaxed">
+                    {testimonial.quote}
+                  </p>
+                </blockquote>
 
-                <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+                <footer className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
                   <div className="flex items-center">
                     <Avatar className="h-12 w-12 mr-4 border-2 border-deewan-primary/10">
-                      <AvatarImage src={testimonial.image} alt={testimonial.author} />
-                      <AvatarFallback className="bg-deewan-primary/10 text-deewan-primary">
+                      <AvatarImage 
+                        src={testimonial.image} 
+                        alt="" 
+                        aria-hidden="true" 
+                      />
+                      <AvatarFallback 
+                        className="bg-deewan-primary/10 text-deewan-primary"
+                        aria-hidden="true"
+                      >
                         {testimonial.author.split(' ').map(name => name[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
 
                     <div>
-                      <h4 className="font-bold text-deewan-dark">{testimonial.author}</h4>
+                      <h4 id={`author-${testimonial.id}`} className="font-bold text-deewan-dark">{testimonial.author}</h4>
                       <p className="text-sm text-deewan-gray">{testimonial.title}, {testimonial.company}</p>
                     </div>
                   </div>
 
-                  <div className="w-16 h-16 bg-white p-2 rounded-md flex items-center justify-center">
+                  <div 
+                    className="w-16 h-16 bg-white p-2 rounded-md flex items-center justify-center"
+                    aria-hidden="true"
+                  >
                     <img
                       src={testimonial.logo}
-                      alt={`${testimonial.company} logo`}
+                      alt=""
                       className="max-w-full max-h-full object-contain"
                     />
                   </div>
-                </div>
+                </footer>
               </CardContent>
             </Card>
           ))}

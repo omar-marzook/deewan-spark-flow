@@ -19,7 +19,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
   }, []);
 
   return (
-    <section className={`container mx-auto px-4 py-12 md:py-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
+    <section id="main-content" className={`container mx-auto px-4 py-12 md:py-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
       {/* Floating Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <CircleDot
@@ -72,12 +72,24 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
 
         {/* CTA Button */}
         <div className="flex flex-wrap gap-4 justify-center">
-          <ButtonLink href="#products" variant="default" size="lg">
+          <ButtonLink 
+            href="#products" 
+            variant="default" 
+            size="lg"
+            aria-label="Explore our products"
+            className="focus:ring-2 focus:ring-deewan-primary/50 focus:outline-none"
+          >
             Explore Products
             <ArrowDown size={20} aria-hidden="true" />
           </ButtonLink>
 
-          <ButtonLink variant="secondary" size="lg" href="#contact">
+          <ButtonLink 
+            variant="secondary" 
+            size="lg" 
+            href="#contact"
+            aria-label="Contact our sales team"
+            className="focus:ring-2 focus:ring-deewan-primary/50 focus:outline-none"
+          >
             Contact Sales
           </ButtonLink>
         </div>
