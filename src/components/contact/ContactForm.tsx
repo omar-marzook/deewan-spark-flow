@@ -10,6 +10,7 @@ import { User, Mail, Phone, Building, MessageSquare, Send } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
+import { submitToHubSpot } from "@/lib/hubspot";
 
 // Form validation schema
 const formSchema = z.object({
@@ -47,14 +48,16 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
 
-    // Simulate API call
     try {
-      console.log("Form data:", data);
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Submit to HubSpot
+      await submitToHubSpot(data);
+      
+      console.log("Form data submitted to HubSpot:", data);
       
       toast({
         title: "Message sent!",
         description: "We'll get back to you as soon as possible.",
+        variant: "success",
       });
       
       setIsSuccess(true);
