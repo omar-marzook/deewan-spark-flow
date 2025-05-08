@@ -29,7 +29,7 @@ const defaultFeatures: Feature[] = [{
   description: "Gain actionable insights from comprehensive analytics and reporting."
 }, {
   icon: <Phone className="w-7 h-7 text-deewan-primary" />,
-  title: "Omnichannel APIs",
+  title: "Omni-Channel APIs",
   description: "APIs for SMS, WhatsApp, Voice, Verification and more, easily integrated with your applications."
 }, {
   icon: <Mail className="w-7 h-7 text-deewan-primary" />,

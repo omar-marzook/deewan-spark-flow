@@ -3,36 +3,52 @@ import FooterColumn from "./FooterColumn";
 import SocialLinks from "./SocialLinks";
 const FooterLinks = () => {
   return <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-      {/* Logo and description column */}
-      <div className="flex flex-col backdrop-blur-sm bg-white/20 rounded-xl p-6 border border-white/30">
-        <a href="/" className="mb-6">
+    {/* Logo and description column */}
+    <div className="flex flex-col backdrop-blur-sm bg-white/20 rounded-xl p-6 border border-white/30">
+      <a href="/" className="mb-6">
         <img alt="Deewan." src="/deewan-logo.svg" className="h-7" />
-        </a>
-        <p className="text-gray-600 mb-6">At Deewan, we provide intelligent, secure, and scalable communication solutions for businesses in Saudi Arabia and beyond.</p>
-        
-        <SocialLinks />
-      </div>
-      
-      {/* Products column */}
-      <FooterColumn title="Products" links={[{
-      name: "Deewan Campaigns",
+      </a>
+      <p className="text-gray-600 mb-6">At Deewan, we provide intelligent, secure, and scalable communication solutions for businesses in Saudi Arabia and beyond.</p>
+
+      <SocialLinks />
+    </div>
+
+    {/* Products column */}
+    {/* Products column */}
+    <FooterColumn title="Products" links={[{
+      name: "Omni-Channel Chat",
+      href: "/products/omni-channel-chat"
+    }, {
+      name: "Campaigns",
       href: "/products/campaigns"
     }, {
-      name: "Omnichannel Chat",
-      href: "/products/omnichannel-chat"
-    }, {
-      name: "Deewan Bots",
+      name: "Bots",
       href: "/products/bots"
     }, {
-      name: "Deewan MFA",
+      name: "MFA",
       href: "/products/mfa"
     }, {
-      name: "Communication APIs",
-      href: "/products/apis"
+      name: "IVR",
+      href: "/products/ivr"
+    }, {
+      name: "WhatsApp API",
+      href: "/products/whatsapp-api"
+    }, {
+      name: "SMS API",
+      href: "/products/sms-api"
+    }, {
+      name: "Voice API",
+      href: "/products/voice-api"
+    }, {
+      name: "Email API",
+      href: "/products/email-api"
+    }, {
+      name: "Push Notifications API",
+      href: "/products/push-notifications-api"
     }]} />
-      
-      {/* Resources column */}
-      <FooterColumn title="Resources" links={[{
+
+    {/* Resources column */}
+    <FooterColumn title="Resources" links={[{
       name: "Blog",
       href: "/blog"
     }, {
@@ -45,15 +61,15 @@ const FooterLinks = () => {
       name: "Developer Docs",
       href: "https://developer.deewan.sa/"
     }]} />
-      
-      {/* Company column */}
-      <FooterColumn title="Company" links={[{
+
+    {/* Company column */}
+    <FooterColumn title="Company" links={[{
       name: "About Us",
       href: "/about"
     }, {
       name: "Contact",
       href: "/contact"
     }]} />
-    </div>;
+  </div>;
 };
 export default FooterLinks;
