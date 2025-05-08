@@ -1,9 +1,9 @@
-
 import React from "react";
 
 interface FooterLink {
   name: string;
   href: string;
+  external?: boolean;
 }
 
 interface FooterColumnProps {
@@ -18,7 +18,11 @@ const FooterColumn: React.FC<FooterColumnProps> = ({ title, links }) => {
       <ul className="space-y-4">
         {links.map((link, index) => (
           <li key={index}>
-            <a href={link.href} className="text-gray-600 hover:text-deewan-primary transition-colors">
+            <a 
+              href={link.href} 
+              className="text-gray-600 hover:text-deewan-primary transition-colors"
+              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
               {link.name}
             </a>
           </li>

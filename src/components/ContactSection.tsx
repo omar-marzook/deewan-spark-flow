@@ -31,7 +31,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1 text-deewan-dark">Office Location</h4>
-                  <a href="https://maps.app.goo.gl/hQqxRdj2ePUPFvRr6" target="_blank" className="text-deewan-primary hover:underline">Olaya St, Al Olaya, Riyadh 12214, Saudi Arabia</a>
+                  <a href="https://maps.app.goo.gl/hQqxRdj2ePUPFvRr6" target="_blank" rel="noopener noreferrer" className="text-deewan-primary hover:underline">Olaya St, Al Olaya, Riyadh 12214, Saudi Arabia</a>
                 </div>
               </div>
               

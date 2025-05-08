@@ -55,13 +55,16 @@ const FooterLinks = () => {
       href: "/blog"
     }, {
       name: "Support",
-      href: "https://support.deewan.sa/"
+      href: "https://support.deewan.sa/",
+      external: true
     }, {
       name: "Console",
-      href: "https://console.deewan.sa/"
+      href: "https://console.deewan.sa/",
+      external: true
     }, {
       name: "Developer Docs",
-      href: "https://developer.deewan.sa/"
+      href: "https://developer.deewan.sa/",
+      external: true
     }]} />
 
     {/* Company column */}

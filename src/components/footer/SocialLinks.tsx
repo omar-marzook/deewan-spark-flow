@@ -17,10 +17,10 @@ const XIcon = createLucideIcon("X", [
 const SocialLinks = () => {
   return (
     <div className="flex space-x-3">
-      <a href="https://x.com/DeewanKSA" target="_blank" aria-label="X" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
+      <a href="https://x.com/DeewanKSA" target="_blank" rel="noopener noreferrer" aria-label="X" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
         <XIcon size={16} />
       </a>
-      <a href="https://www.linkedin.com/company/deewanks" target="_blank" aria-label="LinkedIn" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
+      <a href="https://www.linkedin.com/company/deewanks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
         <Linkedin size={18} />
       </a>
     </div>
