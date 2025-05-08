@@ -86,12 +86,12 @@ const AlternativeStats = ({
 }: AlternativeStatsProps) => {
   // Limit stats to the gridCount
   const displayStats = stats.slice(0, gridCount);
-  return <section id="alternative-stats" className="py-24">
+  return <section id="alternative-stats" className="py-24" aria-labelledby="stats-heading">
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {showTitle && (
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="mb-4" dangerouslySetInnerHTML={{ __html: titleContent.title }}></h2>
+            <h2 id="stats-heading" className="mb-4" dangerouslySetInnerHTML={{ __html: titleContent.title }}></h2>
             <p className="text-base md:text-lg text-deewan-gray">
               {titleContent.description}
             </p>
@@ -101,7 +101,7 @@ const AlternativeStats = ({
         <div className={`grid grid-cols-1 ${gridCount === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-0`}>
           {displayStats.map((stat, index) => (
             <div key={index} className="relative border-r border-t border-b border-deewan-primary/10 p-10 first:border-l first:rounded-l-lg last:rounded-r-lg last:border-r bg-gradient-to-b from-white to-deewan-primary/5">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-white p-2 rounded-full border border-deewan-primary/20">
+              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-white p-2 rounded-full border border-deewan-primary/20" aria-hidden="true">
                 {stat.icon}
               </div>
               <div className="text-center pt-4">
@@ -117,9 +117,9 @@ const AlternativeStats = ({
             {cards.map((card, index) => (
               <div key={index} className="bg-white shadow-md rounded-lg p-6 border border-deewan-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center mb-4">
-                  <div className="bg-deewan-primary/10 p-3 rounded-full mr-4">
-                    {card.icon}
-                  </div>
+                <div className="bg-deewan-primary/10 p-3 rounded-full mr-4" aria-hidden="true">
+                  {card.icon}
+                </div>
                   <h3 className="text-xl font-bold text-deewan-dark">{card.title}</h3>
                 </div>
                 <p className="text-deewan-gray">{card.description}</p>

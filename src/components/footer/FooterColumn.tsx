@@ -14,8 +14,8 @@ interface FooterColumnProps {
 const FooterColumn: React.FC<FooterColumnProps> = ({ title, links }) => {
   return (
     <div className="backdrop-blur-sm bg-white/20 rounded-xl p-6 border border-white/30">
-      <h3 className="text-deewan-dark font-semibold text-lg mb-6">{title}</h3>
-      <ul className="space-y-4">
+      <h3 className="text-deewan-dark font-semibold text-lg mb-6" id={`footer-column-${title.toLowerCase().replace(/\s+/g, '-')}`}>{title}</h3>
+      <ul className="space-y-4" aria-labelledby={`footer-column-${title.toLowerCase().replace(/\s+/g, '-')}`}>
         {links.map((link, index) => (
           <li key={index}>
             <a 

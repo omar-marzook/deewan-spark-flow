@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -58,10 +57,10 @@ const Navbar = () => {
   return (
     <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
       isScrolled ? 'py-2 bg-white/80 backdrop-blur-md shadow-sm' : 'py-4 bg-transparent'
-    }`}>
+    }`} role="banner">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center" aria-label="Deewan Home">
             <img 
               alt="Deewan Logo" 
               src="/deewan-logo.svg" 
@@ -70,13 +69,13 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden xl:flex space-x-8 items-center">
+          <nav className="hidden xl:flex space-x-8 items-center" aria-label="Main Navigation">
             <div 
               ref={megaMenuTriggerRef}
               className="relative"
             >
               <button 
-                className="flex items-center gap-1 font-medium text-deewan-dark hover:text-deewan-primary transition-colors"
+                className="flex items-center gap-1 font-medium text-deewan-dark hover:text-deewan-primary transition-colors focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded"
                 onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
                 aria-expanded={isMegaMenuOpen}
                 aria-controls="products-mega-menu"
@@ -86,6 +85,7 @@ const Navbar = () => {
                   className={`w-4 h-4 transition-transform duration-200 ${
                     isMegaMenuOpen ? 'rotate-180' : ''
                   }`}
+                  aria-hidden="true"
                 />
               </button>
               <div ref={megaMenuRef} id="products-mega-menu">
@@ -95,21 +95,21 @@ const Navbar = () => {
             
             <Link 
               to="/about" 
-              className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors" 
+              className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1" 
               onClick={handleNavClick}
             >
               About Us
             </Link>
             <Link 
               to="/blog" 
-              className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors" 
+              className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1" 
               onClick={handleNavClick}
             >
               Blog
             </Link>
             <a 
               href="https://console.deewan.sa/"
-              className="px-5 py-2.5 bg-deewan-white text-deewan-dark font-medium border border-deewan-secondary/20 rounded-md shadow-md hover:bg-gray-100 transition-all duration-300" 
+              className="px-5 py-2.5 bg-deewan-white text-deewan-dark font-medium border border-deewan-secondary/20 rounded-md shadow-md hover:bg-gray-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-deewan-primary/50" 
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}
@@ -118,7 +118,7 @@ const Navbar = () => {
             </a>
             <Link 
               to="/contact" 
-              className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-md shadow-md hover:bg-deewan-primary/90 transition-all duration-300" 
+              className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-md shadow-md hover:bg-deewan-primary/90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-deewan-primary/50" 
               onClick={handleNavClick}
             >
               Contact Us
@@ -128,11 +128,12 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="xl:hidden text-deewan-dark focus:outline-none"
+            className="xl:hidden text-deewan-dark focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded p-1"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
 
@@ -141,25 +142,26 @@ const Navbar = () => {
           <nav 
             id="mobile-menu"
             className="xl:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in"
+            aria-label="Mobile Navigation"
           >
             <MobileProductsAccordion onSelect={handleNavigation} />
             <Link 
               to="/about" 
-              className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors" 
+              className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1" 
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
             </Link>
             <Link 
               to="/blog" 
-              className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors" 
+              className="font-medium text-deewan-dark hover:text-deewan-primary transition-colors focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1" 
               onClick={() => setIsMenuOpen(false)}
             >
               Blog
             </Link>
             <a
               href="https://console.deewan.sa/"
-              className="px-5 py-2.5 bg-deewan-white text-deewan-dark font-medium border border-deewan-secondary/20 rounded-md shadow-md text-center hover:bg-gray-100 transition-all duration-300"
+              className="px-5 py-2.5 bg-deewan-white text-deewan-dark font-medium border border-deewan-secondary/20 rounded-md shadow-md text-center hover:bg-gray-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-deewan-primary/50"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMenuOpen(false)}
@@ -168,7 +170,7 @@ const Navbar = () => {
             </a>
             <Link 
               to="/contact" 
-              className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-md shadow-md text-center hover:bg-deewan-primary/90 transition-all duration-300" 
+              className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-md shadow-md text-center hover:bg-deewan-primary/90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-deewan-primary/50" 
               onClick={() => setIsMenuOpen(false)}
             >
               Contact Us

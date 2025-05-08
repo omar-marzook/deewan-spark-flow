@@ -16,7 +16,7 @@ const XIcon = createLucideIcon("X", [
 
 const SocialLinks = () => {
   return (
-    <div className="flex space-x-3">
+    <div className="flex space-x-3" aria-label="Social Media Links">
       <a href="https://x.com/DeewanKSA" target="_blank" rel="noopener noreferrer" aria-label="X" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
         <XIcon size={16} />
       </a>
