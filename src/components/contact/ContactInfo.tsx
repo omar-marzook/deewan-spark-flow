@@ -24,7 +24,7 @@ const ContactInfo = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1 text-deewan-dark">Our Address</h4>
-                  <p className="text-deewan-dark/80">Riyadh, Saudi Arabia — Al Olaya, XYZ Building</p>
+                  <a href="https://maps.app.goo.gl/hQqxRdj2ePUPFvRr6" target="_blank" className="text-deewan-primary hover:underline">Olaya St, Al Olaya, Riyadh 12214, Saudi Arabia</a>
                 </div>
               </div>
               
@@ -34,8 +34,8 @@ const ContactInfo = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1 text-deewan-dark">Email Us</h4>
-                  <a href="mailto:hello@deewan.sa" className="text-deewan-primary hover:underline">
-                    hello@deewan.sa
+                  <a href="mailto:support@deewan.sa" className="text-deewan-primary hover:underline">
+                    support@deewan.sa
                   </a>
                 </div>
               </div>
@@ -46,8 +46,8 @@ const ContactInfo = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1 text-deewan-dark">Call Us</h4>
-                  <a href="tel:+966500000000" className="text-deewan-primary hover:underline">
-                    +966 5X XXX XXXX
+                  <a href="tel:+966552889989" className="text-deewan-primary hover:underline">
+                    +966 55 288 9989
                   </a>
                 </div>
               </div>
