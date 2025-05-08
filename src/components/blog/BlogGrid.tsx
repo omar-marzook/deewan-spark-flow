@@ -10,19 +10,11 @@ const BlogGrid = () => {
   
   useEffect(() => {
     try {
-      // Get all available slugs dynamically
-      const slugs = getPostSlugs();
+      // Get all posts (already sorted by date in getAllPosts function)
+      const allPosts = getAllPosts();
       
-      // Create posts directly from the slugs
-      const posts = slugs.map((slug, index) => {
-        // Get the post data from the slug
-        const post = getPostBySlug(slug);
-        
-        if (!post) {
-          console.error(`Post not found for slug: ${slug}`);
-          return null;
-        }
-        
+      // Map the posts to the format expected by BlogCard
+      const posts = allPosts.map((post, index) => {
         return {
           id: index + 1,
           slug: post.slug,
@@ -33,7 +25,7 @@ const BlogGrid = () => {
           category: post.frontmatter.category || 'General',
           imageUrl: post.frontmatter.coverImage || ''
         };
-      }).filter(Boolean);
+      });
       
       setBlogPosts(posts);
     } catch (err) {
