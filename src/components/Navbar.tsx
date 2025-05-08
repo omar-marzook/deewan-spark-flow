@@ -107,9 +107,18 @@ const Navbar = () => {
             >
               Blog
             </Link>
+            <a 
+              href="https://console.deewan.sa/"
+              className="px-5 py-2.5 bg-deewan-white text-deewan-dark font-medium border border-deewan-secondary/20 rounded-md shadow-md hover:bg-gray-100 transition-all duration-300" 
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleNavClick}
+            >
+              Login
+            </a>
             <Link 
               to="/contact" 
-              className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-lg shadow-md hover:bg-deewan-primary/90 transition-all duration-300" 
+              className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-md shadow-md hover:bg-deewan-primary/90 transition-all duration-300" 
               onClick={handleNavClick}
             >
               Contact Us
@@ -148,9 +157,18 @@ const Navbar = () => {
             >
               Blog
             </Link>
+            <a
+              href="https://console.deewan.sa/"
+              className="px-5 py-2.5 bg-deewan-white text-deewan-dark font-medium border border-deewan-secondary/20 rounded-md shadow-md text-center hover:bg-gray-100 transition-all duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Login
+            </a>
             <Link 
               to="/contact" 
-              className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-lg shadow-md text-center hover:bg-deewan-primary/90 transition-all duration-300" 
+              className="px-5 py-2.5 bg-deewan-primary text-white font-medium rounded-md shadow-md text-center hover:bg-deewan-primary/90 transition-all duration-300" 
               onClick={() => setIsMenuOpen(false)}
             >
               Contact Us
