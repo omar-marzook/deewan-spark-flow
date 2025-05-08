@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 interface ProductHeroProps {
@@ -57,14 +57,10 @@ const ProductHero: React.FC<ProductHeroProps> = ({
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button onClick={onContactClick} size="lg">
+              <ButtonLink href="#contact" size="lg">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              
-            <Button variant="secondary" size="lg" onClick={onContactClick}>
-                Contact Sales
-              </Button>
+              </ButtonLink>
             </div>
           </div>
 

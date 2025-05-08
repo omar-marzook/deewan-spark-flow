@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowUpRight, ArrowRight, CircleDot, Circle, CircleCheck } from "lucide-react";
+import { ArrowUpRight, ArrowDown, CircleDot, Circle, CircleCheck } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/button";
 
 
@@ -71,10 +71,16 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
         </p>
 
         {/* CTA Button */}
-        <ButtonLink href="#products" variant="default" size="lg">
-          Explore Solutions
-          <ArrowRight size={20} />
-        </ButtonLink>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <ButtonLink href="#products" variant="default" size="lg">
+            Explore Products
+            <ArrowDown size={20} />
+          </ButtonLink>
+
+          <ButtonLink variant="secondary" size="lg" href="#contact">
+            Contact Sales
+          </ButtonLink>
+        </div>
       </div>
 
       {/* Visual with green gradient illumination */}
