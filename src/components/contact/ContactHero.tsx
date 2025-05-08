@@ -43,7 +43,7 @@ const ContactHero = () => {
                   <span className="text-deewan-primary">From You</span>
                 </h1>
                 
-                <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0">
+                <p className="text-base md:text-lg text-deewan-gray mb-8 max-w-lg mx-auto lg:mx-0">
                   Have questions about our services? Want to explore how we can help your business? 
                   We're here to help and ready to start the conversation.
                 </p>
