@@ -16,55 +16,43 @@ const FooterLinks = () => {
       {/* Products column */}
       <FooterColumn title="Products" links={[{
       name: "Deewan Campaigns",
-      href: "#"
+      href: "/products/campaigns"
     }, {
       name: "Omnichannel Chat",
-      href: "#"
+      href: "/products/omnichannel-chat"
     }, {
       name: "Deewan Bots",
-      href: "#"
+      href: "/products/bots"
     }, {
       name: "Deewan MFA",
-      href: "#"
+      href: "/products/mfa"
     }, {
       name: "Communication APIs",
-      href: "#"
+      href: "/products/apis"
     }]} />
       
       {/* Resources column */}
       <FooterColumn title="Resources" links={[{
-      name: "Documentation",
-      href: "#"
-    }, {
-      name: "API Reference",
-      href: "#"
-    }, {
       name: "Blog",
-      href: "#"
-    }, {
-      name: "Case Studies",
-      href: "#"
+      href: "/blog"
     }, {
       name: "Support",
-      href: "#"
+      href: "https://support.deewan.sa/"
+    }, {
+      name: "Console",
+      href: "https://console.deewan.sa/"
+    }, {
+      name: "Developer Docs",
+      href: "https://developer.deewan.sa/"
     }]} />
       
       {/* Company column */}
       <FooterColumn title="Company" links={[{
       name: "About Us",
-      href: "#"
-    }, {
-      name: "Careers",
-      href: "#"
-    }, {
-      name: "Partners",
-      href: "#"
-    }, {
-      name: "Press",
-      href: "#"
+      href: "/about"
     }, {
       name: "Contact",
-      href: "#"
+      href: "/contact"
     }]} />
     </div>;
 };
