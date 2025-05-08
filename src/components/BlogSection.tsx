@@ -35,11 +35,11 @@ const BlogSection = () => {
     }
   }, []);
   return (
-    <section className="py-24 px-4 md:px-6 bg-white">
+    <section aria-labelledby="blog-heading" className="py-24 px-4 md:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         {/* Section header - centered with description */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+          <h2 id="blog-heading" className="text-3xl md:text-4xl font-bold mb-4 text-black">
             Blog
           </h2>
           <p className="text-base md:text-lg text-deewan-gray max-w-3xl mx-auto">
@@ -63,7 +63,7 @@ const BlogSection = () => {
           ) : (
             // Loading state or fallback
             Array.from({ length: 3 }).map((_, index) => (
-              <div key={index} className="rounded-xl overflow-hidden shadow-sm bg-white animate-pulse">
+              <div key={index} className="rounded-xl overflow-hidden shadow-sm bg-white animate-pulse" role="status" aria-label="Loading blog post">
                 <div className="aspect-video bg-gray-200"></div>
                 <div className="p-6">
                   <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
@@ -85,7 +85,7 @@ const BlogSection = () => {
           >
             <Link to="/blog">
               View All Blog Posts
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Link>
           </Button>
         </div>

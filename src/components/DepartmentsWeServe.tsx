@@ -12,7 +12,7 @@ const defaultDepartmentsData: DepartmentData[] = [{
     "Marketing and promotions",
     "Product catalogs"
   ],
-  icon: <Megaphone className="h-10 w-10 text-deewan-primary" />,
+  icon: <Megaphone className="h-10 w-10 text-deewan-primary" aria-hidden="true" />,
   color: "bg-deewan-primary/10"
 }, {
   id: 2,
@@ -22,7 +22,7 @@ const defaultDepartmentsData: DepartmentData[] = [{
     "Follow ups and reminders",
     "Feedback and support"
   ],
-  icon: <Headset className="h-10 w-10 text-deewan-secondary" />,
+  icon: <Headset className="h-10 w-10 text-deewan-secondary" aria-hidden="true" />,
   color: "bg-deewan-secondary/10"
 }, {
   id: 3,
@@ -33,7 +33,7 @@ const defaultDepartmentsData: DepartmentData[] = [{
     "Account updates",
     "Onboarding"
   ],
-  icon: <UserRoundCog className="h-10 w-10 text-deewan-accent" />,
+  icon: <UserRoundCog className="h-10 w-10 text-deewan-accent" aria-hidden="true" />,
   color: "bg-deewan-accent/10"
 }];
 
@@ -119,20 +119,21 @@ const DepartmentsWeServe: React.FC<DepartmentsWeServeProps> = ({ departments }) 
   }, []);
   
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section aria-labelledby="departments-heading" className="py-20 relative overflow-hidden">
       {/* Background animation canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full -z-10"
+        aria-hidden="true"
       />
       
       {/* Gradient overlays */}
-      <div className="absolute top-0 left-1/4 w-1/2 h-1/3 bg-deewan-primary/5 rounded-full filter blur-[80px] -z-5"></div>
-      <div className="absolute bottom-0 right-1/4 w-1/2 h-1/3 bg-deewan-secondary/5 rounded-full filter blur-[80px] -z-5"></div>
+      <div className="absolute top-0 left-1/4 w-1/2 h-1/3 bg-deewan-primary/5 rounded-full filter blur-[80px] -z-5" aria-hidden="true"></div>
+      <div className="absolute bottom-0 right-1/4 w-1/2 h-1/3 bg-deewan-secondary/5 rounded-full filter blur-[80px] -z-5" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="mb-4 text-deewan-dark"><span className="text-deewan-primary">Supporting</span> Primary Business Functions</h2>
+          <h2 id="departments-heading" className="mb-4 text-deewan-dark"><span className="text-deewan-primary">Supporting</span> Primary Business Functions</h2>
           <p className="text-base md:text-lg text-deewan-gray">
             Our communication solutions are tailored to meet the unique needs of various departments across your organization.
           </p>
@@ -155,7 +156,7 @@ const DepartmentsWeServe: React.FC<DepartmentsWeServeProps> = ({ departments }) 
               <ul className="text-deewan-gray mb-4 space-y-2">
                 {dept.description.map((item, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-deewan-primary mt-2 mr-2"></span>
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-deewan-primary mt-2 mr-2" aria-hidden="true"></span>
                     <span>{item}</span>
                   </li>
                 ))}

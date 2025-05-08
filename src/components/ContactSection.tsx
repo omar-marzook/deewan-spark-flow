@@ -3,14 +3,14 @@ import SocialLinks from "@/components/footer/SocialLinks";
 import ContactForm from "@/components/contact/ContactForm";
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-gradient-to-br from-[#edf7f2] to-[#f4faef] via-[#f0f8f3]">
+    <section id="contact" aria-labelledby="contact-heading" className="py-24 relative overflow-hidden bg-gradient-to-br from-[#edf7f2] to-[#f4faef] via-[#f0f8f3]">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#edf7f2] via-[#f0f8f3] to-[#f4faef] -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#edf7f2] via-[#f0f8f3] to-[#f4faef] -z-10" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4 md:px-6">
         {/* Section header */}
         <div className="text-center mb-12">
-          <h2 className="font-bold mb-3">
+          <h2 id="contact-heading" className="font-bold mb-3">
             Let's Get <span className="text-deewan-primary">Started</span>
           </h2>
           <p className="text-lg text-deewan-dark/80 max-w-2xl mx-auto">
@@ -27,7 +27,7 @@ const ContactSection = () => {
             <div className="space-y-8">
               <div className="flex items-start">
                 <div className="bg-deewan-primary/10 p-3 rounded-lg mr-4">
-                  <MapPin className="h-6 w-6 text-deewan-primary" />
+                  <MapPin className="h-6 w-6 text-deewan-primary" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1 text-deewan-dark">Office Location</h4>
@@ -37,7 +37,7 @@ const ContactSection = () => {
               
               <div className="flex items-start">
                 <div className="bg-deewan-primary/10 p-3 rounded-lg mr-4">
-                  <Mail className="h-6 w-6 text-deewan-primary" />
+                  <Mail className="h-6 w-6 text-deewan-primary" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1 text-deewan-dark">Email Us</h4>
@@ -49,7 +49,7 @@ const ContactSection = () => {
               
               <div className="flex items-start">
                 <div className="bg-deewan-primary/10 p-3 rounded-lg mr-4">
-                  <Phone className="h-6 w-6 text-deewan-primary" />
+                  <Phone className="h-6 w-6 text-deewan-primary" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1 text-deewan-dark">Call Us</h4>
