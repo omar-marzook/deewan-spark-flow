@@ -34,6 +34,7 @@ const Newsletter = () => {
       toast({
         title: "Subscribed!",
         description: "Thank you for subscribing to our newsletter",
+        variant: "success",
       });
       
       // Reset success state after 3 seconds
@@ -71,6 +72,8 @@ const Newsletter = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSubmitting || isSuccess}
+                autoComplete="email"
+                name="email"
               />
             </div>
             <Button 
