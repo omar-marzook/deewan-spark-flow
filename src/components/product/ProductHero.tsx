@@ -57,7 +57,12 @@ const ProductHero: React.FC<ProductHeroProps> = ({
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <ButtonLink href="#contact" size="lg">
+              <ButtonLink 
+                href="#contact" 
+                size="lg"
+                aria-label={`Get started with ${name}`}
+                onClick={onContactClick}
+              >
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </ButtonLink>
@@ -74,9 +79,22 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               
               {/* Content */}
               <div className="absolute inset-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 p-6 overflow-hidden">
-                {heroImage ? <img src={heroImage} alt={name} className="w-full h-full object-cover rounded-lg" /> : <div className="w-full h-full flex items-center justify-center">
-                    <img alt="Deewan" src="/lovable-uploads/e2e44fa6-d598-4fc3-850a-80175de0c5ba.png" className="w-32 h-auto opacity-50" />
-                  </div>}
+                {heroImage ? (
+                  <img 
+                    src={heroImage} 
+                    alt={`${name} product illustration`} 
+                    className="w-full h-full object-cover rounded-lg" 
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <img 
+                      alt="" 
+                      src="/lovable-uploads/e2e44fa6-d598-4fc3-850a-80175de0c5ba.png" 
+                      className="w-32 h-auto opacity-50" 
+                      aria-hidden="true"
+                    />
+                  </div>
+                )}
               </div>
             </div>
 

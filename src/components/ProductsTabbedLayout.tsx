@@ -87,36 +87,63 @@ const ProductsTabbedLayout = () => {
         {/* Enhanced glassmorphic tabs */}
         <Tabs defaultValue="applications" className="w-full max-w-6xl mx-auto">
           <div className="flex justify-center mb-12">
-            <TabsList className="p-1 h-14 backdrop-blur-md bg-white/30 border border-white/40 rounded-xl shadow-lg">
-              <TabsTrigger value="applications" className="px-8 h-12 data-[state=active]:bg-deewan-primary data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-300">
+            <TabsList 
+              className="p-1 h-14 backdrop-blur-md bg-white/30 border border-white/40 rounded-xl shadow-lg"
+              aria-label="Product categories"
+            >
+              <TabsTrigger 
+                value="applications" 
+                className="px-8 h-12 data-[state=active]:bg-deewan-primary data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-300"
+                id="applications-tab"
+                aria-controls="applications-panel"
+              >
                 Applications
               </TabsTrigger>
-              <TabsTrigger value="apis" className="px-8 h-12 data-[state=active]:bg-deewan-secondary data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-300">
+              <TabsTrigger 
+                value="apis" 
+                className="px-8 h-12 data-[state=active]:bg-deewan-secondary data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-300"
+                id="apis-tab"
+                aria-controls="apis-panel"
+              >
                 Communication APIs
               </TabsTrigger>
             </TabsList>
           </div>
           
           {/* Applications content with glassmorphic cards */}
-          <TabsContent value="applications" className="mt-8 focus-visible:outline-none">
+          <TabsContent 
+            value="applications" 
+            className="mt-8 focus-visible:outline-none"
+            id="applications-panel"
+            role="tabpanel"
+            aria-labelledby="applications-tab"
+          >
             <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={container} initial="hidden" animate="show">
               {applications.map(app => <motion.div key={app.id} variants={item} className="group">
-                  <div className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col">
+                  <div 
+                    className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col"
+                    tabIndex={0}
+                    role="article"
+                    aria-labelledby={`app-title-${app.id}`}
+                  >
                     <div className="flex justify-center mb-6">
                       <div className={`${app.color} p-5 rounded-xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm bg-white/30 border border-white/20`}>
                         {app.icon}
                       </div>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-center mb-4 text-deewan-dark">{app.title}</h3>
+                    <h3 id={`app-title-${app.id}`} className="text-xl font-bold text-center mb-4 text-deewan-dark">{app.title}</h3>
                     
                     <p className="text-deewan-gray text-center mb-6 flex-grow">
                       {app.description}
                     </p>
                     
                     <div className="mt-auto text-center">
-                      <a href={`/products/${app.slug}`} 
-                         className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-primary/20 text-deewan-primary px-5 py-2 font-medium hover:bg-deewan-primary hover:text-white transition-colors duration-300 border border-deewan-primary/20">
+                      <a 
+                        href={`/products/${app.slug}`} 
+                        className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-primary/20 text-deewan-primary px-5 py-2 font-medium hover:bg-deewan-primary hover:text-white transition-colors duration-300 border border-deewan-primary/20 focus:outline-none focus:ring-2 focus:ring-deewan-primary/50"
+                        aria-label={`View ${app.title} product details`}
+                      >
                         View Product
                         <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -129,25 +156,39 @@ const ProductsTabbedLayout = () => {
           </TabsContent>
           
           {/* APIs content with glassmorphic cards */}
-          <TabsContent value="apis" className="mt-8 focus-visible:outline-none">
+          <TabsContent 
+            value="apis" 
+            className="mt-8 focus-visible:outline-none"
+            id="apis-panel"
+            role="tabpanel"
+            aria-labelledby="apis-tab"
+          >
             <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={container} initial="hidden" animate="show">
               {apis.map(api => <motion.div key={api.id} variants={item} className="group">
-                  <div className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col">
+                  <div 
+                    className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col"
+                    tabIndex={0}
+                    role="article"
+                    aria-labelledby={`api-title-${api.id}`}
+                  >
                     <div className="flex justify-center mb-6">
                       <div className={`${api.color} p-5 rounded-xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm bg-white/30 border border-white/20`}>
                         {api.icon}
                       </div>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-center mb-4 text-deewan-dark">{api.title}</h3>
+                    <h3 id={`api-title-${api.id}`} className="text-xl font-bold text-center mb-4 text-deewan-dark">{api.title}</h3>
                     
                     <p className="text-deewan-gray text-center mb-6 flex-grow">
                       {api.description}
                     </p>
                     
                     <div className="mt-auto text-center">
-                      <a href={`/products/${api.slug}`} 
-                         className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-secondary/20 text-deewan-secondary px-5 py-2 font-medium hover:bg-deewan-secondary hover:text-white transition-colors duration-300 border border-deewan-secondary/20">
+                      <a 
+                        href={`/products/${api.slug}`} 
+                        className="inline-flex items-center justify-center rounded-lg backdrop-blur-sm bg-deewan-secondary/20 text-deewan-secondary px-5 py-2 font-medium hover:bg-deewan-secondary hover:text-white transition-colors duration-300 border border-deewan-secondary/20 focus:outline-none focus:ring-2 focus:ring-deewan-secondary/50"
+                        aria-label={`View ${api.title} product details`}
+                      >
                         View Product
                         <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
