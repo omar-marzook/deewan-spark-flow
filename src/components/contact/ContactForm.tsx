@@ -57,6 +57,7 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
       toast({
         title: "Message sent!",
         description: "We'll get back to you as soon as possible.",
+        variant: "success",
       });
       
       setIsSuccess(true);
