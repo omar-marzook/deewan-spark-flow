@@ -55,7 +55,7 @@ const defaultFeatures: FeatureItem[] = [{
 }, {
   id: 'api',
   icon: MessageCircle,
-  title: 'Omnichannel APIs',
+  title: 'Omni-Channel APIs',
   description: 'APIs for SMS, WhatsApp, Voice, Verification and more, easily integrated with your applications.',
   bulletPoints: [
     'Simple REST API integration',

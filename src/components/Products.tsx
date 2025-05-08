@@ -12,7 +12,7 @@ const Products = () => {
     },
     {
       id: 2,
-      title: "Deewan Omnichannel Chat",
+      title: "Deewan Omni-Channel Chat",
       description: "Handle customer inquiries across various platforms from a single interface.",
       icon: <MessageSquare className="w-10 h-10 text-deewan-secondary" />,
       color: "from-deewan-secondary/10 to-deewan-secondary/5"

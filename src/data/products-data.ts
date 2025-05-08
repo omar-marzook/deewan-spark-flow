@@ -504,8 +504,8 @@ const productsData: Record<string, ExtendedProductData> = {
     'omni-channel-chat': {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'omni-channel-chat',
-        name: 'Deewan Omnichannel Chat',
-        isConversionApi: false, // Omnichannel Chat is an application
+        name: 'Deewan Omni-Channel Chat',
+        isConversionApi: false, // Omni-Channel Chat is an application
         tagline:
             'Revolutionize your business communications with personalized interactions at every touchpoint, and speak to any conversational app from one dashboard.',
         description:
@@ -526,7 +526,7 @@ const productsData: Record<string, ExtendedProductData> = {
         coreFeatures: {
             title: 'Improve Every Aspect of <span class="text-deewan-primary">Customer Engagement</span>',
             subtitle:
-                'Deewan Omnichannel Chat was developed to serve as the ultimate customer service solution, equipped with tools that address every aspect of customer engagement operations.',
+                'Deewan Omni-Channel Chat was developed to serve as the ultimate customer service solution, equipped with tools that address every aspect of customer engagement operations.',
         },
         features: [
             {
@@ -571,9 +571,9 @@ const productsData: Record<string, ExtendedProductData> = {
             },
         ],
         powerfulCapabilities: {
-            title: 'The Impact of <span class="text-deewan-primary">Deewan Omnichannel Chat</span>',
+            title: 'The Impact of <span class="text-deewan-primary">Deewan Omni-Channel Chat</span>',
             subtitle:
-                'Our Omnichannel platform brings together technology and simplicity to power your customer interactions.',
+                'Our Omni-Channel platform brings together technology and simplicity to power your customer interactions.',
             features: [
                 {
                     id: 'improved-customer-service',
@@ -592,7 +592,7 @@ const productsData: Record<string, ExtendedProductData> = {
                     icon: React.createElement(Users),
                     title: 'Cultivate New Opportunities',
                     description:
-                        'By integrating Deewan Omnichannel Chat into your website and app, you will be able to respond to inquiries, extending customer service, promote products, and create new opportunities. This will reflect in:',
+                        'By integrating Deewan Omni-Channel Chat into your website and app, you will be able to respond to inquiries, extending customer service, promote products, and create new opportunities. This will reflect in:',
                     bulletPoints: [
                         'Cross-selling opportunities',
                         'Improved conversion rates',

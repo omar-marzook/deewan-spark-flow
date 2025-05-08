@@ -10,7 +10,7 @@ const AlternativeProducts = () => {
     icon: <Bell className="w-10 h-10 text-deewan-primary" />
   }, {
     id: 2,
-    title: "Deewan Omnichannel",
+    title: "Deewan Omni-Channel",
     description: "Handle customer inquiries across various platforms from a single interface.",
     icon: <MessageSquare className="w-10 h-10 text-deewan-primary" />
   }, {

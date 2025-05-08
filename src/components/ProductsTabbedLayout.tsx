@@ -71,7 +71,7 @@ const ProductsTabbedLayout = () => {
       }
     }
   };
-  return <section id="product-section-tabs" className="py-24 relative overflow-hidden">
+  return <section id="products" className="py-24 relative overflow-hidden">
       {/* Enhanced glassmorphic background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-gray-50/30 to-white/40 backdrop-blur-sm -z-10"></div>
       <div className="absolute top-40 left-10 w-96 h-96 bg-deewan-primary/20 rounded-full filter blur-3xl -z-5"></div>
