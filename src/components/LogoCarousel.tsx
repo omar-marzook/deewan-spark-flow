@@ -3,31 +3,40 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import useEmblaCarousel from "embla-carousel-react";
 import { useInterval } from "@/hooks/use-interval";
 import Autoplay from "embla-carousel-autoplay";
+
 const LogoCarousel: React.FC = () => {
   const logos = [{
     id: 1,
-    name: "Company A"
+    name: "Company A",
+    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
   }, {
     id: 2,
-    name: "Company B"
+    name: "Company B",
+    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
   }, {
     id: 3,
-    name: "Company C"
+    name: "Company C",
+    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
   }, {
     id: 4,
-    name: "Company D"
+    name: "Company D",
+    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
   }, {
     id: 5,
-    name: "Company E"
+    name: "Company E",
+    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
   }, {
     id: 6,
-    name: "Company F"
+    name: "Company F",
+    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
   }, {
     id: 7,
-    name: "Company G"
+    name: "Company G",
+    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
   }, {
     id: 8,
-    name: "Company H"
+    name: "Company H",
+    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
   }];
 
   // Setup autoplay plugin
@@ -41,6 +50,7 @@ const LogoCarousel: React.FC = () => {
     dragFree: true,
     skipSnaps: false
   }, [Autoplay(autoplayOptions)]);
+
   return <section id="partners" className="py-20 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/50 to-white"></div>
@@ -67,10 +77,14 @@ const LogoCarousel: React.FC = () => {
             <div className="embla__container flex">
               {logos.map(logo => <div key={logo.id} className="embla__slide flex-[0_0_20%] min-w-0 pl-4 sm:pl-6">
                   <div className="p-2">
-                    <div className="bg-white/80 backdrop-blur-sm h-24 rounded-xl border border-deewan-primary/10 flex items-center justify-center hover:shadow-md transition-all duration-300 group">
-                      <span className="text-xl font-bold text-deewan-dark/70 group-hover:text-deewan-primary transition-colors">
-                        {logo.name}
-                      </span>
+                    <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-deewan-primary/10 flex items-center justify-center hover:shadow-md transition-all duration-300 group p-4">
+                      <img 
+                        src={logo.logo} 
+                        alt={logo.name} 
+                        width={230} 
+                        height={99} 
+                        className="w-[230px] h-[99px] object-contain"
+                      />
                     </div>
                   </div>
                 </div>)}
@@ -80,4 +94,5 @@ const LogoCarousel: React.FC = () => {
       </div>
     </section>;
 };
+
 export default LogoCarousel;
