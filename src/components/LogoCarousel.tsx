@@ -77,13 +77,13 @@ const LogoCarousel: React.FC = () => {
             <div className="embla__container flex">
               {logos.map(logo => <div key={logo.id} className="embla__slide flex-[0_0_20%] min-w-0 pl-4 sm:pl-6">
                   <div className="p-2">
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-deewan-primary/10 flex items-center justify-center hover:shadow-md transition-all duration-300 group p-4">
+                    <div className="group">
                       <img 
                         src={logo.logo} 
                         alt={logo.name} 
                         width={230} 
                         height={99} 
-                        className="w-[230px] h-[99px] object-contain"
+                      className="aspect-21/9 object-cover"
                       />
                     </div>
                   </div>
