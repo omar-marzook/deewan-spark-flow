@@ -2,7 +2,7 @@ import React from "react";
 import FooterColumn from "./FooterColumn";
 import SocialLinks from "./SocialLinks";
 const FooterLinks = () => {
-  return <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+  return <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
     {/* Logo and description column */}
     <div className="flex flex-col backdrop-blur-sm bg-white/20 rounded-xl p-6 border border-white/30">
       <a href="/" className="mb-6">
@@ -14,8 +14,7 @@ const FooterLinks = () => {
     </div>
 
     {/* Products column */}
-    {/* Products column */}
-    <FooterColumn title="Products" links={[{
+    <FooterColumn title="Applications" links={[{
       name: "Omni-Channel Chat",
       href: "/products/omni-channel-chat"
     }, {
@@ -30,7 +29,10 @@ const FooterLinks = () => {
     }, {
       name: "IVR",
       href: "/products/ivr"
-    }, {
+    }]} />
+
+    {/* Products column */}
+    <FooterColumn title="Communication APIs" links={[{
       name: "WhatsApp API",
       href: "/products/whatsapp-api"
     }, {
