@@ -6,8 +6,8 @@ readTime: 4 min
 category: Omnichannel Chat
 coverImage: https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60
 author:
-name: Deewan Team
-avatar: https://avatar.iran.liara.run/username?username=Deewan+Team
+  name: Deewan Team
+  avatar: https://avatar.iran.liara.run/username?username=Deewan+Team
 ---
 
 Customer expectations in Saudi Arabia aren’t what they used to be.
