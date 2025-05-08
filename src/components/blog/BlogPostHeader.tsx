@@ -11,7 +11,7 @@ const BlogPostHeader = ({ post }) => (
       transition={{ duration: 0.6 }}
     >
       {post.category && (
-        <span className="inline-block px-3 py-1 mb-4 text-xs font-medium uppercase tracking-wider bg-deewan-primary/10 text-deewan-primary rounded-full">
+        <span className="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider bg-deewan-primary/10 text-deewan-primary rounded-full">
           {post.category}
         </span>
       )}
