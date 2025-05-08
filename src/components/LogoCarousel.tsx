@@ -44,6 +44,7 @@ const LogoCarousel: React.FC = () => {
     delay: 3000,
     rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement
   };
+  
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
@@ -73,21 +74,35 @@ const LogoCarousel: React.FC = () => {
         </div>
 
         <div className="w-full overflow-hidden">
-          <div className="embla" ref={emblaRef} role="region" aria-label="Client logos carousel">
+          <div 
+            className="embla" 
+            ref={emblaRef} 
+            role="region" 
+            aria-roledescription="carousel" 
+            aria-label="Client logos carousel"
+          >
             <div className="embla__container flex">
-              {logos.map(logo => <div key={logo.id} className="embla__slide flex-[0_0_20%] min-w-0 pl-4 sm:pl-6">
+              {logos.map(logo => (
+                <div 
+                  key={logo.id} 
+                  className="embla__slide flex-[0_0_20%] min-w-0 pl-4 sm:pl-6"
+                  role="group" 
+                  aria-roledescription="slide"
+                  aria-label={`${logo.name} logo`}
+                >
                   <div className="p-2">
                     <div className="group">
                       <img 
                         src={logo.logo} 
-                        alt={logo.name} 
+                        alt={`${logo.name} logo`} 
                         width={230} 
                         height={99} 
-                      className="aspect-21/9 object-cover"
+                        className="aspect-21/9 object-cover"
                       />
                     </div>
                   </div>
-                </div>)}
+                </div>
+              ))}
             </div>
           </div>
         </div>

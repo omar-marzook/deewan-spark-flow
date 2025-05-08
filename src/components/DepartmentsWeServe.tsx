@@ -139,21 +139,27 @@ const DepartmentsWeServe: React.FC<DepartmentsWeServeProps> = ({ departments }) 
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8" role="list">
           {departmentsData.map((dept) => (
             <div 
               key={dept.id} 
               className="group backdrop-blur-md bg-white/30 border border-white/30 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6"
+              tabIndex={0}
+              role="article"
+              aria-labelledby={`dept-${dept.id}-heading`}
             >
               <div className={`${dept.color} p-4 rounded-xl mb-6 inline-flex items-center justify-center`}>
                 {dept.icon}
               </div>
               
-              <h3 className="text-xl font-bold mb-3 text-deewan-dark">
+              <h3 id={`dept-${dept.id}-heading`} className="text-xl font-bold mb-3 text-deewan-dark">
                 {dept.name}
               </h3>
               
-              <ul className="text-deewan-gray mb-4 space-y-2">
+              <ul 
+                className="text-deewan-gray mb-4 space-y-2" 
+                aria-label={`${dept.name} features`}
+              >
                 {dept.description.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-deewan-primary mt-2 mr-2" aria-hidden="true"></span>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock } from 'lucide-react';
@@ -29,9 +28,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
       <Link
         to={`/blog/${post.slug}`}
         className={cn(
-          "group flex flex-col h-full rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white/90",
+          "group flex flex-col h-full rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white/90 focus:outline-none focus:ring-2 focus:ring-deewan-primary/50",
           featured ? "md:col-span-3 md:flex-row" : ""
         )}
+        aria-labelledby={`blog-title-${post.id}`}
       >
         {/* Post thumbnail */}
         <div className={cn("aspect-video overflow-hidden",
@@ -39,7 +39,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
         )}>
           <img
             src={imageSrc}
-            alt={post.title}
+            alt={`Featured image for article: ${post.title}`}
             className="w-full h-full object-cover transition-transform duration-500"
           />
         </div>
@@ -56,20 +56,23 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
           </div>
 
           {/* Title */}
-          <h3 className={cn(
+          <h3 
+            id={`blog-title-${post.id}`}
+            className={cn(
               "font-bold text-deewan-dark mb-3 group-hover:text-deewan-primary transition-colors",
               featured ? "text-2xl md:text-3xl" : "text-xl"
-            )}>
+            )}
+          >
             {post.title}
           </h3>
 
           {/* Meta: Date & Read Time */}
-          <div className="flex items-center text-deewan-gray text-sm mb-3">
-            <span>{date}</span>
-            <span className="mx-2">•</span>
+          <div className="flex items-center text-deewan-gray text-sm mb-3" aria-label="Article metadata">
+            {date && <span>{date}</span>}
+            {date && <span className="mx-2" aria-hidden="true">•</span>}
             <span className="flex items-center">
-              <Clock size={14} className="mr-1" />
-              {post.readTime} read
+              <Clock size={14} className="mr-1" aria-hidden="true" />
+              <span>{post.readTime} read</span>
             </span>
           </div>
 
@@ -81,7 +84,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
           {/* Read more link */}
           <div className="mt-auto">
             <span className="text-sm font-medium text-deewan-primary flex items-center">
-              Read more <ArrowRight className="ml-1 h-4 w-4" />
+              Read more <span className="sr-only">about {post.title}</span> <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
             </span>
           </div>
         </div>

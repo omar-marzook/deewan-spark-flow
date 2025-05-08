@@ -49,25 +49,39 @@ const Industries = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map(industry => <div key={industry.id} className="glass-card p-6 flex flex-col h-full group hover:-translate-y-2 transition-all duration-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+          {industries.map(industry => (
+            <div 
+              key={industry.id} 
+              className="glass-card p-6 flex flex-col h-full group hover:-translate-y-2 transition-all duration-300"
+              tabIndex={0}
+              role="article"
+              aria-labelledby={`industry-${industry.id}-heading`}
+              aria-describedby={`industry-${industry.id}-description`}
+            >
               <div className="mb-6 p-4 bg-white/50 rounded-lg inline-block">
                 {industry.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3">{industry.name}</h3>
-              <p className="text-deewan-gray mb-4">{industry.description}</p>
+              <h3 id={`industry-${industry.id}-heading`} className="text-xl font-bold mb-3">{industry.name}</h3>
+              <p id={`industry-${industry.id}-description`} className="text-deewan-gray mb-4">{industry.description}</p>
               <div className="mt-auto">
-                <h4 className="font-medium text-deewan-primary mb-2 text-base">Key Applications:</h4>
-                <ul className="space-y-2">
-                  {industry.applications.map((app, index) => <li key={index} className="flex items-center text-sm text-deewan-gray">
+                <h4 id={`industry-${industry.id}-applications-heading`} className="font-medium text-deewan-primary mb-2 text-base">Key Applications:</h4>
+                <ul 
+                  className="space-y-2" 
+                  aria-labelledby={`industry-${industry.id}-applications-heading`}
+                >
+                  {industry.applications.map((app, index) => (
+                    <li key={index} className="flex items-center text-sm text-deewan-gray">
                       <svg className="w-4 h-4 mr-2 text-deewan-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      {app}
-                    </li>)}
+                      <span>{app}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
-            </div>)}
+            </div>
+          ))}
         </div>
       </div>
     </section>;

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
@@ -8,6 +7,7 @@ import BlogCard from "@/components/blog/BlogCard";
 
 const BlogSection = () => {
   const [blogPosts, setBlogPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     try {
@@ -29,9 +29,11 @@ const BlogSection = () => {
       // Limit to 3 posts for the homepage
       const limitedPosts = formattedPosts.slice(0, 3);
       setBlogPosts(limitedPosts);
+      setIsLoading(false);
     } catch (err) {
       console.error('Error loading blog posts for homepage:', err);
       setBlogPosts([]);
+      setIsLoading(false);
     }
   }, []);
   return (
@@ -48,8 +50,12 @@ const BlogSection = () => {
         </div>
 
         {/* Blog posts grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {blogPosts.length > 0 ? (
+        <div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+          aria-live="polite"
+          aria-busy={isLoading}
+        >
+          {!isLoading && blogPosts.length > 0 ? (
             blogPosts.map((post) => (
               <BlogCard 
                 key={post.id} 
@@ -63,7 +69,12 @@ const BlogSection = () => {
           ) : (
             // Loading state or fallback
             Array.from({ length: 3 }).map((_, index) => (
-              <div key={index} className="rounded-xl overflow-hidden shadow-sm bg-white animate-pulse" role="status" aria-label="Loading blog post">
+              <div 
+                key={index} 
+                className="rounded-xl overflow-hidden shadow-sm bg-white animate-pulse" 
+                role="status" 
+                aria-label="Loading blog post"
+              >
                 <div className="aspect-video bg-gray-200"></div>
                 <div className="p-6">
                   <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
@@ -72,6 +83,7 @@ const BlogSection = () => {
                   <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
                   <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
                 </div>
+                <span className="sr-only">Loading blog posts, please wait</span>
               </div>
             ))
           )}
@@ -81,9 +93,9 @@ const BlogSection = () => {
         <div className="text-center">
           <Button 
             asChild
-            className="bg-deewan-primary hover:bg-deewan-primary/90 text-white"
+            className="bg-deewan-primary hover:bg-deewan-primary/90 text-white focus:ring-2 focus:ring-deewan-primary/50 focus:outline-none"
           >
-            <Link to="/blog">
+            <Link to="/blog" aria-label="View all blog posts">
               View All Blog Posts
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Link>
