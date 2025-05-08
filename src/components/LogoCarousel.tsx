@@ -8,35 +8,35 @@ const LogoCarousel: React.FC = () => {
   const logos = [{
     id: 1,
     name: "Company A",
-    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
+    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
   }, {
     id: 2,
     name: "Company B",
-    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
+    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
   }, {
     id: 3,
     name: "Company C",
-    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
+    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
   }, {
     id: 4,
     name: "Company D",
-    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
+    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
   }, {
     id: 5,
     name: "Company E",
-    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
+    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
   }, {
     id: 6,
     name: "Company F",
-    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
+    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
   }, {
     id: 7,
     name: "Company G",
-    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
+    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
   }, {
     id: 8,
     name: "Company H",
-    logo: "https://fakeimg.pl/230x99?text=Logos+with+230x99px"
+    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
   }];
 
   // Setup autoplay plugin
