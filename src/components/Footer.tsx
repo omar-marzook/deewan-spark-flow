@@ -8,12 +8,12 @@ const Footer = () => {
       <Newsletter />
       
       {/* Main footer with glassmorphism gradient background */}
-      <footer className="relative pt-16 overflow-hidden">
+      <footer className="relative pt-16 overflow-hidden" role="contentinfo" aria-label="Site footer">
         {/* Glassmorphism gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/80 via-gray-100/80 to-gray-50/80 backdrop-blur-sm z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/80 via-gray-100/80 to-gray-50/80 backdrop-blur-sm z-0" aria-hidden="true"></div>
         
         {/* Gradient shapes for added depth */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-30">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-30" aria-hidden="true">
           {/* Primary green gradient blob */}
           <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-gradient-to-br from-deewan-primary/40 to-deewan-primary/10 blur-2xl"></div>
           

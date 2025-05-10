@@ -16,14 +16,36 @@ const XIcon = createLucideIcon("X", [
 
 const SocialLinks = () => {
   return (
-    <div className="flex space-x-3">
-      <a href="https://x.com/DeewanKSA" target="_blank" rel="noopener noreferrer" aria-label="X" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
-        <XIcon size={16} />
+    <nav className="flex space-x-3" aria-label="Social Media Links">
+      <a 
+        href="https://x.com/DeewanKSA" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="Follow Deewan on X (formerly Twitter)" 
+        className={cn(
+          "inline-flex items-center justify-center rounded-full p-2.5", 
+          "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", 
+          "hover:bg-deewan-primary/20 transition-colors",
+          "focus:outline-none focus:ring-2 focus:ring-deewan-primary/50"
+        )}
+      >
+        <XIcon size={16} aria-hidden="true" />
       </a>
-      <a href="https://www.linkedin.com/company/deewanks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={cn("inline-flex items-center justify-center rounded-full p-2.5", "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", "hover:bg-deewan-primary/20 transition-colors")}>
-        <Linkedin size={18} />
+      <a 
+        href="https://www.linkedin.com/company/deewanks" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="Connect with Deewan on LinkedIn" 
+        className={cn(
+          "inline-flex items-center justify-center rounded-full p-2.5", 
+          "bg-deewan-primary/10 backdrop-blur-sm text-deewan-primary", 
+          "hover:bg-deewan-primary/20 transition-colors",
+          "focus:outline-none focus:ring-2 focus:ring-deewan-primary/50"
+        )}
+      >
+        <Linkedin size={18} aria-hidden="true" />
       </a>
-    </div>
+    </nav>
   );
 };
 

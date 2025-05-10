@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -31,6 +30,7 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+  const statusRef = useRef<HTMLDivElement>(null);
   
   // Initialize form
   const form = useForm<FormValues>({
@@ -88,17 +88,38 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
         transition={{ duration: 0.5 }}
       >
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+          <form 
+            onSubmit={form.handleSubmit(onSubmit)} 
+            className="space-y-5"
+            aria-labelledby="contact-form-heading"
+            aria-describedby="form-status"
+          >
+            <div 
+              ref={statusRef} 
+              id="form-status" 
+              className="sr-only" 
+              aria-live="polite"
+            >
+              {isSubmitting ? "Submitting form, please wait..." : 
+               isSuccess ? "Message sent successfully!" : ""}
+            </div>
+
             <FormField 
               control={form.control} 
               name="name" 
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-gray-700">Your Name</FormLabel>
+                  <FormLabel className="text-sm font-medium text-gray-700" htmlFor="name">Your Name</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <Input placeholder="John Doe" className="pl-10 bg-white border border-gray-200" {...field} />
-                      <User className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" />
+                      <Input 
+                        id="name"
+                        placeholder="John Doe" 
+                        className="pl-10 bg-white border border-gray-200" 
+                        aria-required="true"
+                        {...field} 
+                      />
+                      <User className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -111,11 +132,18 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
               name="email" 
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-gray-700">Your Email</FormLabel>
+                  <FormLabel className="text-sm font-medium text-gray-700" htmlFor="email">Your Email</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <Input placeholder="you@example.com" className="pl-10 bg-white border border-gray-200" {...field} />
-                      <Mail className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" />
+                      <Input 
+                        id="email"
+                        type="email"
+                        placeholder="you@example.com" 
+                        className="pl-10 bg-white border border-gray-200" 
+                        aria-required="true"
+                        {...field} 
+                      />
+                      <Mail className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -129,11 +157,18 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
                 name="phone" 
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">Phone Number</FormLabel>
+                    <FormLabel className="text-sm font-medium text-gray-700" htmlFor="phone">Phone Number</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Input placeholder="+966 12 345 6789" className="pl-10 bg-white border border-gray-200" {...field} />
-                        <Phone className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" />
+                        <Input 
+                          id="phone"
+                          type="tel"
+                          placeholder="+966 12 345 6789" 
+                          className="pl-10 bg-white border border-gray-200" 
+                          aria-required="true"
+                          {...field} 
+                        />
+                        <Phone className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                       </div>
                     </FormControl>
                     <FormMessage />
@@ -146,11 +181,17 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
                 name="company" 
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">Company (Optional)</FormLabel>
+                    <FormLabel className="text-sm font-medium text-gray-700" htmlFor="company">Company (Optional)</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Input placeholder="Your Company" className="pl-10 bg-white border border-gray-200" {...field} />
-                        <Building className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" />
+                        <Input 
+                          id="company"
+                          placeholder="Your Company" 
+                          className="pl-10 bg-white border border-gray-200" 
+                          aria-required="false"
+                          {...field} 
+                        />
+                        <Building className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                       </div>
                     </FormControl>
                     <FormMessage />
@@ -164,11 +205,17 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
               name="message" 
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-gray-700">Message</FormLabel>
+                  <FormLabel className="text-sm font-medium text-gray-700" htmlFor="message">Message</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <Textarea placeholder="How can we help you?" className="pl-10 min-h-[120px] bg-white border border-gray-200" {...field} />
-                      <MessageSquare className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" />
+                      <Textarea 
+                        id="message"
+                        placeholder="How can we help you?" 
+                        className="pl-10 min-h-[120px] bg-white border border-gray-200" 
+                        aria-required="true"
+                        {...field} 
+                      />
+                      <MessageSquare className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -178,29 +225,30 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
 
             <Button 
               type="submit" 
-              className="w-full bg-deewan-primary hover:bg-deewan-primary/90 text-white" 
+              className="w-full bg-deewan-primary hover:bg-deewan-primary/90 text-white focus:ring-2 focus:ring-deewan-primary/50 focus:outline-none" 
               transition='no' 
               disabled={isSubmitting}
+              aria-busy={isSubmitting}
             >
               {isSubmitting ? (
                 <span className="flex items-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Processing...
+                  <span>Processing...</span>
                 </span>
               ) : isSuccess ? (
                 <span className="flex items-center">
-                  <svg className="-ml-1 mr-3 h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="-ml-1 mr-3 h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  Message Sent!
+                  <span>Message Sent!</span>
                 </span>
               ) : (
                 <span className="flex items-center justify-center">
-                  <Send className="mr-2 h-5 w-5" />
-                  Send Message
+                  <Send className="mr-2 h-5 w-5" aria-hidden="true" />
+                  <span>Send Message</span>
                 </span>
               )}
             </Button>

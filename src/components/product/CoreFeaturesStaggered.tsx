@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Check, Users, Bookmark, Phone, Mail, Star } from "lucide-react";
 import { ReactNode } from "react";
 
@@ -12,27 +12,27 @@ interface Feature {
 
 // Default features as fallback
 const defaultFeatures: Feature[] = [{
-  icon: <Check className="w-7 h-7 text-deewan-primary" />,
+  icon: <Check className="w-7 h-7 text-deewan-primary" aria-hidden="true" />,
   title: "Real-time Communications",
   description: "Deliver instant messages to customers through SMS, WhatsApp, or Voice with high reliability."
 }, {
-  icon: <Bookmark className="w-7 h-7 text-deewan-primary" />,
+  icon: <Bookmark className="w-7 h-7 text-deewan-primary" aria-hidden="true" />,
   title: "Centralized Management",
   description: "One dashboard to manage campaigns, user conversations, analytics, and reporting."
 }, {
-  icon: <Users className="w-7 h-7 text-deewan-primary" />,
+  icon: <Users className="w-7 h-7 text-deewan-primary" aria-hidden="true" />,
   title: "AI-powered Automation",
   description: "Automate customer replies, authentication, and routine tasks with smart bots."
 }, {
-  icon: <Star className="w-7 h-7 text-deewan-primary" />,
+  icon: <Star className="w-7 h-7 text-deewan-primary" aria-hidden="true" />,
   title: "Insightful Analytics",
   description: "Gain actionable insights from comprehensive analytics and reporting."
 }, {
-  icon: <Phone className="w-7 h-7 text-deewan-primary" />,
+  icon: <Phone className="w-7 h-7 text-deewan-primary" aria-hidden="true" />,
   title: "Omni-Channel APIs",
   description: "APIs for SMS, WhatsApp, Voice, Verification and more, easily integrated with your applications."
 }, {
-  icon: <Mail className="w-7 h-7 text-deewan-primary" />,
+  icon: <Mail className="w-7 h-7 text-deewan-primary" aria-hidden="true" />,
   title: "Personalization",
   description: "Personalize messages at scale to improve engagement and conversion."
 }];
@@ -48,25 +48,37 @@ const FeatureCard = ({
     once: true,
     margin: "-100px"
   });
-  return <motion.div ref={ref} initial={{
-    opacity: 0,
-    y: 20,
-    filter: "blur(5px)"
-  }} animate={isInView ? {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)"
-  } : {
-    opacity: 0,
-    y: 20,
-    filter: "blur(5px)"
-  }} transition={{
-    duration: 0.5,
-    delay: index * 0.1
-  }} className="group relative">
-      <div className="h-full p-8 rounded-2xl bg-gradient-to-br from-white/40 to-white/20 backdrop-blur-md border border-white/20 shadow transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl">
+  const prefersReducedMotion = useReducedMotion();
+  return <motion.div 
+    ref={ref} 
+    initial={prefersReducedMotion ? { opacity: 1, y: 0, filter: "blur(0px)" } : {
+      opacity: 0,
+      y: 20,
+      filter: "blur(5px)"
+    }} 
+    animate={isInView ? {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)"
+    } : {
+      opacity: 0,
+      y: 20,
+      filter: "blur(5px)"
+    }} 
+    transition={{
+      duration: prefersReducedMotion ? 0 : 0.5,
+      delay: prefersReducedMotion ? 0 : index * 0.1
+    }} 
+    className="group relative h-full">
+      <div 
+        className="h-full p-8 rounded-2xl bg-gradient-to-br from-white/40 to-white/20 backdrop-blur-md border border-white/20 shadow transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl focus-within:translate-y-[-4px] focus-within:shadow-xl focus-within:ring-2 focus-within:ring-deewan-primary/50"
+        tabIndex={0}
+      >
         <div className="mb-6 relative">
-          <div className="absolute inset-0 bg-deewan-primary/10 rounded-xl blur-xl transform group-hover:scale-110 transition-transform"></div>
+          <div 
+            className="absolute inset-0 bg-deewan-primary/10 rounded-xl blur-xl transform group-hover:scale-110 group-focus-within:scale-110 transition-transform"
+            aria-hidden="true"
+          ></div>
           <div className="relative w-14 h-14 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-white/40">
             {feature.icon}
           </div>
@@ -93,41 +105,53 @@ const CoreFeaturesStaggered = ({
   title = "Core <span class=\"text-deewan-primary\">Features</span>",
   subtitle = "Discover how our intelligent solutions can transform your communication",
 }: CoreFeaturesStaggeredProps) => {
-  return <section className="relative py-24 overflow-hidden">
+  const prefersReducedMotion = useReducedMotion();
+  return <section id="core-features" className="relative py-24 overflow-hidden" aria-labelledby="core-features-heading">
       {/* Background elements */}
-      <div className="absolute inset-0">
-        <motion.div animate={{
-        rotate: [0, 360],
-        scale: [1, 1.1, 1]
-      }} transition={{
-        duration: 20,
-        repeat: Infinity,
-        easings: ["easeInOut"]
-      }} className="absolute top-0 left-1/4 w-96 h-96 bg-deewan-primary/5 rounded-full blur-3xl" />
-        <motion.div animate={{
-        rotate: [360, 0],
-        scale: [1, 1.2, 1]
-      }} transition={{
-        duration: 25,
-        repeat: Infinity,
-        easings: ["easeInOut"]
-      }} className="absolute bottom-0 right-1/4 w-96 h-96 bg-deewan-secondary/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0" aria-hidden="true">
+        <motion.div 
+          animate={prefersReducedMotion ? {} : {
+            rotate: [0, 360],
+            scale: [1, 1.1, 1]
+          }} 
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            easings: ["easeInOut"]
+          }} 
+          className="absolute top-0 left-1/4 w-96 h-96 bg-deewan-primary/5 rounded-full blur-3xl" 
+        />
+        <motion.div 
+          animate={prefersReducedMotion ? {} : {
+            rotate: [360, 0],
+            scale: [1, 1.2, 1]
+          }} 
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            easings: ["easeInOut"]
+          }} 
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-deewan-secondary/5 rounded-full blur-3xl" 
+        />
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black" 
-               dangerouslySetInnerHTML={{ __html: title }}>
+        <h2 id="core-features-heading" className="text-3xl md:text-4xl font-bold mb-4 text-black" dangerouslySetInnerHTML={{ __html: title }}>
           </h2>
           
-          <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
+          <p className="text-lg text-deewan-gray max-w-2xl mx-auto">
             {subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => <FeatureCard key={index} feature={feature} index={index} />)}
-        </div>
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0">
+          {features.map((feature, index) => (
+            <li key={index} className="h-full">
+              <FeatureCard feature={feature} index={index} />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>;
 };

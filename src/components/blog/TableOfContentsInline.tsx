@@ -1,4 +1,4 @@
-
+  
 import React, { useEffect, useState } from "react";
 import { Bookmark } from "lucide-react";
 
@@ -34,11 +34,11 @@ const TableOfContentsInline = ({ headings }) => {
   return (
     <div className="sticky top-32 max-h-[calc(100vh-200px)] overflow-auto pr-2">
       <div className="rounded-xl glass p-5 border-l-4 border-deewan-primary">
-        <h4 className="font-bold text-lg text-deewan-dark/90 mb-3 flex items-center">
-          <Bookmark className="w-4 h-4 mr-2 text-deewan-primary" />
-          Table of content
-        </h4>
-        <nav>
+        <h2 className="font-bold text-lg text-deewan-dark/90 mb-3 flex items-center">
+          <Bookmark className="w-4 h-4 mr-2 text-deewan-primary" aria-hidden="true" />
+          Table of contents
+        </h2>
+        <nav aria-label="Table of contents">
           <ul className="space-y-1 text-sm">
             {headings.map((heading) => (
               <li key={heading.id} className={`${heading.level === 3 ? 'ml-3' : ''}`}>
@@ -46,10 +46,16 @@ const TableOfContentsInline = ({ headings }) => {
                   href={`#${heading.id}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    document.getElementById(heading.id)?.scrollIntoView({
-                      behavior: 'smooth',
-                      block: 'start',
-                    });
+                    const element = document.getElementById(heading.id);
+                    if (element) {
+                      element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                      });
+                      // Set focus to the heading for better accessibility
+                      element.setAttribute('tabindex', '-1');
+                      element.focus({ preventScroll: true });
+                    }
                   }}
                   className={`
                     block py-1 px-2 rounded hover:bg-deewan-primary/10 transition-colors
@@ -58,6 +64,7 @@ const TableOfContentsInline = ({ headings }) => {
                       'text-deewan-dark/70'
                     }
                   `}
+                  aria-current={activeId === heading.id ? "true" : "false"}
                 >
                   {heading.text}
                 </a>

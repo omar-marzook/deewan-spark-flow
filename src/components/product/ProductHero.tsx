@@ -13,9 +13,9 @@ const ProductHero: React.FC<ProductHeroProps> = ({
   heroImage,
   onContactClick
 }) => {
-  return <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5">
+  return <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" aria-labelledby="product-hero-heading">
       {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute w-[500px] h-[500px] -top-48 -right-48 bg-deewan-primary/10 rounded-full blur-3xl animate-[pulse_15s_ease-in-out_infinite]"></div>
         <div className="absolute w-[400px] h-[400px] top-1/2 -left-48 bg-deewan-secondary/10 rounded-full blur-3xl animate-[pulse_20s_ease-in-out_infinite]"></div>
       </div>
@@ -25,7 +25,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
       backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,.1) 1px, transparent 1px)',
       backgroundSize: '50px 50px',
       opacity: 0.3
-    }}>
+    }} aria-hidden="true">
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 pt-32">
@@ -48,7 +48,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               </BreadcrumbList>
             </Breadcrumb>
 
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 font-display">
+            <h1 id="product-hero-heading" className="text-4xl lg:text-5xl font-bold mb-6 font-display">
               {name}
             </h1>
 
@@ -57,15 +57,20 @@ const ProductHero: React.FC<ProductHeroProps> = ({
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <ButtonLink href="#contact" size="lg">
+              <ButtonLink 
+                href="#contact" 
+                size="lg"
+                aria-label={`Get started with ${name}`}
+                onClick={onContactClick}
+              >
                 Get Started
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </ButtonLink>
             </div>
           </div>
 
           {/* 3D Visual Element */}
-          <div className="relative h-[600px] hidden lg:block">
+          <div className="relative h-[600px] hidden lg:block" aria-hidden="true">
             {/* Main floating card */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl rotate-12 animate-[float_6s_ease-in-out_infinite]">
               {/* Decorative elements */}
@@ -74,9 +79,22 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               
               {/* Content */}
               <div className="absolute inset-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 p-6 overflow-hidden">
-                {heroImage ? <img src={heroImage} alt={name} className="w-full h-full object-cover rounded-lg" /> : <div className="w-full h-full flex items-center justify-center">
-                    <img alt="Deewan" src="/lovable-uploads/e2e44fa6-d598-4fc3-850a-80175de0c5ba.png" className="w-32 h-auto opacity-50" />
-                  </div>}
+                {heroImage ? (
+                  <img 
+                    src={heroImage} 
+                    alt={`${name} product illustration`} 
+                    className="w-full h-full object-cover rounded-lg" 
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <img 
+                      alt="" 
+                      src="/lovable-uploads/e2e44fa6-d598-4fc3-850a-80175de0c5ba.png" 
+                      className="w-32 h-auto opacity-50" 
+                      aria-hidden="true"
+                    />
+                  </div>
+                )}
               </div>
             </div>
 
