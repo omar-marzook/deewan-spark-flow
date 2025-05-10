@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const BlogCoverImage = ({ post }) => (
-  <div className="container mx-auto max-w-5xl px-4 mb-12">
+  <figure className="container mx-auto max-w-5xl px-4 mb-12">
     <motion.div
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -12,11 +12,16 @@ const BlogCoverImage = ({ post }) => (
     >
       <img
         src={post.coverImage}
-        alt={post.title}
+        alt={`Cover image for article: ${post.title}`}
         className="w-full h-full object-cover"
       />
     </motion.div>
-  </div>
+    {post.coverImageCaption && (
+      <figcaption className="text-center text-sm text-deewan-gray mt-2">
+        {post.coverImageCaption}
+      </figcaption>
+    )}
+  </figure>
 );
 
 export default BlogCoverImage;
