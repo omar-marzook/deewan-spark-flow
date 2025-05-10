@@ -69,8 +69,7 @@ const FeatureCard = ({
       duration: prefersReducedMotion ? 0 : 0.5,
       delay: prefersReducedMotion ? 0 : index * 0.1
     }} 
-    className="group relative"
-  >
+    className="group relative h-full">
       <div 
         className="h-full p-8 rounded-2xl bg-gradient-to-br from-white/40 to-white/20 backdrop-blur-md border border-white/20 shadow transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl focus-within:translate-y-[-4px] focus-within:shadow-xl focus-within:ring-2 focus-within:ring-deewan-primary/50"
         tabIndex={0}
@@ -138,14 +137,7 @@ const CoreFeaturesStaggered = ({
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 id="core-features-heading" className="text-3xl md:text-4xl font-bold mb-4 text-black">
-            {title.includes("<span") ? (
-              <>
-                Core <span className="text-deewan-primary">Features</span>
-              </>
-            ) : (
-              title
-            )}
+        <h2 id="core-features-heading" className="text-3xl md:text-4xl font-bold mb-4 text-black" dangerouslySetInnerHTML={{ __html: title }}>
           </h2>
           
           <p className="text-lg text-deewan-gray max-w-2xl mx-auto">
@@ -155,7 +147,7 @@ const CoreFeaturesStaggered = ({
 
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0">
           {features.map((feature, index) => (
-            <li key={index}>
+            <li key={index} className="h-full">
               <FeatureCard feature={feature} index={index} />
             </li>
           ))}
