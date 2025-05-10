@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Code, MessageSquareText, HeartHandshake, LineChart } from 'lucide-react';
 
 // Update the interface to accept departments as an array
@@ -44,29 +44,35 @@ const itemVariants = {
 const DepartmentSection = ({
   departments
 }: DepartmentSectionProps) => {
+  const prefersReducedMotion = useReducedMotion();
   return <div className="max-w-6xl mx-auto">
-      <motion.h2 initial={{
-      opacity: 0,
-      y: 20
-    }} whileInView={{
-      opacity: 1,
-      y: 0
-    }} viewport={{
-      once: true,
-      margin: "-100px"
-    }} transition={{
-      duration: 0.5
-    }} className="text-3xl md:text-4xl font-bold mb-16 text-deewan-dark text-center">
+      <motion.h2 
+        id="what-we-do-heading"
+        initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
+        className="text-3xl md:text-4xl font-bold mb-16 text-deewan-dark text-center"
+      >
         What We Do
       </motion.h2>
       
-      <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{
-      once: true,
-      margin: "-100px"
-    }} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {departments.map((department, index) => <motion.div key={index} variants={itemVariants} className="glass p-8 rounded-xl hover:shadow-lg transition-all duration-300">
+      <motion.ul
+        variants={prefersReducedMotion ? {} : containerVariants}
+        initial={prefersReducedMotion ? "visible" : "hidden"}
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 list-none p-0"
+        aria-labelledby="what-we-do-heading"
+      >
+        {departments.map((department, index) => (
+          <motion.li 
+            key={index} 
+            variants={prefersReducedMotion ? {} : itemVariants}
+            className="glass p-8 rounded-xl hover:shadow-lg focus-within:shadow-lg transition-all duration-300"
+          >
             <div className="flex flex-col md:flex-row items-start gap-6">
-              <div className="p-4 bg-white/80 rounded-xl shadow-sm flex items-center justify-center">
+              <div className="p-4 bg-white/80 rounded-xl shadow-sm flex items-center justify-center" aria-hidden="true">
                 {department.icon}
               </div>
               
@@ -77,8 +83,9 @@ const DepartmentSection = ({
                 </p>
               </div>
             </div>
-          </motion.div>)}
-      </motion.div>
+          </motion.li>
+        ))}
+      </motion.ul>
     </div>;
 };
 

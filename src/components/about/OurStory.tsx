@@ -2,7 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { History } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useReducedMotion } from 'framer-motion';
+
 const OurStory = () => {
+  const prefersReducedMotion = useReducedMotion();
   const timelineItems = [{
     year: '2010',
     title: 'Foundation',
@@ -24,8 +27,8 @@ const OurStory = () => {
     title: 'Growth',
     description: 'With 1,000+ satisfied clients throughout the years, Deewan proudly leads the messaging market in Saudi Arabia — and continues to grow.'
   }];
-  return <section id="our-story" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0">
+  return <section id="our-story" className="py-24 relative overflow-hidden" aria-labelledby="our-story-heading">
+      <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/80 to-white"></div>
         {/* Decorative elements */}
         <div className="absolute top-20 -left-32 w-96 h-96 bg-deewan-primary/5 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -44,7 +47,7 @@ const OurStory = () => {
       }} className="text-center mb-16">
           
           
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-deewan-dark">
+          <h2 id="our-story-heading" className="text-3xl md:text-4xl font-bold mb-6 text-deewan-dark">
             Our <span className="text-deewan-primary">Story</span>
           </h2>
           
@@ -53,41 +56,44 @@ const OurStory = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-deewan-primary/5 to-deewan-secondary/5 rounded-3xl transform rotate-3"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-deewan-primary/5 to-deewan-secondary/5 rounded-3xl transform rotate-3" aria-hidden="true"></div>
             <div className="glass p-8 rounded-2xl relative space-y-8">
-              {timelineItems.map((item, index) => <motion.div key={item.year} initial={{
-              opacity: 0,
-              x: -20
-            }} whileInView={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.5,
-              delay: index * 0.1
-            }} viewport={{
-              once: true
-            }} className="relative pl-12">
-                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-deewan-primary/10 flex items-center justify-center">
-                    <span className="text-deewan-primary font-bold text-sm">{item.year}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-deewan-dark">{item.title}</h3>
-                  <p className="text-base md:text-lg text-deewan-gray">{item.description}</p>
-                  {index !== timelineItems.length - 1 && <div className="absolute left-4 top-8 bottom-0 w-px bg-gradient-to-b from-deewan-primary/20 to-transparent"></div>}
-                </motion.div>)}
+              <h3 id="timeline-heading" className="sr-only">Company Timeline</h3>
+              <ol aria-labelledby="timeline-heading" className="space-y-8">
+                {timelineItems.map((item, index) => (
+                  <li key={item.year}>
+                    <motion.div 
+                      initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="relative pl-12"
+                    >
+                      <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-deewan-primary/10 flex items-center justify-center">
+                        <span className="text-deewan-primary font-bold text-sm">{item.year}</span>
+                      </div>
+                      <h4 className="text-xl font-semibold mb-2 text-deewan-dark">{item.title}</h4>
+                      <p className="text-base md:text-lg text-deewan-gray">{item.description}</p>
+                      {index !== timelineItems.length - 1 && (
+                        <div 
+                          className="absolute left-4 top-8 bottom-0 w-px bg-gradient-to-b from-deewan-primary/20 to-transparent"
+                          aria-hidden="true"
+                        ></div>
+                      )}
+                    </motion.div>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
 
-          <motion.div initial={{
-          opacity: 0,
-          scale: 0.95
-        }} whileInView={{
-          opacity: 1,
-          scale: 1
-        }} transition={{
-          duration: 0.6
-        }} viewport={{
-          once: true
-        }} className="relative">
+          <motion.div 
+            initial={prefersReducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
             <div className="glass p-8 rounded-2xl relative overflow-hidden">
               <div className="space-y-6 relative z-10">
                 <h3 className="text-2xl font-bold text-deewan-dark">Our Mission</h3>
@@ -103,8 +109,8 @@ const OurStory = () => {
                 </p>
               </div>
               
-              <div className="absolute top-0 right-0 w-32 h-32 bg-deewan-primary/10 rounded-full blur-2xl"></div>
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-deewan-secondary/10 rounded-full blur-2xl"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-deewan-primary/10 rounded-full blur-2xl" aria-hidden="true"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-deewan-secondary/10 rounded-full blur-2xl" aria-hidden="true"></div>
             </div>
           </motion.div>
         </div>
