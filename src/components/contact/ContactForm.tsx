@@ -10,6 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
 import { submitToHubSpot } from "@/lib/hubspot";
+import { submitToXRM, isXRMAPIAvailable } from "@/lib/xrm";
 
 // Form validation schema
 const formSchema = z.object({
@@ -29,8 +30,25 @@ interface ContactFormProps {
 const ContactForm = ({ className = "" }: ContactFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [xrmApiAvailable, setXrmApiAvailable] = useState<boolean | null>(null);
   const { toast } = useToast();
   const statusRef = useRef<HTMLDivElement>(null);
+  
+  // Check if XRM API is available on component mount
+  useEffect(() => {
+    const checkXRMAPI = async () => {
+      try {
+        const available = await isXRMAPIAvailable();
+        setXrmApiAvailable(available);
+        console.log("XRM API available:", available);
+      } catch (error) {
+        console.warn("Error checking XRM API availability:", error);
+        setXrmApiAvailable(false);
+      }
+    };
+    
+    checkXRMAPI();
+  }, []);
   
   // Initialize form
   const form = useForm<FormValues>({
@@ -47,18 +65,42 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
   // Handle form submission
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
+    let hubspotSuccess = false;
+    let xrmSuccess = false;
 
     try {
       // Submit to HubSpot
       await submitToHubSpot(data);
-      
       console.log("Form data submitted to HubSpot:", data);
+      hubspotSuccess = true;
       
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-        variant: "success",
-      });
+      // Submit to XRM API if available
+      if (xrmApiAvailable) {
+        try {
+          const xrmResponse = await submitToXRM(data);
+          console.log("Form data submitted to XRM API:", xrmResponse);
+          xrmSuccess = true;
+        } catch (xrmError) {
+          // Log XRM error but don't fail the whole submission
+          console.error("Error submitting to XRM API:", xrmError);
+          // We continue with the form submission even if XRM fails
+        }
+      }
+      
+      // Show appropriate success message
+      if (hubspotSuccess && xrmSuccess) {
+        toast({
+          title: "Message sent!",
+          description: "Your information has been successfully submitted.",
+          variant: "success",
+        });
+      } else if (hubspotSuccess) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you as soon as possible.",
+          variant: "success",
+        });
+      }
       
       setIsSuccess(true);
       form.reset();
