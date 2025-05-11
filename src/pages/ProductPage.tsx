@@ -14,6 +14,8 @@ import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { generateProductSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import productsData from "@/data/products-data";
 import NotFound from "./NotFound";
 
@@ -38,8 +40,32 @@ export default function ProductPage() {
     }
   };
 
+  // Create breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Products", url: "/products" },
+    { name: productData.name, url: `/products/${slug}` }
+  ]);
+
+  // Create product schema
+  const productSchema = generateProductSchema(
+    productData.name,
+    productData.description,
+    slug || ""
+  );
+
+  // Combine schemas
+  const combinedSchema = [breadcrumbSchema, productSchema];
+
   return (
     <div className="overflow-x-hidden">
+      <SEO 
+        title={`${productData.name} | Intelligent Communication Solutions by Deewan`}
+        description={productData.description}
+        canonical={`/products/${slug}`}
+        ogType="product"
+        schema={combinedSchema}
+      />
       <Navbar />
       <ProductHero
         name={productData.name}

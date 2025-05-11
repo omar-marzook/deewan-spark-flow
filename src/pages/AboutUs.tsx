@@ -10,16 +10,32 @@ import WhatWeDo from "@/components/about/WhatWeDo";
 import ContactSection from "@/components/ContactSection";
 import AlternativeStats from "@/components/AlternativeStats";
 import AlternativeTestimonials from "@/components/AlternativeTestimonials";
+import SEO from "@/components/SEO";
+import { generateBreadcrumbSchema, organizationSchema } from "@/lib/schema";
 import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
 
 const AboutUs = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "About Us | Deewan";
   }, []);
+
+  // Create breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "About Us", url: "/about" }
+  ]);
+
+  // Combine schemas
+  const combinedSchema = [breadcrumbSchema, organizationSchema];
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <SEO 
+        title="About Deewan | Leading Communication Solutions Provider in Saudi Arabia"
+        description="Learn about Deewan's mission to transform business communications with innovative, secure solutions tailored for the Saudi Arabian market."
+        canonical="/about"
+        schema={combinedSchema}
+      />
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
