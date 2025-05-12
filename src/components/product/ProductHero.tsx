@@ -72,29 +72,18 @@ const ProductHero: React.FC<ProductHeroProps> = ({
           {/* 3D Visual Element */}
           <div className="relative h-[600px] hidden lg:block" aria-hidden="true">
             {/* Main floating card */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl rotate-12 animate-[float_6s_ease-in-out_infinite]">
+            <div className="absolute top-1/4 left-1/4 z-10 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl rotate-12 animate-[float_6s_ease-in-out_infinite]">
               {/* Decorative elements */}
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-deewan-primary/20 rounded-full blur-2xl"></div>
               <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-deewan-secondary/20 rounded-full blur-2xl"></div>
               
               {/* Content */}
               <div className="absolute inset-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 p-6 overflow-hidden">
-                {heroImage ? (
                   <img 
-                    src={heroImage} 
+                  src="https://www.deewan.sa/hs-fs/hubfs/DO1-1.png" 
                     alt={`${name} product illustration`} 
                     className="w-full h-full object-cover rounded-lg" 
                   />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <img 
-                      alt="" 
-                      src="/lovable-uploads/e2e44fa6-d598-4fc3-850a-80175de0c5ba.png" 
-                      className="w-32 h-auto opacity-50" 
-                      aria-hidden="true"
-                    />
-                  </div>
-                )}
               </div>
             </div>
 
