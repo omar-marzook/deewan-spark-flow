@@ -7,36 +7,76 @@ import Autoplay from "embla-carousel-autoplay";
 const LogoCarousel: React.FC = () => {
   const logos = [{
     id: 1,
-    name: "Company A",
-    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
+    name: "Al Jabr",
+    logo: "/media/logos/al-jabr.png"
   }, {
     id: 2,
-    name: "Company B",
-    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
+    name: "Bank El Tanmeya",
+    logo: "/media/logos/bank-el-tanmeya.png"
   }, {
     id: 3,
-    name: "Company C",
-    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
+    name: "Derayah",
+    logo: "/media/logos/derayah.png"
   }, {
     id: 4,
-    name: "Company D",
-    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
+    name: "El Jazeera Capital",
+    logo: "/media/logos/el-jazeera-captial.png"
   }, {
     id: 5,
-    name: "Company E",
-    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
+    name: "ENBD",
+    logo: "/media/logos/enbd.png"
   }, {
     id: 6,
-    name: "Company F",
-    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
+    name: "Flynas",
+    logo: "/media/logos/flynas.png"
   }, {
     id: 7,
-    name: "Company G",
-    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
+    name: "GIB",
+    logo: "/media/logos/gib.png"
   }, {
     id: 8,
-    name: "Company H",
-    logo: "https://fakeimg.pl/230x99/ffffff/909090?text=Logos+with+230x99px&font=lobster"
+    name: "IKEA",
+    logo: "/media/logos/ikea.png"
+  }, {
+    id: 9,
+    name: "Jarir Book Store",
+    logo: "/media/logos/jarir-book-store.png"
+  }, {
+    id: 10,
+    name: "Jeeny",
+    logo: "/media/logos/jeeny.png"
+  }, {
+    id: 11,
+    name: "Medgulf",
+    logo: "/media/logos/medgulf.png"
+  }, {
+    id: 12,
+    name: "National Water Company",
+    logo: "/media/logos/national-water-company.png"
+  }, {
+    id: 13,
+    name: "Otham",
+    logo: "/media/logos/otham.png"
+  }, {
+    id: 14,
+    name: "Sandook El Tanfeya",
+    logo: "/media/logos/sandook-el-tanfeya.png"
+  }, {
+    id: 15,
+    name: "Saudi Electric Company",
+    logo: "/media/logos/saudi-electric-company.png"
+  }, {
+    id: 16,
+    name: "Saudi Investment Bank",
+    logo: "/media/logos/saudi-investment-bank.png"
+  }, {
+    id: 17,
+    name: "TETCO",
+    logo: "/media/logos/tetco.png"
+  }, {
+    id: 18,
+    name: "Theqa",
+    logo: "/media/logos/theqa.png"
   }];
 
   // Setup autoplay plugin
