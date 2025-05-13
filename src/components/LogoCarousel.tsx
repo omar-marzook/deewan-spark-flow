@@ -125,7 +125,7 @@ const LogoCarousel: React.FC = () => {
               {logos.map(logo => (
                 <div 
                   key={logo.id} 
-                  className="embla__slide flex-[0_0_20%] min-w-0 pl-4 sm:pl-6"
+                  className="embla__slide flex-[0_0_33.333%] sm:flex-[0_0_25%] lg:flex-[0_0_16.666%] xl:flex-[0_0_14.285%] min-w-0 pl-4 sm:pl-6 lg:pl-8"
                   role="group" 
                   aria-roledescription="slide"
                   aria-label={`${logo.name} logo`}
