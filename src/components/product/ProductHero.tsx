@@ -71,24 +71,20 @@ const ProductHero: React.FC<ProductHeroProps> = ({
 
         {/* 3D Visual Element */}
         <div className="relative h-[600px] hidden lg:block" aria-hidden="true">
-          <img
-            src={heroImage}
-            alt={`${name} product illustration`}
-            className="w-full h-full object-contain rounded-lg pos"
-          />
-
-          {/* Main floating card */}
-          <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl rotate-12 animate-[float_6s_ease-in-out_infinite]">
+          <div className="absolute top-0 left-0 transform w-full h-full bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg rotate-12 animate-[float_6s_ease-in-out_infinite]">
             {/* Decorative elements */}
-
-            <div className="absolute -top-12 -right-12 w-24 h-24 bg-deewan-primary/20 rounded-full blur-2xl"></div>
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-deewan-secondary/20 rounded-full blur-2xl"></div>
-            <div className="absolute inset-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 p-6 overflow-hidden"></div>
+            <img
+              src={heroImage}
+              alt={`${name} product illustration`}
+              className="w-full h-full object-contain rounded-lg pos"
+            />
+            <div className="absolute -top-12 -right-12 w-24 h-24 bg-deewan-primary/10 rounded-full blur-2xl"></div>
+            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-deewan-secondary/10 rounded-full blur-2xl"></div>
           </div>
 
           {/* Floating elements */}
-          <div className="absolute -z-10 top-20 right-20 w-32 h-32 bg-gradient-to-br from-deewan-primary/20 to-transparent rounded-xl border border-white/20 backdrop-blur-sm rotate-45 animate-[float_8s_ease-in-out_infinite_1s]"></div>
-          <div className="absolute -z-10 bottom-20 left-20 w-40 h-40 bg-gradient-to-tr from-deewan-secondary/20 to-transparent rounded-xl border border-white/20 backdrop-blur-sm -rotate-12 animate-[float_7s_ease-in-out_infinite_0.5s]"></div>
+          <div className="absolute -z-10 -top-16 -right-16 w-32 h-32 bg-gradient-to-br from-deewan-primary/5 to-transparent rounded-xl border border-white/5 backdrop-blur-sm rotate-45 animate-[float_8s_ease-in-out_infinite_1s]"></div>
+          <div className="absolute -z-10 -bottom-20 -left-20 w-40 h-40 bg-gradient-to-tr from-deewan-secondary/5 to-transparent rounded-xl border border-white/5 backdrop-blur-sm -rotate-12 animate-[float_7s_ease-in-out_infinite_0.5s]"></div>
         </div>
       </div>
     </div>
