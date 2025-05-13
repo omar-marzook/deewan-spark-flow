@@ -4,7 +4,8 @@ excerpt: Customer expectations in Saudi Arabia aren’t what they used to be.
 date: May 8, 2025
 readTime: 4 min
 category: Omni-Channel Chat
-coverImage: https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60
+coverImage: /media/blogs/omnichannel-chat-1920.jpg
+imageUrl: /media/blogs/omnichannel-1336.jpg
 author:
   name: Deewan Team
   avatar: https://avatar.iran.liara.run/username?username=Deewan+Team
