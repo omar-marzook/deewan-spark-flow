@@ -1424,6 +1424,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
         slug: 'sms-api',
         name: 'SMS API',
+        heroImage: '/media/products/sms-api.png',
         isConversionApi: true,
         tagline:
             'A secure, multifunctional API capable of handling high-volume SMS traffic efficiently and economically.',
