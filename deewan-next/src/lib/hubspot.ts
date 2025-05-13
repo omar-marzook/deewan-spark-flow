@@ -3,11 +3,13 @@
  * Handles form submissions to HubSpot Forms API
  */
 
+"use client";
+
 // HubSpot credentials from environment variables
-const HUBSPOT_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID;
-const HUBSPOT_FORM_ID = import.meta.env.VITE_HUBSPOT_FORM_ID;
-const HUBSPOT_NEWSLETTER_FORM_ID = import.meta.env.VITE_HUBSPOT_NEWSLETTER_FORM_ID;
-const HUBSPOT_API_TOKEN = import.meta.env.VITE_HUBSPOT_API_TOKEN;
+const HUBSPOT_PORTAL_ID = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || "12345"; // Fallback for development
+const HUBSPOT_FORM_ID = process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID || "abcde"; // Fallback for development
+const HUBSPOT_NEWSLETTER_FORM_ID = process.env.NEXT_PUBLIC_HUBSPOT_NEWSLETTER_FORM_ID || "fghij"; // Fallback for development
+const HUBSPOT_API_TOKEN = process.env.NEXT_PUBLIC_HUBSPOT_API_TOKEN || "dummy-token"; // Fallback for development
 
 /**
  * Submit contact form data to HubSpot

@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState } from "react";
 import { Mail, ArrowRight, Check } from "lucide-react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "../../hooks/use-toast";
 import { submitNewsletterSubscription } from "@/lib/hubspot";
 
 const Newsletter = () => {

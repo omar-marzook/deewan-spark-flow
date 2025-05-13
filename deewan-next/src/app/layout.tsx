@@ -28,7 +28,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="/static/fonts/font.css" />
       </head>
-      <body className="antialiased overflow-x-hidden">
+      <body className="antialiased overflow-x-hidden" suppressHydrationWarning>
         <TooltipProvider>
           <Toaster />
           <Sonner />

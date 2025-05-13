@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Newsletter from "./footer/Newsletter";
 import FooterLinks from "./footer/FooterLinks";
