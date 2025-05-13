@@ -88,10 +88,9 @@ const ProductHero: React.FC<ProductHeroProps> = ({
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
                     <img 
-                      alt="" 
-                      src="/lovable-uploads/e2e44fa6-d598-4fc3-850a-80175de0c5ba.png" 
-                      className="w-32 h-auto opacity-50" 
-                      aria-hidden="true"
+                      alt={`${name} product illustration`}
+                      src={`/media/products/${name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '')}.png`}
+                      className="w-full h-auto" 
                     />
                   </div>
                 )}
