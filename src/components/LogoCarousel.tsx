@@ -3,6 +3,7 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import useEmblaCarousel from "embla-carousel-react";
 import { useInterval } from "@/hooks/use-interval";
 import Autoplay from "embla-carousel-autoplay";
+import OptimizedImage from "@/components/ui/optimized-image";
 
 const LogoCarousel: React.FC = () => {
   const logos = [{
@@ -132,7 +133,7 @@ const LogoCarousel: React.FC = () => {
                 >
                   <div className="p-2">
                     <div className="group">
-                      <img 
+                      <OptimizedImage 
                         src={logo.logo} 
                         alt={`${logo.name} logo`} 
                         width={230} 

@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, ArrowDown, CircleDot, Circle, CircleCheck } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/button";
-
 
 interface HomeHeroProps {
   children?: React.ReactNode;
@@ -10,6 +9,8 @@ interface HomeHeroProps {
 
 const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     // Animation timing
@@ -17,6 +18,11 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
       setIsLoaded(true);
     }, 100);
   }, []);
+
+  // Handle video load event
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
 
   return (
     <section id="main-content" className={`container mx-auto px-4 py-12 md:py-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
@@ -106,11 +112,14 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
             <div className="glass-card relative p-4 overflow-hidden w-full rounded-xl" aria-hidden="true">
               <div className="aspect-video overflow-hidden rounded-lg">
                 <video 
+                  ref={videoRef}
                   className="w-full h-full object-cover" 
                   autoPlay 
                   muted 
                   loop 
                   playsInline
+                  preload="metadata"
+                  onLoadedData={handleVideoLoad}
                 >
                   <source src="/media/home-hero-section-video.mp4" type="video/mp4" />
                   Your browser does not support the video tag.

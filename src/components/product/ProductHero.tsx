@@ -1,12 +1,15 @@
 import { ButtonLink } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import OptimizedImage from "@/components/ui/optimized-image";
+
 interface ProductHeroProps {
   name: string;
   tagline: string;
   heroImage?: string;
   onContactClick: () => void;
 }
+
 const ProductHero: React.FC<ProductHeroProps> = ({
   name,
   tagline,
@@ -73,11 +76,14 @@ const ProductHero: React.FC<ProductHeroProps> = ({
         <div className="relative h-[600px] hidden lg:block" aria-hidden="true">
           <div className="absolute top-0 left-0 transform w-full h-full bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg rotate-12 animate-[float_6s_ease-in-out_infinite]">
             {/* Decorative elements */}
-            <img
-              src={heroImage}
-              alt={`${name} product illustration`}
-              className="w-full h-full object-contain rounded-lg pos"
-            />
+            {heroImage && (
+              <OptimizedImage
+                src={heroImage}
+                alt={`${name} product illustration`}
+                className="w-full h-full object-contain rounded-lg"
+                priority={true} // Don't lazy load hero images
+              />
+            )}
             <div className="absolute -top-12 -right-12 w-24 h-24 bg-deewan-primary/10 rounded-full blur-2xl"></div>
             <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-deewan-secondary/10 rounded-full blur-2xl"></div>
           </div>
@@ -90,4 +96,5 @@ const ProductHero: React.FC<ProductHeroProps> = ({
     </div>
   </section>;
 };
+
 export default ProductHero;
