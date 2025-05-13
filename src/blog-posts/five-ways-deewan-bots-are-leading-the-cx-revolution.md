@@ -4,7 +4,8 @@ excerpt: Let’s be honest, people aren’t waiting days for answers anymore.
 date: May 8, 2025
 readTime: 3 min
 category: Bots
-coverImage: https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60
+coverImage: /media/blogs/chatbot-blog-1920.jpg
+imageUrl: /media/blogs/chatbot-1336.jpg
 author:
   name: Deewan Team
   avatar: https://avatar.iran.liara.run/username?username=Deewan+Team

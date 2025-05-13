@@ -102,8 +102,20 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
 
         <div className={`transition-all duration-700 delay-200 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="relative">
-            {/* App Interface Mockups */}
-            <div className="glass-card relative p-4 overflow-hidden w-full aspect-video" aria-hidden="true">
+            {/* Video in aspect-video container */}
+            <div className="glass-card relative p-4 overflow-hidden w-full rounded-xl" aria-hidden="true">
+              <div className="aspect-video overflow-hidden rounded-lg">
+                <video 
+                  className="w-full h-full object-cover" 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline
+                >
+                  <source src="/media/home-hero-section-video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </div>
         </div>

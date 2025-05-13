@@ -79,11 +79,13 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               
               {/* Content */}
               <div className="absolute inset-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 p-6 overflow-hidden">
-                  <img 
-                  src="https://www.deewan.sa/hs-fs/hubfs/DO1-1.png" 
-                    alt={`${name} product illustration`} 
-                    className="w-full h-full object-cover rounded-lg" 
+                <div className="w-full h-full flex items-center justify-center">
+                  <img
+                    alt={`${name} product illustration`}
+                    src={`/media/products/${name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '')}.png`}
+                    className="w-full h-full object-cover rounded-lg"
                   />
+                </div>
               </div>
             </div>
 

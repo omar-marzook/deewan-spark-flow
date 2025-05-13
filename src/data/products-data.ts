@@ -139,6 +139,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'mfa',
         name: 'Deewan MFA',
+        heroImage: '/media/products/mfa.png',
         isConversionApi: false, // MFA is a conversion API
         tagline:
             'Add an extra layer of security to your applications with Multi-Factor Authentication that enhances user experience without compromising security.',
@@ -322,6 +323,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'ivr',
         name: 'Deewan IVR',
+        heroImage: '/media/products/ivr.png',
         isConversionApi: false, // IVR is a conversion API
         tagline:
             'Add interactive voice response and voice capabilities to your communications and take the customer experience to the next level.',
@@ -505,6 +507,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'omni-channel-chat',
         name: 'Deewan Omni-Channel Chat',
+        heroImage: '/media/products/deewan-omnichannel-chat.png',
         isConversionApi: false, // Omni-Channel Chat is an application
         tagline:
             'Revolutionize your business communications with personalized interactions at every touchpoint, and speak to any conversational app from one dashboard.',
@@ -686,6 +689,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'campaigns',
         name: 'Deewan Campaigns',
+        heroImage: '/media/products/campaigns.png',
         isConversionApi: false, // Campaigns is an application
         tagline:
             'Reach your customers instantly on any communication channel from one platform. In a few minutes, your next SMS or WhatsApp campaign will be ready to go live.',
@@ -851,6 +855,7 @@ const productsData: Record<string, ExtendedProductData> = {
         departmentsWeServe: defaultDepartmentsData,
         slug: 'bots',
         name: 'Deewan Bots',
+        heroImage: '/media/products/deewan-bot.png',
         isConversionApi: false, // Bots is an application
         tagline:
             'Allocate resources efficiently and answer customer queries in real time with the AI-powered chatbots of Deewan Bots.',
@@ -1085,6 +1090,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
         slug: 'whatsapp-api',
         name: 'WhatsApp Business API',
+        heroImage: '/media/products/deewan-whatsapp-api.png',
         isConversionApi: true,
         tagline:
             "Join the world's best businesses on WhatsApp Business and unleash your brand's full potential.",
@@ -1196,6 +1202,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
         slug: 'push-notifications-api',
         name: 'Push Notifications API',
+        heroImage: '/media/products/push-notifications.png',
         isConversionApi: true,
         tagline:
             'Communicate information instantly and cultivate deeper connections with your customers with personalized notifications.',
@@ -1307,6 +1314,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
         slug: 'email-api',
         name: 'Email API',
+        heroImage: '/media/products/email-api.png',
         isConversionApi: true,
         tagline:
             'Complete your digital experience with transactional and informational communications via email.',
@@ -1560,6 +1568,7 @@ const productsData: Record<string, ExtendedProductData> = {
         ],
         slug: 'voice-api',
         name: 'Voice API',
+        heroImage: '/media/products/voice-api.png',
         isConversionApi: true,
         tagline:
             'Enrich your customer experience with extensive voice features that will streamline your operations, cut costs, and improve customer loyalty.',
