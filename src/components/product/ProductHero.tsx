@@ -72,8 +72,9 @@ const ProductHero: React.FC<ProductHeroProps> = ({
           {/* 3D Visual Element */}
           <div className="relative h-[600px] hidden lg:block" aria-hidden="true">
             {/* Main floating card */}
-            <div className="absolute top-1/4 left-1/4 z-10 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl rotate-12 animate-[float_6s_ease-in-out_infinite]">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl rotate-12 animate-[float_6s_ease-in-out_infinite]">
               {/* Decorative elements */}
+
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-deewan-primary/20 rounded-full blur-2xl"></div>
               <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-deewan-secondary/20 rounded-full blur-2xl"></div>
               
