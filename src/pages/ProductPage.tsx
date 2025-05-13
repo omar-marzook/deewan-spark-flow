@@ -74,6 +74,7 @@ export default function ProductPage() {
       <ProductHero
         name={productData.name}
         tagline={productData.tagline}
+        heroImage={productData.heroImage}
         onContactClick={scrollToContact}
       />
       <AlternativeStats
