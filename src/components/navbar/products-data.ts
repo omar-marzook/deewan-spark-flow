@@ -1,4 +1,4 @@
-import { Box, Code, Server, Database, Layers, Link, LayoutGrid, Shield } from 'lucide-react';
+import { Box } from 'lucide-react';
 import { 
     BotIcon, 
     CampaignsIcon, 

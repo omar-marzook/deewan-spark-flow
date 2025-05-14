@@ -1,5 +1,5 @@
 
-import { Server, Database, FileText, Globe, Code, Phone, Shield } from 'lucide-react';
+import { Server, Database, Shield } from 'lucide-react';
 import { 
   BotIcon, 
   CampaignsIcon, 
