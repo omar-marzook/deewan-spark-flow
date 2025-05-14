@@ -25,7 +25,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
   };
 
   return (
-    <section id="main-content" className={`container mx-auto px-4 py-12 md:py-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
+    <section id="main-content" className={`container mx-auto px-4 pt-40 pb-12 md:pt-40 md:pb-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
       {/* Floating Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <CircleDot
