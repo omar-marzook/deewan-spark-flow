@@ -1,4 +1,16 @@
-import { Box, Phone, MessageSquare, Code, Server, Database, Layers, Link, LayoutGrid, Shield, Mail, Bell } from 'lucide-react';
+import { Box } from 'lucide-react';
+import { 
+    BotIcon, 
+    CampaignsIcon, 
+    EmailApiIcon, 
+    IvrIcon, 
+    MfaIcon, 
+    OmnichannelChatIcon, 
+    PushNotificationsIcon, 
+    SmsApiIcon, 
+    VoiceApiIcon, 
+    WhatsAppIcon 
+} from '@/components/icons/ProductIcons';
 
 export type Product = {
   name: string;
@@ -18,31 +30,31 @@ export const products: ProductCategories = {
             name: 'Omni-Channel Chat',
             description: 'Conversations across any platform',
             slug: 'omni-channel-chat',
-            icon: MessageSquare,
+            icon: OmnichannelChatIcon,
         },
         {
             name: 'Campaigns',
             description: 'SMS and WhatsApp campaign management',
             slug: 'campaigns',
-            icon: MessageSquare,
+            icon: CampaignsIcon,
         },
         {
             name: 'Bots',
             description: 'Rules-based and AI chatbots',
             slug: 'bots',
-            icon: Code,
+            icon: BotIcon,
         },
         {
             name: 'MFA',
             description: 'Multifactor multichannel authentication',
             slug: 'mfa',
-            icon: Shield,
+            icon: MfaIcon,
         },
         {
             name: 'IVR',
             description: 'Interactive voice response system',
             slug: 'ivr',
-            icon: Phone,
+            icon: IvrIcon,
         },
     ],
     communicationAPIs: [
@@ -50,31 +62,31 @@ export const products: ProductCategories = {
             name: 'Email API',
             description: 'Email personalization and automation',
             slug: 'email-api',
-            icon: Mail,
+            icon: EmailApiIcon,
         },
         {
             name: 'Push Notifications API',
             description: 'Push notification customization and engagement',
             slug: 'push-notifications-api',
-            icon: Bell,
+            icon: PushNotificationsIcon,
         },
         {
             name: 'WhatsApp Business API',
             description: 'Full access to WhatsApp platform',
             slug: 'whatsapp-api',
-            icon: MessageSquare,
+            icon: WhatsAppIcon,
         },
         {
             name: 'SMS API',
             description: 'A2P and P2P SMS capabilities',
             slug: 'sms-api',
-            icon: MessageSquare,
+            icon: SmsApiIcon,
         },
         {
             name: 'Voice API',
             description: 'Comprehensive voice capabilities',
             slug: 'voice-api',
-            icon: Phone,
+            icon: VoiceApiIcon,
         },
     ],
 };
