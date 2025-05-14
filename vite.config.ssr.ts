@@ -28,22 +28,20 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     rollupOptions: {
-      output: {
-        // Configure manualChunks for SSR build, excluding React libraries
-        manualChunks: {
-          ui: [
-            '@radix-ui/react-accordion', 
-            '@radix-ui/react-dialog',
-            '@radix-ui/react-dropdown-menu',
-            '@radix-ui/react-navigation-menu',
-            '@radix-ui/react-slot'
-          ],
-          charts: ['recharts'],
-          carousel: ['embla-carousel-react', 'embla-carousel-autoplay']
-        }
-      },
-      // Explicitly mark React libraries as external for SSR build
-      external: ['react', 'react-dom', 'react-router-dom']
+      // Explicitly mark React libraries and UI components as external for SSR build
+      external: [
+        'react', 
+        'react-dom', 
+        'react-router-dom',
+        '@radix-ui/react-accordion', 
+        '@radix-ui/react-dialog',
+        '@radix-ui/react-dropdown-menu',
+        '@radix-ui/react-navigation-menu',
+        '@radix-ui/react-slot',
+        'recharts',
+        'embla-carousel-react', 
+        'embla-carousel-autoplay'
+      ]
     },
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
