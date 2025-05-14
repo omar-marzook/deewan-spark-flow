@@ -30,10 +30,9 @@ export default defineConfig(({ mode }) => ({
     global: 'globalThis',
   },
   build: {
-    rollupOptions: process.env.SSR ? {} : {
+    rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
           ui: [
             '@radix-ui/react-accordion', 
             '@radix-ui/react-dialog',

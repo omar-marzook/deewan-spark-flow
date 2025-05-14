@@ -31,8 +31,8 @@ export async function onBeforeRender(pageContext) {
       pageContext: {
         pageProps,
         // Add SEO metadata using the blog post data
-        title: data.title ? `${data.title} - Deewan Blog` : 'Blog Post - Deewan Spark Flow',
-        description: data.excerpt || 'Read our latest blog post on Deewan Spark Flow'
+        title: data.title ? `${data.title} - Deewan Blog` : 'Blog Post - Deewan',
+        description: data.excerpt || 'Read our latest blog post on Deewan'
       }
     };
   } catch (error) {

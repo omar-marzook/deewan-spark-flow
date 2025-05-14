@@ -14,8 +14,8 @@ export async function onBeforeRender(pageContext) {
     pageContext: {
       pageProps,
       // Add SEO metadata
-      title: 'About Us - Deewan Spark Flow',
-      description: 'Learn more about Deewan Spark Flow and our mission'
+      title: 'About Us - Deewan',
+      description: 'Learn more about Deewan and our mission'
     }
   };
 }
