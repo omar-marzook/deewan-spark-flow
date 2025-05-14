@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Bell, MessageSquare, Zap, Shield, Database, Phone, Server, FileText, Globe, Code, Mail } from 'lucide-react';
+import { Database, Phone, Server, FileText, Globe, Code, Mail } from 'lucide-react';
+import { 
+  BotIcon, 
+  CampaignsIcon, 
+  EmailApiIcon, 
+  IvrIcon, 
+  MfaIcon, 
+  OmnichannelChatIcon, 
+  PushNotificationsIcon, 
+  SmsApiIcon, 
+  VoiceApiIcon, 
+  WhatsAppIcon 
+} from '@/components/icons/ProductIcons';
 import { motion } from 'framer-motion';
 import productsData from '@/data/products-data';
 
@@ -17,12 +29,12 @@ const ProductsTabbedLayout = () => {
       description: product.tagline,
       slug: slug,
       // Create a new icon with the correct size
-      icon: slug === 'campaigns' ? <Bell className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
-            slug === 'omni-channel-chat' ? <MessageSquare className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
-            slug === 'bots' ? <Zap className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
-            slug === 'mfa' ? <Shield className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
-            slug === 'ivr' ? <Phone className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
-            <Bell className="w-12 h-12 text-deewan-primary" aria-hidden="true" />,
+      icon: slug === 'campaigns' ? <CampaignsIcon className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            slug === 'omni-channel-chat' ? <OmnichannelChatIcon className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            slug === 'bots' ? <BotIcon className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            slug === 'mfa' ? <MfaIcon className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            slug === 'ivr' ? <IvrIcon className="w-12 h-12 text-deewan-primary" aria-hidden="true" /> :
+            <CampaignsIcon className="w-12 h-12 text-deewan-primary" aria-hidden="true" />,
       color: "bg-deewan-primary/10"
     };
   });
@@ -35,11 +47,12 @@ const ProductsTabbedLayout = () => {
       description: product.tagline,
       slug: slug,
       // Use appropriate icon based on product name
-      icon: slug === 'sms-api' ? <MessageSquare className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
-            slug === 'whatsapp-api' ? <MessageSquare className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
-            slug === 'voice-api' ? <Phone className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
-            slug === 'email-api' ? <Mail className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
-            <Bell className="w-12 h-12 text-deewan-secondary" aria-hidden="true" />,
+      icon: slug === 'sms-api' ? <SmsApiIcon className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            slug === 'whatsapp-api' ? <WhatsAppIcon className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            slug === 'voice-api' ? <VoiceApiIcon className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            slug === 'email-api' ? <EmailApiIcon className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            slug === 'push-notifications-api' ? <PushNotificationsIcon className="w-12 h-12 text-deewan-secondary" aria-hidden="true" /> :
+            <SmsApiIcon className="w-12 h-12 text-deewan-secondary" aria-hidden="true" />,
       color: "bg-deewan-secondary/10"
     };
   });

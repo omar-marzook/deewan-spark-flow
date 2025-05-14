@@ -1,5 +1,17 @@
 import { ProductData } from '@/components/ProductTemplate';
 import { Megaphone, UserRoundCog, BellRing } from 'lucide-react';
+import { 
+    BotIcon, 
+    CampaignsIcon, 
+    EmailApiIcon, 
+    IvrIcon, 
+    MfaIcon, 
+    OmnichannelChatIcon, 
+    PushNotificationsIcon, 
+    SmsApiIcon, 
+    VoiceApiIcon, 
+    WhatsAppIcon 
+} from '@/components/icons/ProductIcons';
 import { StatItem } from '@/components/AlternativeStats';
 import {
     Check,
@@ -287,9 +299,9 @@ const productsData: Record<string, ExtendedProductData> = {
             subtitle:
                 'Leverage the full potential of Multi-Factor Authentication with our comprehensive API solution.',
             capabilities: [
-                { icon: CheckCircle, title: 'Verified Authentication' },
+                { icon: MfaIcon, title: 'Verified Authentication' },
                 { icon: Shield, title: 'Security Management' },
-                { icon: Bot, title: 'Automated Verification' },
+                { icon: BotIcon, title: 'Automated Verification' },
                 { icon: UserCog, title: 'Account Management' },
                 { icon: Database, title: 'Data Protection' },
                 { icon: CheckSquare, title: 'Compliance Requirements' },
@@ -471,9 +483,9 @@ const productsData: Record<string, ExtendedProductData> = {
             subtitle:
                 'Leverage the full potential of Interactive Voice Response with our comprehensive API solution.',
             capabilities: [
-                { icon: Phone, title: 'Voice Recognition' },
+                { icon: IvrIcon, title: 'Voice Recognition' },
                 { icon: Headset, title: 'Call Management' },
-                { icon: Bot, title: 'Automated Response' },
+                { icon: BotIcon, title: 'Automated Response' },
                 { icon: UserCog, title: 'Call Routing' },
                 { icon: Database, title: 'Call Analytics' },
                 { icon: Shield, title: 'Voice Security' },
@@ -520,7 +532,7 @@ const productsData: Record<string, ExtendedProductData> = {
             capabilities: [
                 { icon: CheckCircle, title: 'Verified Account' },
                 { icon: Database, title: 'Database Management' },
-                { icon: Bot, title: 'Chatbot Integration' },
+                { icon: BotIcon, title: 'Chatbot Integration' },
                 { icon: UserCog, title: 'Account Management' },
                 { icon: Shield, title: 'Data Encryption' },
                 { icon: CheckSquare, title: 'Opt-In Requirement' },
@@ -819,7 +831,7 @@ const productsData: Record<string, ExtendedProductData> = {
             subtitle:
                 'Leverage the full potential of Messaging Campaigns with our comprehensive API solution.',
             capabilities: [
-                { icon: MessageSquare, title: 'Multi-Channel Messaging' },
+                { icon: OmnichannelChatIcon, title: 'Multi-Channel Messaging' },
                 { icon: Database, title: 'Contact Management' },
                 { icon: BarChart, title: 'Campaign Analytics' },
                 { icon: Clock, title: 'Scheduled Delivery' },
@@ -1001,9 +1013,9 @@ const productsData: Record<string, ExtendedProductData> = {
             subtitle:
                 'Leverage the full potential of AI-powered Chatbots with our comprehensive API solution.',
             capabilities: [
-                { icon: Bot, title: 'AI-Powered Responses' },
+                { icon: BotIcon, title: 'AI-Powered Responses' },
                 { icon: Brain, title: 'Natural Language Processing' },
-                { icon: MessageSquare, title: 'Multi-Channel Support' },
+                { icon: OmnichannelChatIcon, title: 'Multi-Channel Support' },
                 { icon: Globe, title: 'Multilingual Capabilities' },
                 { icon: Database, title: 'Knowledge Base Integration' },
                 { icon: UserCog, title: 'Conversation Management' },
@@ -1150,7 +1162,7 @@ const productsData: Record<string, ExtendedProductData> = {
             capabilities: [
                 { icon: CheckCircle, title: 'Verified Account' },
                 { icon: Database, title: 'Database Management' },
-                { icon: Bot, title: 'Chatbot Integration' },
+                { icon: BotIcon, title: 'Chatbot Integration' },
                 { icon: UserCog, title: 'Account Management' },
                 { icon: Shield, title: 'Data Encryption' },
                 { icon: CheckSquare, title: 'Opt-In Requirement' },
@@ -1260,7 +1272,7 @@ const productsData: Record<string, ExtendedProductData> = {
             subtitle:
                 'Leverage the full potential of Push Notification API with our comprehensive solution.',
             capabilities: [
-                { icon: BellRing, title: 'Self-Onboarding' },
+                { icon: UserCheck, title: 'Self-Onboarding' },
                 { icon: Gauge, title: 'Consumption Tracking' },
                 { icon: UserCog, title: 'Personalization' },
                 { icon: Smartphone, title: 'Multi-Platform Support' },
