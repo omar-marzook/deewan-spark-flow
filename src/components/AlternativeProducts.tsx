@@ -1,5 +1,14 @@
 
-import { MessageSquare, Bell, Shield, Zap, Server, Database, FileText, Globe, Code, Phone } from 'lucide-react';
+import { Server, Database, Shield } from 'lucide-react';
+import { 
+  BotIcon, 
+  CampaignsIcon, 
+  MfaIcon, 
+  OmnichannelChatIcon, 
+  SmsApiIcon, 
+  VoiceApiIcon, 
+  WhatsAppIcon 
+} from '@/components/icons/ProductIcons';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const AlternativeProducts = () => {
@@ -7,22 +16,22 @@ const AlternativeProducts = () => {
     id: 1,
     title: "Deewan Campaigns",
     description: "Manage SMS and WhatsApp campaigns efficiently with detailed analytics.",
-    icon: <Bell className="w-10 h-10 text-deewan-primary" />
+    icon: <CampaignsIcon className="w-10 h-10 text-deewan-primary" />
   }, {
     id: 2,
-    title: "Deewan Omnichannel",
+    title: "Deewan Omni-Channel",
     description: "Handle customer inquiries across various platforms from a single interface.",
-    icon: <MessageSquare className="w-10 h-10 text-deewan-primary" />
+    icon: <OmnichannelChatIcon className="w-10 h-10 text-deewan-primary" />
   }, {
     id: 3,
     title: "Deewan Bots",
     description: "AI-powered customer service bots that handle routine inquiries.",
-    icon: <Zap className="w-10 h-10 text-deewan-primary" />
+    icon: <BotIcon className="w-10 h-10 text-deewan-primary" />
   }, {
     id: 4,
     title: "Deewan MFA",
     description: "Secure multifactor authentication system for enhanced account protection.",
-    icon: <Shield className="w-10 h-10 text-deewan-primary" />
+    icon: <MfaIcon className="w-10 h-10 text-deewan-primary" />
   }, {
     id: 5,
     title: "Deewan Analytics",
@@ -33,12 +42,12 @@ const AlternativeProducts = () => {
     id: 6,
     title: "SMS API",
     description: "Seamlessly integrate SMS functionality into your applications.",
-    icon: <Phone className="w-10 h-10 text-deewan-secondary" />
+    icon: <SmsApiIcon className="w-10 h-10 text-deewan-secondary" />
   }, {
     id: 7,
     title: "WhatsApp API",
     description: "Official WhatsApp Business API for businesses of all sizes.",
-    icon: <MessageSquare className="w-10 h-10 text-deewan-secondary" />
+    icon: <WhatsAppIcon className="w-10 h-10 text-deewan-secondary" />
   }, {
     id: 8,
     title: "Verification API",
@@ -48,7 +57,7 @@ const AlternativeProducts = () => {
     id: 9,
     title: "Voice API",
     description: "Build voice-enabled applications with our simple Voice API.",
-    icon: <Phone className="w-10 h-10 text-deewan-secondary" />
+    icon: <VoiceApiIcon className="w-10 h-10 text-deewan-secondary" />
   }, {
     id: 10,
     title: "Lookup API",

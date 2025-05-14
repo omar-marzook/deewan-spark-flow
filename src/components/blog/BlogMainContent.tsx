@@ -42,6 +42,7 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({
           style={{
             fontFamily: "'Gilroy', 'Poppins', ui-sans-serif, system-ui, sans-serif",
           }}
+          id="article-content"
         >
           {(contentToRender || markdownToRender) && 
             <PostContent 
@@ -55,11 +56,11 @@ const BlogMainContent: React.FC<BlogMainContentProps> = ({
         
         {/* Table of contents (floating on desktop) */}
         {TableOfContents && headings && headings.length > 0 && (
-          <div className="hidden md:block md:w-72 flex-shrink-0">
+          <aside className="hidden md:block md:w-72 flex-shrink-0">
             <div className="sticky top-24">
               <TableOfContents headings={headings} />
             </div>
-          </div>
+          </aside>
         )}
       </div>
     </div>

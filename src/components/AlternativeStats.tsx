@@ -73,7 +73,7 @@ const defaultCards: CardItem[] = [
 // Default title content
 const defaultTitleContent: TitleContent = {
   title: "<span class=\"text-deewan-primary\">Deewan</span> in Numbers",
-  description: "Real impact. Measurable growth"
+  description: "Real impact for measurable growth."
 };
 
 const AlternativeStats = ({
@@ -86,43 +86,55 @@ const AlternativeStats = ({
 }: AlternativeStatsProps) => {
   // Limit stats to the gridCount
   const displayStats = stats.slice(0, gridCount);
-  return <section id="alternative-stats" className="py-24">
+  return <section id="alternative-stats" className="py-24" aria-labelledby="stats-heading">
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {showTitle && (
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="mb-4" dangerouslySetInnerHTML={{ __html: titleContent.title }}></h2>
-            <p className="text-xl text-deewan-dark/80">
+            <h2 id="stats-heading" className="mb-4">
+              <span className="text-deewan-primary">Deewan</span> in Numbers
+            </h2>
+            <p className="text-base md:text-lg text-deewan-gray">
               {titleContent.description}
             </p>
           </div>
         )}
 
-        <div className={`grid grid-cols-1 ${gridCount === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-0`}>
+        <div className={`grid grid-cols-1 ${gridCount === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-0`} role="group" aria-labelledby="stats-heading">
           {displayStats.map((stat, index) => (
-            <div key={index} className="relative border-r border-t border-b border-deewan-primary/10 p-10 first:border-l first:rounded-l-lg last:rounded-r-lg last:border-r bg-gradient-to-b from-white to-deewan-primary/5">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-white p-2 rounded-full border border-deewan-primary/20">
+            <div 
+              key={index} 
+              className="relative border-r border-t border-b border-deewan-primary/10 p-10 first:border-l first:rounded-l-lg last:rounded-r-lg last:border-r bg-gradient-to-b from-white to-deewan-primary/5"
+            >
+              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-white p-2 rounded-full border border-deewan-primary/20" aria-hidden="true">
                 {stat.icon}
               </div>
               <div className="text-center pt-4">
-                <h3 className="text-4xl font-bold mb-2 text-deewan-primary">{stat.value}</h3>
-                <p className="text-deewan-dark/70">{stat.label}</p>
+                <p className="sr-only">{stat.label}:</p>
+                <span className="text-4xl font-bold mb-2 text-deewan-primary block">{stat.value}</span>
+                <p className="text-deewan-gray">{stat.label}</p>
               </div>
             </div>
           ))}
         </div>
 
         {showCards && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20" aria-label="Key metrics">
             {cards.map((card, index) => (
-              <div key={index} className="bg-white shadow-md rounded-lg p-6 border border-deewan-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div 
+                key={index} 
+                className="bg-white shadow-md rounded-lg p-6 border border-deewan-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-deewan-primary/50"
+                tabIndex={0}
+                role="region"
+                aria-labelledby={`card-title-${index}`}
+              >
                 <div className="flex items-center mb-4">
-                  <div className="bg-deewan-primary/10 p-3 rounded-full mr-4">
+                  <div className="bg-deewan-primary/10 p-3 rounded-full mr-4" aria-hidden="true">
                     {card.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-deewan-dark">{card.title}</h3>
+                  <h3 id={`card-title-${index}`} className="text-xl font-bold text-deewan-dark">{card.title}</h3>
                 </div>
-                <p className="text-deewan-dark/80">{card.description}</p>
+                <p className="text-deewan-gray">{card.description}</p>
               </div>
             ))}
           </div>

@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
             <h1 className="text-4xl lg:text-5xl mb-6 text-deewan-dark">
-              Connect smarter.<br />Grow faster.
+              Connect smarter.<br />Grow faster
             </h1>
             <p className="text-xl mb-8 text-deewan-dark max-w-lg">Customizable, secure communications built to scale across every channel.</p>
             <div className="flex flex-col sm:flex-row gap-4">

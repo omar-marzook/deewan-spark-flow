@@ -1,5 +1,10 @@
 
-import { MessageSquare, Bell, Shield, Zap } from 'lucide-react';
+import { 
+  BotIcon, 
+  CampaignsIcon, 
+  MfaIcon, 
+  OmnichannelChatIcon 
+} from '@/components/icons/ProductIcons';
 
 const Products = () => {
   const products = [
@@ -7,28 +12,28 @@ const Products = () => {
       id: 1,
       title: "Deewan Campaigns",
       description: "Manage SMS and WhatsApp campaigns efficiently with detailed analytics and scheduling tools.",
-      icon: <Bell className="w-10 h-10 text-deewan-primary" />,
+      icon: <CampaignsIcon className="w-10 h-10 text-deewan-primary" />,
       color: "from-deewan-primary/10 to-deewan-primary/5"
     },
     {
       id: 2,
-      title: "Deewan Omnichannel Chat",
+      title: "Deewan Omni-Channel Chat",
       description: "Handle customer inquiries across various platforms from a single interface.",
-      icon: <MessageSquare className="w-10 h-10 text-deewan-secondary" />,
+      icon: <OmnichannelChatIcon className="w-10 h-10 text-deewan-secondary" />,
       color: "from-deewan-secondary/10 to-deewan-secondary/5"
     },
     {
       id: 3,
       title: "Deewan Bots",
       description: "AI-powered customer service bots that handle routine inquiries and learn from interactions.",
-      icon: <Zap className="w-10 h-10 text-deewan-accent" />,
+      icon: <BotIcon className="w-10 h-10 text-deewan-accent" />,
       color: "from-deewan-accent/10 to-deewan-accent/5"
     },
     {
       id: 4,
       title: "Deewan MFA",
       description: "Secure multifactor authentication system for enhanced account protection.",
-      icon: <Shield className="w-10 h-10 text-deewan-primary" />,
+      icon: <MfaIcon className="w-10 h-10 text-deewan-primary" />,
       color: "from-deewan-primary/10 to-deewan-primary/5"
     }
   ];

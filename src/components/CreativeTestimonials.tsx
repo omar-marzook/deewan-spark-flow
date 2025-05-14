@@ -80,7 +80,7 @@ const CreativeTestimonials = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Client <span className="text-deewan-primary">Testimonials</span>
         </h2>
-        <p className="text-lg text-deewan-gray max-w-3xl mx-auto">Don’t just take our word for it—check out what our clients have to say about Deewan</p>
+        <p className="text-base md:text-lg text-deewan-gray max-w-3xl mx-auto">Don't just take our word for it. Check out what our clients have to say about Deewan.</p>
       </div>
 
       {/* Testimonial cards */}
@@ -91,7 +91,7 @@ const CreativeTestimonials = () => {
             <img src={testimonial.companyLogo} alt={`${testimonial.name}'s company`} className="h-8 object-contain" />
           </div>
 
-          <blockquote className="italic text-gray-700 mb-8">
+          <blockquote className="italic text-base md:text-lg text-deewan-gray mb-8">
             "{testimonial.quote}"
           </blockquote>
 
@@ -101,7 +101,7 @@ const CreativeTestimonials = () => {
             </div>
             <div>
               <p className="font-semibold">{testimonial.name}</p>
-              <p className="text-sm text-gray-600">{testimonial.role}</p>
+              <p className="text-sm text-deewan-gray">{testimonial.role}</p>
             </div>
           </div>
         </div>)}

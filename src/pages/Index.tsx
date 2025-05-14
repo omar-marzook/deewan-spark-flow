@@ -1,7 +1,6 @@
 
 import Navbar from "../components/Navbar";
 import HomeHero from "../components/HomeHero";
-import Hero from "../components/Hero";
 import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
 import AlternativeProducts from "../components/AlternativeProducts";
 import Industries from "../components/Industries";
@@ -12,14 +11,21 @@ import ContactSection from "../components/ContactSection";
 import AlternativeStats from "../components/AlternativeStats";
 import AlternativeTestimonials from "../components/AlternativeTestimonials";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
+import { organizationSchema } from "../lib/schema";
 import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
 
 const Index = () => {
   return (
     <div className="overflow-x-hidden">
+      <SEO 
+        title="Deewan - Intelligent Communication Solutions for Business | Saudi Arabia"
+        description="Deewan provides secure, scalable communication solutions including WhatsApp Business API, SMS, Voice, and AI-powered chatbots for businesses across Saudi Arabia."
+        canonical="/"
+        schema={organizationSchema}
+      />
       <Navbar />
       <HomeHero />
-      <Hero />
       <LogoCarousel />
       <ProductsTabbedLayout />
       <AlternativeProducts />
@@ -53,7 +59,7 @@ const Index = () => {
         ]}
         titleContent={{
           title: "<span class=\"text-deewan-primary\">Deewan</span> in Numbers",
-          description: "Real impact. Measurable growth"
+          description: "Real impact for measurable growth."
         }}
       />
       <DepartmentsWeServe />

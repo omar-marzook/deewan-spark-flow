@@ -1,5 +1,5 @@
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface HowItWorksStepsProps {
   steps?: {
@@ -33,32 +33,40 @@ const defaultSteps = [
 ];
 
 const HowItWorksSteps = ({ steps = defaultSteps }: HowItWorksStepsProps) => {
+  const prefersReducedMotion = useReducedMotion();
+  
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="how-it-works" className="py-24 relative overflow-hidden" aria-labelledby="how-it-works-heading">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" />
+      <div className="absolute -z-10 inset-0 bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" aria-hidden="true" />
       
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Get started in 3 simple steps!
+          <h2 id="how-it-works-heading" className="text-3xl md:text-4xl font-bold mb-4">
+            Get started in <span className="text-deewan-primary">3 simple steps!</span>
           </h2>
-          <p className="text-lg text-deewan-dark/70 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-deewan-gray max-w-2xl mx-auto">
             Sign up for a free account on Deewan's communication platform and launched your first campaign in a few minutes.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto list-none p-0">
           {steps.map((step, index) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="relative group"
-            >
-              <div className="p-8 h-full rounded-2xl backdrop-blur-xl bg-white/30 border border-white/20 shadow-lg transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl">
+            <li key={step.number} className="h-full">
+              <motion.div
+                initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: prefersReducedMotion ? 0 : 0.5, 
+                  delay: prefersReducedMotion ? 0 : index * 0.2 
+                }}
+                viewport={{ once: true }}
+                className="relative group h-full"
+              >
+                <div 
+                  className="p-8 h-full rounded-2xl backdrop-blur-xl bg-white/30 border border-white/20 shadow-lg transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl focus-within:translate-y-[-4px] focus-within:shadow-xl focus-within:ring-2 focus-within:ring-deewan-primary/50"
+                  tabIndex={0}
+                >
                 <div className="mb-4">
                   <span className="text-4xl font-bold bg-gradient-to-r from-deewan-primary to-deewan-secondary bg-clip-text text-transparent">
                     {step.number}
@@ -67,13 +75,14 @@ const HowItWorksSteps = ({ steps = defaultSteps }: HowItWorksStepsProps) => {
                 <h3 className="text-xl font-semibold mb-3 text-deewan-dark">
                   {step.title}
                 </h3>
-                <p className="text-deewan-dark/70">
+                <p className="text-deewan-gray">
                   {step.description}
                 </p>
-              </div>
-            </motion.div>
+                </div>
+              </motion.div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

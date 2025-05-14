@@ -1,154 +1,256 @@
-
-import React from "react";
+import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { User, Mail, Phone, Building, Send } from "lucide-react";
+import { User, Mail, Phone, Building, MessageSquare, Send } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
+import { submitToHubSpot } from "@/lib/hubspot";
 
+// Form validation schema
 const formSchema = z.object({
-  fullName: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
-  phone: z.string().optional(),
-  company: z.string().min(1, "Company name is required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(1, "Phone number is required"),
+  company: z.string().optional(),
+  message: z.string().min(10, "Message must be at least 10 characters")
 });
 
-type FormData = z.infer<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
-const ContactForm = () => {
+interface ContactFormProps {
+  className?: string;
+}
+
+const ContactForm = ({ className = "" }: ContactFormProps) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
-  const form = useForm<FormData>({
+  const statusRef = useRef<HTMLDivElement>(null);
+  
+  // Initialize form
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: "",
+      name: "",
       email: "",
       phone: "",
       company: "",
-      message: "",
-    },
+      message: ""
+    }
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-    // Handle form submission
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-    form.reset();
+  // Handle form submission
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+
+    try {
+      // Submit to HubSpot
+      await submitToHubSpot(data);
+      
+      console.log("Form data submitted to HubSpot:", data);
+      
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible.",
+        variant: "success",
+      });
+      
+      setIsSuccess(true);
+      form.reset();
+
+      // Reset success state after 3 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <AnimatePresence>
       <motion.div
-        className="backdrop-blur-xl bg-white/40 p-8 rounded-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+        className={className}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="fullName"
+          <form 
+            onSubmit={form.handleSubmit(onSubmit)} 
+            className="space-y-5"
+            aria-labelledby="contact-form-heading"
+            aria-describedby="form-status"
+          >
+            <div 
+              ref={statusRef} 
+              id="form-status" 
+              className="sr-only" 
+              aria-live="polite"
+            >
+              {isSubmitting ? "Submitting form, please wait..." : 
+               isSuccess ? "Message sent successfully!" : ""}
+            </div>
+
+            <FormField 
+              control={form.control} 
+              name="name" 
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-deewan-dark">Full Name</FormLabel>
+                  <FormLabel className="text-sm font-medium text-gray-700" htmlFor="name">Your Name</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                      <Input className="pl-10" placeholder="Your full name" {...field} />
+                      <Input 
+                        id="name"
+                        placeholder="John Doe" 
+                        className="pl-10 bg-white border border-gray-200" 
+                        aria-required="true"
+                        {...field} 
+                      />
+                      <User className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                     </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
-              )}
+              )} 
             />
 
-            <FormField
-              control={form.control}
-              name="email"
+            <FormField 
+              control={form.control} 
+              name="email" 
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-deewan-dark">Work Email</FormLabel>
+                  <FormLabel className="text-sm font-medium text-gray-700" htmlFor="email">Your Email</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                      <Input className="pl-10" type="email" placeholder="your@email.com" {...field} />
+                      <Input 
+                        id="email"
+                        type="email"
+                        placeholder="you@example.com" 
+                        className="pl-10 bg-white border border-gray-200" 
+                        aria-required="true"
+                        {...field} 
+                      />
+                      <Mail className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                     </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
-              )}
+              )} 
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormField
-                control={form.control}
-                name="phone"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <FormField 
+                control={form.control} 
+                name="phone" 
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-deewan-dark">Phone (Optional)</FormLabel>
+                    <FormLabel className="text-sm font-medium text-gray-700" htmlFor="phone">Phone Number</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                        <Input className="pl-10" placeholder="+1 (555) 000-0000" {...field} />
+                        <Input 
+                          id="phone"
+                          type="tel"
+                          placeholder="+966 12 345 6789" 
+                          className="pl-10 bg-white border border-gray-200" 
+                          aria-required="true"
+                          {...field} 
+                        />
+                        <Phone className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                       </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
-                )}
+                )} 
               />
 
-              <FormField
-                control={form.control}
-                name="company"
+              <FormField 
+                control={form.control} 
+                name="company" 
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-deewan-dark">Company Name</FormLabel>
+                    <FormLabel className="text-sm font-medium text-gray-700" htmlFor="company">Company (Optional)</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Building className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                        <Input className="pl-10" placeholder="Your company" {...field} />
+                        <Input 
+                          id="company"
+                          placeholder="Your Company" 
+                          className="pl-10 bg-white border border-gray-200" 
+                          aria-required="false"
+                          {...field} 
+                        />
+                        <Building className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                       </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
-                )}
+                )} 
               />
             </div>
 
-            <FormField
-              control={form.control}
-              name="message"
+            <FormField 
+              control={form.control} 
+              name="message" 
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-deewan-dark">Message</FormLabel>
+                  <FormLabel className="text-sm font-medium text-gray-700" htmlFor="message">Message</FormLabel>
                   <FormControl>
-                    <Textarea 
-                      className="min-h-[120px]" 
-                      placeholder="How can we help you?" 
-                      {...field} 
-                    />
+                    <div className="relative">
+                      <Textarea 
+                        id="message"
+                        placeholder="How can we help you?" 
+                        className="pl-10 min-h-[120px] bg-white border border-gray-200" 
+                        aria-required="true"
+                        {...field} 
+                      />
+                      <MessageSquare className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
-              )}
+              )} 
             />
 
             <Button 
               type="submit" 
-              transition='no'
-              className="w-full bg-deewan-primary hover:bg-deewan-primary/90 text-white"
+              className="w-full bg-deewan-primary hover:bg-deewan-primary/90 text-white focus:ring-2 focus:ring-deewan-primary/50 focus:outline-none" 
+              transition='no' 
+              disabled={isSubmitting}
+              aria-busy={isSubmitting}
             >
-              Send Message
-              <Send className="ml-2 h-5 w-5" />
+              {isSubmitting ? (
+                <span className="flex items-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span>Processing...</span>
+                </span>
+              ) : isSuccess ? (
+                <span className="flex items-center">
+                  <svg className="-ml-1 mr-3 h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span>Message Sent!</span>
+                </span>
+              ) : (
+                <span className="flex items-center justify-center">
+                  <Send className="mr-2 h-5 w-5" aria-hidden="true" />
+                  <span>Send Message</span>
+                </span>
+              )}
             </Button>
           </form>
         </Form>

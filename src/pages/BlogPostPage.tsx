@@ -12,6 +12,8 @@ import BlogMainContent from "@/components/blog/BlogMainContent";
 import BlogRelatedArticles from "@/components/blog/BlogRelatedArticles";
 import TableOfContentsInline from "@/components/blog/TableOfContentsInline";
 import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import SEO from "@/components/SEO";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { ArrowLeft } from "lucide-react";
 import { getPostBySlug, getAllPosts } from "@/lib/markdown";
 import { useHeadingData } from "@/components/blog/PostContent";
@@ -141,7 +143,35 @@ const BlogPostPage = () => {
         <Footer />
       </div>;
   }
+  // Create breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog" },
+    { name: post.title, url: `/blog/${slug}` }
+  ]);
+
+  // Create article schema
+  const articleSchema = generateArticleSchema(
+    post.title,
+    post.coverImage,
+    post.publishDate,
+    post.publishDate, // Using publish date as modified date
+    post.author?.name || "Deewan Team",
+    slug || ""
+  );
+
+  // Combine schemas
+  const combinedSchema = [breadcrumbSchema, articleSchema];
+
   return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50 pt-20">
+      <SEO 
+        title={`${post.title} | Deewan Blog`}
+        description={post.subtitle || post.title}
+        canonical={`/blog/${slug}`}
+        ogType="article"
+        ogImage={post.coverImage}
+        schema={combinedSchema}
+      />
       <Navbar />
       <ReadingProgressBar />
       <BlogBreadcrumbs post={post} />

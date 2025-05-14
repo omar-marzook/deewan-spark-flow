@@ -3,13 +3,6 @@ import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from 'lucide-react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 const AlternativeTestimonials = () => {
   const testimonials = [
@@ -34,50 +27,68 @@ const AlternativeTestimonials = () => {
   ];
 
   return (
-    <section id="alternative-testimonials" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-deewan-lightgray/10 to-white z-0"></div>
+    <section id="alternative-testimonials" aria-labelledby="testimonials-heading" className="py-24 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-deewan-lightgray/10 to-white z-0" aria-hidden="true"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="mb-4">Client <span className="text-deewan-primary">Testimonials</span></h2>
-          <p className="text-xl text-deewan-dark/80">
-            Don’t just take our word for it—check out what our clients have to say about Deewan
+          <h2 id="testimonials-heading" className="mb-4">Client <span className="text-deewan-primary">Testimonials</span></h2>
+          <p className="text-base md:text-lg text-deewan-gray">
+            Don't just take our word for it. Check out what our clients have to say about Deewan.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.slice(0, 4).map((testimonial) => (
-            <Card key={testimonial.id} className="glass-card p-8 border-0 overflow-hidden relative h-full">
+            <Card 
+              key={testimonial.id} 
+              className="glass-card p-8 border-0 overflow-hidden relative h-full"
+              tabIndex={0}
+              role="article"
+              aria-labelledby={`author-${testimonial.id}`}
+            >
               <CardContent className="p-0 flex flex-col h-full">
-                <Quote className="h-10 w-10 text-deewan-primary/20 absolute top-6 right-6" />
+                <Quote className="h-10 w-10 text-deewan-primary/20 absolute top-6 right-6" aria-hidden="true" />
 
-                <p className="text-deewan-dark/90 mb-8 text-lg leading-relaxed relative z-10">
-                  "{testimonial.quote}"
-                </p>
+                <blockquote className="mb-8 relative z-10">
+                  <p className="italic text-base md:text-xl text-deewan-gray leading-relaxed">
+                    {testimonial.quote}
+                  </p>
+                </blockquote>
 
-                <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+                <footer className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
                   <div className="flex items-center">
                     <Avatar className="h-12 w-12 mr-4 border-2 border-deewan-primary/10">
-                      <AvatarImage src={testimonial.image} alt={testimonial.author} />
-                      <AvatarFallback className="bg-deewan-primary/10 text-deewan-primary">
+                      <AvatarImage 
+                        src={testimonial.image} 
+                        alt="" 
+                        aria-hidden="true" 
+                      />
+                      <AvatarFallback 
+                        className="bg-deewan-primary/10 text-deewan-primary"
+                        aria-hidden="true"
+                      >
                         {testimonial.author.split(' ').map(name => name[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
 
                     <div>
-                      <h4 className="font-bold text-deewan-dark">{testimonial.author}</h4>
+                      <h4 id={`author-${testimonial.id}`} className="font-bold text-deewan-dark">{testimonial.author}</h4>
                       <p className="text-sm text-deewan-gray">{testimonial.title}, {testimonial.company}</p>
                     </div>
                   </div>
 
-                  <div className="w-16 h-16 bg-white p-2 rounded-md flex items-center justify-center">
+                  <div 
+                    className="w-16 h-16 bg-white p-2 rounded-md flex items-center justify-center"
+                    aria-hidden="true"
+                  >
                     <img
                       src={testimonial.logo}
-                      alt={`${testimonial.company} logo`}
+                      alt=""
                       className="max-w-full max-h-full object-contain"
                     />
                   </div>
-                </div>
+                </footer>
               </CardContent>
             </Card>
           ))}
