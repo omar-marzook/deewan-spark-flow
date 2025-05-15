@@ -9,6 +9,12 @@ import Footer from '@/components/Footer';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import ProductPage from '@/pages/ProductPage';
 import BlogPostPage from '@/pages/BlogPostPage';
+import Contact from '@/pages/Contact';
+import AboutUs from '@/pages/AboutUs';
+import BlogPage from '@/pages/BlogPage';
+import Index from '@/pages/Index';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import CitcRegulations from '@/pages/CitcRegulations';
 
 // We'll dynamically import the appropriate router based on environment
 const queryClient = new QueryClient();
@@ -62,7 +68,18 @@ export async function PageShell({ pageContext, children }) {
               <Navbar />
               <main id="main-content" className="flex-grow">
                 <Routes>
-                  {/* Define explicit routes for products and blog posts */}
+                  {/* 
+                    Define explicit routes for all main pages to prevent 404 errors during initial load
+                    This ensures React Router recognizes these routes before Vike fully initializes
+                  */}
+                  <Route path="/" element={<Index {...(pageContext.pageProps || {})} />} />
+                  <Route path="/contact" element={<Contact {...(pageContext.pageProps || {})} />} />
+                  <Route path="/about" element={<AboutUs {...(pageContext.pageProps || {})} />} />
+                  <Route path="/blog" element={<BlogPage {...(pageContext.pageProps || {})} />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy {...(pageContext.pageProps || {})} />} />
+                  <Route path="/citc-regulations" element={<CitcRegulations {...(pageContext.pageProps || {})} />} />
+                  
+                  {/* Dynamic routes */}
                   <Route 
                     path="/products/:slug" 
                     element={
@@ -86,7 +103,8 @@ export async function PageShell({ pageContext, children }) {
                         <BlogPostPage />
                     } 
                   />
-                  {/* Default route for all other pages */}
+                  
+                  {/* Default route for any other pages */}
                   <Route path="*" element={children} />
                 </Routes>
               </main>
