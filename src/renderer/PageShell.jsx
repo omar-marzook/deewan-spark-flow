@@ -6,7 +6,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PageContextProvider } from './usePageContext'
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import ProductPage from '@/pages/ProductPage';
+import BlogPostPage from '@/pages/BlogPostPage';
 
 // We'll dynamically import the appropriate router based on environment
 const queryClient = new QueryClient();
@@ -26,12 +28,22 @@ export async function PageShell({ pageContext, children }) {
     // We're in the browser, so we can use BrowserRouter directly
     // Import from react-router-dom is already at the top level
     const { BrowserRouter } = await import('react-router-dom');
-    RouterElement = ({ children }) => <BrowserRouter>{children}</BrowserRouter>;
+    
+    // For client-side, we need to initialize the router with the current URL
+    RouterElement = ({ children }) => (
+      <BrowserRouter>
+        {children}
+      </BrowserRouter>
+    );
   } else if (typeof window === 'undefined') {
     // Server-side: Use StaticRouter
     // This code only runs on the server
     const { StaticRouter } = await import('react-router-dom/server');
-    RouterElement = ({ children }) => <StaticRouter location={url}>{children}</StaticRouter>;
+    RouterElement = ({ children }) => (
+      <StaticRouter location={url}>
+        {children}
+      </StaticRouter>
+    );
   }
   
   return (
@@ -45,6 +57,31 @@ export async function PageShell({ pageContext, children }) {
               <Navbar />
               <main id="main-content" className="flex-grow">
                 <Routes>
+                  {/* Define explicit routes for products and blog posts */}
+                  <Route 
+                    path="/products/:slug" 
+                    element={
+                      pageContext.urlPathname?.startsWith('/products/') ? 
+                        <ProductPage 
+                          slug={pageContext.routeParams?.slug} 
+                          {...(pageContext.pageProps || {})}
+                        /> : 
+                        <ProductPage />
+                    } 
+                  />
+                  <Route 
+                    path="/blog/:slug" 
+                    element={
+                      pageContext.urlPathname?.startsWith('/blog/') ? 
+                        <BlogPostPage 
+                          slug={pageContext.routeParams?.slug}
+                          post={pageContext.pageProps?.post}
+                          {...(pageContext.pageProps || {})}
+                        /> : 
+                        <BlogPostPage />
+                    } 
+                  />
+                  {/* Default route for all other pages */}
                   <Route path="*" element={children} />
                 </Routes>
               </main>
