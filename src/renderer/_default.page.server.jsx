@@ -85,7 +85,18 @@ export async function render(pageContext) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.ico" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ffffff" />
     <title>${
         seoData.title ||
         'Deewan - Intelligent Communication Solutions for Business | Saudi Arabia'
