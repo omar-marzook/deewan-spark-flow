@@ -1,7 +1,5 @@
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import BlogListHero from '@/components/blog/BlogListHero';
 import BlogGrid from '@/components/blog/BlogGrid';
 import SEO from '@/components/SEO';
@@ -23,7 +21,6 @@ const BlogPage = () => {
         ogType="website"
         schema={breadcrumbSchema}
       />
-      <Navbar />
       <main className="flex-grow">
         {/* Hero section */}
         <BlogListHero />
@@ -31,7 +28,6 @@ const BlogPage = () => {
         {/* Blog grid with posts */}
         <BlogGrid />
       </main>
-      <Footer />
     </div>
   );
 };

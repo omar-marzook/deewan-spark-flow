@@ -1,7 +1,5 @@
 
 import React, { useEffect } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/about/HeroSection";
 import TransformingDigital from "@/components/about/TransformingDigital";
 import OurStory from "@/components/about/OurStory";
@@ -27,16 +25,25 @@ const AboutUs = () => {
 
   // Combine schemas
   const combinedSchema = [breadcrumbSchema, organizationSchema];
+  
+  // Create complete SEO data object
+  const seoData = {
+    title: "About Deewan | Leading Communication Solutions Provider in Saudi Arabia",
+    description: "Learn about Deewan's mission to transform business communications with innovative, secure solutions tailored for the Saudi Arabian market.",
+    canonical: "/about",
+    schema: combinedSchema
+  };
+  
+  // Store SEO data in pageProps for server-side rendering
+  if (typeof window === 'undefined') {
+    // This only runs on the server
+    // @ts-ignore - This will be picked up by Vike
+    AboutUs.pageProps = { seoData };
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <SEO 
-        title="About Deewan | Leading Communication Solutions Provider in Saudi Arabia"
-        description="Learn about Deewan's mission to transform business communications with innovative, secure solutions tailored for the Saudi Arabian market."
-        canonical="/about"
-        schema={combinedSchema}
-      />
-      <Navbar />
+      <SEO {...seoData} />
       <main className="flex-grow">
         <HeroSection />
         <OurStory />
@@ -78,7 +85,6 @@ const AboutUs = () => {
         <AlternativeTestimonials />
         <ContactSection />
       </main>
-      <Footer />
     </div>
   );
 };

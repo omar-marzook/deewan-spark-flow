@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import vike from 'vike/plugin';
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { Buffer } from 'buffer';
@@ -15,6 +16,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
+    vike(),
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
@@ -30,17 +32,33 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          ui: [
-            '@radix-ui/react-accordion', 
-            '@radix-ui/react-dialog',
-            '@radix-ui/react-dropdown-menu',
-            '@radix-ui/react-navigation-menu',
-            '@radix-ui/react-slot'
-          ],
-          charts: ['recharts'],
-          carousel: ['embla-carousel-react', 'embla-carousel-autoplay']
+        manualChunks: (id) => {
+          // Vendor chunk for React and related libraries
+          if (id.includes('node_modules/react') || 
+              id.includes('node_modules/react-dom') || 
+              id.includes('node_modules/react-router-dom')) {
+            return 'vendor';
+          }
+          
+          // UI components chunk
+          if (id.includes('node_modules/@radix-ui/react-accordion') || 
+              id.includes('node_modules/@radix-ui/react-dialog') ||
+              id.includes('node_modules/@radix-ui/react-dropdown-menu') ||
+              id.includes('node_modules/@radix-ui/react-navigation-menu') ||
+              id.includes('node_modules/@radix-ui/react-slot')) {
+            return 'ui';
+          }
+          
+          // Charts chunk
+          if (id.includes('node_modules/recharts')) {
+            return 'charts';
+          }
+          
+          // Carousel chunk
+          if (id.includes('node_modules/embla-carousel-react') || 
+              id.includes('node_modules/embla-carousel-autoplay')) {
+            return 'carousel';
+          }
         }
       }
     },

@@ -1,13 +1,10 @@
 
 import React from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
 const CitcRegulations = () => {
   return (
     <>
-      <Navbar />
       <main className="pt-24 pb-16 bg-gradient-to-b from-gray-50/80 via-gray-100/80 to-gray-50/80">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
@@ -51,7 +48,6 @@ const CitcRegulations = () => {
           </motion.div>
         </div>
       </main>
-      <Footer />
     </>
   );
 };

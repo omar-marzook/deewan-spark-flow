@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import PostAuthor from "@/components/blog/PostAuthor";
 import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
@@ -40,78 +38,95 @@ const useHeadings = content => {
   });
   return headings;
 };
-const BlogPostPage = () => {
-  const {
-    slug
-  } = useParams();
-  const [post, setPost] = useState(null);
+// Accept post as a prop from the server or fetch it on the client if not provided
+const BlogPostPage = ({ post: initialPost, slug: initialSlug }) => {
+  const params = useParams();
+  const slug = initialSlug || params.slug;
+  const [post, setPost] = useState(initialPost || null);
   const [relatedPosts, setRelatedPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialPost);
+
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (slug) {
-        try {
-          const markdownPost = getPostBySlug(slug);
+    // If we already have the post from SSR, don't fetch again
+    if (initialPost) {
+      // Just get related posts
+      const allPosts = getAllPosts();
+      const related = allPosts
+        .filter(p => p.slug !== slug)
+        .slice(0, 3)
+        .map(p => ({
+          id: p.slug,
+          slug: p.slug,
+          title: p.frontmatter.title,
+          excerpt: p.frontmatter.excerpt || '',
+          coverImage: p.frontmatter.coverImage,
+          category: p.frontmatter.category,
+          publishDate: p.frontmatter.date,
+          readTime: p.frontmatter.readTime || '5 min'
+        }));
+      
+      setRelatedPosts(related);
+      return;
+    }
+
+    // Only fetch if we don't have the post from SSR
+    if (slug) {
+      try {
+        const markdownPost = getPostBySlug(slug);
+        
+        if (markdownPost) {
+          const { frontmatter, content, rawContent } = markdownPost;
+          const { headings } = useHeadingData(rawContent);
           
-          if (markdownPost) {
-            const { frontmatter, content, rawContent } = markdownPost;
-            const { headings } = useHeadingData(rawContent);
-            
-            setPost({
-              title: frontmatter.title,
-              subtitle: frontmatter.subtitle || frontmatter.excerpt,
-              category: frontmatter.category,
-              coverImage: frontmatter.coverImage,
-              publishDate: frontmatter.date,
-              readTime: frontmatter.readTime || '5 min',
-              author: frontmatter.author,
-              content: content,
-              rawContent: rawContent,
-              headings: headings
-            });
-            
-            // Get related posts
-            const allPosts = getAllPosts();
-            const related = allPosts
-              .filter(p => p.slug !== slug)
-              .slice(0, 3)
-              .map(p => ({
-                id: p.slug,
-                slug: p.slug,
-                title: p.frontmatter.title,
-                excerpt: p.frontmatter.excerpt || '',
-                coverImage: p.frontmatter.coverImage,
-                category: p.frontmatter.category,
-                publishDate: p.frontmatter.date,
-                readTime: p.frontmatter.readTime || '5 min'
-              }));
-            
-            setRelatedPosts(related);
-          } else {
-            // No post found
-            console.error('No post found for slug:', slug);
-            setPost(null);
-          }
-        } catch (error) {
-          console.error('Error loading blog post:', error);
+          setPost({
+            title: frontmatter.title,
+            subtitle: frontmatter.subtitle || frontmatter.excerpt,
+            category: frontmatter.category,
+            coverImage: frontmatter.coverImage,
+            publishDate: frontmatter.date,
+            readTime: frontmatter.readTime || '5 min',
+            author: frontmatter.author,
+            content: content,
+            rawContent: rawContent,
+            headings: headings
+          });
+          
+          // Get related posts
+          const allPosts = getAllPosts();
+          const related = allPosts
+            .filter(p => p.slug !== slug)
+            .slice(0, 3)
+            .map(p => ({
+              id: p.slug,
+              slug: p.slug,
+              title: p.frontmatter.title,
+              excerpt: p.frontmatter.excerpt || '',
+              coverImage: p.frontmatter.coverImage,
+              category: p.frontmatter.category,
+              publishDate: p.frontmatter.date,
+              readTime: p.frontmatter.readTime || '5 min'
+            }));
+          
+          setRelatedPosts(related);
+        } else {
+          console.error('No post found for slug:', slug);
           setPost(null);
         }
-      } else {
-        // No slug provided
-        console.error('No slug provided');
+      } catch (error) {
+        console.error('Error loading blog post:', error);
         setPost(null);
       }
-      
-      setLoading(false);
-    }, 1000);
+    } else {
+      console.error('No slug provided');
+      setPost(null);
+    }
     
-    return () => clearTimeout(timeout);
-  }, [slug]);
+    setLoading(false);
+  }, [slug, initialPost]);
   // Use headings from the post object if available
   const headings = post?.headings || [];
   if (loading) {
     return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
-        <Navbar />
         <div className="flex-grow flex items-center justify-center">
           <div className="animate-pulse flex flex-col items-center space-y-8 w-full max-w-3xl px-4">
             <div className="h-8 bg-gray-200 rounded w-3/4"></div>
@@ -124,12 +139,10 @@ const BlogPostPage = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>;
   }
   if (!post) {
     return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
-        <Navbar />
         <div className="flex-grow flex flex-col items-center justify-center p-4">
           <h1 className="text-3xl font-bold text-deewan-dark mb-4">Post Not Found</h1>
           <p className="text-deewan-gray mb-6">The blog post you're looking for doesn't exist or has been moved.</p>
@@ -140,7 +153,6 @@ const BlogPostPage = () => {
             </Link>
           </Button>
         </div>
-        <Footer />
       </div>;
   }
   // Create breadcrumb schema
@@ -172,7 +184,6 @@ const BlogPostPage = () => {
         ogImage={post.coverImage}
         schema={combinedSchema}
       />
-      <Navbar />
       <ReadingProgressBar />
       <BlogBreadcrumbs post={post} />
       <BlogPostHeader post={post} />
@@ -184,7 +195,6 @@ const BlogPostPage = () => {
         TableOfContents={TableOfContentsInline} 
       />
       <BlogRelatedArticles relatedPosts={relatedPosts} />
-      <Footer />
     </div>;
 };
 export default BlogPostPage;
