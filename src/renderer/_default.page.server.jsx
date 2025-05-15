@@ -9,12 +9,14 @@ export async function render(pageContext) {
   // Make route params available to the page
   const props = { ...pageProps, routeParams }
   
+  // Create the PageShell component first and await it
+  const pageShellContent = await PageShell({
+    pageContext,
+    children: <Page {...props} />
+  });
+  
   // This is where your React app is rendered to HTML
-  const pageHtml = renderToString(
-    <PageShell pageContext={pageContext}>
-      <Page {...props} />
-    </PageShell>
-  )
+  const pageHtml = renderToString(pageShellContent)
   
   // Get document props from the page or use defaults
   const title = pageContext.documentProps?.title || pageContext.title || 'Deewan'

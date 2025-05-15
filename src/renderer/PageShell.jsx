@@ -11,7 +11,7 @@ import { Routes, Route } from 'react-router-dom';
 // We'll dynamically import the appropriate router based on environment
 const queryClient = new QueryClient();
 
-export function PageShell({ pageContext, children }) {
+export async function PageShell({ pageContext, children }) {
   // We need to determine if we're on the client or server
   const isClient = typeof window !== 'undefined';
   
@@ -19,14 +19,18 @@ export function PageShell({ pageContext, children }) {
   const url = pageContext.urlOriginal || '/';
   
   // Create the appropriate router element based on environment
-  let RouterElement;
+  let RouterElement = ({ children }) => <>{children}</>; // Default fallback
+  
+  // Use dynamic import with React.lazy for client-side
   if (isClient) {
-    // Client-side: Use BrowserRouter
-    const { BrowserRouter } = require('react-router-dom');
+    // We're in the browser, so we can use BrowserRouter directly
+    // Import from react-router-dom is already at the top level
+    const { BrowserRouter } = await import('react-router-dom');
     RouterElement = ({ children }) => <BrowserRouter>{children}</BrowserRouter>;
-  } else {
+  } else if (typeof window === 'undefined') {
     // Server-side: Use StaticRouter
-    const { StaticRouter } = require('react-router-dom/server');
+    // This code only runs on the server
+    const { StaticRouter } = await import('react-router-dom/server');
     RouterElement = ({ children }) => <StaticRouter location={url}>{children}</StaticRouter>;
   }
   

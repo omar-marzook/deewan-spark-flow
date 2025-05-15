@@ -10,11 +10,19 @@ window.Buffer = Buffer
 export async function render(pageContext) {
   const { Page, pageProps } = pageContext
   
+  // Create the PageShell component first
+  const pageShellPromise = PageShell({ 
+    pageContext, 
+    children: <Page {...pageProps} /> 
+  });
+  
+  // Await the async PageShell component
+  const pageShellContent = await pageShellPromise;
+  
+  // Hydrate with the resolved content
   hydrateRoot(
     document.getElementById('root'),
-    <PageShell pageContext={pageContext}>
-      <Page {...pageProps} />
-    </PageShell>
+    pageShellContent
   )
 }
 
