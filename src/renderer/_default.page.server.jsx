@@ -22,21 +22,21 @@ export async function render(pageContext) {
   const title = pageContext.documentProps?.title || pageContext.title || 'Deewan'
   const description = pageContext.documentProps?.description || pageContext.description || 'Deewan - Communication Platform'
   
-  // Create the full HTML document
+  // Create the full HTML document with consistent whitespace and formatting
   const documentHtml = escapeInject`<!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
-        <title>${title}</title>
-        <meta name="description" content="${description}" />
-        ${dangerouslySkipEscape(pageContext.documentProps?.head || '')}
-      </head>
-      <body>
-        <div id="root">${dangerouslySkipEscape(pageHtml)}</div>
-      </body>
-    </html>`
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    ${dangerouslySkipEscape(pageContext.documentProps?.head || '')}
+  </head>
+  <body>
+    <div id="root">${dangerouslySkipEscape(pageHtml)}</div>
+  </body>
+</html>`
   
   return {
     documentHtml,

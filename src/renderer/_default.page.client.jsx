@@ -1,5 +1,5 @@
 import React from 'react'
-import { hydrateRoot } from 'react-dom/client'
+import { hydrateRoot, createRoot } from 'react-dom/client'
 import { PageShell } from './PageShell'
 import '../index.css'
 import { Buffer } from 'buffer'
@@ -19,11 +19,24 @@ export async function render(pageContext) {
   // Await the async PageShell component
   const pageShellContent = await pageShellPromise;
   
-  // Hydrate with the resolved content
-  hydrateRoot(
-    document.getElementById('root'),
-    pageShellContent
-  )
+  // Use a more robust hydration approach
+  const rootElement = document.getElementById('root');
+  
+  // Hydrate with error handling
+  try {
+    hydrateRoot(rootElement, pageShellContent);
+  } catch (error) {
+    console.warn('Hydration failed, falling back to client-side rendering:', error);
+    
+    // If hydration fails, remove all children and render from scratch
+    while (rootElement.firstChild) {
+      rootElement.removeChild(rootElement.firstChild);
+    }
+    
+    // Create a new root and render
+    const root = createRoot(rootElement);
+    root.render(pageShellContent);
+  }
 }
 
 // Enable client-side routing

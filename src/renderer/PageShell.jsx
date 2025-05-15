@@ -23,27 +23,32 @@ export async function PageShell({ pageContext, children }) {
   // Create the appropriate router element based on environment
   let RouterElement = ({ children }) => <>{children}</>; // Default fallback
   
-  // Use dynamic import with React.lazy for client-side
-  if (isClient) {
-    // We're in the browser, so we can use BrowserRouter directly
-    // Import from react-router-dom is already at the top level
-    const { BrowserRouter } = await import('react-router-dom');
-    
-    // For client-side, we need to initialize the router with the current URL
-    RouterElement = ({ children }) => (
-      <BrowserRouter>
-        {children}
-      </BrowserRouter>
-    );
-  } else if (typeof window === 'undefined') {
-    // Server-side: Use StaticRouter
-    // This code only runs on the server
-    const { StaticRouter } = await import('react-router-dom/server');
-    RouterElement = ({ children }) => (
-      <StaticRouter location={url}>
-        {children}
-      </StaticRouter>
-    );
+  try {
+    // Use dynamic import with React.lazy for client-side
+    if (isClient) {
+      // We're in the browser, so we can use BrowserRouter directly
+      // Import from react-router-dom is already at the top level
+      const { BrowserRouter } = await import('react-router-dom');
+      
+      // For client-side, we need to initialize the router with the current URL
+      RouterElement = ({ children }) => (
+        <BrowserRouter>
+          {children}
+        </BrowserRouter>
+      );
+    } else if (typeof window === 'undefined') {
+      // Server-side: Use StaticRouter
+      // This code only runs on the server
+      const { StaticRouter } = await import('react-router-dom/server');
+      RouterElement = ({ children }) => (
+        <StaticRouter location={url}>
+          {children}
+        </StaticRouter>
+      );
+    }
+  } catch (error) {
+    console.error('Error initializing router:', error);
+    // Continue with the default fallback
   }
   
   return (

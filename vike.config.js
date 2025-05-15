@@ -2,7 +2,12 @@
 import react from 'vike/plugin-react'
 
 export default {
-  plugins: [react()],
+  plugins: [react({
+    // Configure React plugin with hydration options
+    hydrationCanBeAborted: true,
+    // Use streaming for better performance
+    streaming: true
+  })],
   // Use V1 design
   prerender: {
     partial: true
@@ -31,5 +36,7 @@ export default {
     'description',
     'documentProps',
     'urlOriginal'
-  ]
+  ],
+  // Add hydration configuration
+  hydrationCanBeAborted: true
 }
