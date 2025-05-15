@@ -1,7 +1,8 @@
 import express from 'express'
+import compression from 'compression'
 import { renderPage } from 'vike/server'
-import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
@@ -12,12 +13,12 @@ startServer()
 
 async function startServer() {
   const app = express()
-
-  // Serve static assets
+  
+  app.use(compression())
+  
   if (isProduction) {
     app.use(express.static(join(root, 'dist/client')))
   } else {
-    // In development, Vite runs its own server
     const vite = await import('vite')
     const viteDevServer = await vite.createServer({
       root,
@@ -26,31 +27,29 @@ async function startServer() {
     app.use(viteDevServer.middlewares)
   }
 
-  // Serve pages
   app.get('*', async (req, res, next) => {
-    const url = req.originalUrl
-    console.log(`Request: ${url}`)
-
     try {
-      const pageContextInit = { urlOriginal: url }
+      const pageContextInit = {
+        urlOriginal: req.originalUrl
+      }
+      
       const pageContext = await renderPage(pageContextInit)
       const { httpResponse } = pageContext
-
+      
       if (!httpResponse) {
         return next()
       }
-
+      
       const { body, statusCode, contentType, headers } = httpResponse
-
-      // Set headers
+      
       headers && Object.entries(headers).forEach(([name, value]) => {
         res.setHeader(name, value)
       })
-
+      
       res.status(statusCode).type(contentType).send(body)
     } catch (error) {
-      console.error(error)
-      res.status(500).send('Internal Server Error')
+      console.error(error.stack)
+      res.status(500).send('Server Error')
     }
   })
 

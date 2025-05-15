@@ -9,8 +9,27 @@ export default {
   },
   // Configure routing
   filesystemRoutingRoot: 'src/pages',
-  // Explicitly define the root route
+  // Define valid page file extensions
   extensions: ['page.jsx', 'page.tsx'],
   // Configure page files
-  disableAutoLiftCssUrls: true
+  disableAutoLiftCssUrls: true,
+  // Enable client-side routing
+  clientRouting: true,
+  // Configure route parameters
+  routeFileSystem: {
+    // Define route parameter syntax
+    paramFormat: {
+      // Use @ prefix for route parameters (e.g., @slug.page.jsx)
+      routeFiles: '@'
+    }
+  },
+  // Configure page context
+  passToClient: [
+    'pageProps',
+    'routeParams',
+    'title',
+    'description',
+    'documentProps',
+    'urlOriginal'
+  ]
 }

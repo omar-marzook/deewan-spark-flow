@@ -4,14 +4,21 @@ import { escapeInject, dangerouslySkipEscape } from 'vike/server'
 import { PageShell } from './PageShell'
 
 export async function render(pageContext) {
-  const { Page, pageProps } = pageContext
+  const { Page, pageProps, routeParams } = pageContext
+  
+  // Make route params available to the page
+  const props = { ...pageProps, routeParams }
   
   // This is where your React app is rendered to HTML
   const pageHtml = renderToString(
     <PageShell pageContext={pageContext}>
-      <Page {...pageProps} />
+      <Page {...props} />
     </PageShell>
   )
+  
+  // Get document props from the page or use defaults
+  const title = pageContext.documentProps?.title || pageContext.title || 'Deewan'
+  const description = pageContext.documentProps?.description || pageContext.description || 'Deewan - Communication Platform'
   
   // Create the full HTML document
   const documentHtml = escapeInject`<!DOCTYPE html>
@@ -20,8 +27,9 @@ export async function render(pageContext) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
-        <title>${pageContext.title || 'Deewan'}</title>
-        <meta name="description" content="${pageContext.description || 'Deewan - Communication Platform'}" />
+        <title>${title}</title>
+        <meta name="description" content="${description}" />
+        ${dangerouslySkipEscape(pageContext.documentProps?.head || '')}
       </head>
       <body>
         <div id="root">${dangerouslySkipEscape(pageHtml)}</div>
@@ -31,7 +39,21 @@ export async function render(pageContext) {
   return {
     documentHtml,
     pageContext: {
-      // This is optional but enables you to add data to `pageContext` that is available to the client
+      // Make route params available to the client
+      routeParams,
+      // Pass document props to the client
+      title,
+      description
+    }
+  }
+}
+
+// This hook is called when a new page is rendered
+export function onBeforeRender(pageContext) {
+  // You can modify pageContext here before it's passed to the render function
+  return {
+    pageContext: {
+      // Add any additional data to pageContext here
     }
   }
 }
