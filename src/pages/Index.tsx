@@ -1,5 +1,4 @@
 
-import Navbar from "../components/Navbar";
 import HomeHero from "../components/HomeHero";
 import ProductsTabbedLayout from "../components/ProductsTabbedLayout";
 import AlternativeProducts from "../components/AlternativeProducts";
@@ -10,7 +9,6 @@ import BlogSection from "../components/BlogSection";
 import ContactSection from "../components/ContactSection";
 import AlternativeStats from "../components/AlternativeStats";
 import AlternativeTestimonials from "../components/AlternativeTestimonials";
-import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 import { organizationSchema } from "../lib/schema";
 import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
@@ -24,7 +22,6 @@ const Index = () => {
         canonical="/"
         schema={organizationSchema}
       />
-      <Navbar />
       <HomeHero />
       <LogoCarousel />
       <ProductsTabbedLayout />
@@ -66,7 +63,6 @@ const Index = () => {
       <AlternativeTestimonials />
       <BlogSection />
       <ContactSection />
-      <Footer />
     </div>
   );
 };

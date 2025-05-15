@@ -1,7 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import Navbar from "@/components/Navbar";
 import ProductHero from "@/components/product/ProductHero";
 import AlternativeStats from "@/components/AlternativeStats";
 import { CheckCircle, MessageSquare, Globe } from 'lucide-react';
@@ -13,7 +12,6 @@ import ConversionApiBenefits from "@/components/product/ConversionApiBenefits";
 import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { generateProductSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { getProductSeoContent } from "@/lib/productSeo";
@@ -70,7 +68,6 @@ export default function ProductPage() {
         ogType="product"
         schema={combinedSchema}
       />
-      <Navbar />
       <ProductHero
         name={productData.name}
         tagline={productData.tagline}
@@ -148,7 +145,6 @@ export default function ProductPage() {
       <div id="contact">
         <ContactSection />
       </div>
-      <Footer />
     </div>
   );
 }

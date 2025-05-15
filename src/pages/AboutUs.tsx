@@ -1,7 +1,5 @@
 
 import React, { useEffect } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/about/HeroSection";
 import TransformingDigital from "@/components/about/TransformingDigital";
 import OurStory from "@/components/about/OurStory";
@@ -36,7 +34,6 @@ const AboutUs = () => {
         canonical="/about"
         schema={combinedSchema}
       />
-      <Navbar />
       <main className="flex-grow">
         <HeroSection />
         <OurStory />
@@ -78,7 +75,6 @@ const AboutUs = () => {
         <AlternativeTestimonials />
         <ContactSection />
       </main>
-      <Footer />
     </div>
   );
 };

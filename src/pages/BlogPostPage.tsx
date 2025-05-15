@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import PostAuthor from "@/components/blog/PostAuthor";
 import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
@@ -111,7 +109,6 @@ const BlogPostPage = () => {
   const headings = post?.headings || [];
   if (loading) {
     return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
-        <Navbar />
         <div className="flex-grow flex items-center justify-center">
           <div className="animate-pulse flex flex-col items-center space-y-8 w-full max-w-3xl px-4">
             <div className="h-8 bg-gray-200 rounded w-3/4"></div>
@@ -124,12 +121,10 @@ const BlogPostPage = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>;
   }
   if (!post) {
     return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
-        <Navbar />
         <div className="flex-grow flex flex-col items-center justify-center p-4">
           <h1 className="text-3xl font-bold text-deewan-dark mb-4">Post Not Found</h1>
           <p className="text-deewan-gray mb-6">The blog post you're looking for doesn't exist or has been moved.</p>
@@ -140,7 +135,6 @@ const BlogPostPage = () => {
             </Link>
           </Button>
         </div>
-        <Footer />
       </div>;
   }
   // Create breadcrumb schema
@@ -172,7 +166,6 @@ const BlogPostPage = () => {
         ogImage={post.coverImage}
         schema={combinedSchema}
       />
-      <Navbar />
       <ReadingProgressBar />
       <BlogBreadcrumbs post={post} />
       <BlogPostHeader post={post} />
@@ -184,7 +177,6 @@ const BlogPostPage = () => {
         TableOfContents={TableOfContentsInline} 
       />
       <BlogRelatedArticles relatedPosts={relatedPosts} />
-      <Footer />
     </div>;
 };
 export default BlogPostPage;

@@ -1,8 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import SEO from "@/components/SEO";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 const NotFound = () => {
   const location = useLocation();
@@ -21,7 +19,6 @@ const NotFound = () => {
         description="The page you are looking for does not exist. Return to the Deewan homepage."
         canonical="/404"
       />
-      <Navbar />
       <main className="flex-grow flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4 py-16">
           <h1 className="text-6xl font-bold text-deewan-primary mb-4">404</h1>
@@ -35,7 +32,6 @@ const NotFound = () => {
           </a>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

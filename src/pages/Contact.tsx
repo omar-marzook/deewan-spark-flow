@@ -1,8 +1,6 @@
 
 import React from "react";
 import { LazyMotion, domAnimation } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactReassurance from "@/components/contact/ContactReassurance";
 import ContactInfo from "@/components/contact/ContactInfo";
@@ -28,15 +26,11 @@ const Contact = () => {
         schema={combinedSchema}
       />
       
-      <Navbar />
-      
       <main>
         <ContactHero />
         <ContactReassurance />
         <ContactInfo />
       </main>
-      
-      <Footer />
     </LazyMotion>
   );
 };
