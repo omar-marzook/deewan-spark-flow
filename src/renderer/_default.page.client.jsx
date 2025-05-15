@@ -7,6 +7,11 @@ import { Buffer } from 'buffer'
 // Make Buffer available globally
 window.Buffer = Buffer
 
+// Store the root instance globally to prevent multiple createRoot calls
+let rootInstance = null;
+// Track if this is the first render (initial page load)
+let isFirstRender = true;
+
 export async function render(pageContext) {
   const { Page, pageProps } = pageContext
   
@@ -19,23 +24,38 @@ export async function render(pageContext) {
   // Await the async PageShell component
   const pageShellContent = await pageShellPromise;
   
-  // Use a more robust hydration approach
+  // Get the root element
   const rootElement = document.getElementById('root');
   
-  // Hydrate with error handling
-  try {
-    hydrateRoot(rootElement, pageShellContent);
-  } catch (error) {
-    console.warn('Hydration failed, falling back to client-side rendering:', error);
+  // For the first render (initial page load), try hydration
+  if (isFirstRender) {
+    isFirstRender = false;
     
-    // If hydration fails, remove all children and render from scratch
-    while (rootElement.firstChild) {
-      rootElement.removeChild(rootElement.firstChild);
+    try {
+      // Attempt to hydrate the existing content
+      hydrateRoot(rootElement, pageShellContent);
+    } catch (error) {
+      console.warn('Hydration failed, falling back to client-side rendering:', error);
+      
+      // If hydration fails, remove all children and render from scratch
+      while (rootElement.firstChild) {
+        rootElement.removeChild(rootElement.firstChild);
+      }
+      
+      // Create a root instance for the first time
+      rootInstance = createRoot(rootElement);
+      rootInstance.render(pageShellContent);
+    }
+  } else {
+    // For subsequent renders (client-side navigation), use the existing root
+    if (!rootInstance) {
+      // This should rarely happen, but just in case hydration succeeded
+      // and we don't have a rootInstance yet
+      rootInstance = createRoot(rootElement);
     }
     
-    // Create a new root and render
-    const root = createRoot(rootElement);
-    root.render(pageShellContent);
+    // Render using the existing root instance
+    rootInstance.render(pageShellContent);
   }
 }
 
