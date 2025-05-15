@@ -1,10 +1,25 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const PrivacyPolicy = () => {
+  // Create complete SEO data object
+  const seoData = {
+    title: "Privacy Policy | Deewan",
+    description: "Read Deewan's privacy policy to understand how we collect, use, and protect your personal information when you use our communication services.",
+    canonical: "/privacy-policy"
+  };
+  
+  // Store SEO data in pageProps for server-side rendering
+  if (typeof window === 'undefined') {
+    // This only runs on the server
+    // @ts-ignore - This will be picked up by Vike
+    PrivacyPolicy.pageProps = { seoData };
+  }
   return (
     <>
+      <SEO {...seoData} />
       <main className="pt-24 pb-16 bg-gradient-to-b from-gray-50/80 via-gray-100/80 to-gray-50/80">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div

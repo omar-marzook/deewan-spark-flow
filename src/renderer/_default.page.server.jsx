@@ -28,20 +28,38 @@ export async function render(pageContext) {
   // Add Open Graph tags if not in additionalHead
   if (!additionalHead.includes('og:title')) {
     additionalHead += `
-    <meta property="og:title" content="${seoData.title}" />
-    <meta property="og:description" content="${seoData.description}" />
+    <meta property="og:title" content="${
+        seoData.title ||
+        'Deewan - Intelligent Communication Solutions for Business | Saudi Arabia'
+    }" />
+    <meta property="og:description" content="${
+        seoData.description ||
+        'Deewan provides secure, scalable communication solutions including WhatsApp Business API, SMS, Voice, and AI-powered chatbots for businesses across Saudi Arabia.'
+    }" />
     <meta property="og:type" content="${seoData.ogType || 'website'}" />
-    <meta property="og:image" content="https://www.deewan.sa${seoData.ogImage || '/deewan-og.png'}" />
+    <meta property="og:image" content="https://www.deewan.sa${
+        seoData.ogImage || '/deewan-og.png'
+    }" />
     `;
   }
   
   // Add Twitter Card tags if not in additionalHead
   if (!additionalHead.includes('twitter:card')) {
     additionalHead += `
-    <meta name="twitter:card" content="${seoData.twitterCard || 'summary_large_image'}" />
-    <meta name="twitter:title" content="${seoData.title}" />
-    <meta name="twitter:description" content="${seoData.description}" />
-    <meta name="twitter:image" content="https://www.deewan.sa${seoData.ogImage || '/deewan-og.png'}" />
+    <meta name="twitter:card" content="${
+        seoData.twitterCard || 'summary_large_image'
+    }" />
+    <meta name="twitter:title" content="${
+        seoData.title ||
+        'Deewan - Intelligent Communication Solutions for Business | Saudi Arabia'
+    }" />
+    <meta name="twitter:description" content="${
+        seoData.description ||
+        'Deewan provides secure, scalable communication solutions including WhatsApp Business API, SMS, Voice, and AI-powered chatbots for businesses across Saudi Arabia.'
+    }" />
+    <meta name="twitter:image" content="https://www.deewan.sa${
+        seoData.ogImage || '/deewan-og.png'
+    }" />
     `;
   }
   
@@ -68,14 +86,20 @@ export async function render(pageContext) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <title>${seoData.title}</title>
-    <meta name="description" content="${seoData.description}" />
-    ${dangerouslySkipEscape(additionalHead)}
+    <title>${
+        seoData.title ||
+        'Deewan - Intelligent Communication Solutions for Business | Saudi Arabia'
+    }</title>
+    <meta name="description" content="${
+        seoData.description ||
+        'Deewan provides secure, scalable communication solutions including WhatsApp Business API, SMS, Voice, and AI-powered chatbots for businesses across Saudi Arabia.'
+    }" />
+    ${dangerouslySkipEscape(additionalHead || '')}
   </head>
   <body>
-    <div id="root">${dangerouslySkipEscape(pageHtml)}</div>
+    <div id="root">${dangerouslySkipEscape(pageHtml || '')}</div>
   </body>
-</html>`
+</html>`;
   
   return {
     documentHtml,

@@ -174,16 +174,26 @@ const BlogPostPage = ({ post: initialPost, slug: initialSlug }) => {
 
   // Combine schemas
   const combinedSchema = [breadcrumbSchema, articleSchema];
+  
+  // Create complete SEO data object
+  const seoData = {
+    title: `${post.title} | Deewan Blog`,
+    description: post.subtitle || post.title,
+    canonical: `/blog/${slug}`,
+    ogType: "article",
+    ogImage: post.coverImage,
+    schema: combinedSchema
+  };
+  
+  // Store SEO data in pageProps for server-side rendering
+  if (typeof window === 'undefined') {
+    // This only runs on the server
+    // @ts-ignore - This will be picked up by Vike
+    BlogPostPage.pageProps = { seoData };
+  }
 
   return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50 pt-20">
-      <SEO 
-        title={`${post.title} | Deewan Blog`}
-        description={post.subtitle || post.title}
-        canonical={`/blog/${slug}`}
-        ogType="article"
-        ogImage={post.coverImage}
-        schema={combinedSchema}
-      />
+      <SEO {...seoData} />
       <ReadingProgressBar />
       <BlogBreadcrumbs post={post} />
       <BlogPostHeader post={post} />

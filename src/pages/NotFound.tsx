@@ -11,14 +11,24 @@ const NotFound = () => {
       location.pathname
     );
   }, [location.pathname]);
+  
+  // Create complete SEO data object
+  const seoData = {
+    title: "Page Not Found | Deewan",
+    description: "The page you are looking for does not exist. Return to the Deewan homepage.",
+    canonical: "/404"
+  };
+  
+  // Store SEO data in pageProps for server-side rendering
+  if (typeof window === 'undefined') {
+    // This only runs on the server
+    // @ts-ignore - This will be picked up by Vike
+    NotFound.pageProps = { seoData };
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <SEO 
-        title="Page Not Found | Deewan"
-        description="The page you are looking for does not exist. Return to the Deewan homepage."
-        canonical="/404"
-      />
+      <SEO {...seoData} />
       <main className="flex-grow flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4 py-16">
           <h1 className="text-6xl font-bold text-deewan-primary mb-4">404</h1>

@@ -8,7 +8,7 @@ export default {
     // Use streaming for better performance
     streaming: true
   })],
-  // Use V1 design
+  // V1 design configuration
   prerender: {
     partial: true
   },
@@ -38,5 +38,19 @@ export default {
     'urlOriginal'
   ],
   // Add hydration configuration
-  hydrationCanBeAborted: true
+  hydrationCanBeAborted: true,
+  
+  // V1 design: Use the new meta file approach
+  meta: {
+    // Define meta files
+    metafiles: {
+      // Use query parameter instead of 'as' option
+      extractExportNames: {
+        query: '?extractExportNames'
+      },
+      extractAssets: {
+        query: '?extractAssets'
+      }
+    }
+  }
 }

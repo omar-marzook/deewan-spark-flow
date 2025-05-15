@@ -16,15 +16,25 @@ const Contact = () => {
 
   // Combine schemas
   const combinedSchema = [breadcrumbSchema, organizationSchema];
+  
+  // Create complete SEO data object
+  const seoData = {
+    title: "Contact Deewan | Get in Touch with Our Communication Experts",
+    description: "Contact Deewan for intelligent communication solutions. We're here to help with your business communication needs in Saudi Arabia.",
+    canonical: "/contact",
+    schema: combinedSchema
+  };
+  
+  // Store SEO data in pageProps for server-side rendering
+  if (typeof window === 'undefined') {
+    // This only runs on the server
+    // @ts-ignore - This will be picked up by Vike
+    Contact.pageProps = { seoData };
+  }
 
   return (
     <LazyMotion features={domAnimation}>
-      <SEO 
-        title="Contact Deewan | Get in Touch with Our Communication Experts"
-        description="Contact Deewan for intelligent communication solutions. We're here to help with your business communication needs in Saudi Arabia."
-        canonical="/contact"
-        schema={combinedSchema}
-      />
+      <SEO {...seoData} />
       
       <main>
         <ContactHero />
