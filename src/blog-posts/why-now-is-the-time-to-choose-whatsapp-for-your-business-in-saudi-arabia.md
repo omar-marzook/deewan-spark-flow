@@ -8,7 +8,7 @@ coverImage: /media/blogs/whatsapp-1920.jpg
 imageUrl: /media/blogs/whatsapp-1336.jpg
 author:
   name: Deewan Team
-  avatar: https://avatar.iran.liara.run/username?username=Deewan+Team
+  avatar: /media/blogs/deewan-avatar.svg
 ---
 
 Let’s face it. Your customers aren’t checking their emails. They’re checking WhatsApp.

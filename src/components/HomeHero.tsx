@@ -8,24 +8,39 @@ interface HomeHeroProps {
 }
 
 const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  // Use useRef instead of useState for tracking client-side animations
+  // This prevents hydration mismatches
+  const animationRef = useRef({
+    isLoaded: false,
+    isVideoLoaded: false
+  });
   const videoRef = useRef<HTMLVideoElement>(null);
+  
+  // Use a separate state for client-side only animations
+  const [clientLoaded, setClientLoaded] = useState(false);
 
   useEffect(() => {
-    // Animation timing
+    // Only run animations on the client after hydration is complete
+    animationRef.current.isLoaded = true;
+    
+    // Set state for client-side only animations
     setTimeout(() => {
-      setIsLoaded(true);
+      setClientLoaded(true);
     }, 100);
   }, []);
 
   // Handle video load event
   const handleVideoLoad = () => {
-    setIsVideoLoaded(true);
+    animationRef.current.isVideoLoaded = true;
   };
 
+  // Determine animation classes based on whether we're on client or server
+  // For server rendering, we don't apply any animation classes
+  const isClient = typeof window !== 'undefined';
+  const animationClass = isClient && clientLoaded ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-100';
+
   return (
-    <section id="main-content" className={`container mx-auto px-4 py-12 md:py-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
+      <section id="main-content" className={`container mx-auto px-4 pt-40 pb-12 md:pt-40 md:pb-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
       {/* Floating Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <CircleDot
@@ -67,7 +82,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-deewan-secondary/10 rounded-full opacity-50" aria-hidden="true"></div>
 
       {/* Text Content - Moved above visual */}
-      <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+      <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 transform ${animationClass}`}>
         <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deewan-dark leading-tight">
           Connect smarter.<br/>
           Grow faster
@@ -106,7 +121,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
         {/* Green Gradient Illumination */}
         <div className="absolute -inset-10 bg-deewan-primary/20 rounded-full blur-3xl" aria-hidden="true"></div>
 
-        <div className={`transition-all duration-700 delay-200 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        <section className={`transition-all duration-700 delay-200 transform ${animationClass}`}>
           <div className="relative">
             {/* Video in aspect-video container */}
             <div className="glass-card relative p-4 overflow-hidden w-full rounded-xl" aria-hidden="true">
@@ -127,7 +142,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import Navbar from "@/components/Navbar";
 import ProductHero from "@/components/product/ProductHero";
 import AlternativeStats from "@/components/AlternativeStats";
 import { CheckCircle, MessageSquare, Globe } from 'lucide-react';
@@ -13,7 +12,6 @@ import ConversionApiBenefits from "@/components/product/ConversionApiBenefits";
 import DepartmentsWeServe from "@/components/DepartmentsWeServe";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { generateProductSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { getProductSeoContent } from "@/lib/productSeo";
@@ -60,17 +58,26 @@ export default function ProductPage() {
 
   // Combine schemas
   const combinedSchema = [breadcrumbSchema, productSchema];
+  
+  // Create complete SEO data object
+  const seoData = {
+    title: seoContent.title,
+    description: seoContent.description,
+    canonical: `/products/${slug}`,
+    ogType: "product",
+    schema: combinedSchema
+  };
+  
+  // Store SEO data in pageProps for server-side rendering
+  if (typeof window === 'undefined') {
+    // This only runs on the server
+    // @ts-ignore - This will be picked up by Vike
+    ProductPage.pageProps = { seoData };
+  }
 
   return (
     <div className="overflow-x-hidden">
-      <SEO 
-        title={seoContent.title}
-        description={seoContent.description}
-        canonical={`/products/${slug}`}
-        ogType="product"
-        schema={combinedSchema}
-      />
-      <Navbar />
+      <SEO {...seoData} />
       <ProductHero
         name={productData.name}
         tagline={productData.tagline}
@@ -148,7 +155,6 @@ export default function ProductPage() {
       <div id="contact">
         <ContactSection />
       </div>
-      <Footer />
     </div>
   );
 }

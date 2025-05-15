@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import { useInterval } from "@/hooks/use-interval";
@@ -6,6 +6,14 @@ import Autoplay from "embla-carousel-autoplay";
 import OptimizedImage from "@/components/ui/optimized-image";
 
 const LogoCarousel: React.FC = () => {
+  // Use useRef to track if we're on the client side
+  const isBrowser = useRef(false);
+  
+  // Set isBrowser to true after component mounts (client-side only)
+  useEffect(() => {
+    isBrowser.current = true;
+  }, []);
+  
   const logos = [{
     id: 1,
     name: "Al Jabr",
@@ -80,18 +88,26 @@ const LogoCarousel: React.FC = () => {
     logo: "/media/logos/theqa.png"
   }];
 
-  // Setup autoplay plugin
+  // Setup autoplay plugin - only used on client side
   const autoplayOptions = {
     delay: 3000,
     rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement
   };
   
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
-    loop: true,
-    dragFree: true,
-    skipSnaps: false
-  }, [Autoplay(autoplayOptions)]);
+  // Only initialize the carousel on the client side
+  // For server rendering, we'll use a static version
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    isBrowser.current ? 
+    {
+      align: "start",
+      loop: true,
+      dragFree: true,
+      skipSnaps: false
+    } : 
+    // Empty options for server-side rendering
+    {},
+    isBrowser.current ? [Autoplay(autoplayOptions)] : []
+  );
 
   return <section id="partners" aria-labelledby="partners-heading" className="py-20 relative overflow-hidden">
       {/* Background gradient */}

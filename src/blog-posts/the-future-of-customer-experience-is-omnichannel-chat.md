@@ -8,7 +8,7 @@ coverImage: /media/blogs/omnichannel-chat-1920.jpg
 imageUrl: /media/blogs/omnichannel-1336.jpg
 author:
   name: Deewan Team
-  avatar: https://avatar.iran.liara.run/username?username=Deewan+Team
+  avatar: /media/blogs/deewan-avatar.svg
 ---
 
 Customer expectations in Saudi Arabia aren’t what they used to be.

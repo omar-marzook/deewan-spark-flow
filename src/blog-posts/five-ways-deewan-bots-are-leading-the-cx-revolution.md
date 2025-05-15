@@ -8,7 +8,7 @@ coverImage: /media/blogs/chatbot-blog-1920.jpg
 imageUrl: /media/blogs/chatbot-1336.jpg
 author:
   name: Deewan Team
-  avatar: https://avatar.iran.liara.run/username?username=Deewan+Team
+  avatar: /media/blogs/deewan-avatar.svg
 ---
 
 Let’s be honest: people aren’t waiting days for answers anymore.
