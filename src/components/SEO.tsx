@@ -16,7 +16,7 @@ const SEO = ({
   description,
   canonical,
   ogType = 'website',
-  ogImage = '/deewan-logo.png',
+  ogImage = '/deewan-og.png',
   twitterCard = 'summary_large_image',
   schema,
 }: SEOProps) => {
