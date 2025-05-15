@@ -14,14 +14,25 @@ import { organizationSchema } from "../lib/schema";
 import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
 
 const Index = () => {
+  // Define SEO data that will be used by both client and server
+  const seoData = {
+    title: "Deewan - Intelligent Communication Solutions for Business | Saudi Arabia",
+    description: "Deewan provides secure, scalable communication solutions including WhatsApp Business API, SMS, Voice, and AI-powered chatbots for businesses across Saudi Arabia.",
+    canonical: "/",
+    ogType: "website",
+    ogImage: "/deewan-og.png",
+    schema: organizationSchema
+  };
+  
+  // Store SEO data in pageProps for server-side rendering
+  if (typeof window === 'undefined') {
+    // This only runs on the server
+    // @ts-ignore - This will be picked up by Vike
+    Index.pageProps = { seoData };
+  }
   return (
     <div className="overflow-x-hidden">
-      <SEO 
-        title="Deewan - Intelligent Communication Solutions for Business | Saudi Arabia"
-        description="Deewan provides secure, scalable communication solutions including WhatsApp Business API, SMS, Voice, and AI-powered chatbots for businesses across Saudi Arabia."
-        canonical="/"
-        schema={organizationSchema}
-      />
+      <SEO {...seoData} />
       <HomeHero />
       <LogoCarousel />
       <ProductsTabbedLayout />

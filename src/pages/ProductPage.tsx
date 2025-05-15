@@ -58,16 +58,26 @@ export default function ProductPage() {
 
   // Combine schemas
   const combinedSchema = [breadcrumbSchema, productSchema];
+  
+  // Create complete SEO data object
+  const seoData = {
+    title: seoContent.title,
+    description: seoContent.description,
+    canonical: `/products/${slug}`,
+    ogType: "product",
+    schema: combinedSchema
+  };
+  
+  // Store SEO data in pageProps for server-side rendering
+  if (typeof window === 'undefined') {
+    // This only runs on the server
+    // @ts-ignore - This will be picked up by Vike
+    ProductPage.pageProps = { seoData };
+  }
 
   return (
     <div className="overflow-x-hidden">
-      <SEO 
-        title={seoContent.title}
-        description={seoContent.description}
-        canonical={`/products/${slug}`}
-        ogType="product"
-        schema={combinedSchema}
-      />
+      <SEO {...seoData} />
       <ProductHero
         name={productData.name}
         tagline={productData.tagline}

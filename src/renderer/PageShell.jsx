@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PageContextProvider } from './usePageContext'
+import { SEOProvider } from '@/lib/seo-context';
+import { extractSEOFromPageProps } from '@/lib/extract-seo';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -57,13 +59,17 @@ export async function PageShell({ pageContext, children }) {
     // Continue with the default fallback
   }
   
+  // Extract initial SEO data
+  const initialSEOData = extractSEOFromPageProps(pageContext);
+  
   return (
     <PageContextProvider pageContext={pageContext}>
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <RouterElement>
+        <SEOProvider initialData={initialSEOData}>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <RouterElement>
             <div className="flex flex-col min-h-screen">
               <Navbar />
               <main id="main-content" className="flex-grow">
@@ -112,6 +118,7 @@ export async function PageShell({ pageContext, children }) {
             </div>
           </RouterElement>
         </TooltipProvider>
+        </SEOProvider>
       </QueryClientProvider>
     </PageContextProvider>
   )
