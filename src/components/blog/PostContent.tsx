@@ -101,8 +101,11 @@ const PostContent = ({
       <div className="space-y-4">
         {children}
         
-        {/* Share section */}
-        <ShareSection blogUrl={window.location.href} title="Share this article" />
+      {/* Share section */}
+      <ShareSection 
+        blogUrl={typeof window !== 'undefined' ? window.location.href : ''} 
+        title="Share this article" 
+      />
       </div>
     );
   }
@@ -115,27 +118,26 @@ const PostContent = ({
           components={{
             h2: ({ node, ...props }) => {
               const id = props.children?.toString().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "";
-              return <h2 id={id} className="font-bold text-2xl mt-10 mb-3" {...props} />;
+              return <h2 id={id} className="font-bold text-2xl mt-10 mb-3">{props.children}</h2>;
             },
             h3: ({ node, ...props }) => {
               const id = props.children?.toString().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "";
-              return <h3 id={id} className="font-bold text-xl mt-8 mb-3" {...props} />;
+              return <h3 id={id} className="font-bold text-xl mt-8 mb-3">{props.children}</h3>;
             },
             blockquote: ({ node, ...props }) => (
-              <blockquote className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-primary/5 border-l-4 border-deewan-primary" {...props} />
+              <blockquote className="rounded-xl px-6 py-5 mb-6 font-medium bg-deewan-primary/5 border-l-4 border-deewan-primary">{props.children}</blockquote>
             ),
             // Fix for DOM nesting error
             p: ({ node, children }) => {
               // Check if the paragraph contains only an image
-              const hasOnlyImage = React.Children.toArray(children).every(
-                child => React.isValidElement(child) && child.type === 'img'
-              );
+              const childArray = React.Children.toArray(children);
+              const hasOnlyImage = childArray.length === 1 && 
+                React.isValidElement(childArray[0]) && 
+                childArray[0].type === 'img';
               
               if (hasOnlyImage) {
                 // Extract the image element
-                const imgElement = React.Children.toArray(children).find(
-                  child => React.isValidElement(child) && child.type === 'img'
-                ) as React.ReactElement;
+                const imgElement = childArray[0] as React.ReactElement;
                 
                 if (imgElement) {
                   const { src, alt } = imgElement.props;
@@ -158,8 +160,11 @@ const PostContent = ({
           {markdownContent}
         </ReactMarkdown>
         
-        {/* Share section */}
-        <ShareSection blogUrl={window.location.href} title="Share this article" />
+      {/* Share section */}
+      <ShareSection 
+        blogUrl={typeof window !== 'undefined' ? window.location.href : ''} 
+        title="Share this article" 
+      />
       </div>
     );
   }

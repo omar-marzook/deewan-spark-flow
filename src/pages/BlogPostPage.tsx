@@ -38,73 +38,91 @@ const useHeadings = content => {
   });
   return headings;
 };
-const BlogPostPage = () => {
-  const {
-    slug
-  } = useParams();
-  const [post, setPost] = useState(null);
+// Accept post as a prop from the server or fetch it on the client if not provided
+const BlogPostPage = ({ post: initialPost, slug: initialSlug }) => {
+  const params = useParams();
+  const slug = initialSlug || params.slug;
+  const [post, setPost] = useState(initialPost || null);
   const [relatedPosts, setRelatedPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialPost);
+
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (slug) {
-        try {
-          const markdownPost = getPostBySlug(slug);
+    // If we already have the post from SSR, don't fetch again
+    if (initialPost) {
+      // Just get related posts
+      const allPosts = getAllPosts();
+      const related = allPosts
+        .filter(p => p.slug !== slug)
+        .slice(0, 3)
+        .map(p => ({
+          id: p.slug,
+          slug: p.slug,
+          title: p.frontmatter.title,
+          excerpt: p.frontmatter.excerpt || '',
+          coverImage: p.frontmatter.coverImage,
+          category: p.frontmatter.category,
+          publishDate: p.frontmatter.date,
+          readTime: p.frontmatter.readTime || '5 min'
+        }));
+      
+      setRelatedPosts(related);
+      return;
+    }
+
+    // Only fetch if we don't have the post from SSR
+    if (slug) {
+      try {
+        const markdownPost = getPostBySlug(slug);
+        
+        if (markdownPost) {
+          const { frontmatter, content, rawContent } = markdownPost;
+          const { headings } = useHeadingData(rawContent);
           
-          if (markdownPost) {
-            const { frontmatter, content, rawContent } = markdownPost;
-            const { headings } = useHeadingData(rawContent);
-            
-            setPost({
-              title: frontmatter.title,
-              subtitle: frontmatter.subtitle || frontmatter.excerpt,
-              category: frontmatter.category,
-              coverImage: frontmatter.coverImage,
-              publishDate: frontmatter.date,
-              readTime: frontmatter.readTime || '5 min',
-              author: frontmatter.author,
-              content: content,
-              rawContent: rawContent,
-              headings: headings
-            });
-            
-            // Get related posts
-            const allPosts = getAllPosts();
-            const related = allPosts
-              .filter(p => p.slug !== slug)
-              .slice(0, 3)
-              .map(p => ({
-                id: p.slug,
-                slug: p.slug,
-                title: p.frontmatter.title,
-                excerpt: p.frontmatter.excerpt || '',
-                coverImage: p.frontmatter.coverImage,
-                category: p.frontmatter.category,
-                publishDate: p.frontmatter.date,
-                readTime: p.frontmatter.readTime || '5 min'
-              }));
-            
-            setRelatedPosts(related);
-          } else {
-            // No post found
-            console.error('No post found for slug:', slug);
-            setPost(null);
-          }
-        } catch (error) {
-          console.error('Error loading blog post:', error);
+          setPost({
+            title: frontmatter.title,
+            subtitle: frontmatter.subtitle || frontmatter.excerpt,
+            category: frontmatter.category,
+            coverImage: frontmatter.coverImage,
+            publishDate: frontmatter.date,
+            readTime: frontmatter.readTime || '5 min',
+            author: frontmatter.author,
+            content: content,
+            rawContent: rawContent,
+            headings: headings
+          });
+          
+          // Get related posts
+          const allPosts = getAllPosts();
+          const related = allPosts
+            .filter(p => p.slug !== slug)
+            .slice(0, 3)
+            .map(p => ({
+              id: p.slug,
+              slug: p.slug,
+              title: p.frontmatter.title,
+              excerpt: p.frontmatter.excerpt || '',
+              coverImage: p.frontmatter.coverImage,
+              category: p.frontmatter.category,
+              publishDate: p.frontmatter.date,
+              readTime: p.frontmatter.readTime || '5 min'
+            }));
+          
+          setRelatedPosts(related);
+        } else {
+          console.error('No post found for slug:', slug);
           setPost(null);
         }
-      } else {
-        // No slug provided
-        console.error('No slug provided');
+      } catch (error) {
+        console.error('Error loading blog post:', error);
         setPost(null);
       }
-      
-      setLoading(false);
-    }, 1000);
+    } else {
+      console.error('No slug provided');
+      setPost(null);
+    }
     
-    return () => clearTimeout(timeout);
-  }, [slug]);
+    setLoading(false);
+  }, [slug, initialPost]);
   // Use headings from the post object if available
   const headings = post?.headings || [];
   if (loading) {
