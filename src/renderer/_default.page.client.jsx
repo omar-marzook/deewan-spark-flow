@@ -7,10 +7,14 @@ import { Buffer } from 'buffer'
 // Make Buffer available globally
 window.Buffer = Buffer
 
-// Store the root instance globally to prevent multiple createRoot calls
-let rootInstance = null;
-// Track if this is the first render (initial page load)
-let isFirstRender = true;
+// Initialize React root management
+if (typeof window.__VIKE_STATE__ === 'undefined') {
+  window.__VIKE_STATE__ = {
+    isFirstLoad: true,
+    root: null,
+    rootElement: null
+  };
+}
 
 export async function render(pageContext) {
   const { Page, pageProps } = pageContext
@@ -27,35 +31,46 @@ export async function render(pageContext) {
   // Get the root element
   const rootElement = document.getElementById('root');
   
-  // For the first render (initial page load), try hydration
-  if (isFirstRender) {
-    isFirstRender = false;
+  // Store reference to the root element
+  window.__VIKE_STATE__.rootElement = rootElement;
+  
+  // First page load - try hydration
+  if (window.__VIKE_STATE__.isFirstLoad) {
+    window.__VIKE_STATE__.isFirstLoad = false;
     
     try {
-      // Attempt to hydrate the existing content
-      hydrateRoot(rootElement, pageShellContent);
+      // For the initial page load, use hydrateRoot
+      // Store the hydration root so we can use it for future renders
+      const hydrationRoot = hydrateRoot(rootElement, pageShellContent);
+      window.__VIKE_STATE__.root = {
+        render: (content) => hydrationRoot.render(content)
+      };
     } catch (error) {
       console.warn('Hydration failed, falling back to client-side rendering:', error);
       
-      // If hydration fails, remove all children and render from scratch
+      // Clean up the DOM if hydration fails
       while (rootElement.firstChild) {
         rootElement.removeChild(rootElement.firstChild);
       }
       
-      // Create a root instance for the first time
-      rootInstance = createRoot(rootElement);
-      rootInstance.render(pageShellContent);
+      // Create a new root and store it
+      const newRoot = createRoot(rootElement);
+      window.__VIKE_STATE__.root = newRoot;
+      newRoot.render(pageShellContent);
     }
   } else {
-    // For subsequent renders (client-side navigation), use the existing root
-    if (!rootInstance) {
-      // This should rarely happen, but just in case hydration succeeded
-      // and we don't have a rootInstance yet
-      rootInstance = createRoot(rootElement);
+    // Client-side navigation - use the existing root
+    if (!window.__VIKE_STATE__.root) {
+      console.warn('No root instance found for client-side navigation, creating one');
+      
+      // This should rarely happen, but just in case
+      const newRoot = createRoot(rootElement);
+      window.__VIKE_STATE__.root = newRoot;
+      newRoot.render(pageShellContent);
+    } else {
+      // Use the existing root for rendering
+      window.__VIKE_STATE__.root.render(pageShellContent);
     }
-    
-    // Render using the existing root instance
-    rootInstance.render(pageShellContent);
   }
 }
 
