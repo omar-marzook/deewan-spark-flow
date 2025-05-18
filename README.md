@@ -110,20 +110,6 @@ The application uses an Express server for production. To deploy:
    NODE_ENV=production node server/production.js
    ```
 
-### Docker Deployment (Optional)
-
-If using Docker:
-
-1. Build the Docker image:
-   ```sh
-   docker build -t deewan-spark-flow .
-   ```
-
-2. Run the container:
-   ```sh
-   docker run -p 3000:3000 -d deewan-spark-flow
-   ```
-
 ## Performance Optimization
 
 The project includes several performance optimization features:
