@@ -1,73 +1,188 @@
-# Welcome to your Lovable project
+# Deewan
 
-## Project info
+Deewan is a modern web application for Deewan platform, built with React, TypeScript, and Vike for server-side rendering.
 
-**URL**: https://lovable.dev/projects/9f7b36fd-2477-4951-98d8-70cb3aec0b43
+## Project Overview
 
-## How can I edit this code?
+Deewan is a customer experience platform that offers various communication products including:
+- Omnichannel Chat
+- WhatsApp API
+- Chatbots
+- SMS API
+- Email API
+- Voice API
+- Push Notifications
+- IVR
+- Multi-factor Authentication
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+This project is built with:
+- [Vite](https://vitejs.dev/) - Build tool and development server
+- [Vike](https://vike.dev/) - Server-side rendering framework
+- [React](https://reactjs.org/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible UI components
+- [Express](https://expressjs.com/) - Node.js web application framework
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9f7b36fd-2477-4951-98d8-70cb3aec0b43) and start prompting.
+## Setup
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- npm or [Bun](https://bun.sh/)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+   ```sh
+   git clone <repository-url>
+   cd deewan-spark-flow
+   ```
 
-Follow these steps:
+2. Install dependencies:
+   ```sh
+   npm install
+   # or with Bun
+   bun install
+   ```
 
+3. Environment Setup:
+   Create a `.env` file in the root directory with the necessary environment variables. Example:
+   ```
+   PORT=3000
+   NODE_ENV=development
+   # Add any other required environment variables
+   ```
+
+## Running the Application
+
+### Development Mode
+
+Start the development server with hot reloading:
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at http://localhost:3000 (or the port specified in your .env file).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Production Mode
 
-**Use GitHub Codespaces**
+1. Build the application:
+   ```sh
+   npm run build
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+2. Start the production server:
+   ```sh
+   npm run preview:server
+   ```
 
-## What technologies are used for this project?
+## Deployment
 
-This project is built with:
+### Build for Production
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```sh
+npm run build
+```
 
-## How can I deploy this project?
+This will create optimized production files in the `dist` directory.
 
-Simply open [Lovable](https://lovable.dev/projects/9f7b36fd-2477-4951-98d8-70cb3aec0b43) and click on Share -> Publish.
+### Server Deployment
 
-## Can I connect a custom domain to my Lovable project?
+The application uses an Express server for production. To deploy:
 
-Yes, you can!
+1. Build the application as described above
+2. Deploy the following to your server:
+   - `dist/` directory
+   - `server/` directory
+   - `package.json`
+   - `.env` file (with production settings)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+3. Install production dependencies on your server:
+   ```sh
+   npm install --production
+   ```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+4. Start the server:
+   ```sh
+   npm run preview:server
+   ```
+   
+   Or if you prefer to run the server directly:
+   ```sh
+   npm run patch-path-to-regexp
+   NODE_ENV=production node server/safe-production.js
+   ```
+
+## Performance Optimization
+
+The project includes several performance optimization features:
+
+### Image Optimization
+
+Optimize images using the built-in script:
+```sh
+npm run optimize-images
+```
+
+This converts images to WebP format and creates responsive sizes.
+
+### Other Optimizations
+
+- Lazy loading for below-the-fold content
+- Code splitting for better load times
+- Service worker for caching static assets
+- Build optimizations for production
+
+For more details on performance optimizations, see [PERFORMANCE-OPTIMIZATION.md](./PERFORMANCE-OPTIMIZATION.md).
+
+## Known Issues and Solutions
+
+### path-to-regexp Error
+
+When running the production server with `NODE_ENV=production node server/production.js`, you might encounter the following error:
+
+```
+TypeError: Missing parameter name at 1: https://git.new/pathToRegexpError
+```
+
+This issue has been fixed in the `preview:server` script, which automatically applies a patch to the path-to-regexp library. If you need to run the server directly, use:
+
+```sh
+npm run patch-path-to-regexp
+NODE_ENV=production node server/safe-production.js
+```
+
+For detailed information about this issue and its solution, see [path-to-regexp-fix.md](./docs/path-to-regexp-fix.md).
+
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run dev:server` - Start development server with SSR
+- `npm run build` - Build for production
+- `npm run build:dev` - Build for development
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build locally
+- `npm run preview:server` - Preview production build with SSR (includes path-to-regexp fix)
+- `npm run optimize-images` - Optimize images
+- `npm run setup-performance` - Set up performance optimizations
+- `npm run patch-path-to-regexp` - Apply patch for path-to-regexp library
+
+## Project Structure
+
+- `/public` - Static assets
+- `/server` - Server-side code
+- `/src` - Source code
+  - `/components` - React components
+  - `/pages` - Page components
+  - `/renderer` - Vike renderer
+  - `/lib` - Utility functions
+  - `/hooks` - Custom React hooks
+  - `/blog-posts` - Markdown blog posts
+  - `/data` - Data files
+
+## License
+
+[Specify license information]

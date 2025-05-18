@@ -52,5 +52,15 @@ export default {
         query: '?extractAssets'
       }
     }
+  },
+  
+  // Add URL validation to prevent path-to-regexp errors
+  onBeforeRoute: (pageContext) => {
+    // Check if the URL contains problematic patterns
+    if (pageContext.urlOriginal && pageContext.urlOriginal.includes('https://git.new/')) {
+      // Replace or remove the problematic pattern
+      pageContext.urlOriginal = pageContext.urlOriginal.replace(/https:\/\/git\.new\/[^/]*/, '');
+    }
+    return pageContext;
   }
 }
