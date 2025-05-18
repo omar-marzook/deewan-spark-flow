@@ -16,7 +16,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
   heroImage,
   onContactClick
 }) => {
-  return <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" aria-labelledby="product-hero-heading">
+  return <section className="relative xl:min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" aria-labelledby="product-hero-heading">
     {/* Animated background elements */}
     <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div className="absolute w-[500px] h-[500px] -top-48 -right-48 bg-deewan-primary/10 rounded-full blur-3xl animate-[pulse_15s_ease-in-out_infinite]"></div>
@@ -31,7 +31,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
     }} aria-hidden="true">
     </div>
 
-    <div className="container mx-auto px-4 md:px-6 relative z-10 pt-32">
+    <div className="container mx-auto px-4 md:px-6 relative z-10 pt-32 pb-12 xl:pd-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Content */}
         <div className="max-w-2xl">
@@ -73,7 +73,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
         </div>
 
         {/* 3D Visual Element */}
-        <div className="relative h-[600px] hidden lg:block" aria-hidden="true">
+        <div className="relative h-80 md:h-96 xl:h-[600px]" aria-hidden="true">
           <div className="absolute top-0 left-0 transform w-full h-full bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg rotate-12 animate-[float_6s_ease-in-out_infinite]">
             {/* Decorative elements */}
             {heroImage && (

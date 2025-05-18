@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 interface BlogCardProps {
   post: {
@@ -43,9 +44,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
       <div className={cn("aspect-video overflow-hidden",
         featured ? "md:w-1/2 h-full" : ""
       )}>
-        <img
+        <OptimizedImage
           src={imageSrc}
-          alt=""
+          alt={`Card image for article: ${post.title}`}
           aria-hidden="true"
           className="w-full h-full object-cover transition-transform duration-500"
         />

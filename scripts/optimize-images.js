@@ -10,10 +10,10 @@
  * 2. Run: node scripts/optimize-images.js
  */
 
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
-const sharp = require('sharp');
+import fs from 'fs';
+import path from 'path';
+import { glob } from 'glob';
+import sharp from 'sharp';
 
 // Configuration
 const config = {
