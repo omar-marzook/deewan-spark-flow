@@ -2,6 +2,7 @@ import express from 'express'
 import compression from 'compression'
 import { renderPage } from 'vike/server'
 import { root } from './root.js'
+import { redirects } from './redirects.js'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 3000
@@ -24,6 +25,21 @@ async function startServer() {
     })).middlewares
     app.use(viteDevMiddleware)
   }
+
+  // Add redirect middleware before the main route handler
+  app.use((req, res, next) => {
+    const path = req.path;
+    
+    // Check if the path is in our redirects map
+    if (redirects[path]) {
+      console.log(`Redirecting: ${path} → ${redirects[path]}`);
+      // Perform 301 (permanent) redirect
+      return res.redirect(301, redirects[path]);
+    }
+    
+    // No redirect found, continue to next middleware
+    next();
+  });
 
   // Vike route handler
   app.get('*', async (req, res, next) => {
