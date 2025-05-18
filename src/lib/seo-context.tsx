@@ -9,6 +9,7 @@ export interface SEOData {
   twitterCard?: string;
   schema?: any;
   additionalHead?: string;
+  gtmId?: string; // Google Tag Manager ID
 }
 
 interface SEOContextProps {

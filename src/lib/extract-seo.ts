@@ -10,7 +10,8 @@ export function extractSEOFromPageProps(pageContext: any): SEOData {
     description: 'Deewan - Communication Platform',
     ogType: 'website',
     ogImage: '/deewan-og.png',
-    twitterCard: 'summary_large_image'
+    twitterCard: 'summary_large_image',
+    gtmId: 'GTM-NQ3879TV'
   };
   
   // Merge with documentProps

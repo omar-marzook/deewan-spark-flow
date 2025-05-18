@@ -19,7 +19,8 @@ const SEO = (props: SEOProps) => {
     props.ogType, 
     props.ogImage, 
     props.twitterCard, 
-    props.schema
+    props.schema,
+    props.gtmId
     // Removed updateSEO from dependencies to prevent infinite loop
   ]);
   
@@ -49,6 +50,26 @@ const SEO = (props: SEOProps) => {
         <script type="application/ld+json">
           {JSON.stringify(props.schema)}
         </script>
+      )}
+      
+      {/* Google Tag Manager - if specific GTM ID is provided for this page */}
+      {props.gtmId && props.gtmId !== 'GTM-NQ3879TV' && (
+        <>
+          <script>
+            {`
+              window.dataLayer = window.dataLayer || [];
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','${props.gtmId}');
+            `}
+          </script>
+          <noscript>
+            {`<iframe src="https://www.googletagmanager.com/ns.html?id=${props.gtmId}"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>`}
+          </noscript>
+        </>
       )}
     </Helmet>
   );
