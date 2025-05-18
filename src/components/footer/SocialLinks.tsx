@@ -33,7 +33,7 @@ const SocialLinks = () => {
         <XIcon size={16} aria-hidden="true" />
       </a>
       <a 
-        href="https://www.linkedin.com/company/deewanks" 
+        href="https://www.linkedin.com/company/deewanksa" 
         target="_blank" 
         rel="noopener noreferrer" 
         aria-label="Connect with Deewan on LinkedIn" 
