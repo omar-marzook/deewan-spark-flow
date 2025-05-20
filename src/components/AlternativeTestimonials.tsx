@@ -12,8 +12,8 @@ const AlternativeTestimonials = () => {
       author: "Mazn Bin Rayyis",
       title: "Site Reliability Engineering Lead",
       company: "Mrsool",
-      image: "https://www.deewan.sa/hs-fs/hubfs/Imported%20sitepage%20images/Mazn_Mrsool%20(1)%201-1.png",
-      logo: "https://www.deewan.sa/hs-fs/hubfs/deewan_2024/mrsool.jpg"
+      image: "public/media/testimonials/mazn-mrsool.jpg",
+      logo: "public/media/testimonials/mrsool.png"
     },
     {
       id: 2,
@@ -21,8 +21,8 @@ const AlternativeTestimonials = () => {
       author: "Mohamed Ali",
       title: "Business Applications Director",
       company: "Al Moosa Hospital",
-      image: "https://www.deewan.sa/hs-fs/hubfs/Moahmed%20Ali_Al%20Moosa%201.png?width=416&height=416&name=Moahmed%20Ali_Al%20Moosa%201.png",
-      logo: "https://www.deewan.sa/hs-fs/hubfs/deewan_2024/Almoosa.jpg"
+      image: "public/media/testimonials/moahmed-ali-almoosa.jpg",
+      logo: "public/media/testimonials/al-moosa-hospital.png"
     }
   ];
 
@@ -40,8 +40,8 @@ const AlternativeTestimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.slice(0, 4).map((testimonial) => (
-            <Card 
-              key={testimonial.id} 
+            <Card
+              key={testimonial.id}
               className="glass-card p-8 border-0 overflow-hidden relative h-full"
               tabIndex={0}
               role="article"
@@ -59,12 +59,12 @@ const AlternativeTestimonials = () => {
                 <footer className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
                   <div className="flex items-center">
                     <Avatar className="h-12 w-12 mr-4 border-2 border-deewan-primary/10">
-                      <AvatarImage 
-                        src={testimonial.image} 
-                        alt="" 
-                        aria-hidden="true" 
+                      <AvatarImage
+                        src={testimonial.image}
+                        alt={testimonial.author}
+                        aria-hidden="true"
                       />
-                      <AvatarFallback 
+                      <AvatarFallback
                         className="bg-deewan-primary/10 text-deewan-primary"
                         aria-hidden="true"
                       >
@@ -78,13 +78,13 @@ const AlternativeTestimonials = () => {
                     </div>
                   </div>
 
-                  <div 
+                  <div
                     className="w-16 h-16 bg-white p-2 rounded-md flex items-center justify-center"
                     aria-hidden="true"
                   >
                     <img
                       src={testimonial.logo}
-                      alt=""
+                      alt={testimonial.company}
                       className="max-w-full max-h-full object-contain"
                     />
                   </div>
