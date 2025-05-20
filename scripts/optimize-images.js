@@ -21,7 +21,8 @@ const config = {
   sourceDirs: [
     'public/media/logos',
     'public/media/products',
-    'public/media/blogs'
+    'public/media/blogs',
+    'public/media/testimonials'
   ],
   // Output quality for WebP (0-100)
   webpQuality: 80,

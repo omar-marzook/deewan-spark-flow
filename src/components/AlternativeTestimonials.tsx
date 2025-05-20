@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from 'lucide-react';
+import OptimizedImage from "@/components/ui/optimized-image";
 
 const AlternativeTestimonials = () => {
   const testimonials = [
@@ -12,8 +12,8 @@ const AlternativeTestimonials = () => {
       author: "Mazn Bin Rayyis",
       title: "Site Reliability Engineering Lead",
       company: "Mrsool",
-      image: "public/media/testimonials/mazn-mrsool.jpg",
-      logo: "public/media/testimonials/mrsool.png"
+      image: "/media/testimonials/mazn-mrsool.jpg",
+      logo: "/media/testimonials/mrsool.png"
     },
     {
       id: 2,
@@ -21,8 +21,8 @@ const AlternativeTestimonials = () => {
       author: "Mohamed Ali",
       title: "Business Applications Director",
       company: "Al Moosa Hospital",
-      image: "public/media/testimonials/moahmed-ali-almoosa.jpg",
-      logo: "public/media/testimonials/al-moosa-hospital.png"
+      image: "/media/testimonials/moahmed-ali-almoosa.jpg",
+      logo: "/media/testimonials/al-moosa-hospital.png"
     }
   ];
 
@@ -58,19 +58,16 @@ const AlternativeTestimonials = () => {
 
                 <footer className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
                   <div className="flex items-center">
-                    <Avatar className="h-12 w-12 mr-4 border-2 border-deewan-primary/10">
-                      <AvatarImage
-                        src={testimonial.image}
-                        alt={testimonial.author}
-                        aria-hidden="true"
-                      />
-                      <AvatarFallback
-                        className="bg-deewan-primary/10 text-deewan-primary"
-                        aria-hidden="true"
-                      >
-                        {testimonial.author.split(' ').map(name => name[0]).join('')}
-                      </AvatarFallback>
-                    </Avatar>
+                    <div className="relative flex h-12 w-12 mr-4 border-2 border-deewan-primary/10 rounded-full overflow-hidden">
+                        <OptimizedImage
+                          src={testimonial.image}
+                          alt={testimonial.author}
+                          width={48}
+                          height={48}
+                          className="h-full w-full object-cover aspect-square"
+                          aria-hidden="true"
+                        />
+                    </div>
 
                     <div>
                       <h4 id={`author-${testimonial.id}`} className="font-bold text-deewan-dark">{testimonial.author}</h4>
@@ -79,13 +76,15 @@ const AlternativeTestimonials = () => {
                   </div>
 
                   <div
-                    className="w-16 h-16 bg-white p-2 rounded-md flex items-center justify-center"
+                    className="w-16 h-16 bg-white rounded-md flex items-center justify-center overflow-hidden"
                     aria-hidden="true"
                   >
-                    <img
+                    <OptimizedImage
                       src={testimonial.logo}
                       alt={testimonial.company}
-                      className="max-w-full max-h-full object-contain"
+                      width={64}
+                      height={64}
+                      className="max-w-full max-h-full object-cover"
                     />
                   </div>
                 </footer>

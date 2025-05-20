@@ -58,7 +58,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   // Logos and small images typically don't have responsive versions
   const shouldUseResponsive = useResponsive !== undefined 
     ? useResponsive 
-    : !src.includes('/logos/') && (src.includes('/products/') || src.includes('/blogs/'));
+    : !src.includes('/logos/') && (src.includes('/products/') || src.includes('/blogs/') || src.includes('/testimonials/'));
   
   // Simple WebP version (for all images)
   const webpSrc = `${basePath}.webp`;
