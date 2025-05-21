@@ -2,6 +2,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import OptimizedImage from "@/components/ui/optimized-image";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 interface ProductHeroProps {
   name: string;
@@ -16,6 +17,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
   heroImage,
   onContactClick
 }) => {
+  const prefersReducedMotion = useReducedMotion();
   return <section className="relative xl:min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-deewan-primary/5 via-transparent to-deewan-secondary/5" aria-labelledby="product-hero-heading">
     {/* Animated background elements */}
     <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -34,7 +36,13 @@ const ProductHero: React.FC<ProductHeroProps> = ({
     <div className="container mx-auto px-4 md:px-6 relative z-10 pt-32 pb-12 xl:pd-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Content */}
-        <div className="max-w-2xl">
+        <AnimatePresence>
+          <motion.div 
+            className="max-w-2xl"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
+          >
           <Breadcrumb className="mb-8">
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -59,7 +67,12 @@ const ProductHero: React.FC<ProductHeroProps> = ({
             {tagline}
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <motion.div 
+            className="flex flex-wrap gap-4"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: 0.2 }}
+          >
             <ButtonLink
               href="#contact"
               size="lg"
@@ -69,11 +82,22 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </ButtonLink>
-          </div>
-        </div>
+          </motion.div>
+          </motion.div>
+        </AnimatePresence>
 
         {/* 3D Visual Element */}
-        <div className="relative h-80 md:h-96 xl:h-[600px]" aria-hidden="true">
+        <AnimatePresence>
+          <motion.div 
+            className="relative h-80 md:h-96 xl:h-[600px]" 
+            aria-hidden="true"
+            initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ 
+              duration: prefersReducedMotion ? 0 : 0.6,
+              delay: prefersReducedMotion ? 0 : 0.2 
+            }}
+          >
           <div className="absolute top-0 left-0 transform w-full h-full bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg rotate-12 animate-[float_6s_ease-in-out_infinite]">
             {/* Decorative elements */}
             {heroImage && (
@@ -91,7 +115,8 @@ const ProductHero: React.FC<ProductHeroProps> = ({
           {/* Floating elements */}
           <div className="absolute -z-10 -top-16 -right-16 w-32 h-32 bg-gradient-to-br from-deewan-primary/5 to-transparent rounded-xl border border-white/5 backdrop-blur-sm rotate-45 animate-[float_8s_ease-in-out_infinite_1s]"></div>
           <div className="absolute -z-10 -bottom-20 -left-20 w-40 h-40 bg-gradient-to-tr from-deewan-secondary/5 to-transparent rounded-xl border border-white/5 backdrop-blur-sm -rotate-12 animate-[float_7s_ease-in-out_infinite_0.5s]"></div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   </section>;
