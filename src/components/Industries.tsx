@@ -1,5 +1,8 @@
 import { Building2, GraduationCap, Stethoscope, ShoppingBag, Landmark, Truck } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+
 const Industries = () => {
+  const prefersReducedMotion = useReducedMotion();
   const industries = [{
     id: 1,
     name: "Government",
@@ -42,22 +45,35 @@ const Industries = () => {
       <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-deewan-secondary/10 rounded-full filter blur-3xl" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div 
+          className="max-w-3xl mx-auto text-center mb-16"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 id="industries-heading" className="mb-4"><span className="text-deewan-primary">Industries</span> We Serve</h2>
           <p className="text-xl text-deewan-gray">
             Tailored communication solutions for various industries with unique requirements.
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
-          {industries.map(industry => (
-            <div 
+          {industries.map((industry, index) => (
+            <motion.div 
               key={industry.id} 
               className="glass-card p-6 flex flex-col h-full group hover:-translate-y-2 transition-all duration-300"
               tabIndex={0}
               role="article"
               aria-labelledby={`industry-${industry.id}-heading`}
               aria-describedby={`industry-${industry.id}-description`}
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: prefersReducedMotion ? 0 : 0.5, 
+                delay: prefersReducedMotion ? 0 : index * 0.1 
+              }}
             >
               <div className="mb-6 p-4 bg-white/50 rounded-lg inline-block">
                 {industry.icon}
@@ -80,7 +96,7 @@ const Industries = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -3,8 +3,10 @@ import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from 'lucide-react';
 import OptimizedImage from "@/components/ui/optimized-image";
+import { motion, useReducedMotion } from 'framer-motion';
 
 const AlternativeTestimonials = () => {
+  const prefersReducedMotion = useReducedMotion();
   const testimonials = [
     {
       id: 1,
@@ -31,22 +33,37 @@ const AlternativeTestimonials = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-deewan-lightgray/10 to-white z-0" aria-hidden="true"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div 
+          className="max-w-3xl mx-auto text-center mb-16"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 id="testimonials-heading" className="mb-4">Client <span className="text-deewan-primary">Testimonials</span></h2>
           <p className="text-base md:text-lg text-deewan-gray">
             Don't just take our word for it. Check out what our clients have to say about Deewan.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {testimonials.slice(0, 4).map((testimonial) => (
-            <Card
+          {testimonials.slice(0, 4).map((testimonial, index) => (
+            <motion.div
               key={testimonial.id}
-              className="glass-card p-8 border-0 overflow-hidden relative h-full"
-              tabIndex={0}
-              role="article"
-              aria-labelledby={`author-${testimonial.id}`}
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: prefersReducedMotion ? 0 : 0.5, 
+                delay: prefersReducedMotion ? 0 : index * 0.1 
+              }}
             >
+              <Card
+                className="glass-card p-8 border-0 overflow-hidden relative h-full"
+                tabIndex={0}
+                role="article"
+                aria-labelledby={`author-${testimonial.id}`}
+              >
               <CardContent className="p-0 flex flex-col h-full">
                 <Quote className="h-10 w-10 text-deewan-primary/20 absolute top-6 right-6" aria-hidden="true" />
 
@@ -89,7 +106,8 @@ const AlternativeTestimonials = () => {
                   </div>
                 </footer>
               </CardContent>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

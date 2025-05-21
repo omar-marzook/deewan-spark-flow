@@ -1,5 +1,6 @@
 import { CheckCircle, Users, Briefcase, BarChart, LucideIcon } from 'lucide-react';
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 export interface StatItem {
   icon: React.ReactNode;
@@ -86,25 +87,47 @@ const AlternativeStats = ({
 }: AlternativeStatsProps) => {
   // Limit stats to the gridCount
   const displayStats = stats.slice(0, gridCount);
+  const prefersReducedMotion = useReducedMotion();
   return <section id="alternative-stats" className="py-24" aria-labelledby="stats-heading">
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {showTitle && (
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-16"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 id="stats-heading" className="mb-4">
               <span className="text-deewan-primary">Deewan</span> in Numbers
             </h2>
             <p className="text-base md:text-lg text-deewan-gray">
               {titleContent.description}
             </p>
-          </div>
+          </motion.div>
         )}
 
-        <div className={`grid grid-cols-1 ${gridCount === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-0`} role="group" aria-labelledby="stats-heading">
+        <motion.div 
+          className={`grid grid-cols-1 ${gridCount === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-0`} 
+          role="group" 
+          aria-labelledby="stats-heading"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {displayStats.map((stat, index) => (
-            <div 
+            <motion.div 
               key={index} 
               className="relative border-r border-t border-b border-deewan-primary/10 p-10 first:border-l first:rounded-l-lg last:rounded-r-lg last:border-r bg-gradient-to-b from-white to-deewan-primary/5"
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ 
+                duration: prefersReducedMotion ? 0 : 0.5, 
+                delay: prefersReducedMotion ? 0 : 0.2 + (index * 0.1) 
+              }}
             >
               <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-white p-2 rounded-full border border-deewan-primary/20" aria-hidden="true">
                 {stat.icon}
@@ -114,19 +137,33 @@ const AlternativeStats = ({
                 <span className="text-4xl font-bold mb-2 text-deewan-primary block">{stat.value}</span>
                 <p className="text-deewan-gray">{stat.label}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {showCards && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20" aria-label="Key metrics">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20" 
+            aria-label="Key metrics"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             {cards.map((card, index) => (
-              <div 
+              <motion.div 
                 key={index} 
                 className="bg-white shadow-md rounded-lg p-6 border border-deewan-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-deewan-primary/50"
                 tabIndex={0}
                 role="region"
                 aria-labelledby={`card-title-${index}`}
+                initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: prefersReducedMotion ? 0 : 0.5, 
+                  delay: prefersReducedMotion ? 0 : 0.4 + (index * 0.1) 
+                }}
               >
                 <div className="flex items-center mb-4">
                   <div className="bg-deewan-primary/10 p-3 rounded-full mr-4" aria-hidden="true">
@@ -135,9 +172,9 @@ const AlternativeStats = ({
                   <h3 id={`card-title-${index}`} className="text-xl font-bold text-deewan-dark">{card.title}</h3>
                 </div>
                 <p className="text-deewan-gray">{card.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
     </section>;
