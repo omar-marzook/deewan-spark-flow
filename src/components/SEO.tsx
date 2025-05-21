@@ -52,6 +52,26 @@ const SEO = (props: SEOProps) => {
         </script>
       )}
       
+      {/* Preload critical fonts */}
+      <link 
+        rel="preload" 
+        href="/src/static/fonts/Gilroy-Bold.woff2" 
+        as="font" 
+        type="font/woff2" 
+        crossOrigin="anonymous" 
+      />
+      <link 
+        rel="preload" 
+        href="/src/static/fonts/Gilroy-Regular.woff2" 
+        as="font" 
+        type="font/woff2" 
+        crossOrigin="anonymous" 
+      />
+      
+      {/* Resource hints */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      
       {/* Google Tag Manager - if specific GTM ID is provided for this page */}
       {props.gtmId && props.gtmId !== 'GTM-NQ3879TV' && (
         <>

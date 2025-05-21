@@ -17,6 +17,19 @@ async function startServer() {
   
   app.use(compression())
   
+  // Set proper caching headers
+  app.use((req, res, next) => {
+    // Static assets: cache for 1 year
+    if (req.url.match(/\.(css|js|jpg|jpeg|png|gif|ico|svg|webp|woff|woff2)$/)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+    }
+    // HTML and API responses: no cache
+    else {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    }
+    next();
+  });
+  
   if (isProduction) {
     app.use(express.static(join(root, 'dist/client')))
   } else {
