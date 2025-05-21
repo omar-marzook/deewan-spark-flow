@@ -65,9 +65,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded" aria-label="Deewan Home">
             <img 
-              alt="" 
+              alt="Deewan"
               src="/deewan-logo.svg" 
-              className="h-5 lg:h-7 mr-2" 
+              className="h-5 lg:h-7 mr-2"
+              width={168}
+              height={28}
               aria-hidden="true"
             />
             <span className="sr-only">Deewan Home</span>
