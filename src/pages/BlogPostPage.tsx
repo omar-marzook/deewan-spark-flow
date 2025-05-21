@@ -39,7 +39,7 @@ const useHeadings = content => {
   return headings;
 };
 // Accept post as a prop from the server or fetch it on the client if not provided
-const BlogPostPage = ({ post: initialPost, slug: initialSlug }) => {
+const BlogPostPage = ({ post: initialPost, slug: initialSlug }: { post?: any; slug?: string } = {}) => {
   const params = useParams();
   const slug = initialSlug || params.slug;
   const [post, setPost] = useState(initialPost || null);

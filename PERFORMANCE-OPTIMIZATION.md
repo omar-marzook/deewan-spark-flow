@@ -196,6 +196,12 @@ const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
   - Analytics and other non-essential third-party scripts are loaded with defer attribute
   - Prevents blocking of main thread during initial page load
 
+- **ResourceHints Component**:
+  - File: `src/components/ResourceHints.tsx`
+  - Adds preconnect and dns-prefetch resource hints for common third-party domains
+  - Integrated at the application root level in App.tsx
+  - Reduces connection setup time for third-party resources
+
 - **Resource Hints for Third-party Domains**:
   - Preconnect to domains that will be used soon
   - Reduces connection setup time

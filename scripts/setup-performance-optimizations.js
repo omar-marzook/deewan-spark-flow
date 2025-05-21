@@ -28,7 +28,12 @@ const config = {
     webVitals: 'src/lib/web-vitals.ts',
     lazyLoad: 'src/components/ui/lazy-load.tsx',
     imageOptimizer: 'scripts/optimize-images.js',
-    serverProduction: 'server/production.js'
+    serverProduction: 'server/production.js',
+    criticalCss: 'src/critical.css',
+    thirdPartyLoader: 'src/lib/load-third-party.ts',
+    viteConfig: 'vite.config.ts',
+    postcssConfig: 'postcss.config.js',
+    dynamicImport: 'src/lib/dynamic-import.tsx'
   }
 };
 
@@ -134,16 +139,82 @@ function checkOptimizations() {
       : chalk.yellow('  ⚠️ Server missing caching headers')
   );
   
+  // 7. Check Critical CSS
+  const criticalCssExists = fileExists(config.files.criticalCss);
+  const viteConfigExists = fileExists(config.files.viteConfig);
+  const viteConfigHasCriticalCss = fileContains(config.files.viteConfig, 'inject-critical-css');
+  console.log(
+    criticalCssExists 
+      ? chalk.green('✅ Critical CSS file exists') 
+      : chalk.red('❌ Critical CSS file missing')
+  );
+  console.log(
+    viteConfigHasCriticalCss 
+      ? chalk.green('  ✅ Critical CSS injection configured in Vite') 
+      : chalk.yellow('  ⚠️ Critical CSS injection not configured')
+  );
+  
+  // 8. Check Third-party Script Optimization
+  const thirdPartyLoaderExists = fileExists(config.files.thirdPartyLoader);
+  console.log(
+    thirdPartyLoaderExists 
+      ? chalk.green('✅ Third-party script loader exists') 
+      : chalk.red('❌ Third-party script loader missing')
+  );
+  
+  // 9. Check PurgeCSS Configuration
+  const postcssConfigExists = fileExists(config.files.postcssConfig);
+  const postcssHasPurgeCSS = fileContains(config.files.postcssConfig, 'purgecss');
+  console.log(
+    postcssConfigExists 
+      ? chalk.green('✅ PostCSS config exists') 
+      : chalk.red('❌ PostCSS config missing')
+  );
+  console.log(
+    postcssHasPurgeCSS 
+      ? chalk.green('  ✅ PurgeCSS configured for production') 
+      : chalk.yellow('  ⚠️ PurgeCSS not configured')
+  );
+  
+  // 10. Check Dynamic Import Utility
+  const dynamicImportExists = fileExists(config.files.dynamicImport);
+  console.log(
+    dynamicImportExists 
+      ? chalk.green('✅ Dynamic import utility exists') 
+      : chalk.red('❌ Dynamic import utility missing')
+  );
+  
+  // Check ResourceHints Component
+  const resourceHintsExists = fileExists('src/components/ResourceHints.tsx');
+  const resourceHintsIntegrated = fileContains('src/App.tsx', 'ResourceHints');
+  console.log(
+    resourceHintsExists 
+      ? chalk.green('✅ ResourceHints component exists') 
+      : chalk.red('❌ ResourceHints component missing')
+  );
+  console.log(
+    resourceHintsIntegrated 
+      ? chalk.green('  ✅ ResourceHints component integrated in App') 
+      : chalk.yellow('  ⚠️ ResourceHints component not integrated in App')
+  );
+  
   // Summary
   console.log(chalk.gray('===================================='));
-  const totalChecks = 9;
+  const totalChecks = 13;
   const passedChecks = [
     lazyLoadExists,
     imageOptimizerExists && imageOptimizerOptimized,
     serviceWorkerExists && serviceWorkerHasOffline && serviceWorkerHasThirdParty,
     offlinePageExists,
     webVitalsExists,
-    serverProductionExists && serverHasCompression && serverHasCaching
+    serverProductionExists && serverHasCompression && serverHasCaching,
+    criticalCssExists,
+    viteConfigHasCriticalCss,
+    thirdPartyLoaderExists,
+    postcssConfigExists && postcssHasPurgeCSS,
+    dynamicImportExists,
+    resourceHintsExists,
+    resourceHintsIntegrated
   ].filter(Boolean).length;
   
   console.log(chalk.blue.bold(`🏁 Performance Optimization Status: ${passedChecks}/${totalChecks}`));
