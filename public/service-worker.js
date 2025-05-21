@@ -7,6 +7,10 @@
 const STATIC_CACHE_NAME = 'deewan-static-v1';
 const IMAGE_CACHE_NAME = 'deewan-images-v1';
 const VIDEO_CACHE_NAME = 'deewan-videos-v1';
+const THIRD_PARTY_CACHE_NAME = 'deewan-third-party-v1';
+
+// Create a simple offline page URL
+const OFFLINE_URL = '/offline.html';
 
 // Resources to cache immediately on install
 const STATIC_RESOURCES = [
@@ -14,7 +18,8 @@ const STATIC_RESOURCES = [
   '/index.html',
   '/deewan-logo.png',
   '/deewan-logo.svg',
-  '/favicon.ico'
+  '/favicon.ico',
+  OFFLINE_URL
 ];
 
 // Install event - cache static assets
@@ -91,8 +96,40 @@ function getCacheStrategy(request) {
 
 // Fetch event - implement caching strategies
 self.addEventListener('fetch', (event) => {
-  // Skip cross-origin requests
+  // Handle cross-origin requests with stale-while-revalidate
   if (!event.request.url.startsWith(self.location.origin)) {
+    // For third-party resources, use stale-while-revalidate
+    event.respondWith(
+      caches.open(THIRD_PARTY_CACHE_NAME)
+        .then((cache) => {
+          return cache.match(event.request)
+            .then((cachedResponse) => {
+              const fetchPromise = fetch(event.request)
+                .then((networkResponse) => {
+                  cache.put(event.request, networkResponse.clone());
+                  return networkResponse;
+                })
+                .catch(error => {
+                  console.error('Failed to fetch third-party resource:', error);
+                  // Still throw the error so it can be caught by the outer catch
+                  throw error;
+                });
+              
+              return cachedResponse || fetchPromise;
+            });
+        })
+    );
+    return;
+  }
+  
+  // Handle navigation requests with network-first, falling back to offline page
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .catch(() => {
+          return caches.match(OFFLINE_URL);
+        })
+    );
     return;
   }
   

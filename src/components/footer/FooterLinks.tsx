@@ -6,7 +6,7 @@ const FooterLinks = () => {
     {/* Logo and description column */}
     <div className="flex flex-col backdrop-blur-sm bg-white/20 rounded-xl p-6 border border-white/30">
       <a href="/" className="mb-6 focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded" aria-label="Deewan Home">
-        <img alt="Deewan." src="/deewan-logo.svg" className="h-7" aria-hidden="true" />
+        <img alt="Deewan" src="/deewan-logo.svg" className="h-7" width={168} height={28} aria-hidden="true" />
         <span className="sr-only">Deewan Home</span>
       </a>
       <p className="text-gray-600 mb-6">At Deewan, we provide intelligent, secure, and scalable communication solutions for businesses in Saudi Arabia and beyond.</p>

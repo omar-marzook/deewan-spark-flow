@@ -25,7 +25,7 @@ const config = {
     'public/media/testimonials'
   ],
   // Output quality for WebP (0-100)
-  webpQuality: 80,
+  webpQuality: 75,
   // Responsive image sizes
   sizes: {
     small: 400,
