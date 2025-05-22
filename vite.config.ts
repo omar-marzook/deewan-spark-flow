@@ -4,9 +4,34 @@ import vike from 'vike/plugin';
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { Buffer } from 'buffer';
+import fs from 'fs';
 
 // Provide Buffer for the browser environment
 globalThis.Buffer = Buffer;
+
+// Custom plugin to inject critical CSS
+function injectCriticalCss() {
+  const criticalCssPath = path.resolve(__dirname, 'src/critical.css');
+  
+  return {
+    name: 'inject-critical-css',
+    transformIndexHtml(html: string): string {
+      try {
+        // Read the critical CSS file
+        const criticalCss = fs.readFileSync(criticalCssPath, 'utf8');
+        
+        // Inject the critical CSS into the HTML
+        return html.replace(
+          '</head>',
+          `<style id="critical-css">${criticalCss}</style></head>`
+        );
+      } catch (error) {
+        console.error('Error injecting critical CSS:', error);
+        return html;
+      }
+    }
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -19,6 +44,8 @@ export default defineConfig(({ mode }) => ({
     vike(),
     mode === 'development' &&
     componentTagger(),
+    // Only inject critical CSS in production
+    mode === 'production' && injectCriticalCss(),
   ].filter(Boolean),
   resolve: {
     alias: {

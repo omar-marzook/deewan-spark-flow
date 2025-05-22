@@ -65,16 +65,18 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded" aria-label="Deewan Home">
             <img 
-              alt="" 
+              alt="Deewan"
               src="/deewan-logo.svg" 
-              className="h-5 lg:h-7 mr-2" 
+              className="h-5 lg:h-7 mr-2"
+              width={168}
+              height={28}
               aria-hidden="true"
             />
             <span className="sr-only">Deewan Home</span>
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden xl:flex space-x-8 items-center" aria-label="Main Navigation">
+          <nav className="hidden lg:flex space-x-8 items-center" aria-label="Main Navigation">
             <div 
               ref={megaMenuTriggerRef}
               className="relative"
@@ -140,7 +142,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="xl:hidden text-deewan-dark focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded p-1"
+            className="lg:hidden text-deewan-primary focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded p-1"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -154,7 +156,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <nav 
           id="mobile-menu"
-          className={`xl:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in ${isMenuOpen ? "" : "hidden"}`}
+          className={`lg:hidden bg-white/90 backdrop-blur-md mt-4 p-5 rounded-xl shadow-lg border border-white/30 flex flex-col space-y-4 animate-fade-in ${isMenuOpen ? "" : "hidden"}`}
           aria-label="Mobile Navigation"
           role="navigation"
         >

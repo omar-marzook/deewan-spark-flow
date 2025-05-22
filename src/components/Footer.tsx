@@ -1,11 +1,11 @@
 import React from "react";
-import Newsletter from "./footer/Newsletter";
+// import Newsletter from "./footer/Newsletter";
 import FooterLinks from "./footer/FooterLinks";
 import FooterCopyright from "./footer/FooterCopyright";
 const Footer = () => {
   return <>
       {/* Newsletter subscription - Separated from footer */}
-      <Newsletter />
+      {/* <Newsletter /> */}
       
       {/* Main footer with glassmorphism gradient background */}
       <footer className="relative pt-16 overflow-hidden" role="contentinfo" aria-label="Site footer">

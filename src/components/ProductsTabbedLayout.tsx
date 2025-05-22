@@ -12,10 +12,11 @@ import {
   VoiceApiIcon, 
   WhatsAppIcon 
 } from '@/components/icons/ProductIcons';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import productsData from '@/data/products-data';
 
 const ProductsTabbedLayout = () => {
+  const prefersReducedMotion = useReducedMotion();
   // Extract application products and API products from productsData
   const applicationSlugs = ['campaigns', 'omni-channel-chat', 'bots', 'mfa', 'ivr'];
   const apiSlugs = ['sms-api', 'whatsapp-api', 'email-api', 'voice-api', 'push-notifications-api'];
@@ -91,14 +92,26 @@ const ProductsTabbedLayout = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full h-96 bg-deewan-primary/5 rounded-full filter blur-3xl -z-5" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 id="products-heading" className="mb-4">Our <span className="text-deewan-primary">Product</span> Ecosystem</h2>
           <p className="text-base md:text-lg text-deewan-gray">End-to-end communication tools designed to power today's growing businesses.</p>
-        </div>
+        </motion.div>
         
         {/* Enhanced glassmorphic tabs */}
         <Tabs defaultValue="applications" className="w-full max-w-6xl mx-auto">
-          <div className="flex justify-center mb-12">
+          <motion.div 
+            className="flex justify-center mb-12"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <TabsList 
               className="p-1 h-14 backdrop-blur-md bg-white/30 border border-white/40 rounded-xl shadow-lg"
               aria-label="Product categories"
@@ -120,7 +133,7 @@ const ProductsTabbedLayout = () => {
                 Communication APIs
               </TabsTrigger>
             </TabsList>
-          </div>
+          </motion.div>
           
           {/* Applications content with glassmorphic cards */}
           <TabsContent 
@@ -130,7 +143,13 @@ const ProductsTabbedLayout = () => {
             role="tabpanel"
             aria-labelledby="applications-tab"
           >
-            <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={container} initial="hidden" animate="show">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+              variants={container} 
+              initial="hidden" 
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+            >
               {applications.map(app => <motion.div key={app.id} variants={item} className="group">
                   <div 
                     className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col"
@@ -175,7 +194,13 @@ const ProductsTabbedLayout = () => {
             role="tabpanel"
             aria-labelledby="apis-tab"
           >
-            <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={container} initial="hidden" animate="show">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+              variants={container} 
+              initial="hidden" 
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+            >
               {apis.map(api => <motion.div key={api.id} variants={item} className="group">
                   <div 
                     className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-6 h-full flex flex-col"

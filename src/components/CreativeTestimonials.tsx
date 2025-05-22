@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 // Sample testimonial data
 const testimonials = [{
@@ -88,7 +89,11 @@ const CreativeTestimonials = () => {
         {visibleTestimonials.map(testimonial => <div key={testimonial.id} className="flex flex-col bg-gray-50/70 rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
           <div className="flex justify-between items-start mb-6">
             <div className="flex">{renderStars(testimonial.rating)}</div>
-            <img src={testimonial.companyLogo} alt={`${testimonial.name}'s company`} className="h-8 object-contain" />
+            <OptimizedImage 
+              src={testimonial.companyLogo} 
+              alt={`${testimonial.name}'s company`} 
+              className="h-8 object-contain" 
+            />
           </div>
 
           <blockquote className="italic text-base md:text-lg text-deewan-gray mb-8">
@@ -97,7 +102,11 @@ const CreativeTestimonials = () => {
 
           <div className="flex items-center mt-auto">
             <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-              <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+              <OptimizedImage 
+                src={testimonial.image} 
+                alt={testimonial.name} 
+                className="w-full h-full object-cover" 
+              />
             </div>
             <div>
               <p className="font-semibold">{testimonial.name}</p>

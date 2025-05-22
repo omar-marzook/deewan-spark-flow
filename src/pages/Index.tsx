@@ -12,6 +12,7 @@ import AlternativeTestimonials from "../components/AlternativeTestimonials";
 import SEO from "../components/SEO";
 import { organizationSchema } from "../lib/schema";
 import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
+import LazyLoad from "../components/ui/lazy-load";
 
 const Index = () => {
   // Define SEO data that will be used by both client and server
@@ -70,8 +71,12 @@ const Index = () => {
           description: "Real impact for measurable growth."
         }}
       />
-      <DepartmentsWeServe />
-      <AlternativeTestimonials />
+      <LazyLoad>
+        <DepartmentsWeServe />
+      </LazyLoad>
+      <LazyLoad>
+        <AlternativeTestimonials />
+      </LazyLoad>
       <BlogSection />
       <ContactSection />
     </div>

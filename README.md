@@ -113,7 +113,7 @@ The application uses an Express server for production. To deploy:
    Or if you prefer to run the server directly:
    ```sh
    npm run patch-path-to-regexp
-   NODE_ENV=production node server/safe-production.js
+   NODE_ENV=production node server/production.js
    ```
 
 ## Performance Optimization
@@ -152,7 +152,7 @@ This issue has been fixed in the `preview:server` script, which automatically ap
 
 ```sh
 npm run patch-path-to-regexp
-NODE_ENV=production node server/safe-production.js
+NODE_ENV=production node server/production.js
 ```
 
 For detailed information about this issue and its solution, see [path-to-regexp-fix.md](./docs/path-to-regexp-fix.md).

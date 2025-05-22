@@ -10,10 +10,10 @@
  * 2. Run: node scripts/optimize-images.js
  */
 
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
-const sharp = require('sharp');
+import fs from 'fs';
+import path from 'path';
+import { glob } from 'glob';
+import sharp from 'sharp';
 
 // Configuration
 const config = {
@@ -21,10 +21,11 @@ const config = {
   sourceDirs: [
     'public/media/logos',
     'public/media/products',
-    'public/media/blogs'
+    'public/media/blogs',
+    'public/media/testimonials'
   ],
   // Output quality for WebP (0-100)
-  webpQuality: 80,
+  webpQuality: 75,
   // Responsive image sizes
   sizes: {
     small: 400,

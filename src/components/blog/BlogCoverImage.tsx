@@ -1,6 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import OptimizedImage from "@/components/ui/optimized-image";
 
 const BlogCoverImage = ({ post }) => (
   <figure className="container mx-auto max-w-5xl px-4 mb-12">
@@ -10,10 +11,11 @@ const BlogCoverImage = ({ post }) => (
       transition={{ duration: 0.7, delay: 0.2 }}
       className="relative aspect-[21/9] overflow-hidden rounded-2xl shadow-xl"
     >
-      <img
+      <OptimizedImage
         src={post.coverImage}
         alt={`Cover image for article: ${post.title}`}
         className="w-full h-full object-cover"
+        priority={true}
       />
     </motion.div>
     {post.coverImageCaption && (
