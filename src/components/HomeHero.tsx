@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, ArrowDown, CircleDot, Circle, CircleCheck } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/button";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface HomeHeroProps {
   children?: React.ReactNode;
@@ -8,6 +9,7 @@ interface HomeHeroProps {
 }
 
 const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
+  const prefersReducedMotion = useReducedMotion();
   // Use useRef instead of useState for tracking client-side animations
   // This prevents hydration mismatches
   const animationRef = useRef({
@@ -82,7 +84,12 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-deewan-secondary/10 rounded-full opacity-50" aria-hidden="true"></div>
 
       {/* Text Content - Moved above visual */}
-      <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 transform ${animationClass}`}>
+      <motion.div 
+        className="max-w-3xl mx-auto text-center mb-16"
+        initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.7 }}
+      >
         <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deewan-dark leading-tight">
           Connect smarter.<br/>
           Grow faster
@@ -92,7 +99,12 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
         </p>
 
         {/* CTA Button */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <motion.div 
+          className="flex flex-wrap gap-4 justify-center"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <ButtonLink 
             href="#products" 
             variant="default" 
@@ -113,15 +125,20 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
           >
             Contact Sales
           </ButtonLink>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Visual with green gradient illumination */}
-      <div className="relative max-w-4xl mx-auto">
+      <motion.div 
+        className="relative max-w-4xl mx-auto"
+        initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30, filter: "blur(5px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+      >
         {/* Green Gradient Illumination */}
         <div className="absolute -inset-10 bg-deewan-primary/20 rounded-full blur-3xl" aria-hidden="true"></div>
 
-        <section className={`transition-all duration-700 delay-200 transform ${animationClass}`}>
+        <div>
           <div className="relative">
             {/* Video in aspect-video container */}
             <div className="glass-card relative p-4 overflow-hidden w-full rounded-xl" aria-hidden="true">
@@ -142,8 +159,8 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 };

@@ -4,8 +4,10 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useInterval } from "@/hooks/use-interval";
 import Autoplay from "embla-carousel-autoplay";
 import OptimizedImage from "@/components/ui/optimized-image";
+import { motion, useReducedMotion } from "framer-motion";
 
 const LogoCarousel: React.FC = () => {
+  const prefersReducedMotion = useReducedMotion();
   // Use useRef to track if we're on the client side
   const isBrowser = useRef(false);
   
@@ -120,7 +122,13 @@ const LogoCarousel: React.FC = () => {
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+        <motion.div 
+          className="max-w-3xl mx-auto text-center mb-12"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="inline-block bg-deewan-primary/10 backdrop-blur-sm px-5 py-2 rounded-full text-deewan-primary font-medium text-sm mb-4">
             Our Clients
           </div>
@@ -128,9 +136,15 @@ const LogoCarousel: React.FC = () => {
             Trusted By <span className="text-deewan-primary">Leading</span> Organizations
           </h2>
           <p className="text-lg text-deewan-gray">Helping businesses across Saudi Arabia and beyond connect, engage, and grow.</p>
-        </div>
+        </motion.div>
 
-        <div className="w-full overflow-hidden">
+        <motion.div 
+          className="w-full overflow-hidden"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <div 
             className="embla" 
             ref={emblaRef} 
@@ -162,7 +176,7 @@ const LogoCarousel: React.FC = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>;
 };

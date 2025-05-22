@@ -3,6 +3,7 @@ import { Megaphone, Headset, UserRoundCog } from "lucide-react";
 import { useParams } from "react-router-dom";
 import productsData from "@/data/products-data";
 import { DepartmentData } from "@/components/ProductTemplate";
+import { motion, useReducedMotion } from "framer-motion";
 
 // Default departments data as fallback
 const defaultDepartmentsData: DepartmentData[] = [{
@@ -42,6 +43,7 @@ interface DepartmentsWeServeProps {
 }
 
 const DepartmentsWeServe: React.FC<DepartmentsWeServeProps> = ({ departments }) => {
+  const prefersReducedMotion = useReducedMotion();
   // Get the current product slug from URL params
   const { slug } = useParams<{ slug: string }>();
   
@@ -132,21 +134,34 @@ const DepartmentsWeServe: React.FC<DepartmentsWeServeProps> = ({ departments }) 
       <div className="absolute bottom-0 right-1/4 w-1/2 h-1/3 bg-deewan-secondary/5 rounded-full filter blur-[80px] -z-5" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 id="departments-heading" className="mb-4 text-deewan-dark"><span className="text-deewan-primary">Supporting</span> Primary Business Functions</h2>
           <p className="text-base md:text-lg text-deewan-gray">
             Our communication solutions are tailored to meet the unique needs of various departments across your organization.
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8" role="list">
-          {departmentsData.map((dept) => (
-            <div 
+          {departmentsData.map((dept, index) => (
+            <motion.div 
               key={dept.id} 
               className="group backdrop-blur-md bg-white/30 border border-white/30 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6"
               tabIndex={0}
               role="article"
               aria-labelledby={`dept-${dept.id}-heading`}
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: prefersReducedMotion ? 0 : 0.5, 
+                delay: prefersReducedMotion ? 0 : index * 0.1 
+              }}
             >
               <div className={`${dept.color} p-4 rounded-xl mb-6 inline-flex items-center justify-center`}>
                 {dept.icon}
@@ -167,7 +182,7 @@ const DepartmentsWeServe: React.FC<DepartmentsWeServeProps> = ({ departments }) 
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
