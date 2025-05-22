@@ -47,7 +47,7 @@ const Industries = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div 
           className="max-w-3xl mx-auto text-center mb-16"
-          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20}}
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 25}}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
