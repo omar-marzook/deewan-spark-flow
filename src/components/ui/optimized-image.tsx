@@ -31,11 +31,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
 }) => {
   // Don't lazy load priority images (like logos, hero images)
   const loadingAttribute = priority ? undefined : 'lazy';
-  
+
   // Extract file path and extension
   const lastDotIndex = src.lastIndexOf('.');
   const hasExtension = lastDotIndex !== -1;
-  
+
   if (!hasExtension) {
     // If no extension, just use the original src
     return (
@@ -50,27 +50,26 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       />
     );
   }
-  
+
   const basePath = hasExtension ? src.substring(0, lastDotIndex) : src;
   const extension = hasExtension ? src.substring(lastDotIndex) : '';
-  
+
   // Auto-detect if we should use responsive images based on the path
   // Logos and small images typically don't have responsive versions
-  const shouldUseResponsive = useResponsive !== undefined 
-    ? useResponsive 
+  const shouldUseResponsive = useResponsive !== undefined
+    ? useResponsive
     : !src.includes('/logos/') && (src.includes('/products/') || src.includes('/blogs/') || src.includes('/testimonials/'));
-  
+
   // Simple WebP version (for all images)
   const webpSrc = `${basePath}.webp`;
-  
+
   if (!shouldUseResponsive) {
     // For small images like logos, just use WebP without responsive sizes
-    return (
-      <picture>
-        {/* WebP source */}
-        <source type="image/webp" srcSet={webpSrc} />
-        
-        {/* Original format fallback */}
+    // Special handling for logo images in production
+    if (src.includes('/logos/')) {
+      // For logo images, use a simpler approach that doesn't rely on WebP
+      // This is a workaround for production where WebP versions might not be available
+      return (
         <img
           src={src}
           alt={alt}
@@ -80,16 +79,35 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           loading={loadingAttribute}
           decoding="async"
         />
-      </picture>
-    );
+      );
+    } else {
+      // For other non-responsive images, use WebP with fallback
+      return (
+        <picture>
+          {/* WebP source */}
+          <source type="image/webp" srcSet={webpSrc} />
+
+          {/* Original format fallback */}
+          <img
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            className={className}
+            loading={loadingAttribute}
+            decoding="async"
+          />
+        </picture>
+      );
+    }
   }
-  
+
   // For larger images that should have responsive versions
   // Responsive sizes
   const smallSize = 400;
   const mediumSize = 800;
   const largeSize = 1200;
-  
+
   // Generate srcset for original format
   const originalSrcSet = [
     `${basePath}-small${extension} ${smallSize}w`,
@@ -97,7 +115,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     `${basePath}-large${extension} ${largeSize}w`,
     `${src} 1920w`,
   ].join(', ');
-  
+
   // Generate srcset for WebP format
   const webpSrcSet = [
     `${basePath}-small.webp ${smallSize}w`,
@@ -105,7 +123,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     `${basePath}-large.webp ${largeSize}w`,
     `${basePath}.webp 1920w`,
   ].join(', ');
-  
+
   return (
     <picture>
       {/* WebP source */}
@@ -114,13 +132,13 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         srcSet={webpSrcSet}
         sizes={sizes}
       />
-      
+
       {/* Original format source */}
       <source
         srcSet={originalSrcSet}
         sizes={sizes}
       />
-      
+
       {/* Fallback image */}
       <img
         src={src}
