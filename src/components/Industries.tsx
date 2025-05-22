@@ -47,8 +47,8 @@ const Industries = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div 
           className="max-w-3xl mx-auto text-center mb-16"
-          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20}}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
@@ -67,8 +67,8 @@ const Industries = () => {
               role="article"
               aria-labelledby={`industry-${industry.id}-heading`}
               aria-describedby={`industry-${industry.id}-description`}
-              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ 
                 duration: prefersReducedMotion ? 0 : 0.5, 
