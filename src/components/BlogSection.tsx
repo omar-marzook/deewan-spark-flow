@@ -44,8 +44,8 @@ const BlogSection = () => {
         {/* Section header - centered with description */}
         <motion.div 
           className="text-center mb-16"
-          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
@@ -62,8 +62,8 @@ const BlogSection = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
           aria-live="polite"
           aria-busy={isLoading}
-          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
@@ -71,13 +71,10 @@ const BlogSection = () => {
             blogPosts.map((post, index) => (
               <motion.div
                 key={post.id}
-                initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ 
-                  duration: prefersReducedMotion ? 0 : 0.5, 
-                  delay: prefersReducedMotion ? 0 : 0.2 + (index * 0.1) 
-                }}
+                transition={{ duration: 0.4, delay: 0.2 * index }}
               >
                 <BlogCard 
                   post={{
@@ -114,8 +111,8 @@ const BlogSection = () => {
         {/* View all button - centered */}
         <motion.div 
           className="text-center"
-          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
