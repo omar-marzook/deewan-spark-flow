@@ -107,6 +107,12 @@ The application uses an Express server for production. To deploy:
 
 4. Start the server:
    ```sh
+   npm run preview:server
+   ```
+   
+   Or if you prefer to run the server directly:
+   ```sh
+   npm run patch-path-to-regexp
    NODE_ENV=production node server/production.js
    ```
 
@@ -132,6 +138,25 @@ This converts images to WebP format and creates responsive sizes.
 
 For more details on performance optimizations, see [PERFORMANCE-OPTIMIZATION.md](./PERFORMANCE-OPTIMIZATION.md).
 
+## Known Issues and Solutions
+
+### path-to-regexp Error
+
+When running the production server with `NODE_ENV=production node server/production.js`, you might encounter the following error:
+
+```
+TypeError: Missing parameter name at 1: https://git.new/pathToRegexpError
+```
+
+This issue has been fixed in the `preview:server` script, which automatically applies a patch to the path-to-regexp library. If you need to run the server directly, use:
+
+```sh
+npm run patch-path-to-regexp
+NODE_ENV=production node server/production.js
+```
+
+For detailed information about this issue and its solution, see [path-to-regexp-fix.md](./docs/path-to-regexp-fix.md).
+
 ## Scripts
 
 - `npm run dev` - Start development server
@@ -140,9 +165,10 @@ For more details on performance optimizations, see [PERFORMANCE-OPTIMIZATION.md]
 - `npm run build:dev` - Build for development
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build locally
-- `npm run preview:server` - Preview production build with SSR
+- `npm run preview:server` - Preview production build with SSR (includes path-to-regexp fix)
 - `npm run optimize-images` - Optimize images
 - `npm run setup-performance` - Set up performance optimizations
+- `npm run patch-path-to-regexp` - Apply patch for path-to-regexp library
 
 ## Project Structure
 
