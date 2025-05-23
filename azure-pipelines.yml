@@ -18,5 +18,5 @@ steps:
     npm run optimize-images
     npm run build
     sudo systemctl start deewan-spark-flow.service
-    npm run preview:server
+    nohup npm run preview:server > preview.log 2>&1 &
   displayName: Build and restart app locally
