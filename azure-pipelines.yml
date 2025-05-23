@@ -41,6 +41,8 @@ steps:
 
     echo "Installing dependencies..."
     npm install | tee install.log
+    npm install --save-dev @vitejs/plugin-react-swc 
+    npm install -D terser
 
     echo "Optimizing images..."
     npm run optimize-images | tee optimize.log
