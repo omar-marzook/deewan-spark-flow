@@ -7,27 +7,16 @@ pool:
   - agent.name -equals prodvm
 
 steps:
-- task: Bash@3
-  displayName: 'Deploy and build on prodsite VM'
-  inputs:
-    targetType: 'inline'
-    script: |
-      echo "Stopping service..."
-      ssh azureuser@prodsite "sudo systemctl stop deewan-spark-flow.service || true"
-      echo "Killing process on port 3000 if exists..."
-      ssh azureuser@prodsite "sudo kill -9 $(sudo lsof -t -i:3000) || true"
-
-      echo "Syncing files (excluding node_modules)..."
-      rsync -avz --delete --exclude=node_modules ./ azureuser@prodsite:/var/www/deewan/deewan-spark-flow/
-
-      echo "Running app setup on remote VM..."
-      ssh azureuser@prodsite << 'EOF'
-        cd /var/www/deewan/deewan-spark-flow
-        npm install
-        npm install --save-dev @vitejs/plugin-react-swc
-        npm install -D terser
-        npm run optimize-images || true
-        npm run build
-        sudo systemctl start deewan-spark-flow.service
-        npm run preview:server &
-      EOF
+- script: |
+    cd /var/www/deewan/deewan-spark-flow
+    sudo systemctl stop deewan-spark-flow.service
+    sudo kill -9 $(sudo lsof -t -i:3000) || true
+    git pull origin main  # or however you sync files
+    npm install
+    npm install --save-dev @vitejs/plugin-react-swc
+    npm install -D terser
+    npm run optimize-images
+    npm run build
+    sudo systemctl start deewan-spark-flow.service
+    npm run preview:server
+  displayName: Build and restart app locally
