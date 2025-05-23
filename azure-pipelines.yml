@@ -1,22 +1,53 @@
+
 trigger:
 - main
 
 pool:
   name: Default
   demands:
-  - agent.name -equals prodvm
+    - agent.name -equals prodvm
+
+variables:
+- group: ProdVM-VG  # Contains the PAT variable
+
+- name: appPath
+  value: '/var/www/deewan/deewan-spark-flow'
 
 steps:
 - script: |
-    cd /var/www/deewan/deewan-spark-flow
-    sudo systemctl stop deewan-spark-flow.service
-    sudo kill -9 $(sudo lsof -t -i:3000) || true
-    git pull origin main  # or however you sync files
-    npm install
-    npm install --save-dev @vitejs/plugin-react-swc
-    npm install -D terser
-    npm run optimize-images
-    npm run build
+    set -e  # Exit on error
+
+    echo "Stopping service..."
+    sudo systemctl stop deewan-spark-flow.service || echo "Service not running"
+    sudo lsof -t -i:3000 | xargs -r sudo kill -9 || echo "No process on port 3000"
+
+    echo "Creating temporary directory..."
+    tempDir=$(mktemp -d)
+    echo "Cloning repository into $tempDir"
+
+    git clone https://$(PAT)@dev.azure.com/SiteLive/_git/DwnSiteProd $tempDir
+
+    echo "Cleaning existing files in $appPath (excluding node_modules)..."
+    find $appPath -mindepth 1 -not -name 'node_modules' -exec sudo rm -rf {} +
+
+    echo "Copying new files to $appPath..."
+    sudo cp -r $tempDir/* $appPath/
+    sudo chown -R azureuser:azureuser $appPath
+
+    cd $appPath
+
+    echo "Installing dependencies..."
+    npm install | tee install.log
+
+    echo "Optimizing images..."
+    npm run optimize-images | tee optimize.log
+
+    echo "Building application..."
+    npm run build | tee build.log
+
+    echo "Starting service..."
     sudo systemctl start deewan-spark-flow.service
+
+    echo "Launching preview server..."
     nohup npm run preview:server > preview.log 2>&1 &
-  displayName: Build and restart app locally
+  displayName: "Deploy app (secure & optimized)"
