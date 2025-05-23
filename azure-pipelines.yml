@@ -30,8 +30,9 @@ steps:
     git clone https://$(PAT)@dev.azure.com/SiteLive/_git/DwnSiteProd $tempDir
 
     echo "Cleaning existing files in $appPath (excluding node_modules)..."
-    find "$appPath" -mindepth 1 -not -name 'node_modules' -exec sudo rm -rf {} +
+    find "$appPath" -mindepth 1 -not -name 'node_modules' -exec sudo rm -rf {} + 2>/dev/null || true
 
+    
     echo "Copying new files to $appPath..."
     sudo cp -r $tempDir/* "$appPath/"
     sudo chown -R azureuser:azureuser "$appPath"
