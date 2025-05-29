@@ -89,7 +89,7 @@ const ProductHero: React.FC<ProductHeroProps> = ({
         {/* 3D Visual Element */}
         <AnimatePresence>
           <motion.div 
-            className="relative h-80 md:h-96 xl:h-[600px]" 
+            className="relative aspect-[4/3]" 
             aria-hidden="true"
             initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -98,13 +98,13 @@ const ProductHero: React.FC<ProductHeroProps> = ({
               delay: prefersReducedMotion ? 0 : 0.2 
             }}
           >
-          <div className="absolute top-0 left-0 transform w-full h-full bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg rotate-12 animate-[float_6s_ease-in-out_infinite]">
+            <div className="absolute top-0 left-0 transform w-full h-full p-2 bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg rotate-12 animate-[float_6s_ease-in-out_infinite]">
             {/* Decorative elements */}
             {heroImage && (
               <OptimizedImage
                 src={heroImage}
                 alt={`${name} product illustration`}
-                className="w-full h-full object-contain rounded-lg"
+                className="w-full h-full object-cover rounded-lg"
                 priority={true} // Don't lazy load hero images
               />
             )}
