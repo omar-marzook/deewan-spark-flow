@@ -28,6 +28,25 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- Blog Post Pages -->
+  <url>
+    <loc>https://www.deewan.sa/blog/five-ways-deewan-bots-are-leading-the-cx-revolution</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.deewan.sa/blog/the-future-of-customer-experience-is-omnichannel-chat</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.deewan.sa/blog/why-now-is-the-time-to-choose-whatsapp-for-your-business-in-saudi-arabia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
   <!-- Product Pages -->
   <url>
     <loc>https://www.deewan.sa/products/whatsapp-api</loc>
