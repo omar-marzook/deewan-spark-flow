@@ -10,6 +10,7 @@ import ContactSection from "../components/ContactSection";
 import AlternativeStats from "../components/AlternativeStats";
 import AlternativeTestimonials from "../components/AlternativeTestimonials";
 import SEO from "../components/SEO";
+import HeroCriticalStyles from "../components/HeroCriticalStyles";
 import { organizationSchema } from "../lib/schema";
 import { BarChart, CheckCircle, Users, Briefcase } from 'lucide-react';
 import LazyLoad from "../components/ui/lazy-load";
@@ -34,6 +35,7 @@ const Index = () => {
   return (
     <div className="overflow-x-hidden">
       <SEO {...seoData} />
+      <HeroCriticalStyles />
       <HomeHero />
       <LogoCarousel />
       <ProductsTabbedLayout />

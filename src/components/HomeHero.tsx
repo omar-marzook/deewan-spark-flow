@@ -83,17 +83,22 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-deewan-secondary/20 rounded-full opacity-70" aria-hidden="true"></div>
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-deewan-secondary/10 rounded-full opacity-50" aria-hidden="true"></div>
 
-      {/* Text Content - Moved above visual */}
-      <motion.div 
-        className="max-w-3xl mx-auto text-center mb-16"
-        initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20, filter: "blur(5px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.7 }}
-      >
-        <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deewan-dark leading-tight">
+      {/* Text Content - Optimized for LCP */}
+      {/* Hero heading placed outside animation container for faster LCP */}
+      <div className="max-w-3xl mx-auto text-center mb-8">
+        <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deewan-dark">
           Connect smarter.<br/>
           Grow faster
         </h1>
+      </div>
+      
+      {/* Rest of content can animate after heading is displayed */}
+      <motion.div 
+        className="max-w-3xl mx-auto text-center mb-16"
+        initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+      >
         <p className="text-lg md:text-xl text-deewan-gray mb-8 max-w-2xl mx-auto">
           Customizable, secure communications built to scale across every channel.
         </p>
@@ -150,7 +155,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
                   muted 
                   loop 
                   playsInline
-                  preload="metadata"
+                  preload="none" /* Changed from metadata to none to prevent blocking LCP */
                   onLoadedData={handleVideoLoad}
                 >
                   <source src="/media/home-hero-section-video.mp4" type="video/mp4" />

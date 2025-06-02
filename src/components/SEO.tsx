@@ -52,13 +52,14 @@ const SEO = (props: SEOProps) => {
         </script>
       )}
       
-      {/* Preload critical fonts */}
+      {/* Preload critical fonts with high priority for hero heading */}
       <link 
         rel="preload" 
         href="/fonts/Gilroy-Bold.woff2" 
         as="font" 
         type="font/woff2" 
-        crossOrigin="anonymous" 
+        crossOrigin="anonymous"
+        fetchPriority="high"
       />
       <link 
         rel="preload" 
