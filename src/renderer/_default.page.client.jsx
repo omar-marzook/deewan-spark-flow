@@ -7,6 +7,23 @@ import { Buffer } from 'buffer'
 // Make Buffer available globally
 window.Buffer = Buffer
 
+// Register performance measurement
+const reportWebVitals = () => {
+  if ('performance' in window && 'getEntriesByType' in performance) {
+    // Get LCP
+    const lcpEntry = performance.getEntriesByType('largest-contentful-paint')[0];
+    if (lcpEntry) {
+      console.log('LCP:', lcpEntry.startTime / 1000, 'seconds');
+    }
+    
+    // Get FID
+    const fidEntry = performance.getEntriesByType('first-input')[0];
+    if (fidEntry) {
+      console.log('FID:', fidEntry.processingStart - fidEntry.startTime, 'ms');
+    }
+  }
+};
+
 // Initialize React root management
 if (typeof window.__VIKE_STATE__ === 'undefined') {
   window.__VIKE_STATE__ = {
@@ -84,6 +101,9 @@ export const prefetchStaticAssets = { when: 'VIEWPORT' }
 // This is called when a new page is navigated to
 export function onHydrationEnd() {
   console.log('Hydration finished; page is now interactive.')
+  
+  // Measure and report web vitals after hydration
+  setTimeout(reportWebVitals, 1000);
 }
 
 // This is called when a navigation happens

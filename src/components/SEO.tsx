@@ -69,6 +69,30 @@ const SEO = (props: SEOProps) => {
         crossOrigin="anonymous" 
       />
       
+      {/* Add font-display swap to ensure text remains visible during font loading */}
+      <style>{`
+        @font-face {
+          font-family: 'Gilroy';
+          src: url('/fonts/Gilroy-Bold.woff2') format('woff2');
+          font-weight: bold;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Gilroy';
+          src: url('/fonts/Gilroy-Regular.woff2') format('woff2');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        /* Optimize hero heading rendering */
+        #hero-heading {
+          text-rendering: optimizeSpeed;
+        }
+      `}</style>
+      
       {/* Resource hints */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="dns-prefetch" href="https://fonts.googleapis.com" />

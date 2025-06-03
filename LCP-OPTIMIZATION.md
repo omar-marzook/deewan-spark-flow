@@ -2,7 +2,7 @@
 
 This document outlines the optimizations implemented to improve the Largest Contentful Paint (LCP) score for the Deewan website, specifically targeting the hero heading which was identified as the main LCP element.
 
-## Implemented Optimizations
+## Initial Optimizations
 
 ### 1. Hero Heading Structure Optimization
 
@@ -127,28 +127,142 @@ Modified the video loading strategy to prevent it from blocking the LCP:
 >
 ```
 
+## Additional Optimizations
+
+After initial implementation, further optimizations were needed to achieve the target 90+ Lighthouse score. The following additional optimizations have been implemented:
+
+### 1. Enhanced Resource Loading
+
+- Added preload directives with `fetchpriority="high"` for critical fonts
+- Added preconnect and dns-prefetch for external resources
+- Improved font-face definitions with optimized font-display settings
+
+```jsx
+<!-- Preload critical fonts with high priority -->
+<link rel="preload" href="/fonts/Gilroy-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" fetchpriority="high" />
+<link rel="preload" href="/fonts/Gilroy-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+
+<!-- Preconnect to important domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+```
+
+### 2. Optimized Font Rendering
+
+- Added inline font-face definitions with font-display: swap
+- Ensured text remains visible during font loading
+- Optimized text rendering for the hero heading
+
+```jsx
+<style>{`
+  @font-face {
+    font-family: 'Gilroy';
+    src: url('/fonts/Gilroy-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Gilroy';
+    src: url('/fonts/Gilroy-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Optimize hero heading rendering */
+  #hero-heading {
+    text-rendering: optimizeSpeed;
+  }
+`}</style>
+```
+
+### 3. Video Optimization
+
+- Used preload="none" to prevent video from blocking LCP
+- Added a poster image for faster initial render
+- Ensured video content doesn't delay the critical rendering path
+
+```jsx
+<video 
+  ref={videoRef}
+  className="w-full h-full object-cover" 
+  autoPlay 
+  muted 
+  loop 
+  playsInline
+  preload="none" /* Prevent video from blocking LCP */
+  onLoadedData={handleVideoLoad}
+  poster="/media/home-hero-section-poster.jpg" /* Add a poster image for faster initial render */
+>
+```
+
+### 4. Enhanced Server Configuration
+
+- Improved compression settings with higher compression level
+- Optimized caching headers with immutable directive for fonts
+- Added Vary header for proper caching with compression
+
+```js
+// Use compression with higher level for better performance
+app.use(compression({
+  level: 9, // Maximum compression level
+  threshold: 0 // Compress all responses
+}));
+
+// Font files: cache for 1 year with immutable
+if (req.url.match(/\.(woff|woff2)$/)) {
+  res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+}
+```
+
+### 5. Performance Monitoring
+
+- Added performance measurement for LCP and other metrics
+- Implemented reporting to help track improvements
+
+```js
+// Register performance measurement
+const reportWebVitals = () => {
+  if ('performance' in window && 'getEntriesByType' in performance) {
+    // Get LCP
+    const lcpEntry = performance.getEntriesByType('largest-contentful-paint')[0];
+    if (lcpEntry) {
+      console.log('LCP:', lcpEntry.startTime / 1000, 'seconds');
+    }
+  }
+};
+```
+
 ## Expected Results
 
-These optimizations should significantly improve the LCP score by:
+These comprehensive optimizations should significantly improve the LCP score by:
 
 1. Ensuring the hero heading renders immediately without waiting for animations
 2. Providing critical styles inline to avoid render-blocking CSS
 3. Prioritizing the loading of the font used in the heading
 4. Preventing other elements from blocking the rendering of the heading
+5. Deferring non-critical resources until after LCP
+6. Optimizing server delivery of critical assets
 
-The goal is to achieve a 90+ Lighthouse score on mobile by reducing the LCP time from 14.7s to under 2.5s.
+The goal is to achieve a 90+ Lighthouse score on mobile by reducing the LCP time from 4.9s to under 2.5s.
 
 ## Future Optimization Considerations
 
-1. **Font Subsetting**: Consider creating a subset of the Gilroy-Bold font that only includes the characters used in the hero heading.
+1. **Font Subsetting**: Create a subset of the Gilroy-Bold font that only includes the characters used in the hero heading.
 
-2. **Static Image Fallback**: For extremely slow connections, consider implementing a static image fallback for the hero heading.
+2. **Static Image Fallback**: For extremely slow connections, implement a static image fallback for the hero heading.
 
-3. **Server-Side Rendering Enhancements**: Further optimize the server-side rendering to prioritize the hero heading.
+3. **Further JavaScript Optimization**: 
+   - Analyze and remove unused JavaScript (potential savings of 309 KiB identified)
+   - Reduce main-thread work (potential savings of 2.9s identified)
 
-4. **Preconnect to Font Sources**: If fonts are loaded from external sources, add preconnect hints.
+4. **Eliminate Render-Blocking Resources**: Further optimize the remaining render-blocking resources (potential savings of 100ms identified).
 
-5. **Reduce JavaScript Before LCP**: Analyze and reduce JavaScript execution that might delay the LCP.
+5. **Enable Text Compression**: Implement text compression for all text-based resources (potential savings of 251 KiB identified).
+
+6. **Implement Resource Hints**: Add additional resource hints like `prefetch` for resources needed soon after initial load.
 
 ## Monitoring and Verification
 
@@ -158,6 +272,16 @@ After implementing these changes, verify the improvements using:
 2. PageSpeed Insights
 3. Web Vitals reporting in Google Analytics
 4. Real user monitoring on actual mobile devices
+5. Chrome User Experience Report (CrUX) data
+
+## Implementation Notes
+
+The optimizations have been implemented in a way that maintains the visual appearance and functionality of the site while significantly improving performance. The approach focuses on:
+
+1. **Critical Rendering Path**: Optimizing the sequence of steps the browser goes through to render the page
+2. **Progressive Enhancement**: Ensuring core content is available quickly, with enhancements loading progressively
+3. **Resource Prioritization**: Ensuring the most important resources are loaded first
+4. **Caching Strategy**: Implementing effective caching for repeat visits
 
 ## References
 

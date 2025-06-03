@@ -18,18 +18,30 @@ startServer()
 async function startServer() {
   const app = express()
   
-  app.use(compression())
+  // Use compression with higher level for better performance
+  app.use(compression({
+    level: 9, // Maximum compression level
+    threshold: 0 // Compress all responses
+  }));
   
   // Set proper caching headers
   app.use((req, res, next) => {
-    // Static assets: cache for 1 year
-    if (req.url.match(/\.(css|js|jpg|jpeg|png|gif|ico|svg|webp|woff|woff2)$/)) {
+    // Font files: cache for 1 year with immutable
+    if (req.url.match(/\.(woff|woff2)$/)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    }
+    // Other static assets: cache for 1 year
+    else if (req.url.match(/\.(css|js|jpg|jpeg|png|gif|ico|svg|webp)$/)) {
       res.setHeader('Cache-Control', 'public, max-age=31536000');
     }
     // HTML and API responses: no cache
     else {
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     }
+    
+    // Add Vary header for proper caching with compression
+    res.setHeader('Vary', 'Accept-Encoding');
+    
     next();
   });
   

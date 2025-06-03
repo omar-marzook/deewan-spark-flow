@@ -109,6 +109,15 @@ export async function render(pageContext) {
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#ffffff" />
+    
+    <!-- Preload critical fonts with high priority -->
+    <link rel="preload" href="/fonts/Gilroy-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" fetchpriority="high" />
+    <link rel="preload" href="/fonts/Gilroy-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+    
+    <!-- Preconnect to important domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    
     <title>${
         seoData.title ||
         'Deewan - Intelligent Communication Solutions for Business | Saudi Arabia'

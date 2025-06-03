@@ -42,7 +42,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
   const animationClass = isClient && clientLoaded ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-100';
 
   return (
-      <section id="main-content" className={`container mx-auto px-4 pt-40 pb-12 md:pt-40 md:pb-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
+      <section id="hero-section" className={`container mx-auto px-4 pt-40 pb-12 md:pt-40 md:pb-24 xl:pt-48 relative z-10 ${className}`} aria-labelledby="hero-heading">
       {/* Floating Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <CircleDot
@@ -133,7 +133,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
         </motion.div>
       </motion.div>
 
-      {/* Visual with green gradient illumination */}
+      {/* Visual with green gradient illumination - Optimized to not block LCP */}
       <motion.div 
         className="relative max-w-4xl mx-auto"
         initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30, filter: "blur(5px)" }}
@@ -148,6 +148,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
             {/* Video in aspect-video container */}
             <div className="glass-card relative p-4 overflow-hidden w-full rounded-xl" aria-hidden="true">
               <div className="aspect-video overflow-hidden rounded-lg">
+                {/* Ensure video doesn't block LCP with preload="none" */}
                 <video 
                   ref={videoRef}
                   className="w-full h-full object-cover" 
@@ -155,8 +156,9 @@ const HomeHero: React.FC<HomeHeroProps> = ({ children, className = '' }) => {
                   muted 
                   loop 
                   playsInline
-                  preload="none" /* Changed from metadata to none to prevent blocking LCP */
+                  preload="none" /* Prevent video from blocking LCP */
                   onLoadedData={handleVideoLoad}
+                  poster="/media/home-hero-section-poster.jpg" /* Add a poster image for faster initial render */
                 >
                   <source src="/media/home-hero-section-video.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
