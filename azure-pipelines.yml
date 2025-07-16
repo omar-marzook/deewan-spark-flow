@@ -39,6 +39,14 @@ steps:
 
     cd "$appPath"
 
+    echo "Creating .env file from pipeline variables..."
+    cat <<EOF > .env
+    VITE_HUBSPOT_API_TOKEN="$(VITE_HUBSPOT_API_TOKEN)"
+    VITE_HUBSPOT_FORM_ID="$(VITE_HUBSPOT_FORM_ID)"
+    VITE_HUBSPOT_PORTAL_ID="$(VITE_HUBSPOT_PORTAL_ID)"
+    VITE_HUBSPOT_NEWSLETTER_FORM_ID="$(VITE_HUBSPOT_NEWSLETTER_FORM_ID)"
+    EOF
+
     echo "Installing dependencies..."
     npm install | tee install.log
     npm install --save-dev @vitejs/plugin-react-swc 
