@@ -108,7 +108,7 @@ const ContactSection = () => {
           {/* Right column - Contact Form */}
           <AnimatePresence>
             <motion.div
-              initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
