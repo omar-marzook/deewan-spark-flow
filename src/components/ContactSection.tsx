@@ -35,7 +35,7 @@ const ContactSection = () => {
                 duration: prefersReducedMotion ? 0 : 0.6,
                 delay: prefersReducedMotion ? 0 : 0.3
               }}
-              className="text-center lg:text-left"
+              className="text-left"
             >
               <h3 className="text-3xl font-bold mb-10 text-deewan-dark">Get In Touch</h3>
 
@@ -51,7 +51,7 @@ const ContactSection = () => {
                         href="https://maps.app.goo.gl/hQqxRdj2ePUPFvRr6"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-deewan-primary hover:underline focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1"
+                        className="text-deewan-primary hover:underline focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded pr-2 py-1"
                         aria-label="Office location: Olaya St, Al Olaya, Riyadh 12214, Saudi Arabia (opens in a new tab)"
                       >
                         Olaya St, Al Olaya, Riyadh 12214, Saudi Arabia
@@ -70,7 +70,7 @@ const ContactSection = () => {
                     <dd>
                       <a
                         href="mailto:support@deewan.sa"
-                        className="text-deewan-primary hover:underline focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1"
+                        className="text-deewan-primary hover:underline focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded pr-2 py-1"
                         aria-label="Email us at support@deewan.sa"
                       >
                         support@deewan.sa
@@ -88,7 +88,7 @@ const ContactSection = () => {
                     <dd>
                       <a
                         href="tel:+966552889989"
-                        className="text-deewan-primary hover:underline focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded px-2 py-1"
+                        className="text-deewan-primary hover:underline focus:outline-none focus:ring-2 focus:ring-deewan-primary/50 rounded pr-2 py-1"
                         aria-label="Call us at +966 55 288 9989"
                       >
                         +966 55 288 9989
@@ -108,7 +108,7 @@ const ContactSection = () => {
           {/* Right column - Contact Form */}
           <AnimatePresence>
             <motion.div
-              initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
